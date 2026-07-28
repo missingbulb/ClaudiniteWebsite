@@ -90,9 +90,18 @@ differentiation to sharpen with more research below.
 - Does the AGENTS.md spec (via the Linux Foundation's Agentic AI Foundation)
   say anything about layering enforcement or packaged conventions on top of
   the base file, or is that explicitly out of its scope?
+- How do knowhub and ai-rules-sync *market* themselves (headline claim, named
+  audience, adoption CTA)? claudinite.com launched on the
+  enforcement/procedure/scheduled-work differentiation (see
+  [Website wiki](../Website/README.md)) — worth checking whether any
+  competitor has started claiming enforcement too, which would blunt that
+  message.
 
 ## Growth log
 
 - **2026-07-28** — initial seed: substrate standards (AGENTS.md, CLAUDE.md,
   Cursor, Windsurf, Copilot) and the direct rule-sync competitor set
   (knowhub, ai-rules-sync, ai-rules) researched and cited.
+- **2026-07-28** — open question added by the website build: how competitors
+  market themselves, to defend the enforcement-differentiation message the
+  launched site leads with.

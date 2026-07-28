@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claudinite — Convention packs for AI coding agents</title>
+<meta name="description" content="Claudinite packages your engineering conventions as versioned packs — rules agents load, checks that block drift, skills, and scheduled upkeep — vendored into every repo and kept current automatically.">
+<meta name="theme-color" content="#faf8f4">
+<link rel="canonical" href="https://claudinite.com/">
+<meta property="og:title" content="Claudinite — Convention packs for AI coding agents">
+<meta property="og:description" content="Stop copy-pasting agent rules. Versioned packs with enforcement, procedure, and scheduled work — synced to every repo, nightly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://claudinite.com/">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="Claudinite home">
+      <svg class="brand-glyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 28 11l-4.5 17h-15L4 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 2v26M4 11l12 6 12-6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+      <span>claudinite</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#why">Why</a>
+      <a href="#mechanisms">Mechanisms</a>
+      <a href="#canon">The canon</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="#adopt">Adopt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================== HERO ============================== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Convention packs for AI coding agents</p>
+      <h1>Stop copy-&#8203;pasting agent&nbsp;rules.</h1>
+      <p class="lede">
+        Claudinite packages your engineering conventions as versioned
+        <strong>packs</strong> — prose your agents load, <strong>checks that
+        block drift</strong>, skills, and scheduled upkeep — vendored into
+        every repo and kept current automatically.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#adopt">Adopt it in your repo</a>
+        <a class="btn btn-ghost" href="https://github.com/missingbulb/Claudinite" rel="noopener">View the canon on GitHub</a>
+      </div>
+      <p class="hero-fine">Plain files in your repo. No service, no lock-in — leave by deleting a directory.</p>
+    </div>
+
+    <!-- Fleet diagram: one canon, many repos; a repo drifts, the pulse re-syncs it -->
+    <figure class="hero-viz" aria-label="Animation: a central canon node broadcasts convention updates to a fleet of repositories; a drifting repository is pulled back in sync.">
+      <svg id="fleet-viz" viewBox="0 0 640 520" role="img">
+        <title>One canon syncing a fleet of repositories</title>
+        <g id="fleet-links" fill="none" stroke-width="1.5"></g>
+        <g id="fleet-pulses"></g>
+        <g id="fleet-canon">
+          <path class="crystal" d="M320 196 372 235l-19.5 74h-65L268 235Z"/>
+          <path class="crystal-facets" d="M320 196v113M268 235l52 26 52-26"/>
+          <text x="320" y="336" class="viz-label" text-anchor="middle">canon</text>
+        </g>
+        <g id="fleet-repos"></g>
+      </svg>
+      <figcaption class="viz-caption"><span class="dot dot-green"></span> in sync &nbsp; <span class="dot dot-red"></span> drifting</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================== WHY ============================== -->
+<section class="why" id="why">
+  <div class="wrap">
+    <p class="eyebrow">Why this exists</p>
+    <h2>Prose doesn’t scale. Copies rot.</h2>
+    <div class="why-grid">
+      <article class="why-card reveal">
+        <h3><span class="why-num">01</span> Drift</h3>
+        <p>Every <code>CLAUDE.md</code> and <code>AGENTS.md</code> forks the day you paste it. Ten repos, ten slowly diverging rulebooks — and no way to tell which one is right.</p>
+      </article>
+      <article class="why-card reveal">
+        <h3><span class="why-num">02</span> No teeth</h3>
+        <p>A convention written as prose is a suggestion. Agents skip it under pressure; humans skip it on Fridays. Nothing fails when it’s ignored, so it is.</p>
+      </article>
+      <article class="why-card reveal">
+        <h3><span class="why-num">03</span> Stale</h3>
+        <p>Your team learns something hard-won in one repo. The other nine never hear about it. Best practice moves monthly; hand-syncing doesn’t.</p>
+      </article>
+    </div>
+    <p class="why-kicker reveal">Rule-sync tools move <em>files</em>. Claudinite moves <strong>enforcement, procedure, and scheduled work</strong> — as one versioned unit.</p>
+  </div>
+</section>
+
+<div id="mechanisms" aria-hidden="true"></div>
+
+<!-- ===================== MECHANISM 1 · THE PACK ===================== -->
+<section class="mech" id="pack-anatomy">
+  <div class="wrap mech-grid">
+    <div class="mech-copy">
+      <p class="eyebrow">Mechanism 01</p>
+      <h2>The pack</h2>
+      <p>A pack is a convention that ships with its own means of survival. Not a document — a versioned unit with four layers, vendored into each consuming repo.</p>
+      <ul class="mech-points">
+        <li><strong>Rules</strong> are injected into every agent session, automatically.</li>
+        <li><strong>Checks</strong> are executable — they fail the session or CI when work drifts, and the failure message carries the fix.</li>
+        <li><strong>Skills</strong> load on demand, so procedure never bloats context.</li>
+        <li><strong>Tasks</strong> run on the repo’s own scheduler, unattended.</li>
+      </ul>
+    </div>
+    <div class="pack-stack" role="img" aria-label="Exploded view of a pack: RULES.md prose, checks, skills, and scheduled tasks.">
+      <div class="pack-layer reveal" data-delay="0">
+        <div class="pack-layer-head"><span class="file">RULES.md</span><span class="pill">every session</span></div>
+        <p>“Fix warnings, never tolerate them.” “An approval applies only backward.” The always-loaded working discipline.</p>
+      </div>
+      <div class="pack-layer reveal" data-delay="1">
+        <div class="pack-layer-head"><span class="file">checks/*.mjs</span><span class="pill pill-red">blocking</span><span class="pill pill-amber">advisory</span></div>
+        <p><code>reference-integrity</code> · <code>task-lifecycle</code> · <code>warning-suppression</code> — deterministic gates at session stop and in CI.</p>
+      </div>
+      <div class="pack-layer reveal" data-delay="2">
+        <div class="pack-layer-head"><span class="file">skills/</span><span class="pill">on demand</span></div>
+        <p><code>merge-to-main</code> · <code>bug-investigation</code> · <code>writing-tests</code> — step-by-step procedure, loaded when the work calls for it.</p>
+      </div>
+      <div class="pack-layer reveal" data-delay="3">
+        <div class="pack-layer-head"><span class="file">tasks/</span><span class="pill">scheduled</span></div>
+        <p><code>baselining</code> · <code>tidy-branches</code> · <code>wiki-growth</code> — upkeep the repo runs on itself, unattended.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== MECHANISM 2 · THE SESSION LOOP ================== -->
+<section class="mech mech-dark" id="session-loop">
+  <div class="wrap mech-grid mech-grid-flip">
+    <div class="mech-copy">
+      <p class="eyebrow">Mechanism 02</p>
+      <h2>The session loop</h2>
+      <p>Hooks wire packs into Claude Code. Rules load at session start; checks run when the agent tries to stop. Drift is caught <em>before</em> it merges — and the finding is the instruction.</p>
+      <ul class="mech-points">
+        <li>Blocking findings hold the session open until fixed.</li>
+        <li>Advisory findings surface without blocking.</li>
+        <li>The same sweep runs again in CI, so nothing slips past on a laptop.</li>
+      </ul>
+      <button class="btn btn-ghost btn-replay" id="term-replay" type="button">Replay ↺</button>
+    </div>
+    <div class="terminal" id="session-term" aria-label="Terminal transcript: checks catch a missing issue reference, the agent fixes it, all checks pass.">
+      <div class="term-bar"><span></span><span></span><span></span><em>claude — your-repo</em></div>
+      <div class="term-body" id="term-body">
+        <p class="t-line t-dim" data-t="0">$ claude</p>
+        <p class="t-line t-hook" data-t="1">◆ SessionStart · packs loaded: basics · git-github · html — rules injected</p>
+        <p class="t-line" data-t="2">&gt; implement the signup flow</p>
+        <p class="t-line t-dim" data-t="3">… agent edits files, commits, tries to end the session …</p>
+        <p class="t-line t-hook" data-t="4">◆ Stop · running work-scope checks</p>
+        <p class="t-line t-bad" data-t="5">✗ task-lifecycle <span class="t-tag">blocking</span> none of 3 commits references an issue (#N)</p>
+        <p class="t-line t-dim" data-t="6">&nbsp;&nbsp;fix: reference the task issue in a commit — e.g. “refs #42”</p>
+        <p class="t-line" data-t="7">&gt; git commit --amend -m "Add signup flow (refs #42)"</p>
+        <p class="t-line t-hook" data-t="8">◆ Stop · running work-scope checks</p>
+        <p class="t-line t-good" data-t="9">✓ 14 checks · all green — session ends clean</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MECHANISM 3 · THE FLEET STAYS CURRENT ================= -->
+<section class="mech" id="fleet">
+  <div class="wrap mech-grid">
+    <div class="mech-copy">
+      <p class="eyebrow">Mechanism 03</p>
+      <h2>No repo falls behind</h2>
+      <p>Every consumer runs an hourly scheduler on its own repo-hashed minute — this site’s repo fires at <code>:26</code> — and a nightly <strong>baselining</strong> task re-vendors the latest canon.</p>
+      <ul class="mech-points">
+        <li>Updates arrive as ordinary PRs, gated by CI, auto-merged when green.</li>
+        <li>The canon is <em>vendored</em> — pinned, tracked, reviewable in your own history.</li>
+        <li>Sessions and CI read the same snapshot; there’s nothing to fetch and nothing to trust at runtime.</li>
+      </ul>
+    </div>
+    <div class="fleet-board" role="img" aria-label="Eight repositories flip from an old canon ref to the latest as the nightly baselining wave passes.">
+      <div class="canon-bar">
+        <svg class="clock" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="19" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".35"/><line x1="22" y1="22" x2="22" y2="8" stroke="currentColor" stroke-width="1.8" class="clock-hand"/><circle cx="22" cy="22" r="1.8" fill="currentColor"/></svg>
+        <span class="mono">canon @ <b id="canon-ref">005edd2</b></span>
+        <span class="canon-pulse" id="canon-pulse" aria-hidden="true"></span>
+      </div>
+      <div class="repo-grid" id="repo-grid"></div>
+      <p class="viz-caption">nightly baselining · PR → CI → auto-merge</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== MECHANISM 4 · THE GROWTH LOOP =================== -->
+<section class="mech" id="growth">
+  <div class="wrap mech-grid mech-grid-flip">
+    <div class="mech-copy">
+      <p class="eyebrow">Mechanism 04</p>
+      <h2>One repo pays.<br>Every repo learns.</h2>
+      <p>Claudinite doesn’t just distribute conventions — it grows them. Lessons are mined from real work: merged sessions, issues, PRs. Keepers land in the repo’s local packs, get deduped against the canon, and the portable ones are promoted so the whole fleet inherits them.</p>
+      <p class="ladder" aria-label="The promotion ladder: prose becomes a skill becomes a check.">
+        <span class="ladder-step">prose</span><span class="ladder-arrow">→</span>
+        <span class="ladder-step">skill</span><span class="ladder-arrow">→</span>
+        <span class="ladder-step ladder-final">check</span>
+      </p>
+      <p class="mech-fine">The promotion ladder: a check relieves every session’s context completely; prose only relocates it. Growth writes more checks and less prose.</p>
+    </div>
+    <figure class="growth-viz">
+      <svg viewBox="0 0 560 560" role="img">
+        <title>The growth loop: session lessons become local packs, are promoted to the canon, and baseline out to the fleet.</title>
+        <circle class="loop-ring" cx="280" cy="280" r="200"/>
+        <circle class="loop-flow" cx="280" cy="280" r="200"/>
+        <g class="loop-node" transform="translate(280,64)"><circle r="9"/><text y="-20" text-anchor="middle">session lesson</text></g>
+        <g class="loop-node" transform="translate(485,217)"><circle r="9"/><text y="-20" text-anchor="middle">local pack</text></g>
+        <g class="loop-node" transform="translate(407,449)"><circle r="9"/><text y="34" text-anchor="middle">dedup</text></g>
+        <g class="loop-node" transform="translate(153,449)"><circle r="9"/><text y="34" text-anchor="middle">promote to canon</text></g>
+        <g class="loop-node" transform="translate(75,217)"><circle r="9"/><text y="-20" text-anchor="middle">baseline to fleet</text></g>
+        <path class="crystal crystal-center" d="M280 236 318 264l-14.5 55h-47L242 264Z"/>
+        <text x="280" y="336" class="viz-label" text-anchor="middle">the growth loop</text>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ THE CANON ============================ -->
+<section class="canon" id="canon">
+  <div class="wrap">
+    <p class="eyebrow">In the canon now</p>
+    <h2>What ships today</h2>
+
+    <div class="stats" id="stats-slot"></div>
+
+    <div class="spotlight" id="spotlight-slot"></div>
+
+    <h3 class="canon-sub">The packs</h3>
+    <div class="packs-grid" id="packs-slot"></div>
+
+    <h3 class="canon-sub">Recent updates</h3>
+    <ol class="updates" id="updates-slot"></ol>
+
+    <noscript>
+      <p>The canon currently ships 8 packs — basics, git-github, github-actions, grow_with_claudinite, tidy-repo, product-wiki, html, barriers — carrying 25+ deterministic checks, 15+ skills, and 10 scheduled task types. Browse them in <a href="https://github.com/missingbulb/Claudinite" rel="noopener">the canon repository</a>.</p>
+    </noscript>
+  </div>
+</section>
+
+<!-- ============================== ADOPT ============================== -->
+<section class="adopt" id="adopt">
+  <div class="wrap adopt-grid">
+    <div class="mech-copy">
+      <p class="eyebrow">Adopt</p>
+      <h2>One conversation to&nbsp;adopt</h2>
+      <ol class="steps">
+        <li><b>Open Claude Code in your repo</b> and point it at the canon: <em>“Adopt Claudinite — follow missingbulb/Claudinite’s bootstrap.md.”</em></li>
+        <li><b>Answer the short adoption interview.</b> Bootstrap vendors the canon, declares your packs, wires the hooks, scheduler and CI sweep, and lands the whole thing green as one PR.</li>
+        <li><b>Merge it.</b> From here the scheduler takes over: nightly baselining, tidy sweeps, growth extraction. Your repos stop drifting today.</li>
+      </ol>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://github.com/missingbulb/Claudinite" rel="noopener">Get Claudinite</a>
+        <a class="btn btn-ghost" href="https://github.com/missingbulb/ClaudiniteWebsite" rel="noopener">See a consumer repo</a>
+      </div>
+      <ul class="assure">
+        <li>Plain files, vendored into your repo — no server, no account, no runtime dependency.</li>
+        <li>Complements <code>AGENTS.md</code> / <code>CLAUDE.md</code> — packs carry what prose can’t: enforcement.</li>
+        <li>Every automated change is a PR through your CI. Nothing lands silently.</li>
+      </ul>
+    </div>
+    <div class="terminal terminal-light" aria-label="Terminal: adopting Claudinite in a repository.">
+      <div class="term-bar"><span></span><span></span><span></span><em>claude — acme/payments</em></div>
+      <div class="term-body">
+        <p class="t-line">$ claude</p>
+        <p class="t-line">&gt; <span id="type-target"></span><span class="caret" aria-hidden="true"></span></p>
+        <div id="adopt-result" class="adopt-result">
+          <p class="t-line t-dim">◆ fetching canon · running the adoption interview…</p>
+          <p class="t-line">✓ canon vendored at <span class="mono">.claudinite/shared/</span> (ref <span class="mono">005edd2</span>)</p>
+          <p class="t-line">✓ packs declared: basics · git-github · github-actions</p>
+          <p class="t-line">✓ hooks registered: SessionStart · Stop · PreToolUse</p>
+          <p class="t-line">✓ scheduler wired (hourly, minute :26) · CI sweep added</p>
+          <p class="t-line t-good">✓ conformance sweep green — bootstrap PR opened</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== FAQ =============================== -->
+<section class="faq" id="faq">
+  <div class="wrap wrap-narrow">
+    <p class="eyebrow">FAQ</p>
+    <h2>Fair questions</h2>
+
+    <details>
+      <summary>What exactly gets added to my repo?</summary>
+      <p>A tracked, read-only vendored canon under <code>.claudinite/shared/</code> (engine + packs), a pack declaration in <code>.claudinite-checks.json</code>, Claude Code hooks in <code>.claude/settings.json</code>, one thin scheduler workflow, and a conformance step in CI. All of it arrives as a single reviewable bootstrap PR.</p>
+    </details>
+    <details>
+      <summary>Will it fight my existing CLAUDE.md or AGENTS.md?</summary>
+      <p>No. Packs carry the layer those files can’t — enforcement, procedure, scheduled work — and Claudinite’s own advisory check nudges your root <code>CLAUDE.md</code> to stay lean and universally applicable, which is where community best practice already points.</p>
+    </details>
+    <details>
+      <summary>What happens when a check fails?</summary>
+      <p>At session stop, blocking findings hold the session open — each one states what drifted and how to fix it, so the agent fixes it then and there. The same sweep runs in CI on every PR, so a bypassed hook still can’t merge drift.</p>
+    </details>
+    <details>
+      <summary>Do I need a server or an account?</summary>
+      <p>No. Claudinite is files in your repo plus your existing GitHub Actions. There is no hosted service, nothing phones home, and leaving is deleting a directory and two hook entries.</p>
+    </details>
+    <details>
+      <summary>How do updates reach my repos?</summary>
+      <p>A nightly baselining task re-vendors the latest canon and opens a PR; CI runs; green PRs auto-merge (that’s configurable). Your fleet converges on the current canon without anyone hand-copying anything.</p>
+    </details>
+    <details>
+      <summary>Can it learn rules specific to my codebase?</summary>
+      <p>Yes — that’s the growth lifecycle. Lessons extracted from your merged sessions and PRs land in your repo’s <em>local</em> packs. Portable ones can be promoted into the shared canon; repo-specific ones stay local. Either way they graduate from prose toward checks.</p>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand brand-footer" href="#top">
+        <svg class="brand-glyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 28 11l-4.5 17h-15L4 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 2v26M4 11l12 6 12-6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        <span>claudinite</span>
+      </a>
+      <p class="footer-tag">Conventions, with teeth.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://github.com/missingbulb/Claudinite" rel="noopener">Canon repository</a>
+      <a href="https://github.com/missingbulb/ClaudiniteWebsite" rel="noopener">This site’s repo</a>
+      <a href="#mechanisms">Mechanisms</a>
+      <a href="#adopt">Adopt</a>
+    </nav>
+  </div>
+  <div class="wrap footer-meta">
+    <p>This page practices what it sells: it was designed, built, and shipped by an agent session governed by Claudinite’s own checks, and is updated by scheduled agent runs.</p>
+    <p>© 2026 Claudinite</p>
+  </div>
+</footer>
+
+<script src="data/promoted.js"></script>
+<script src="assets/main.js"></script>
+</body>
+</html>
