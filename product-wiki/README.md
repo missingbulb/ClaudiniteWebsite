@@ -12,3 +12,6 @@ build on.
 - [`Market/`](Market/README.md) — the competitive landscape: repo-convention
   standards Claudinite must interoperate with, and direct competitors solving
   the same shared-conventions-across-repos problem.
+- [`Website/`](Website/README.md) — claudinite.com itself: positioning,
+  promoted features, and conversion decisions behind the marketing site, and
+  the open questions future site passes should answer.

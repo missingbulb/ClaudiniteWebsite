@@ -1,0 +1,42 @@
+# Publishes site/ to GitHub Pages on every push to main that touches it.
+# Artifact-flow deploy (no gh-pages branch); the custom domain (claudinite.com)
+# is configured in the repository's Pages settings, not here — see
+# site/README.md. Uploading site/ (never the repo root) keeps the agent-tooling
+# dirs out of the artifact.
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/configure-pages@v5
+        with:
+          # First run enables Pages (source: GitHub Actions) if the token is
+          # allowed to; otherwise enable it once in Settings → Pages.
+          enablement: true
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
