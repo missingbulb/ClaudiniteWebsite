@@ -28,7 +28,8 @@
     "tidy-repo",
     "html",
     "github-actions",
-    "product-wiki"
+    "product-wiki",
+    "local/claudinite-website"
   ],
   "maintenance": {
     "delivery": "auto-merge"
