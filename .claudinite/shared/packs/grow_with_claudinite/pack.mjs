@@ -1,0 +1,43 @@
+import growthConfig from './config-check.mjs';
+import dedupIntegrity from './dedup-integrity.mjs';
+
+// Opt into the growth lifecycle: a repo declaring grow_with_claudinite contributes its
+// hard-won lessons up to the Claudinite canon and prunes them back out once the canon
+// owns them. This pack carries the REPO-side stages — extract, dedup, the weekly local
+// pack discovery, and the prose-to-checks sweep — as scheduled tasks under this pack's
+// own `tasks/`, discovered by the scheduler's filesystem scan
+// (engine/scheduler/discover.mjs), so none of them is declared here. The central
+// promote stage — lifting portable lessons up into the shared canon — is a home-only
+// duty that runs canon-side, outside this pack; its precondition targets exactly the
+// members that declare THIS pack, minus any member whose entry sets config.promote:
+// false (the promotion opt-out; extraction and dedup stay local either way).
+//
+// The pack also owns the CONVERSATION lifecycle: merge-to-main's capture step pushes
+// each merged session's conversation onto the orphan conversation-logs branch
+// (capture-log.mjs, in-session — it needs the live transcript), and the
+// conversation-extract task (tasks/conversation-extract/) mines those pushed
+// logs with growth-extract's access model — the logs branch is in the repo, so reading
+// it, committing lessons to local packs, and pruning aged logs are plain local git;
+// only posting the short summary behind each extracted rule on its issue uses the
+// GitHub MCP tools — pruning logs past config.retention_days.
+//
+// growth-discover-packs is the weekly LOCAL pack-discovery reflection: the repo
+// manifests its own stack, notices project-specific knowledge no canon pack homes,
+// and authors a local pack for it under its own `.claudinite/local/packs/`.
+//
+// A declared pack (no fingerprint), seeded like tidy-repo: --init seeds it into every
+// new repo, the one-time grow-with-claudinite-seed migration seeds the existing fleet,
+// and baselining never re-adds it — so removing it is a durable opt-out.
+export default {
+  id: 'grow_with_claudinite',
+  detect: null,
+  marker: null,
+  seededByDefault: true,
+  prose: null,
+  rules: [growthConfig, dedupIntegrity],
+  questions: [{
+    id: 'retention',
+    prompt: 'How many days should a captured conversation log stay on the conversation-logs branch before the conversation-extract retention prune deletes it? The floor is the rethink window — extraction wants ~a week of hindsight; 10 is the recommended value.',
+    distill: 'set config.retention_days on this entry to the agreed positive integer; until it is set, the prune deletes nothing (capture-only adoption)',
+  }],
+};
