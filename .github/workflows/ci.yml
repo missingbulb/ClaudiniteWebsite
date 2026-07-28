@@ -1,0 +1,15 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Claudinite world-scope conformance sweep
+        run: node .claudinite/shared/engine/checks/check_the_world.mjs
