@@ -59,7 +59,5 @@ media queries; the CLI flag does not.
 
 ## Show the owner
 
-Deliver the image into the chat (`SendUserFile`), never a path. A raw full-page
-capture is rejected as too large — downscale to roughly 600–720px wide and send
-it as JPEG (quality ~82) in the same turn you commit, alongside a full-size hero
-crop.
+A raw full-page capture is rejected as too large — downscale to roughly 600–720px
+wide and send it as JPEG (quality ~82), alongside a full-size hero crop.
