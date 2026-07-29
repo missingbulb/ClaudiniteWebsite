@@ -1,14 +1,11 @@
 // This repo's own pack: conventions for the claudinite.com marketing site and
-// for maintaining this repo's Claudinite mount. Prose, one bundled skill and
-// this repo's own checks; no structural fingerprint of its own — the
-// declaration in .claudinite-checks.json
+// for maintaining this repo's Claudinite mount. Prose + one bundled skill, no
+// structural fingerprint of its own — the declaration in .claudinite-checks.json
 // is authoritative (detect: null skips the drift check in both directions).
-import canonRefInStep from './canon-ref-in-step.mjs';
-
 export default {
   id: 'claudinite-website',
   marker: null,
   detect: null,
   prose: 'RULES.md',
-  rules: [canonRefInStep],
+  rules: [],
 };
