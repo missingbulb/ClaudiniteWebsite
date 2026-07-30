@@ -1,2 +1,4 @@
 # ClaudiniteWebsite
+
+<!-- claudinite:packs -->![basics](../../../../../tmp/claudinite-canon-GEGOUP/packs/basics/badge.svg "basics") ![barriers](../../../../../tmp/claudinite-canon-GEGOUP/packs/barriers/badge.svg "barriers") ![git-github](../../../../../tmp/claudinite-canon-GEGOUP/packs/git-github/badge.svg "git-github") ![grow_with_claudinite](../../../../../tmp/claudinite-canon-GEGOUP/packs/grow_with_claudinite/badge.svg "grow_with_claudinite") ![tidy-repo](../../../../../tmp/claudinite-canon-GEGOUP/packs/tidy-repo/badge.svg "tidy-repo") ![html](../../../../../tmp/claudinite-canon-GEGOUP/packs/html/badge.svg "html") ![github-actions](../../../../../tmp/claudinite-canon-GEGOUP/packs/github-actions/badge.svg "github-actions") ![product-wiki](../../../../../tmp/claudinite-canon-GEGOUP/packs/product-wiki/badge.svg "product-wiki")<!-- /claudinite:packs -->
 The commercial website for Claudinite

@@ -40,7 +40,10 @@
     "monthlyDay": 1
   },
   "claudinite": {
-    "updated": "2026-07-28T21:50:19.697Z",
-    "ref": "005edd2028b770facd2be74812b29556ced5194d"
+    "updated": "2026-07-30T03:39:18.980Z",
+    "ref": "29e843cd69f355e2cf41aea3b91197aa5e5030da"
+  },
+  "badges": {
+    "readme": "auto"
   }
 }
