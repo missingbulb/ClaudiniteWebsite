@@ -5,6 +5,13 @@ coding-agent user already has on disk, and the direct competitors solving the
 same problem Claudinite does — keeping AI-coding-agent conventions consistent
 and current across many repositories.
 
+## Key insights
+
+- The substrate formats don't propagate a convention across repos — that gap, not the files themselves, is what Claudinite sells against.
+- AGENTS.md is the standard to read, not displace: 30+ agents, 60,000+ repos, now under the Linux Foundation.
+- A small competitor category sits on the same gap: knowhub, ai-rules-sync, ai-rules, Sync AI Agent Rules.
+- Those competitors move files; Claudinite moves checks, skills and tasks as one vendored unit — the sharpest gap available.
+
 ## The substrate: per-repo convention files
 
 Every agent-facing repo already carries at least one plain-text convention

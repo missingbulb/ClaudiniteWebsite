@@ -9,6 +9,13 @@ rotating promo content lives in one data file
 [site/README.md](../../site/README.md)); this page is where the *reasoning*
 behind what gets promoted accumulates.
 
+## Key insights
+
+- The headline names the substrate pain, not the category — "convention packs" means nothing to a cold visitor.
+- Promoted differentiation is the Market wiki's sharpest gap: rivals move files, Claudinite moves enforcement and procedure.
+- A scheduled promo pass edits one data file and cannot break layout; mechanism explanations stay static HTML.
+- No invented testimonials, stars or adoption numbers until real proof points exist — hence zero social proof today.
+
 ## Positioning decisions (2026-07-28, initial)
 
 Decisions made for launch — owner-editable calls, not researched claims; the
