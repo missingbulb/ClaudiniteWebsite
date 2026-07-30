@@ -12,6 +12,8 @@ touches `site/**`.
 | [index.html](index.html) | The one page: evergreen copy + the four mechanism explainers | Rarely — structure and evergreen claims |
 | [assets/style.css](assets/style.css) | The whole design system (tokens at the top) | Rarely |
 | [assets/main.js](assets/main.js) | Animations + rendering of the promoted-content slots | Rarely |
+| [assets/analytics.js](assets/analytics.js) | Cookieless Cloudflare Web Analytics loader; no-ops until the deploy injects the token | Never — the token comes from the `CLOUDFLARE_ANALYTICS_TOKEN` repo variable |
+| [privacy.html](privacy.html) | The privacy disclosure the analytics behaviour requires | When what the site collects changes — same commit as the change |
 | [data/promoted.js](data/promoted.js) | **The promoted content: stats, spotlight, pack cards, updates** | **Every promo refresh — edit this, usually nothing else** |
 
 ## Updating promoted content (the expected frequent, agentic change)
