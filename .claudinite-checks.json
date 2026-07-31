@@ -18,9 +18,6 @@
     },
     {
       "id": "grow_with_claudinite",
-      "answers": {
-        "retention": "10"
-      },
       "config": {
         "retention_days": 10
       }
@@ -40,8 +37,8 @@
     "monthlyDay": 1
   },
   "claudinite": {
-    "updated": "2026-07-30T22:01:07.995Z",
-    "ref": "f0b63776cb24bb31ca52bf7a17131e41acb0ac80"
+    "updated": "2026-07-31T04:57:12.000Z",
+    "ref": "8b01f9b1b99049379adaee648d56b7013de5e079"
   },
   "badges": {
     "readme": "auto"
