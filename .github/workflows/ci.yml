@@ -11,5 +11,11 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22
+      # The local packs' own rule fixtures. The glob is not optional: node --test's
+      # default discovery skips dot-directories, so a bare `node --test` finds
+      # nothing under .claudinite/ and passes green having run no test at all.
+      - name: Local pack rule tests
+        run: node --test '.claudinite/local/packs/**/*.test.mjs'
+
       - name: Claudinite world-scope conformance sweep
         run: node .claudinite/shared/engine/checks/check_the_world.mjs
