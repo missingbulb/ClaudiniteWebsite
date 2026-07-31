@@ -9,9 +9,21 @@ build on.
 
 ## Wikis
 
-- [`Market/`](Market/README.md) — the competitive landscape: repo-convention
-  standards Claudinite must interoperate with, and direct competitors solving
-  the same shared-conventions-across-repos problem.
+- [`Market/`](Market/README.md) — the competitive landscape: substrate
+  standards, the platform-native layer, direct rule-sync rivals, adjacent
+  content ecosystems, and the enterprise scorecard vendors above.
+- [`Methods/`](Methods/README.md) — how the pre-AI world propagated and
+  enforced conventions across repos (pre-commit, Renovate, template sync,
+  policy bundles), and what those systems' fates teach.
+- [`Business/`](Business/README.md) — business models and price anchors:
+  what adjacent devtools charge, which commercial archetypes survive a
+  plain-files/no-server product, and what is scarce enough to price.
+- [`Customers/`](Customers/README.md) — customer profiles: independent
+  developers, small shops/agencies, and large enterprises — adoption data,
+  what they do today, trigger moments, willingness to pay.
+- [`Positioning/`](Positioning/README.md) — Claudinite's strengths, market
+  position against each competitor class, and the candid gaps in the
+  offering.
 - [`Website/`](Website/README.md) — claudinite.com itself: positioning,
   promoted features, and conversion decisions behind the marketing site, and
   the open questions future site passes should answer.

@@ -13,6 +13,9 @@ behind what gets promoted accumulates.
 
 - The headline names the substrate pain, not the category — "convention packs" means nothing to a cold visitor.
 - Promoted differentiation is the Market wiki's sharpest gap: rivals move files, Claudinite moves enforcement and procedure.
+- The 2026-07-31 competitor check holds the message: no rival's headline claims enforcement (one file-drift-CI footnote: Ruler).
+- A sharper line is now available: rivals check the rules arrived; Claudinite checks the rules are followed.
+- Four site claims are attackable in a teardown: CI-sweep scope, leave story, one-conversation adopt, generic "AI agents".
 - A scheduled promo pass edits one data file and cannot break layout; mechanism explanations stay static HTML.
 - No invented testimonials, stars or adoption numbers until real proof points exist — hence zero social proof today.
 
@@ -82,11 +85,22 @@ this page are owner calls, not researched claims.
 - **Domain + analytics**: is claudinite.com DNS connected to Pages yet, and
   do we want privacy-respecting analytics (e.g. no-cookie counters) to learn
   which promoted features draw clicks on the adopt CTA?
-- **Commercial model**: the site presents Claudinite as adoptable OSS-style
-  tooling with no pricing page — `product-requirements/` is still empty;
-  when a business model is distilled there, the site needs a pricing/plans
-  decision (relates to the Market wiki's open question on competitor
-  pricing).
+- **Commercial model**: the research side now exists — the
+  [Business wiki](../Business/README.md) collects archetypes and price
+  anchors, and the requirements sink carries a proposed model — but the site
+  still ships no pricing page; a pricing/plans decision is an owner call
+  waiting on the requirements distillation being accepted.
+- **Sharpen the differentiation line?** The 2026-07-31 competitor scan
+  (Market wiki) found five rivals now advertise CI-failable *config-drift*
+  checks, so "rivals move files" alone will age; the sharper candidate is
+  "they check the rules arrived; we check the rules are followed." Worth a
+  copy pass on hero/differentiation sections.
+- **Fix the four attackable claims** (Positioning wiki, gap 9): "same sweep
+  in CI" (CI runs world-scope checks only), "leave by deleting a directory
+  and two hook entries" (undercounts the wiring), "one conversation to
+  adopt" (executor routine setup is real work), and generic "AI coding
+  agents" framing (Claude Code only today). Each has a truthful tightening
+  that costs little.
 - **Messaging test**: does "Stop copy-pasting agent rules" outperform a
   category-first headline ("Convention packs for AI coding agents") with the
   target audience? Worth a lightweight test once traffic exists.
@@ -98,3 +112,9 @@ this page are owner calls, not researched claims.
 - **2026-07-28** — page created alongside the initial site build: launch
   positioning, promoted-feature choices, agentic-update architecture, and
   the conversion strategy recorded; open questions seeded for future passes.
+- **2026-07-31** — ecosystem research pass: the competitor-marketing open
+  question is answered (no rival headline claims enforcement — message
+  holds, with a Ruler file-drift footnote), the commercial-model question
+  now points at the new Business wiki and requirements proposal, and two new
+  copy-facing questions added (sharpen the enforcement line; fix the four
+  attackable claims the Positioning wiki identifies).
