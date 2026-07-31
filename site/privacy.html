@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Claudinite</title>
+<meta name="description" content="claudinite.com counts visits with privacy-first, cookieless analytics — no cookies, no personal data, no cross-site tracking. Here's exactly what's measured.">
+<meta name="theme-color" content="#faf8f4">
+<link rel="canonical" href="https://claudinite.com/privacy.html">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Claudinite home">
+      <svg class="brand-glyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 28 11l-4.5 17h-15L4 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 2v26M4 11l12 6 12-6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+      <span>claudinite</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="index.html">← Back to the site</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="legal">
+    <div class="wrap wrap-narrow">
+      <h1 class="legal-title">Privacy</h1>
+      <p class="legal-lede">The short version: we count visits using
+        privacy-first, cookieless analytics. No cookies, no personal data, no
+        ads, and no following you around the web.</p>
+
+      <h2 id="analytics">Analytics — what we measure</h2>
+      <p>To understand roughly how many people visit, we use
+        <a href="https://www.cloudflare.com/web-analytics/" rel="noopener">Cloudflare
+        Web Analytics</a> — a privacy-first tool chosen precisely because it
+        <strong>doesn't</strong> use cookies, doesn't store personal data, and
+        can't identify you or follow you to other sites. It records anonymous,
+        aggregate signals only: page views, the referring site, and a broad
+        region worked out from your request (your IP address is used to derive
+        that, but is never stored).</p>
+      <p>So this site is <strong>not</strong> analytics-free, and we would
+        rather say so plainly than imply otherwise: we do count visits. What we
+        don't do is build a picture of <em>you</em>. There is no cross-site
+        tracking and no advertising profile — which is also why there's no
+        cookie-consent banner to click through.</p>
+
+      <h2>What we don't do</h2>
+      <p><strong>We don't sell your data, and we don't track you across the
+        web.</strong> No ads, no advertising trackers, no cookies set by us, no
+        accounts and no sign-up.</p>
+
+      <p><strong>claudinite.com is a static website.</strong> It runs entirely
+        in your browser, with no server of ours behind it — so beyond the
+        anonymous, aggregate analytics described above, there is nothing
+        <em>about you</em> for us to log or keep.</p>
+
+      <h2>What your browser loads</h2>
+      <p>This site ships no webfonts and no frameworks. It loads exactly one
+        third-party asset: the privacy-first analytics beacon (a small script)
+        from <a href="https://www.cloudflare.com/web-analytics/" rel="noopener">Cloudflare</a>.
+        That service sees your IP address and browser as part of a normal web
+        request, the same as visiting any website.</p>
+
+      <h2>Links out</h2>
+      <p>Links to GitHub open that site. Once you follow a link, that site's own
+        privacy policy applies — not this one.</p>
+
+      <h2>Questions</h2>
+      <p>Open an issue on the
+        <a href="https://github.com/missingbulb/Claudinite" rel="noopener">canon
+        repository</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand brand-footer" href="index.html">
+        <svg class="brand-glyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 28 11l-4.5 17h-15L4 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 2v26M4 11l12 6 12-6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        <span>claudinite</span>
+      </a>
+      <p class="footer-tag">Conventions, with teeth.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://github.com/missingbulb/Claudinite" rel="noopener">Canon repository</a>
+      <a href="https://github.com/missingbulb/ClaudiniteWebsite" rel="noopener">This site’s repo</a>
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+  <div class="wrap footer-meta">
+    <p>© 2026 Claudinite</p>
+  </div>
+</footer>
+
+<!-- Privacy-first, cookieless visitor analytics (see assets/analytics.js) -->
+<script defer src="assets/analytics.js"></script>
+</body>
+</html>

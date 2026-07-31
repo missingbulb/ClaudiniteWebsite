@@ -2,7 +2,8 @@
    Palette: warm paper + ink monochrome, one malachite accent, semantic
    red/amber/green reserved for check states. Type: system grotesk + mono.
    Motion: reveal-on-scroll + mechanism loops, all gated by
-   prefers-reduced-motion. No external assets, no webfonts, no frameworks. */
+   prefers-reduced-motion. No webfonts, no frameworks; the only external asset
+   is the cookieless analytics beacon (see assets/analytics.js, privacy.html). */
 
 :root {
   --paper: #faf8f4;
@@ -412,3 +413,11 @@ h1 { margin-top: 0.2em; }
   .caret, .clock-hand, .loop-flow, .crystal-center, .canon-pulse { animation: none !important; }
   .btn, .pack-card { transition: none; }
 }
+
+/* ---------- Legal pages (privacy) ---------- */
+.legal { padding: 72px 0 40px; }
+.legal-title { font-size: clamp(2.2rem, 5vw, 3.4rem); margin-bottom: 0.4em; }
+.legal-lede { font-size: 1.15rem; color: var(--ink-soft); margin-bottom: 1.6em; }
+.legal p { margin-bottom: 1.1em; }
+.legal h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin: 1.8em 0 0.5em; }
+.legal a { color: var(--accent-deep); }
