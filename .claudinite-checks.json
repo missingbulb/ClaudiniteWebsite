@@ -26,7 +26,14 @@
     "html",
     "github-actions",
     "product-wiki",
-    "local/claudinite-website"
+    "local/claudinite-website",
+    {
+      "id": "static-website",
+      "answers": {
+        "hosting": "GitHub Pages, from this repo, on the custom domain claudinite.com — the existing deploy-pages.yml is an artifact-flow Pages deploy of site/, so the full release-on-push → Pages pipeline applies.",
+        "publish_set": "site/ is the published root: index.html, privacy.html, the assets/ directory (style.css, main.js, analytics.js, favicon.svg) and data/promoted.js. site/README.md documents the site for maintainers and is not served."
+      }
+    }
   ],
   "maintenance": {
     "delivery": "auto-merge"
@@ -37,10 +44,7 @@
     "monthlyDay": 1
   },
   "claudinite": {
-    "updated": "2026-08-06T10:56:51.065Z",
-    "ref": "fa7ead79407afb442b2c01276f94b3167d5aade6"
-  },
-  "badges": {
-    "readme": "auto"
+    "updated": "2026-08-06T14:24:01.860Z",
+    "ref": "a05b1c192f1f85c92d6f0f8b0af5c424ef576479"
   }
 }

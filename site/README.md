@@ -1,9 +1,15 @@
 # site/ — claudinite.com
 
-The static marketing site for Claudinite. No build step, no dependencies: the
-directory is published as-is by [.github/workflows/deploy-pages.yml](../.github/workflows/deploy-pages.yml)
-(GitHub Pages via the actions artifact flow) on every push to `main` that
-touches `site/**`.
+The static marketing site for Claudinite. No build step and no dependencies: the
+files listed below are published to GitHub Pages by the `static-website` pack's
+release pipeline ([Release static site](../.github/workflows/static-site-release.yml))
+on every push to `main` that touches the publish set, which also cuts the
+version and the GitHub Release.
+
+The published set is an **explicit list** — `publish_paths` in
+[.github/site.config](../.github/site.config), not "everything in `site/`". A new
+file here is not served until it is named there; this README is deliberately not
+in the set.
 
 ## Layout
 

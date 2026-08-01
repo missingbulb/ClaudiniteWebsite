@@ -14,10 +14,12 @@ repo's vendored Claudinite mount.
   the stylesheet's "No external assets" standing, and took a second commit to walk
   both back; dropping the deploy workflow's `paths:` filter (#45) left
   `site/README.md` still saying the site publishes only on a push that touches
-  `site/**`. Before landing a change to site behaviour or to
-  `deploy-pages.yml`, grep the site copy, the CSS/JS header comments and
-  `site/README.md` for what the change makes false, and ship the correction (and
-  any disclosure the behaviour requires) in the same commit as the behaviour.
+  `site/**`. Before landing a change to site behaviour or to what the release
+  pipeline does (`.github/site.config` — the publish set, the build command —
+  and the vendored `static-site-*` workflows), grep the site copy, the CSS/JS
+  header comments and `site/README.md` for what the change makes false, and ship
+  the correction (and any disclosure the behaviour requires) in the same commit
+  as the behaviour.
 
 - **Adopting an *additional* canon pack is not a local lookup — the vendored
   `.claudinite/shared/packs/` holds only what this repo already adopted, never the

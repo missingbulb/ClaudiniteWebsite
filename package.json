@@ -1,10 +1,7 @@
 {
   "name": "claudinite-website",
-  "version": "1.0806.12",
+  "version": "1.60806.12",
   "private": true,
   "description": "The claudinite.com marketing site — static, hand-authored. This file exists to carry the released version; there is no build and no dependency.",
-  "type": "module",
-  "scripts": {
-    "bump-version": "node scripts/bump-version.mjs"
-  }
+  "type": "module"
 }
