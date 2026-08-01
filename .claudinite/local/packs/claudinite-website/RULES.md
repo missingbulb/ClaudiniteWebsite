@@ -46,12 +46,3 @@ repo's vendored Claudinite mount.
   grep the whole directory for the standing absolutes (`no track`, `no cookie`,
   `no third-party`, `no external`, `cookieless`) and reconcile each hit — a stale
   claim in a comment or a meta tag is still a false claim to a reader.
-
-- **`node --test` skips dot-directories, so a bare `node --test` in this repo runs
-  zero tests and exits green.** Every test this repo has lives under
-  `.claudinite/`, which Node's default test discovery ignores outright — the
-  command reports success having found nothing, which reads exactly like a passing
-  suite. Any CI step or local invocation that is meant to exercise a
-  `.claudinite/local/packs/` fixture must pass an explicit glob for that path, and
-  whoever adds the step must confirm it by watching the run's test count be
-  non-zero, never by watching it go green.
