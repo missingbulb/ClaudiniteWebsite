@@ -2,6 +2,8 @@
 // for maintaining this repo's Claudinite mount. Prose + one bundled skill, no
 // structural fingerprint of its own — the declaration in .claudinite-checks.json
 // is authoritative (detect: null skips the drift check in both directions).
+import nodeTestDiscovery from './node-test-discovery.mjs';
+
 export default {
   id: 'claudinite-website',
   ruleRoutingGuidance: {
@@ -11,6 +13,6 @@ export default {
   marker: null,
   detect: null,
   prose: 'RULES.md',
-  worldRules: [],
+  worldRules: [nodeTestDiscovery],
   skills: ['site-visual-check'],
 };

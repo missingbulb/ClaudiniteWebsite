@@ -13,3 +13,7 @@ jobs:
           node-version: 22
       - name: Claudinite world-scope conformance sweep
         run: node .claudinite/shared/engine/checks/check_the_world.mjs
+      # The glob is explicit on purpose: bare `node --test` skips dot-directories,
+      # so it would find none of these and still exit green (claudinite-website/node-test-discovery).
+      - name: Local pack rule fixtures
+        run: node --test '.claudinite/local/packs/**/*.test.mjs'
