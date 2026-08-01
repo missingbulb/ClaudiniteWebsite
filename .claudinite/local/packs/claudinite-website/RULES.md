@@ -5,6 +5,20 @@ repo's vendored Claudinite mount.
 
 ## Rules
 
+- **The site describes itself in prose — a behaviour change must correct every
+  self-description it falsifies, in the same commit.** `site/index.html`,
+  `site/privacy.html`, the header comment in `site/assets/style.css` and
+  `site/README.md` all make checkable claims about what the site loads, collects,
+  and deploys, and nothing fails when a change quietly makes one of them untrue.
+  Adding the analytics beacon (#36) left the privacy lede's no-tracking claim and
+  the stylesheet's "No external assets" standing, and took a second commit to walk
+  both back; dropping the deploy workflow's `paths:` filter (#45) left
+  `site/README.md` still saying the site publishes only on a push that touches
+  `site/**`. Before landing a change to site behaviour or to
+  `deploy-pages.yml`, grep the site copy, the CSS/JS header comments and
+  `site/README.md` for what the change makes false, and ship the correction (and
+  any disclosure the behaviour requires) in the same commit as the behaviour.
+
 - **Adopting an *additional* canon pack is not a local lookup — the vendored
   `.claudinite/shared/packs/` holds only what this repo already adopted, never the
   catalog of what's adoptable.** Nothing in the checkout lists the available packs,
