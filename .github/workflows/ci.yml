@@ -3,6 +3,14 @@ on:
   pull_request:
   push:
     branches: [main]
+  # Dispatchable so baselining can start this run on the nightly maintenance PR.
+  # That PR's branch push and its open both ride the Action's GITHUB_TOKEN, and
+  # GitHub's recursion guard suppresses workflow runs for events that token
+  # authors — so the PR gets no pull_request run at all, and `maintenance.delivery:
+  # auto-merge` waits on a check that never appears. workflow_dispatch is the
+  # guard's one documented exception, which is why baselining's deliver() starts
+  # the checks itself.
+  workflow_dispatch:
 jobs:
   conformance:
     runs-on: ubuntu-latest
