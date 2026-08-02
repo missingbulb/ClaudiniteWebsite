@@ -34,24 +34,19 @@ repo's vendored Claudinite mount.
   pack" is the `product-wiki` pack); read the candidate's `pack.mjs` and `RULES.md`
   in the canon clone and confirm the fit yourself.
 
-- **The canon repo is readable from a session here but never writable — clone it
-  to read, and park anything you want to *change* as an issue in this repo.** The
-  read path succeeds and masks the write path: `git clone` of
-  `missingbulb/Claudinite` through the session proxy exits 0, so the canon tree is
-  fully inspectable, while `push` returns `403` and every `mcp__github__*` call
-  against it is refused outright ("repository `missingbulb/claudinite` is not
-  configured for this session. Allowed repositories: `missingbulb/claudinitewebsite`").
-  The session's GitHub scope is this repo alone. A session that took the successful
-  clone as proof of reach wrote, tested and locally committed a complete eight-file
-  canon change (canon suite 1148 pass / 0 fail, every new test seen red first) before
-  discovering it could not land any of it; the work had to be parked as a patch in
-  #59, where it still sits. So when an owner asks for a Claudinite behaviour change
-  from here: read canon by cloning it, **verify the write path before building on the
-  assumption you can land there**, and deliver the outcome as a tracking issue in
-  *this* repo carrying the patch. Do not route around the denial — the proxy README
-  says to report an egress refusal, not work past it. (The pack-adoption rule above
-  tells you to clone canon for exactly this kind of lookup; that is the read half
-  only.)
+- **A fix that belongs in the canon can be written here but never *pushed* from
+  here — preserve it as a patch on an issue in this repo rather than routing
+  around the block.** Work in this repo lands in canon code often (#53, #54, #55
+  and #57 were all defects in the vendored engine and packs, found from here), and
+  the canon clone the rule above uses is read-only in practice: the git proxy
+  serves `missingbulb/Claudinite` for a fetch but `403`s a push, because a
+  session's GitHub scope is `missingbulb/claudinitewebsite` alone. That is an
+  organisation egress policy, so don't re-diagnose it, don't retry with another
+  remote or a token, and don't edit the vendored `.claudinite/shared/` mount in
+  place to compensate — baselining re-vendors it and the edit vanishes. Finish
+  and test the change in the scratch canon clone, then open an issue here
+  carrying the full `git diff` as a patch block plus the verification you ran
+  (#59 is the shape), so a session that does have canon scope can `git apply` it.
 
 - **After a merge lands on GitHub, syncing local `main` is a convenience, not part
   of landing — if the environment refuses it, record that and stop, don't retry
