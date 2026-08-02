@@ -11,7 +11,7 @@ for the offering in [`Positioning/`](../Positioning/README.md).
 
 - 90% of developers use AI at work; only ~24–33% trust its output — the adoption/trust scissor is the buying condition.
 - Claude Code went from ~3% to 18% work usage in eight months with the category's best satisfaction — the fastest-growing agent.
-- Users file issues literally titled "need enforcement mechanism"; org-wide shared CLAUDE.md is an open 40-👍 request.
+- Users file issues titled "need enforcement mechanism"; AGENTS.md support is the loudest ask in the tracker at 4,487 👍.
 - Solo devs run dotfiles and symlinks; agencies copy a shared config repo per client — drift machines with no update path.
 - Indies pay $199–249 one-time for vendored starter files (ShipFast: $250k in 5 months); shops absorb $125/seat for Claude Premium.
 - Enterprise near-blockers, in order: security review, multi-agent (AGENTS.md) support, private canon — then metrics and SLA.
@@ -136,7 +136,18 @@ does not scale with agent output volume.
   verified compliance proof, though "code never leaves our environment" is a
   documented approval accelerant; (2) multi-agent support — enterprises run
   Copilot + Cursor + Claude Code simultaneously and converge on AGENTS.md,
-  so Claude-Code-only addresses a slice of the fleet; (3) private canon in
+  so Claude-Code-only addresses a slice of the fleet — and this near-blocker
+  is now the best-quantified demand signal in the whole research set:
+  `anthropics/claude-code` #6235 "Feature Request: Support AGENTS.md." has
+  been open since 2025-08-21 carrying 4,487 👍 (5,808 total reactions, 348
+  comments), with #31005 (277 👍) and #34235 (90 👍) behind it, all still
+  open as of 2026-08-02 while the Claude Code memory doc still states
+  "Claude Code reads `CLAUDE.md`, not `AGENTS.md`". That is roughly 100×
+  the org-wide-shared-CLAUDE.md request (#14467, 40 👍) cited for the agency
+  segment above, and the reaction base is the whole Claude Code user
+  population rather than enterprise buyers specifically — so multi-agent
+  emission reads as broad table stakes, not an enterprise-only gate;
+  (3) private canon in
   the customer's own tenancy; (4) central non-overridable enforcement with
   an audit trail; (5) adoption/convergence metrics for the champion's ROI
   slide; (6) support SLA and vendor-viability mitigation (vendored plain
@@ -170,6 +181,8 @@ does not scale with agent output volume.
 - [How Uber uses AI for development — Pragmatic Engineer](https://newsletter.pragmaticengineer.com/p/how-uber-uses-ai-for-development) and [uReview](https://www.uber.com/us/en/blog/ureview/)
 - [Spotify Honk part 1](https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1) and [Fleet-wide refactoring](https://engineering.atspotify.com/2023/05/fleet-management-at-spotify-part-3-fleet-wide-refactoring) — 270k PRs, 77% automerged
 - [Accenture Copilot study — GitHub blog](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/); [TELUS/Rakuten figures](https://agentmarketcap.ai/blog/2026/04/05/anthropic-agentic-coding-trends-report-claude-code-eight-shifts)
+- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — 4,487 👍 / 5,808 reactions / 348 comments, open since 2025-08-21 (GitHub API, 2026-08-02); [#31005](https://github.com/anthropics/claude-code/issues/31005) (277 👍), [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
+- [Claude Code docs: memory](https://code.claude.com/docs/en/memory) — "Claude Code reads `CLAUDE.md`, not `AGENTS.md`" (primary page opened directly, 2026-08-02)
 - [Claude Code admin setup (managed settings)](https://code.claude.com/docs/en/admin-setup)
 - [SOC 2 for enterprise clients — Bright Defense](https://www.brightdefense.com/resources/soc-2-for-enterprise-clients/); [on-prem AI code review — Dextralabs](https://dextralabs.com/blog/on-premise-ai-code-review-for-enterprise/); [vendor viability — FirmAdapt](https://firmadapt.com/blog/how-procurement-teams-evaluate-vendor-companies)
 - [EU AI Act: employers as deployers — Freshfields](https://www.freshfields.com/en/our-thinking/blogs/technology-quotient/eu-ai-act-unpacked-22-key-considerations-for-employers-as-deployers-vs-provide-102k1kz); [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)
@@ -197,7 +210,19 @@ does not scale with agent output volume.
   price points are known, revenue is not.
 - Does Anthropic's roadmap (org-managed CLAUDE.md per issue #14467, plugin
   marketplaces) absorb convergence/enforcement first-party? The standing
-  platform-risk question.
+  platform-risk question — still open, but partially answered on the interop
+  axis as of 2026-08-02: eleven months of non-shipping against the tracker's
+  loudest request (#6235) says the native layer is not currently racing to
+  close cross-vendor gaps, whatever it does on distribution.
+- Would enterprise buyers accept an operator-side AGENTS.md bridge (the
+  `@AGENTS.md` import or a symlink, which is what Anthropic's own docs
+  recommend) as satisfying near-blocker #2, or does the requirement only
+  clear with tool-native parity? Decides whether emission is a cheap
+  unblock or a deep one.
+- What are the 348 comments on #6235 actually asking for — pure file
+  recognition, or skills/rules portability too? The thread is the largest
+  free-text corpus of user-side demand in this category and has not been
+  read; it would sharpen the multi-agent requirement's real shape.
 
 ## Growth log
 
@@ -208,3 +233,16 @@ does not scale with agent output volume.
   agency shared-config patterns), willingness-to-pay anchors per segment,
   named enterprise rollouts, and the ranked enterprise requirements list —
   all cited with provenance caveats where primary pages were fetch-blocked.
+- **2026-08-02** — growth pass: quantified enterprise near-blocker #2
+  (multi-agent/AGENTS.md support) with the demand evidence it previously
+  lacked — `anthropics/claude-code` #6235, open since 2025-08-21 at 4,487 👍
+  / 5,808 reactions / 348 comments, roughly 100× the org-wide-CLAUDE.md
+  request already cited here, and unshipped as of a same-day re-read of the
+  Claude Code memory doc. The `## Key insights` header's demand bullet was
+  rewritten to lead with this figure instead of the 40-👍 one it dwarfs (the
+  40-👍 request is unchanged in the agency segment body). Three open
+  questions updated or added, including the partial answer to the standing
+  platform-risk question. **Note for the human reviewing
+  `product-requirements/`:** this strengthens the evidence base for the
+  proposed **R2 — Multi-agent surface** and bears on where R2 sits in the
+  gap-closing order; no requirement was edited, per the isolation wall.
