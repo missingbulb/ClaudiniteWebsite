@@ -48,6 +48,19 @@ repo's vendored Claudinite mount.
   carrying the full `git diff` as a patch block plus the verification you ran
   (#59 is the shape), so a session that does have canon scope can `git apply` it.
 
+- **After a merge lands on GitHub, syncing local `main` is a convenience, not part
+  of landing — if the environment refuses it, record that and stop, don't retry
+  variants.** `git checkout main` and its neighbours are refused by the session's
+  permission classifier here; the two merge sessions on 2026-08-01 hit five straight
+  denials between them, one of them after three rephrasings of the same intent
+  (`checkout && pull`, then bare `checkout`, then `fetch origin main`), burning about
+  four minutes on a step with nothing downstream of it. The `merge-to-main` recipe's
+  sync step exists so *your working copy* isn't stale; the squash-merge already
+  happened server-side and `merge_pull_request` returning `"merged":true` is the
+  whole proof. Take one attempt, and on a refusal say plainly that local `main` is
+  behind and move to the next step (the growth-pack capture) rather than looking for
+  a phrasing that gets through.
+
 - **`site/` states absolute privacy and no-external-asset claims in several places
   at once — adding any third-party or network asset means re-checking every one of
   them in the same change.** The claims are not confined to `site/privacy.html`:
