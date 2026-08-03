@@ -3,6 +3,7 @@
 // structural fingerprint of its own — the declaration in .claudinite-checks.json
 // is authoritative (detect: null skips the drift check in both directions).
 import nodeTestDiscovery from './node-test-discovery.mjs';
+import siteExternalAssetClaims from './site-external-asset-claims.mjs';
 
 export default {
   id: 'claudinite-website',
@@ -13,6 +14,6 @@ export default {
   marker: null,
   detect: null,
   prose: 'RULES.md',
-  worldRules: [nodeTestDiscovery],
+  worldRules: [nodeTestDiscovery, siteExternalAssetClaims],
   skills: ['site-visual-check'],
 };
