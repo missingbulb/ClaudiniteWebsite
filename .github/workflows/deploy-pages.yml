@@ -1,4 +1,5 @@
-# Publishes site/ to GitHub Pages on every push to main that touches it.
+# Publishes site/ to GitHub Pages on every push to main (also bumps the
+# release version — see the "Bump version" step below).
 # Artifact-flow deploy (no gh-pages branch); the custom domain (claudinite.com)
 # is configured in the repository's Pages settings, not here — see
 # site/README.md. Uploading site/ (never the repo root) keeps the agent-tooling
