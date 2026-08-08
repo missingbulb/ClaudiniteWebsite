@@ -26,7 +26,13 @@
     "html",
     "github-actions",
     "product-wiki",
-    "local/claudinite-website"
+    "local/claudinite-website",
+    {
+      "id": "claude-code-web-users-support",
+      "config": {
+        "repo": "missingbulb/Sheepdog"
+      }
+    }
   ],
   "maintenance": {
     "delivery": "auto-merge"
@@ -37,7 +43,7 @@
     "monthlyDay": 1
   },
   "claudinite": {
-    "updated": "2026-08-07T14:46:39.519Z",
-    "ref": "7bf58aa03f3ea4684aa6777cb7c837293f08cd46"
+    "updated": "2026-08-08T18:16:56.537Z",
+    "ref": "26cbe2e650c194930b5cf535bc9fd77a88822741"
   }
 }
