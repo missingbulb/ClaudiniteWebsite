@@ -10,7 +10,7 @@ Claudinite in [`Positioning/`](../Positioning/README.md).
 
 ## Key insights
 
-- Anthropic now ships the session half natively: plugins bundle skills+hooks+MCP and can be force-enabled org-wide.
+- Anthropic ships the session half natively, but CLI auto-install of org-mandated plugins was closed "not planned."
 - Nobody — native or rival — converges repos: no auto-PR loop from a canon, no CI convention gates, no shared growth loop.
 - Rival enforcement is config-drift only: they check the rules arrived; nothing checks the rules are followed.
 - The rule-sync category is nearly all free OSS under 3k stars; the one hosted SaaS (rulesync.dev) is in free beta.
@@ -73,10 +73,28 @@ distribution stack (all verified against current Claude Code docs,
   servers, LSP servers, and default settings into versioned packages,
   distributed through decentralized **marketplaces** (`marketplace.json` in
   any git repo/npm source, semver or SHA pinning, background auto-update).
-- **Plugins can be centrally mandated**: project-level
-  `extraKnownMarketplaces`/`enabledPlugins`, managed-settings force-enable,
-  `strictKnownMarketplaces` lockdown, container seed dirs, and claude.ai
-  org-level plugin sync on Team/Enterprise plans.
+- **Plugins can be centrally mandated — but not uniformly across surfaces.**
+  Project-level `extraKnownMarketplaces`/`enabledPlugins`, managed-settings
+  force-enable, `strictKnownMarketplaces` lockdown, container seed dirs, and
+  claude.ai org-level plugin sync on Team/Enterprise plans (per-plugin
+  installation preferences — Installed by default / Available for install /
+  Required / Not available) all exist as mechanisms.
+  *Correction (2026-08-09):* this page previously left the impression the
+  CLI itself honors `enabledPlugins`/`extraKnownMarketplaces` automatically.
+  It doesn't. [anthropics/claude-code#45323](https://github.com/anthropics/claude-code/issues/45323)
+  ("CLI: Auto-install plugins from org managed settings") documents that the
+  CLI fetches the managed-settings marketplace into
+  `~/.claude/remote-settings.json` at startup but never registers it in
+  `known_marketplaces.json` or installs the listed plugin — the org's admin
+  still has to have every user run `/plugin marketplace add` and
+  `/plugin install` by hand, or bake plugins into a container image at build
+  time via `CLAUDE_CODE_PLUGIN_SEED_DIR`. Filed April 2026, the issue was
+  closed **"not planned."** The same managed settings *do* auto-install on
+  the desktop and web apps per the issue's own comparison and the Claude
+  Help Center's org-plugin-management article (that page egress-blocked to
+  this pass's fetcher — via search-quoted context, not opened directly) — so
+  the CLI, Claudinite's own delivery surface, is specifically the one where
+  central mandate still isn't unattended.
 - **Managed settings** give admins non-overridable org-wide permission rules,
   hooks (`allowManagedHooksOnly`), MCP allowlists, model restrictions, and
   even an org-wide CLAUDE.md blob — delivered by MDM, machine-wide.
@@ -93,9 +111,14 @@ occupies (absence verified across the plugins/marketplaces/settings/memory
 docs): plugins converge *clients* (a per-user cache outside the repo), not
 *repos*; nothing runs convention checks in CI; nothing opens PRs against
 consuming repos to converge committed files with a canon; and no path exists
-from one developer's local learnings to a reviewed shared canon. The risk to
-watch is pace: scheduled tasks, auto memory, and org plugin sync all shipped
-within about nine months.
+from one developer's local learnings to a reviewed shared canon. Even the
+client-convergence story is uneven today: centrally-mandated plugins land
+unattended on the desktop/web apps but not in the CLI, where the same
+managed-settings config still needs a human running install commands (or a
+container image baked ahead of time) — Anthropic's own tracker calls this
+"not planned," not merely unshipped. The risk to watch is pace: scheduled
+tasks, auto memory, and org plugin sync all shipped within about nine
+months.
 
 ## Direct rivals: syncing rules across repos
 
@@ -215,6 +238,7 @@ lives in [`Customers/`](../Customers/README.md).
 - [Top AI Agent Standards to Know in 2026 — Agentailor](https://blog.agentailor.com/posts/top-ai-agent-standards-2026) — standards overview (spot-checked alive 2026-07-31)
 - [Keeping Agent Behavior Consistent Across Separate Repositories — Antigravity Lab](https://antigravitylab.net/en/articles/antigravity/antigravity-multi-repo-agent-governance-design) — multi-repo governance framing (spot-checked alive 2026-07-31)
 - [Claude Code docs: plugins](https://code.claude.com/docs/en/plugins), [plugin marketplaces](https://code.claude.com/docs/en/plugin-marketplaces), [settings](https://code.claude.com/docs/en/settings), [hooks](https://code.claude.com/docs/en/hooks), [memory](https://code.claude.com/docs/en/memory), [scheduled tasks](https://code.claude.com/docs/en/scheduled-tasks), [discover plugins](https://code.claude.com/docs/en/discover-plugins)
+- [anthropics/claude-code#45323 — CLI auto-install from org managed settings, closed "not planned"](https://github.com/anthropics/claude-code/issues/45323) (filed 2026-04-08; opened directly, verified 2026-08-09); desktop/web auto-install behavior per the issue's own text and [Manage plugins for your organization — Claude Help Center](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization) (page egress-blocked to this pass's fetcher — via search-quoted context)
 - [Agent Skills spec (agentskills/agentskills)](https://raw.githubusercontent.com/agentskills/agentskills/main/README.md) and [Claude Code skills docs](https://code.claude.com/docs/en/skills); cross-vendor adoption: [paperclipped.de](https://www.paperclipped.de/en/blog/agent-skills-open-standard-interoperability/)
 - [anthropics/skills](https://github.com/anthropics/skills) — 165,327 ★ (GitHub API, 2026-07-31)
 - [intellectronica/ruler](https://github.com/intellectronica/ruler) — 2,833 ★, CI drift example
@@ -246,9 +270,16 @@ lives in [`Customers/`](../Customers/README.md).
   direct commercial test of this category's willingness to pay.
 - npm weekly downloads for ruler/rulesync/knowhub/ai-rules-sync (npm stats
   endpoints were egress-blocked; adoption is star/release-cadence-based).
-- Does claude.ai org-level plugin sync push plugins to members or only offer
-  them (support article was 403 this pass)? This decides how much of the
-  "centrally mandated conventions" story the native layer already owns.
+- Confirm directly (not via search-quoted context — support.claude.com is
+  still egress-blocked to this pass's fetcher) that claude.ai desktop/web org
+  plugin sync actually auto-installs today; the CLI half of the question is
+  now settled (it doesn't — anthropics/claude-code#45323, closed "not
+  planned"), but the desktop/web side still rests on secondary
+  characterization.
+- Is `CLAUDE_CODE_PLUGIN_SEED_DIR`-at-build-time Anthropic's intended
+  permanent answer for CLI fleets, or does #45323 being closed "not planned"
+  just mean deprioritized rather than rejected in principle? No roadmap
+  signal found this pass.
 - Current plugin counts in `claude-plugins-official`/`community` and their
   growth rate — the pace of native absorption is the platform-risk metric.
 - Does any AAIF working group plan to add structure (schemas, checks,
@@ -277,3 +308,13 @@ lives in [`Customers/`](../Customers/README.md).
   scorecard category. Corrected the "30+ agents" substrate claim (source says
   20+ tools; primary scale citation now the LF AAIF announcement). All four
   pre-existing citations spot-checked alive.
+- **2026-08-09** — wiki-growth pass: researched the standing open question on
+  whether claude.ai org-level plugin sync pushes or only offers plugins.
+  Found anthropics/claude-code#45323 ("CLI: Auto-install plugins from org
+  managed settings") — filed April 2026, closed **"not planned"** — which
+  shows the CLI never auto-installs `enabledPlugins`/`extraKnownMarketplaces`
+  (desktop/web do); corrected the "Plugins can be centrally mandated" bullet
+  and the platform-layer whitespace paragraph accordingly, rewrote the
+  matching Key insights bullet, and updated Open questions. Spot-checked
+  intellectronica/ruler (2.8k ★) and anthropics/skills (167.1k ★) star counts
+  via GitHub — both currently accurate, no correction needed.
