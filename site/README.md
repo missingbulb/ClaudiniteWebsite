@@ -2,8 +2,7 @@
 
 The static marketing site for Claudinite. No build step, no dependencies: the
 directory is published as-is by [.github/workflows/deploy-pages.yml](../.github/workflows/deploy-pages.yml)
-(GitHub Pages via the actions artifact flow) on every push to `main` that
-touches `site/**`.
+(GitHub Pages via the actions artifact flow) on every push to `main`.
 
 ## Layout
 
