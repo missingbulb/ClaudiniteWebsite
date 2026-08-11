@@ -130,7 +130,14 @@ profiles:
    Enterprises demonstrably run multi-tool fleets and converge on AGENTS.md
    (near-blocker #2, Customers wiki) — though Claude Code being the
    fastest-growing, best-loved agent (18% and climbing) makes this a
-   defensible *sequencing* choice rather than a mistake.
+   defensible *sequencing* choice rather than a mistake. The 2026-08-02 pass
+   adds a second reason it is sequencing rather than a closing window:
+   AGENTS.md support has been the loudest unshipped request in Anthropic's own
+   tracker for eleven months (#6235, 4,487 👍 — Market and Customers wikis),
+   so the platform is not about to absorb the interop bridge. The same finding
+   raises the cost of *not* emitting: cross-vendor interop is the single
+   most-demanded capability in the agent-config space, and Claudinite
+   currently emits none of it.
 3. **No pinning, no rollback, no release channels.** Versioning is a single
    whole-corpus sha stamp always converged to canon head; a bad canon change
    propagates fleet-wide in one cycle, gated only by per-repo CI and the
@@ -186,7 +193,10 @@ Sources used directly on this page:
 - Which gap to close first is a strategy call the wiki cannot make: private
   canon (unlocks enterprise), AGENTS.md emission (unlocks multi-tool
   fleets), or pinning/channels (de-risks every fleet) — the requirements
-  sink proposes an ordering; the owner decides.
+  sink proposes an ordering; the owner decides. New evidence for the second
+  of the three as of 2026-08-02: the AGENTS.md demand signal (#6235, 4,487 👍,
+  eleven months unshipped) is the largest quantified demand in the research
+  set — see Market and Customers.
 - Can the aggregation-pane gap be closed by *feeding* existing scorecard
   products (a Cortex/Port integration exposing pack-conformance facts)
   instead of building a dashboard? Would turn the from-above encroachers
@@ -209,3 +219,12 @@ Sources used directly on this page:
   category-language and SEO assessment, and nine candid gaps ranked by
   segment impact — repo-grounded claims cited to implementation paths,
   market claims to the sibling wikis' sourced research.
+- **2026-08-02** — growth pass: gap 2 (Claude Code-only) re-framed against
+  new evidence sourced in the Market and Customers wikis — the AGENTS.md
+  demand signal (#6235, 4,487 👍, unshipped for eleven months) makes the
+  interop whitespace durable rather than closing, which cuts both ways for
+  this gap and is recorded as such. `## Key insights` left unchanged: the
+  pass sharpened the reasoning behind gap 2, not the page's top-line
+  understanding of what the gaps are. No requirement edited; the finding's
+  bearing on proposed **R2** is logged in the Customers growth log for the
+  human reviewing the requirements sink.

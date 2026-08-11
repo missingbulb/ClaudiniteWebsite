@@ -16,7 +16,7 @@ Claudinite in [`Positioning/`](../Positioning/README.md).
 - The rule-sync category is nearly all free OSS under 3k stars; the one hosted SaaS (rulesync.dev) is in free beta.
 - Skills won the content war: anthropics/skills hit 165k stars; SKILL.md is a ~40-tool cross-vendor standard.
 - Enterprise scorecard vendors (Cortex, Port, OpsLevel) now sell AI-agent governance from above; OpsLevel's Tidra ships auto-PRs.
-- The AGENTS.md spec stays minimal by design — no enforcement, versioning, or packaging — leaving that layer open.
+- Claude Code still won't read AGENTS.md: the tracker's loudest request ever, 4,487 👍, open and unshipped since Aug 2025.
 
 ## The substrate: per-repo convention files
 
@@ -47,6 +47,18 @@ with them:
   import or symlink as the bridge. Community best practice still converges on
   keeping it under ~200 lines (spot-checked 2026-07-31: the cited guide is
   alive and still says this).
+- **Native AGENTS.md support is the most-demanded unshipped item in
+  Anthropic's own tracker** (researched 2026-08-02). The memory doc still
+  says flatly "Claude Code reads `CLAUDE.md`, not `AGENTS.md`" (re-verified
+  against the primary page 2026-08-02), while
+  `anthropics/claude-code` #6235 "Feature Request: Support AGENTS.md." has
+  been open since 2025-08-21 with 4,487 👍 (5,808 total reactions) and 348
+  comments — followed by #31005 (277 👍, titled "the community has been
+  asking since August 2025") and #34235 (90 👍), both still open. For scale:
+  the org-wide-shared-CLAUDE.md request this wiki already cites (#14467) has
+  40 👍. Nothing else in the ecosystem carries a comparable, quantified,
+  publicly-visible demand signal. `/init` under `CLAUDE_CODE_NEW_INIT=1`
+  reads AGENTS.md once at generation time, which is import, not support.
 - **SKILL.md / Agent Skills** became a cross-vendor open standard: Anthropic
   published the spec (agentskills.io, Dec 2025), and by mid-2026 roughly 40
   tools — OpenAI Codex, GitHub Copilot, Cursor, VS Code, Gemini CLI, JetBrains
@@ -118,7 +130,13 @@ managed-settings config still needs a human running install commands (or a
 container image baked ahead of time) — Anthropic's own tracker calls this
 "not planned," not merely unshipped. The risk to watch is pace: scheduled
 tasks, auto memory, and org plugin sync all shipped within about nine
-months.
+months. That pace is not uniform, though, and the
+unevenness is itself the signal: across the same window Anthropic shipped
+three distribution features and did *not* ship cross-vendor interop, despite
+AGENTS.md support being the loudest request in its own tracker (above).
+Absorption has been fast on distribution and absent on interop — so the
+interop-facing whitespace looks more durable than the raw nine-month cadence
+suggests.
 
 ## Direct rivals: syncing rules across repos
 
@@ -165,6 +183,10 @@ GitHub API on 2026-07-31:
   and no enforcement or convergence.
 - Fragmentation is extreme: at least ten distinct repos named "agentsync"
   were created Dec 2025–Jun 2026, all under 60 stars — nobody owns the niche.
+  Re-checked 2026-08-02: the most active of them, **dallay/agentsync** (52 ★,
+  Rust, last push 2026-08-01), synchronises agent configs across assistants
+  via *symbolic links* — the newest live entrant in the category is still
+  file-placement machinery with no auto-PR and no CI gate.
 
 Category-level answers to this page's former open questions:
 
@@ -246,6 +268,9 @@ lives in [`Customers/`](../Customers/README.md).
 - [RuleSync (hosted)](https://www.rulesync.dev/) and [rulesync-cli on npm](https://registry.npmjs.org/rulesync-cli) — free beta, paid plans planned
 - [Goldziher/ai-rulez](https://github.com/Goldziher/ai-rulez) — enforce/verify hooks, remote includes
 - [agent-sh/agnix](https://github.com/agent-sh/agnix) — 444-rule agent-config linter
+- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — open since 2025-08-21, 4,487 👍 / 5,808 reactions / 348 comments (GitHub API, 2026-08-02); corroborating [#31005](https://github.com/anthropics/claude-code/issues/31005) (277 👍) and [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
+- [Claude Code docs: memory — AGENTS.md section](https://code.claude.com/docs/en/memory) — "Claude Code reads `CLAUDE.md`, not `AGENTS.md`"; `@AGENTS.md` import and symlink bridges; `/init` under `CLAUDE_CODE_NEW_INIT=1` reads AGENTS.md at generation time (primary page opened directly, 2026-08-02)
+- [dallay/agentsync](https://github.com/dallay/agentsync) — 52 ★, Rust, symlink-based agent-config sync (2026-08-02)
 - [yujiosaka/knowhub](https://github.com/yujiosaka/knowhub) — dormant since 2025-07
 - [lbb00/ai-rules-sync](https://github.com/lbb00/ai-rules-sync) — symlink team sharing
 - [fabian-barney/ai-rules](https://github.com/fabian-barney/ai-rules) — git-subtree vendored content
@@ -280,6 +305,14 @@ lives in [`Customers/`](../Customers/README.md).
   permanent answer for CLI fleets, or does #45323 being closed "not planned"
   just mean deprioritized rather than rejected in principle? No roadmap
   signal found this pass.
+- Why has Anthropic left AGENTS.md support unshipped for eleven months
+  against the loudest demand signal in its tracker (#6235, 348 comments)?
+  Deliberate lock-in, triage backlog, or a deliberate "the import is the
+  answer" stance? No maintainer statement located this pass; the answer
+  changes how safe the interop whitespace is to build on.
+- Do the rival CLIs treat Claude Code's `@AGENTS.md` import/symlink bridge as
+  a first-class output target? If the bridge is becoming the de-facto
+  standard, emitting it is cheaper than emitting a second rules corpus.
 - Current plugin counts in `claude-plugins-official`/`community` and their
   growth rate — the pace of native absorption is the platform-risk metric.
 - Does any AAIF working group plan to add structure (schemas, checks,
@@ -288,7 +321,10 @@ lives in [`Customers/`](../Customers/README.md).
   Cursor-native rules (to AGENTS.md/CLAUDE.md) — if so, first-party
   absorption reaches further than assumed.
 - Has any tool announced a Renovate-style auto-PR convergence bot for agent
-  conventions since July 2026?
+  conventions? Re-checked 2026-08-02 (web search plus a GitHub repository
+  search restricted to tools pushed since June 2026): none found — every
+  live entrant is a CLI, a generator, or a symlinker. Absence of evidence
+  from two search surfaces, not proof; re-check next pass.
 
 ## Growth log
 
@@ -318,3 +354,18 @@ lives in [`Customers/`](../Customers/README.md).
   matching Key insights bullet, and updated Open questions. Spot-checked
   intellectronica/ruler (2.8k ★) and anthropics/skills (167.1k ★) star counts
   via GitHub — both currently accurate, no correction needed.
+- **2026-08-02** — growth pass on two standing open questions. (1) Quantified
+  the AGENTS.md interop gap: `anthropics/claude-code` #6235 is open since
+  2025-08-21 with 4,487 👍 / 5,808 reactions / 348 comments (plus #31005 and
+  #34235), against a memory doc re-verified the same day that still reads
+  "Claude Code reads `CLAUDE.md`, not `AGENTS.md`" — added to the substrate
+  section and used to qualify the platform-absorption-pace claim, which
+  previously read as uniformly fast (absorption is fast on distribution,
+  absent on interop). The `## Key insights` header's AGENTS.md-spec-minimality
+  bullet was displaced by this sharper finding; the spec-scope claim it
+  carried is unchanged in the body. (2) The auto-PR-convergence-bot question
+  was re-checked across web and GitHub repository search and stays open as a
+  dated negative; the category's newest live entrant, dallay/agentsync, is
+  symlink-based, which reinforces the existing fragmentation claim. Two new
+  open questions added (Anthropic's reason for not shipping; whether the
+  `@AGENTS.md` bridge is becoming the de-facto emission target).
