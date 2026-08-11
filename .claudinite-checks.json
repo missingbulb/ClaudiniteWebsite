@@ -26,13 +26,7 @@
     "html",
     "github-actions",
     "product-wiki",
-    "local/claudinite-website",
-    {
-      "id": "claude-code-web-users-support",
-      "config": {
-        "repo": "missingbulb/Sheepdog"
-      }
-    }
+    "local/claudinite-website"
   ],
   "maintenance": {
     "delivery": "auto-merge"
