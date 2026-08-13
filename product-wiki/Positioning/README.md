@@ -40,7 +40,7 @@ category on every axis:
   production incidents (`repo:.claudinite/shared/engine/scheduler/`).
 - **Nightly baselining**: deterministic re-vendor of the canon, wiring
   convergence, mechanical migrations, one auto-merged maintenance PR
-  (`repo:.claudinite/shared/packs/basics/tasks/baselining/worker.mjs`).
+  (`repo:.claudinite/shared/packs/basics/tasks/update/worker.mjs`).
 - A **growth loop implemented end-to-end repo-side**: conversation capture
   with secret scrubbing, lesson extraction, canon dedup, prose-to-checks
   conversion, and a skill-usage metrics fold with denominators
@@ -118,7 +118,7 @@ profiles:
    `https://github.com/missingbulb/Claudinite.git` (must be public);
    preferences fetch from that repo's raw URL; fleet enumeration is
    owner-affiliation over a personal PAT
-   (`repo:.claudinite/shared/packs/basics/tasks/baselining/worker.mjs`). A
+   (`repo:.claudinite/shared/packs/basics/tasks/update/worker.mjs`). A
    customer cannot point consumers at their own canon without editing engine
    code — yet a private canon in their own tenancy ranks #3 on the
    enterprise requirements list (Customers wiki). Today "commercial product"
