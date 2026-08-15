@@ -58,6 +58,19 @@ repo's vendored Claudinite mount.
   behind and move to the next step (the growth-pack capture) rather than looking for
   a phrasing that gets through.
 
+- **A rejected `ScheduleWakeup` leaves the run with *no* fallback wake — the tool
+  requires `prompt` unless `stop: true`, and `noop: true` does not exempt it.**
+  The executor's standard shape here is to dispatch a subagent and then arm a
+  fallback heartbeat in case the subagent's completion notification never lands.
+  Three unattended runs tried exactly that (issues #148, #159 and #161, between
+  2026-08-12 and 2026-08-14) and every one was rejected with "`prompt` is
+  required when `stop` is not true" — two of them passing `noop: false`, one
+  `noop: true`, so the flag is not the variable. None re-issued the call, so all
+  three carried on believing they had a safety net they never armed. Give any
+  wakeup that isn't `stop: true` a `prompt` — the instruction the woken turn is
+  to act on — and treat a rejected safety-net call as *unarmed*, not cosmetic:
+  re-issue it, or say plainly in the wrap-up that the run has no fallback.
+
 - **`site/` states absolute privacy and no-external-asset claims in several places
   at once — adding any third-party or network asset means re-checking every one of
   them in the same change.** The claims are not confined to `site/privacy.html`:
