@@ -59,9 +59,10 @@ research they lean on is the [Market wiki](../Market/README.md):
   data-driven from `site/data/promoted.js` and rendered client-side, so a
   scheduled promo pass edits one file and cannot break layout.
 - Deploys ride GitHub Pages' artifact flow
-  ([deploy-pages.yml](../../.github/workflows/deploy-pages.yml)) on pushes to
-  `main` touching `site/**`; the claudinite.com domain is attached in the
-  repository's Pages settings.
+  ([deploy-pages.yml](../../.github/workflows/deploy-pages.yml)) on every push
+  to `main`, with no path filter (the release version bump the workflow
+  commits back has to run on every push); the claudinite.com domain is
+  attached in the repository's Pages settings.
 
 ## Sources
 
