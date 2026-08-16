@@ -152,11 +152,22 @@ profiles:
    across my 40 repos?" reads issues repo by repo. Scorecard-educated
    buyers expect an aggregation pane, and the DevEx champion needs an ROI
    slide (Customers wiki).
-6. **The executor path isn't self-installing.** Agentic dispatches assume a
-   per-repo Claude-Code-on-the-Web routine wired to the `ready-for-agent`
-   label, which no shipped code creates; without it dispatches age into
-   `needs-human` (`repo:.claudinite/shared/engine/scheduler/executor.md`).
-   Adoption cost is therefore higher than "one conversation."
+6. **The executor path isn't self-installing.** The engine 3→4 update
+   (2026-08-14) flipped the default dispatch mechanism from the label-wired
+   `[claudinite-task]` routine to a work-item queue; converge-wiring now
+   auto-generates the queue's workflow scaffolding and stamps every declared
+   secret's *name* into it, but the agent hand-off itself still needs a human
+   to create a per-account Claude Code Web routine, copy its trigger URL into
+   `taskScheduler.endpoints`, and set the secret's actual *value*
+   (`repo:.claudinite/shared/engine/scheduler/converge-wiring.mjs`,
+   `repo:.claudinite/shared/engine/scheduler/queue/invoke.mjs`). This repo hit
+   the gap directly: for about a day and a half after the flip, every
+   agentic work item silently parked in the queue — the precondition fails
+   before it ever looks for a token, so nothing signals the miswiring short
+   of a human reading a dispatch comment — until the endpoint was declared
+   and the token stamped (PR #186). Adoption cost is therefore higher than
+   "one conversation," and now concretely: a repo can go dark on agentic
+   dispatch for days with no check catching it.
 7. **No discovery/registry surface.** Finding adoptable packs means cloning
    the canon and listing `packs/`. The content ecosystems (aitmpl at 30k ★,
    skills.sh) show discovery is its own gravity well.
@@ -210,9 +221,24 @@ Sources used directly on this page:
 - The canon repo's own contents (bootstrap.md, sheepdog, promote task) are
   not vendored here — canon-side capabilities were inferred from
   references; verify before printing claims about them.
+- No check in this repo (checked 2026-08-16) catches an undeclared
+  invocation endpoint — the queue just parks work items silently. Is that
+  gap closed anywhere in canon, or does every member risk the same
+  multi-day dark spell this repo hit (PR #186)?
 
 ## Growth log
 
+- **2026-08-16** — spot-check pass (Context: the product-wiki tree moved in
+  the engine 3→4 window). Gap 6 was stale on two counts: it cited the
+  retired `[claudinite-task]`/`ready-for-agent` label mechanism instead of
+  the current work-item queue, and it understated how much of the wiring
+  the engine now auto-generates (converge-wiring stamps the queue's
+  workflows and secret names; only the routine's own creation and its
+  endpoint/token values stay manual). Corrected with a same-repo instance
+  of the gap materializing (PR #186 — the queue ran unwired for about a
+  day and a half). `## Key insights` left unchanged: the pass corrected a
+  gap's mechanism and evidence, not the page's top-line understanding of
+  what the gaps are.
 - **2026-07-31** — page created in the owner-directed ecosystem research
   pass: offering inventory, four structural strengths, position statements
   against each competitor class (rule-sync, native platform, scorecards),
