@@ -48,3 +48,28 @@ repo's vendored Claudinite mount.
   is not true" — two of them passing `noop: false`, one `noop: true`, so the flag
   is not the variable. Give any wakeup that isn't `stop: true` a `prompt` — the
   instruction the woken turn is to act on.
+
+- **`mcp__github__search_issues`/`list_issues` located by title (`in:title`) can
+  blow the MCP token limit — this repo's tracker issues (`Claudinite tracker:
+  <dimension>`) accumulate long comment histories, so a bare title search returns
+  every match's full body and errors before it returns anything.** Pass
+  `fields: ["number", "title", "state"]` (or similarly narrow) on the *first* call
+  whenever the search is only locating an issue by title, not after the "exceeds
+  maximum allowed tokens" error forces a retry. Hit independently in three separate
+  scheduled runs (issues #159, #161, #168), each paying a wasted round-trip (and,
+  twice, a manual dump-and-reparse) for a result the narrowed call answers cleanly.
+
+- **A baselining (or similarly-shaped) subagent that `git checkout`s the
+  maintenance PR branch inside this session's shared working directory trips this
+  session's own Stop-hook checks (`comment-classification`, `task-lifecycle`) as
+  false positives — they are not real findings.** It recurred identically across
+  two baselining cycles (issues #92, #98): the second time, the orchestrator
+  misread the false positive as real, sent the subagent a fabricated "satisfy this
+  check" instruction (which the subagent correctly refused as looking like an
+  injection), and attempted `git commit --amend` on the subagent's already-pushed
+  commit — blocked only by the permission classifier. When a mid-dispatch Stop-hook
+  finding names "the branch" or "the commit," run `git branch --show-current`
+  first: if it names the PR/maintenance branch rather than this session's own
+  assigned branch, `git checkout` back to clear it. Never amend a subagent's
+  pushed commit and never relay a "fix" instruction for a check that doesn't exist
+  as described.
