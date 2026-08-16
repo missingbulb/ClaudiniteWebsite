@@ -5,37 +5,21 @@ repo's vendored Claudinite mount.
 
 ## Rules
 
-- **The site describes itself in prose — a behaviour change must correct every
-  self-description it falsifies, in the same commit.** `site/index.html`,
-  `site/privacy.html`, the header comment in `site/assets/style.css` and
-  `site/README.md` all make checkable claims about what the site loads, collects,
-  and deploys, and nothing fails when a change quietly makes one of them untrue.
-  Adding the analytics beacon (#36) left the privacy lede's no-tracking claim and
-  the stylesheet's "No external assets" standing, and took a second commit to walk
-  both back; dropping the deploy workflow's `paths:` filter (#45) left
-  `site/README.md` still saying the site publishes only on a push that touches
-  `site/**`. Before landing a change to site behaviour or to
-  `deploy-pages.yml`, grep the site copy, the CSS/JS header comments and
-  `site/README.md` for what the change makes false, and ship the correction (and
-  any disclosure the behaviour requires) in the same commit as the behaviour.
-
-- **Adopting an *additional* canon pack is not a local lookup — the vendored
-  `.claudinite/shared/packs/` holds only what this repo already adopted, never the
-  catalog of what's adoptable.** Nothing in the checkout lists the available packs,
-  and the `adopt-claudinite` skill's canonical pointer (`bootstrap.md`) is *not*
-  vendored here, so it can't be read locally either. Don't exhaustively grep the
-  tree to prove a pack is missing: shallow-clone the canon
-  (`missingbulb/Claudinite`) to scratch, list `packs/`, pick from there, and
-  delete the scratch clone. **Match the owner's plain-words name to a pack id
-  before asking them to disambiguate** — the names differ ("the market research
-  pack" is the `product-wiki` pack); read the candidate's `pack.mjs` and `RULES.md`
-  in the canon clone and confirm the fit yourself.
+- **The site describes itself in prose beyond its privacy claims — a behaviour
+  change to something like deploy triggers must still correct every
+  self-description it falsifies, in the same commit.** `site/README.md` makes a
+  checkable claim about when the site publishes; dropping the deploy workflow's
+  `paths:` filter (#45) left it still saying the site publishes only on a push
+  that touches `site/**`. Before landing a change to site behaviour or to
+  `deploy-pages.yml`, grep `site/README.md` and the page copy for what the
+  change makes false, and ship the correction in the same commit as the
+  behaviour.
 
 - **A fix that belongs in the canon can be written here but never *pushed* from
   here — preserve it as a patch on an issue in this repo rather than routing
   around the block.** Work in this repo lands in canon code often (#53, #54, #55
   and #57 were all defects in the vendored engine and packs, found from here), and
-  the canon clone the rule above uses is read-only in practice: the git proxy
+  a scratch clone of the canon is read-only in practice: the git proxy
   serves `missingbulb/Claudinite` for a fetch but `403`s a push, because a
   session's GitHub scope is `missingbulb/claudinitewebsite` alone. That is an
   organisation egress policy, so don't re-diagnose it, don't retry with another
@@ -58,28 +42,9 @@ repo's vendored Claudinite mount.
   behind and move to the next step (the growth-pack capture) rather than looking for
   a phrasing that gets through.
 
-- **A rejected `ScheduleWakeup` leaves the run with *no* fallback wake — the tool
-  requires `prompt` unless `stop: true`, and `noop: true` does not exempt it.**
-  The executor's standard shape here is to dispatch a subagent and then arm a
-  fallback heartbeat in case the subagent's completion notification never lands.
-  Three unattended runs tried exactly that (issues #148, #159 and #161, between
-  2026-08-12 and 2026-08-14) and every one was rejected with "`prompt` is
-  required when `stop` is not true" — two of them passing `noop: false`, one
-  `noop: true`, so the flag is not the variable. None re-issued the call, so all
-  three carried on believing they had a safety net they never armed. Give any
-  wakeup that isn't `stop: true` a `prompt` — the instruction the woken turn is
-  to act on — and treat a rejected safety-net call as *unarmed*, not cosmetic:
-  re-issue it, or say plainly in the wrap-up that the run has no fallback.
-
-- **`site/` states absolute privacy and no-external-asset claims in several places
-  at once — adding any third-party or network asset means re-checking every one of
-  them in the same change.** The claims are not confined to `site/privacy.html`:
-  they also sit in that page's `<meta name="description">`, in its lede paragraph,
-  and in the header comment of `site/assets/style.css` ("No external assets, no
-  webfonts, no frameworks"). Landing the analytics beacon updated the page body but
-  left the meta description and the stylesheet header asserting the opposite, so the
-  site shipped claiming "no tracking" while loading a tracker. Before committing a
-  change that adds a script, beacon, font, or any off-origin fetch under `site/`,
-  grep the whole directory for the standing absolutes (`no track`, `no cookie`,
-  `no third-party`, `no external`, `cookieless`) and reconcile each hit — a stale
-  claim in a comment or a meta tag is still a false claim to a reader.
+- **`ScheduleWakeup` requires `prompt` unless `stop: true`, and `noop: true` does
+  not exempt it.** Three unattended runs (issues #148, #159 and #161, between
+  2026-08-12 and 2026-08-14) were rejected with "`prompt` is required when `stop`
+  is not true" — two of them passing `noop: false`, one `noop: true`, so the flag
+  is not the variable. Give any wakeup that isn't `stop: true` a `prompt` — the
+  instruction the woken turn is to act on.
