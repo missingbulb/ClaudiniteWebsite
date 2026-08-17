@@ -29,6 +29,18 @@ repo's vendored Claudinite mount.
   carrying the full `git diff` as a patch block plus the verification you ran
   (#59 is the shape), so a session that does have canon scope can `git apply` it.
 
+- **A file missing from the mount is evidence about the *vendor set*, not about
+  the canon — read the canon before an issue names the gap.** Three
+  queue-dispatched sessions on 2026-08-16/17 found
+  `engine/scheduler/queue/instructions.md` absent from `.claudinite/shared/`,
+  and two filed it (#190, #192) as the canon never having shipped it, both
+  saying they had "no way to tell which from here." A third shallow-cloned
+  `missingbulb/Claudinite` and found the file present — a vendoring omission, so
+  #192's ask to author it would have produced a duplicate of a file that already
+  existed. The scratch canon clone the rule above names is read-only, but it
+  *reads*: use it, and where it still can't settle the cause, report only that
+  the mount lacks the file.
+
 - **After a merge lands on GitHub, syncing local `main` is a convenience, not part
   of landing — if the environment refuses it, record that and stop, don't retry
   variants.** `git checkout main` and its neighbours are refused by the session's
