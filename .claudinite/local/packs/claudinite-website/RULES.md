@@ -84,4 +84,23 @@ repo's vendored Claudinite mount.
   first: if it names the PR/maintenance branch rather than this session's own
   assigned branch, `git checkout` back to clear it. Never amend a subagent's
   pushed commit and never relay a "fix" instruction for a check that doesn't exist
-  as described.
+  as described. **If that checkout-back (or an amend) is itself refused by the
+  permission classifier, don't retry or force it** — a live subagent is using the
+  shared checkout. Issue #116 hit exactly this: both remedies were blocked mid-run,
+  and the orchestrator correctly left the branch untouched and waited; the branch
+  reverted to the orchestrator's own assigned one, and the false-positive noise
+  with it, the moment the subagent finished.
+
+- **After a background subagent's handle goes unreachable following a genuine
+  worker-restart notice, checking only git log/status and the dispatch PR's own
+  comments is not enough to tell whether it made progress — it may already have
+  filed a GitHub issue.** In issue #112, a subagent found a blocking finding and
+  filed issue #113 moments before its worker restarted. The orchestrator's recovery
+  check covered only git and PR-comment state (both clean, since the subagent's
+  real output was a filed issue, not a commit), concluded "no progress survived,"
+  and relaunched a second subagent from a from-scratch briefing — which
+  re-investigated the same root cause and filed a duplicate, issue #114, wasting
+  about 5m42s of redundant subagent work. Before asserting "no progress" in a
+  relaunch briefing after a worker-restart, also search GitHub issues
+  (`search_issues`/`list_issues`) for anything the lost subagent may have filed —
+  not just the dispatch PR's own comments and local git log.
