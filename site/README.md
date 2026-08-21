@@ -2,14 +2,15 @@
 
 The static marketing site for Claudinite. No build step, no dependencies: the
 directory is published as-is by [.github/workflows/deploy-pages.yml](../.github/workflows/deploy-pages.yml)
-(GitHub Pages via the actions artifact flow) on every push to `main` that
-touches `site/**`.
+(GitHub Pages via the actions artifact flow) on every push to `main` — the
+workflow carries no `paths:` filter, so a push that touches nothing under
+`site/` still redeploys the same content.
 
 ## Layout
 
 | Path | What it is | Who edits it |
 |---|---|---|
-| [index.html](index.html) | The one page: evergreen copy + the four mechanism explainers | Rarely — structure and evergreen claims |
+| [index.html](index.html) | The one page: evergreen copy + the four mechanism explainers. Copy is deliberately terse — a claim earns its words or goes | Rarely — structure and evergreen claims |
 | [assets/style.css](assets/style.css) | The whole design system (tokens at the top) | Rarely |
 | [assets/main.js](assets/main.js) | Animations + rendering of the promoted-content slots | Rarely |
 | [assets/analytics.js](assets/analytics.js) | Cookieless Cloudflare Web Analytics loader; no-ops until the deploy injects the token | Never — the token comes from the `CLOUDFLARE_ANALYTICS_TOKEN` repo variable |
