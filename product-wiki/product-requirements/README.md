@@ -89,6 +89,39 @@ repo — this page is the only crossing point.
   (native-platform whitespace analysis); Methods (Peril's absorption
   lesson); Positioning open questions.
 
+### The marketing site (moved here 2026-08-21, owner-directed)
+
+These were recorded in the `Website/` wiki when that page doubled as a
+decision log. They are decisions about our own product, not research, so they
+belong in this sink; `Website/` is now competitor-marketing research only.
+The mechanics of editing the page live in [site/README.md](../../site/README.md).
+
+- **R11 — Lead with the enforcement gap.** The headline names what a written
+  rule cannot do ("Rules your agent can't skip"), not the copy-paste pain the
+  rule-sync category already sells the fix for, and not the category word
+  ("convention packs"), which means nothing cold. Carry Anthropic's own
+  sentence — "Claude treats them as context, not enforced configuration" —
+  as the page's single quotation. Motivated by: Website (no rival headline
+  claims enforcement; the vendor documents the premise); Market.
+- **R12 — The page may not name what it cannot stand behind.** No private
+  repository is ever linked or offered as an example (this repo is private —
+  verify any replacement is public before linking). No individual packs, pack
+  names, or check/skill/task names anywhere: a graphic carries *how many*
+  packs exist, never *which*, so the copy does not date when the canon's pack
+  set moves. No invented testimonials, stars, or adoption numbers — social
+  proof waits for real proof points.
+- **R13 — Terse by construction.** Every mechanism keeps its animation and
+  its heading and loses its explanatory paragraph; bullets are fragments;
+  FAQ answers are one sentence. The working budget after the 2026-08-21 pass
+  is ~536 visible words, and a section that wants a paragraph needs a visual
+  instead. Claims must survive a teardown: the four attackable ones
+  (CI-sweep scope, leave story, one-conversation adopt, generic "AI coding
+  agents") were retired rather than softened, at the cost of admitting the
+  manual runner wire-up.
+- **R14 — The page names the build it is.** The footer carries the released
+  version in its copyright tooltip, generated from `package.json` by the
+  release bump and guarded by a blocking check, never hand-maintained.
+
 Deliberately *not* proposed as requirements yet, with reasons: GitLab/
 Bitbucket support (no evidence of demand in any researched segment yet —
 revisit with enterprise pipeline), native Windows support (real but no
