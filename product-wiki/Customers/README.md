@@ -11,7 +11,7 @@ for the offering in [`Positioning/`](../Positioning/README.md).
 
 - 90% of developers use AI at work; only ~24–33% trust its output — the adoption/trust scissor is the buying condition.
 - Claude Code went from ~3% to 18% work usage in eight months with the category's best satisfaction — the fastest-growing agent.
-- Users file issues titled "need enforcement mechanism"; AGENTS.md support is the loudest ask in the tracker at 4,487 👍.
+- Users file issues titled "need enforcement mechanism"; the tracker's loudest ask (AGENTS.md, 4,944 👍) closed on an import.
 - Solo devs run dotfiles and symlinks; agencies copy a shared config repo per client — drift machines with no update path.
 - Indies pay $199–249 one-time for vendored starter files (ShipFast: $250k in 5 months); shops absorb $125/seat for Claude Premium.
 - Enterprise near-blockers, in order: security review, multi-agent (AGENTS.md) support, private canon — then metrics and SLA.
@@ -138,11 +138,12 @@ does not scale with agent output volume.
   Copilot + Cursor + Claude Code simultaneously and converge on AGENTS.md,
   so Claude-Code-only addresses a slice of the fleet — and this near-blocker
   is now the best-quantified demand signal in the whole research set:
-  `anthropics/claude-code` #6235 "Feature Request: Support AGENTS.md." has
-  been open since 2025-08-21 carrying 4,487 👍 (5,808 total reactions, 348
-  comments), with #31005 (277 👍) and #34235 (90 👍) behind it, all still
-  open as of 2026-08-02 while the Claude Code memory doc still states
-  "Claude Code reads `CLAUDE.md`, not `AGENTS.md`". That is roughly 100×
+  `anthropics/claude-code` #6235 "Feature Request: Support AGENTS.md."
+  ran from 2025-08-21 to its `completed` close on 2026-08-17 carrying
+  4,944 👍 (6,367 total reactions, 374 comments), with #31005 (277 👍) and
+  #34235 (90 👍) behind it — and it closed on the `/import` command while
+  the Claude Code memory doc still states "Claude Code reads `CLAUDE.md`,
+  not `AGENTS.md`" (re-verified 2026-08-21, Market wiki). That is roughly 100×
   the org-wide-shared-CLAUDE.md request (#14467, 40 👍) cited for the agency
   segment above, and the reaction base is the whole Claude Code user
   population rather than enterprise buyers specifically — so multi-agent
@@ -181,7 +182,7 @@ does not scale with agent output volume.
 - [How Uber uses AI for development — Pragmatic Engineer](https://newsletter.pragmaticengineer.com/p/how-uber-uses-ai-for-development) and [uReview](https://www.uber.com/us/en/blog/ureview/)
 - [Spotify Honk part 1](https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1) and [Fleet-wide refactoring](https://engineering.atspotify.com/2023/05/fleet-management-at-spotify-part-3-fleet-wide-refactoring) — 270k PRs, 77% automerged
 - [Accenture Copilot study — GitHub blog](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/); [TELUS/Rakuten figures](https://agentmarketcap.ai/blog/2026/04/05/anthropic-agentic-coding-trends-report-claude-code-eight-shifts)
-- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — 4,487 👍 / 5,808 reactions / 348 comments, open since 2025-08-21 (GitHub API, 2026-08-02); [#31005](https://github.com/anthropics/claude-code/issues/31005) (277 👍), [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
+- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — 4,944 👍 / 6,367 reactions / 374 comments, opened 2025-08-21, closed `completed` 2026-08-17 (GitHub API, 2026-08-21); [#31005](https://github.com/anthropics/claude-code/issues/31005) (277 👍), [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
 - [Claude Code docs: memory](https://code.claude.com/docs/en/memory) — "Claude Code reads `CLAUDE.md`, not `AGENTS.md`" (primary page opened directly, 2026-08-02)
 - [Claude Code admin setup (managed settings)](https://code.claude.com/docs/en/admin-setup)
 - [SOC 2 for enterprise clients — Bright Defense](https://www.brightdefense.com/resources/soc-2-for-enterprise-clients/); [on-prem AI code review — Dextralabs](https://dextralabs.com/blog/on-premise-ai-code-review-for-enterprise/); [vendor viability — FirmAdapt](https://firmadapt.com/blog/how-procurement-teams-evaluate-vendor-companies)
@@ -211,20 +212,28 @@ does not scale with agent output volume.
 - Does Anthropic's roadmap (org-managed CLAUDE.md per issue #14467, plugin
   marketplaces) absorb convergence/enforcement first-party? The standing
   platform-risk question — still open, but partially answered on the interop
-  axis as of 2026-08-02: eleven months of non-shipping against the tracker's
-  loudest request (#6235) says the native layer is not currently racing to
-  close cross-vendor gaps, whatever it does on distribution.
+  axis as of 2026-08-21: the tracker's loudest request (#6235) was answered
+  with a one-time import rather than native reading, so the native layer is
+  not racing to close cross-vendor gaps, whatever it does on distribution.
 - Would enterprise buyers accept an operator-side AGENTS.md bridge (the
   `@AGENTS.md` import or a symlink, which is what Anthropic's own docs
   recommend) as satisfying near-blocker #2, or does the requirement only
   clear with tool-native parity? Decides whether emission is a cheap
   unblock or a deep one.
-- What are the 348 comments on #6235 actually asking for — pure file
+- What are the 374 comments on #6235 actually asking for — pure file
   recognition, or skills/rules portability too? The thread is the largest
   free-text corpus of user-side demand in this category and has not been
   read; it would sharpen the multi-agent requirement's real shape.
 
 ## Growth log
+
+- **2026-08-21** — re-verification pass alongside the site messaging rewrite:
+  the AGENTS.md demand signal this page leans on for near-blocker #2 closed
+  `completed` on 2026-08-17 (4,944 👍 at close) without the docs changing
+  what Claude Code reads — the near-blocker itself is unchanged, but its
+  "open and unshipped" evidence is not, so the segment text and the
+  platform-risk open question now cite the close. Detail and sources in the
+  [Market wiki](../Market/README.md).
 
 - **2026-07-31** — page created in the owner-directed ecosystem research
   pass: three segments profiled with primary-survey adoption data (SO 2025,

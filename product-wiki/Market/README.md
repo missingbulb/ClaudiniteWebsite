@@ -11,12 +11,12 @@ Claudinite in [`Positioning/`](../Positioning/README.md).
 ## Key insights
 
 - Anthropic ships the session half natively, but CLI auto-install of org-mandated plugins was closed "not planned."
-- Nobody — native or rival — converges repos: no auto-PR loop from a canon, no CI convention gates, no shared growth loop.
+- Nobody converges repos: no auto-PR loop from a canon, no CI convention gates; native auto memory is machine-local, never shared.
 - Rival enforcement is config-drift only: they check the rules arrived; nothing checks the rules are followed.
 - The rule-sync category is nearly all free OSS under 3k stars; the one hosted SaaS (rulesync.dev) is in free beta.
-- Skills won the content war: anthropics/skills hit 165k stars; SKILL.md is a ~40-tool cross-vendor standard.
 - Enterprise scorecard vendors (Cortex, Port, OpsLevel) now sell AI-agent governance from above; OpsLevel's Tidra ships auto-PRs.
-- Claude Code still won't read AGENTS.md: the tracker's loudest request ever, 4,487 👍, open and unshipped since Aug 2025.
+- Anthropic's own docs say CLAUDE.md is "context, not enforced configuration" — the vendor states Claudinite's premise.
+- The AGENTS.md request (4,944 👍) was closed *completed* on 2026-08-17 by shipping an import; Claude Code still won't read the file.
 
 ## The substrate: per-repo convention files
 
@@ -47,18 +47,42 @@ with them:
   import or symlink as the bridge. Community best practice still converges on
   keeping it under ~200 lines (spot-checked 2026-07-31: the cited guide is
   alive and still says this).
-- **Native AGENTS.md support is the most-demanded unshipped item in
-  Anthropic's own tracker** (researched 2026-08-02). The memory doc still
-  says flatly "Claude Code reads `CLAUDE.md`, not `AGENTS.md`" (re-verified
-  against the primary page 2026-08-02), while
-  `anthropics/claude-code` #6235 "Feature Request: Support AGENTS.md." has
-  been open since 2025-08-21 with 4,487 👍 (5,808 total reactions) and 348
-  comments — followed by #31005 (277 👍, titled "the community has been
-  asking since August 2025") and #34235 (90 👍), both still open. For scale:
-  the org-wide-shared-CLAUDE.md request this wiki already cites (#14467) has
-  40 👍. Nothing else in the ecosystem carries a comparable, quantified,
-  publicly-visible demand signal. `/init` under `CLAUDE_CODE_NEW_INIT=1`
-  reads AGENTS.md once at generation time, which is import, not support.
+- **The AGENTS.md request was closed as completed on 2026-08-17 — and Claude
+  Code still does not read the file** (researched 2026-08-21).
+  `anthropics/claude-code` #6235 "Feature Request: Support AGENTS.md." was
+  closed `completed` by the Claude Code lead (bcherny) at 2026-08-17T03:37Z,
+  after twelve months and 4,944 👍 (6,367 total reactions, 374 comments) —
+  the largest quantified demand signal in the agent-config space, and now
+  answered by an *import*, not by native reading. The memory doc, re-fetched
+  the same day the issue's last update landed, still says flatly "Claude Code
+  reads `CLAUDE.md`, not `AGENTS.md`"; what shipped is `/import` (Claude Code
+  v2.1.213+), which "appends a one-time copy of instruction files such as
+  `AGENTS.md` to the matching `CLAUDE.md`", alongside `/init` under
+  `CLAUDE_CODE_NEW_INIT=1` reading AGENTS.md at generation time. Both are
+  one-time copies into CLAUDE.md — the same bridge this wiki has recorded
+  since 2026-08-02, now blessed as the official answer. The read gap is
+  therefore *durable by decision*, not by backlog: the interop whitespace
+  stays open, and a copy-in bridge is itself a drift source, which is the
+  territory Claudinite is already in.
+- **Anthropic now states the enforcement gap in its own docs, in Claudinite's
+  own terms** (primary page, 2026-08-21). The memory doc's opening comparison
+  says of CLAUDE.md and auto memory: "Claude treats them as context, not
+  enforced configuration. To block an action regardless of what Claude
+  decides, use a PreToolUse hook instead," and its managed-policy section
+  draws the same line: "Settings rules are enforced by the client regardless
+  of what Claude decides to do. CLAUDE.md instructions shape Claude's
+  behavior but are not a hard enforcement layer." The same page tells teams
+  to "target under 200 lines per CLAUDE.md file" because "longer files
+  consume more context and reduce adherence." The platform vendor is the
+  primary source for the premise the whole rule-sync category is built on
+  top of and never addresses.
+- **Auto memory is the native learning loop — and it is machine-local by
+  design.** Claude Code writes its own notes from a user's corrections into
+  `~/.claude/projects/<project>/memory/`, on by default. The doc is explicit
+  that "Auto memory is machine-local... Files are not shared across machines
+  or cloud environments" (primary page, 2026-08-21), and only the first 200
+  lines / 25KB of its index load per session. Nothing native promotes a
+  lesson from one machine to a team, a repo, or a fleet.
 - **SKILL.md / Agent Skills** became a cross-vendor open standard: Anthropic
   published the spec (agentskills.io, Dec 2025), and by mid-2026 roughly 40
   tools — OpenAI Codex, GitHub Copilot, Cursor, VS Code, Gemini CLI, JetBrains
@@ -263,13 +287,13 @@ lives in [`Customers/`](../Customers/README.md).
 - [anthropics/claude-code#45323 — CLI auto-install from org managed settings, closed "not planned"](https://github.com/anthropics/claude-code/issues/45323) (filed 2026-04-08; opened directly, verified 2026-08-09); desktop/web auto-install behavior per the issue's own text and [Manage plugins for your organization — Claude Help Center](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization) (page egress-blocked to this pass's fetcher — via search-quoted context)
 - [Agent Skills spec (agentskills/agentskills)](https://raw.githubusercontent.com/agentskills/agentskills/main/README.md) and [Claude Code skills docs](https://code.claude.com/docs/en/skills); cross-vendor adoption: [paperclipped.de](https://www.paperclipped.de/en/blog/agent-skills-open-standard-interoperability/)
 - [anthropics/skills](https://github.com/anthropics/skills) — 165,327 ★ (GitHub API, 2026-07-31)
-- [intellectronica/ruler](https://github.com/intellectronica/ruler) — 2,833 ★, CI drift example
+- [intellectronica/ruler](https://github.com/intellectronica/ruler) — 2,833 ★; README re-read 2026-08-21: "a **single source of truth** for all your AI agent instructions, automatically distributing them", and its CI example "[v]erifies the committed agent files (AGENTS.md, CLAUDE.md, skills) match the .ruler/ source" — distribution plus file-drift, no work-product enforcement
 - [dyoshikawa/rulesync](https://github.com/dyoshikawa/rulesync) — 1,273 ★; [supported-tools matrix](https://raw.githubusercontent.com/dyoshikawa/rulesync/main/docs/reference/supported-tools.md)
 - [RuleSync (hosted)](https://www.rulesync.dev/) and [rulesync-cli on npm](https://registry.npmjs.org/rulesync-cli) — free beta, paid plans planned
 - [Goldziher/ai-rulez](https://github.com/Goldziher/ai-rulez) — enforce/verify hooks, remote includes
 - [agent-sh/agnix](https://github.com/agent-sh/agnix) — 444-rule agent-config linter
-- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — open since 2025-08-21, 4,487 👍 / 5,808 reactions / 348 comments (GitHub API, 2026-08-02); corroborating [#31005](https://github.com/anthropics/claude-code/issues/31005) (277 👍) and [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
-- [Claude Code docs: memory — AGENTS.md section](https://code.claude.com/docs/en/memory) — "Claude Code reads `CLAUDE.md`, not `AGENTS.md`"; `@AGENTS.md` import and symlink bridges; `/init` under `CLAUDE_CODE_NEW_INIT=1` reads AGENTS.md at generation time (primary page opened directly, 2026-08-02)
+- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — closed `completed` 2026-08-17T03:37Z by bcherny, 4,944 👍 / 6,367 reactions / 374 comments, opened 2025-08-21 (GitHub API, 2026-08-21); corroborating [#31005](https://github.com/anthropics/claude-code/issues/31005) (277 👍) and [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
+- [Claude Code docs: memory](https://code.claude.com/docs/en/memory) — primary page, re-opened directly 2026-08-21: "Claude treats them as context, not enforced configuration"; "CLAUDE.md instructions shape Claude's behavior but are not a hard enforcement layer"; "target under 200 lines"; "Claude Code reads `CLAUDE.md`, not `AGENTS.md`" with the `@AGENTS.md` import, symlink, `/init` and `/import` (v2.1.213+) bridges; "Auto memory is machine-local… Files are not shared across machines or cloud environments"
 - [dallay/agentsync](https://github.com/dallay/agentsync) — 52 ★, Rust, symlink-based agent-config sync (2026-08-02)
 - [yujiosaka/knowhub](https://github.com/yujiosaka/knowhub) — dormant since 2025-07
 - [lbb00/ai-rules-sync](https://github.com/lbb00/ai-rules-sync) — symlink team sharing
@@ -305,11 +329,10 @@ lives in [`Customers/`](../Customers/README.md).
   permanent answer for CLI fleets, or does #45323 being closed "not planned"
   just mean deprioritized rather than rejected in principle? No roadmap
   signal found this pass.
-- Why has Anthropic left AGENTS.md support unshipped for eleven months
-  against the loudest demand signal in its tracker (#6235, 348 comments)?
-  Deliberate lock-in, triage backlog, or a deliberate "the import is the
-  answer" stance? No maintainer statement located this pass; the answer
-  changes how safe the interop whitespace is to build on.
+- Answered 2026-08-21: it was the "the import is the answer" stance —
+  #6235 closed `completed` on the `/import` command, with the docs unchanged
+  on native reading. Still open: is that final, or a staging post? No
+  maintainer statement was located this pass beyond the close itself.
 - Do the rival CLIs treat Claude Code's `@AGENTS.md` import/symlink bridge as
   a first-class output target? If the bridge is becoming the de-facto
   standard, emitting it is cheaper than emitting a second rules corpus.
@@ -327,6 +350,19 @@ lives in [`Customers/`](../Customers/README.md).
   from two search surfaces, not proof; re-check next pass.
 
 ## Growth log
+
+- **2026-08-21** — owner-directed pass ahead of a site messaging rewrite.
+  Three findings, all from primary sources: `anthropics/claude-code` #6235
+  closed `completed` 2026-08-17 while the memory doc still says Claude Code
+  does not read AGENTS.md (the shipped answer is `/import`, a one-time copy),
+  which corrects this page's "open and unshipped" framing without changing
+  the interop conclusion; Anthropic's memory doc now states the
+  context-is-not-enforcement premise verbatim, which is a stronger citation
+  for the category's blind spot than any third-party analysis this wiki
+  carried; and native auto memory is documented machine-local, which closes
+  the question of whether the platform had absorbed shared learning. Ruler's
+  README re-read the same day — still distribution plus file-drift only, so
+  the differentiation line holds. `## Key insights` rewritten on all three.
 
 - **2026-07-28** — initial seed: substrate standards (AGENTS.md, CLAUDE.md,
   Cursor, Windsurf, Copilot) and the direct rule-sync competitor set
