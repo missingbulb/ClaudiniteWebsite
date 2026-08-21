@@ -37,15 +37,20 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 Evergreen sections (hero, mechanisms, adopt, FAQ) state how Claudinite works;
 change them only when the product's mechanisms actually change.
 
-## Two placeholders the deploy substitutes
+## The footer's version tooltip
 
-Both pages ship with literal placeholders that only the deploy replaces, so a
-local preview shows the placeholder rather than a stale value:
+Every page's footer copyright carries the released version in its `title`, so a
+visitor can name the build they are looking at. It is **generated**:
+[scripts/bump-version.mjs](../scripts/bump-version.mjs) writes `package.json`
+and stamps the pages in one run, and the deploy commits both — so never hand-edit
+it. `node scripts/bump-version.mjs --stamp-only` repairs a drifted stamp without
+consuming a version number, and the
+`claudinite-website/site-version-tooltip` check fails the build when the two
+disagree.
 
-- `REPLACE_WITH_SITE_VERSION` in the footer's `title` — becomes the version
-  this build released, so the tooltip names what a visitor is looking at.
-- `REPLACE_WITH_CLOUDFLARE_WEB_ANALYTICS_TOKEN` in `assets/analytics.js` —
-  see the table above.
+`assets/analytics.js` keeps its own placeholder,
+`REPLACE_WITH_CLOUDFLARE_WEB_ANALYTICS_TOKEN`, substituted at deploy time — see
+the table above.
 
 ## Example repositories
 
