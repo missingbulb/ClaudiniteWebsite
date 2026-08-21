@@ -248,26 +248,6 @@
         spot.appendChild(d);
       });
 
-      var packs = document.getElementById('packs-slot');
-      if (packs && DATA.packs) DATA.packs.forEach(function (p) {
-        var d = el('article', 'pack-card');
-        d.appendChild(el('h4', null, p.id));
-        d.appendChild(el('p', null, p.tag));
-        var chips = el('div', 'pack-chips');
-        (p.counts || []).forEach(function (c) { chips.appendChild(el('span', null, c)); });
-        d.appendChild(chips);
-        packs.appendChild(d);
-      });
-
-      var updates = document.getElementById('updates-slot');
-      if (updates && DATA.updates) DATA.updates.forEach(function (u) {
-        var li = document.createElement('li');
-        var t = document.createElement('time');
-        t.dateTime = u.date; t.textContent = u.date;
-        li.appendChild(t);
-        li.appendChild(el('p', null, u.text));
-        updates.appendChild(li);
-      });
     } catch (err) {
       // A malformed promoted.js must never blank the page — evergreen sections
       // stand on their own; the canon link still gets people there.

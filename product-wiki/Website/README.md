@@ -15,8 +15,8 @@ behind what gets promoted accumulates.
 - The page's strongest asset is Anthropic's own sentence: CLAUDE.md is "context, not enforced configuration."
 - Promoted differentiation: rivals check the rules arrived; Claudinite checks they were followed. Still true 2026-08-21.
 - Three benefits carry the page — rules that bite, a fleet that converges itself, lessons that travel; the rest is mechanism.
-- Copy cut ~38% on 2026-08-21: every claim keeps its visual, loses its paragraph.
 - The four attackable claims are fixed, which cost a promise: adoption is now "one conversation, then one wire-up".
+- Show how many packs exist, never which: names date the copy. Copy is down ~46% — visuals carry it.
 - No invented testimonials, stars or adoption numbers until real proof points exist — hence zero social proof today.
 
 ## Messaging refocus (2026-08-21)
@@ -47,6 +47,31 @@ and cut the word count hard. What changed and why:
   "one conversation to adopt" → "One conversation, then one wire-up", with
   the manual runner step named as step 3; and "AI coding agents" → Claude
   Code, with a FAQ entry saying so plainly.
+
+## What the site may not name (2026-08-21)
+
+Two constraints the owner set, both about what the page *shows* rather than
+what it claims:
+
+- **This repository is private, so it can never be the site's example.** The
+  "see a repo running it" CTA and the footer's "this site's repo" link both
+  pointed here; both are gone. The example is now a public member of the
+  fleet, [GoogleCalendarEventCreator](https://github.com/missingbulb/GoogleCalendarEventCreator)
+  (visibility verified before linking). Any future example needs the same
+  check — a private repo's link is a dead end for every visitor and an
+  unintended disclosure of what the fleet contains.
+- **No individual packs.** No per-pack cards, no pack names, no check, skill
+  or task names anywhere on the page. What replaces them is a graphic — a
+  field of pack glyphs with a handful lit, captioned "declare the ones you
+  want" — which carries the two facts that matter (there are many; you
+  choose) and dates only when the *count* changes, not when the canon's pack
+  set moves. The `updates` feed went with them: dated entries are a
+  maintenance debt the page was not paying.
+
+The footer now reads `© 2026 MissingBulb` and carries the released version in
+its `title` tooltip, substituted into the artifact at deploy time from the
+same bump the release performs — so the number always names the build a
+visitor is looking at.
 
 ## Positioning decisions (2026-07-28, initial)
 
@@ -138,6 +163,12 @@ this page are owner calls, not researched claims.
   assets); generate one so link shares render a card.
 
 ## Growth log
+
+- **2026-08-21** — owner feedback on the just-released page (repo issue #235):
+  the private-repo example removed, per-pack detail replaced by a graphic, the
+  footer re-attributed with a version tooltip, and another ~90 words cut.
+  Recorded above as the may-not-name section. `## Key insights` gained the
+  show-the-count-never-the-names finding; the cut figure updated.
 
 - **2026-08-21** — owner-directed messaging refocus (repo issue #233). New
   research first (Market wiki: Anthropic's own docs state the

@@ -15,7 +15,7 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 | [assets/main.js](assets/main.js) | Animations + rendering of the promoted-content slots | Rarely |
 | [assets/analytics.js](assets/analytics.js) | Cookieless Cloudflare Web Analytics loader; no-ops until the deploy injects the token | Never — the token comes from the `CLOUDFLARE_ANALYTICS_TOKEN` repo variable |
 | [privacy.html](privacy.html) | The privacy disclosure the analytics behaviour requires | When what the site collects changes — same commit as the change |
-| [data/promoted.js](data/promoted.js) | **The promoted content: stats, spotlight, pack cards, updates** | **Every promo refresh — edit this, usually nothing else** |
+| [data/promoted.js](data/promoted.js) | **The promoted content: stats and the spotlight** | **Every promo refresh — edit this, usually nothing else** |
 
 ## Updating promoted content (the expected frequent, agentic change)
 
@@ -24,12 +24,11 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 - **Truthful and verifiable.** Every stat, count, and update must be checkable
   against the vendored canon packs in this repo or against its history. No
   aspirational numbers, no invented dates.
-- **`updates`** — newest first, ISO `YYYY-MM-DD` dates, ≤ 140 chars, only
-  shipped facts. Keep at most 6 entries; drop the oldest.
-- **`spotlight`** — the 3–5 features currently being promoted, ordered; the
+- **`spotlight`** — the 3–5 benefits currently being promoted, ordered; the
   first entry renders full-width (visual priority). Taglines ≤ 90 chars.
-- **`packs`** — one card per canon pack. When a pack lands in or leaves the
-  canon, mirror it here and refresh `stats`.
+  Benefits, never named packs: the page shows *how many* packs there are (the
+  `pack-field` graphic and the `stats` count) and never *which*, so no copy
+  goes stale when the canon's pack set moves.
 - **`canonRef`** — keep in step with the `ref` stamp in
   [../.claudinite-checks.json](../.claudinite-checks.json) (short form).
 - Keep the file a plain script (`window.CLAUDINITE = {...}`) — it must run
@@ -37,6 +36,23 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 
 Evergreen sections (hero, mechanisms, adopt, FAQ) state how Claudinite works;
 change them only when the product's mechanisms actually change.
+
+## Two placeholders the deploy substitutes
+
+Both pages ship with literal placeholders that only the deploy replaces, so a
+local preview shows the placeholder rather than a stale value:
+
+- `REPLACE_WITH_SITE_VERSION` in the footer's `title` — becomes the version
+  this build released, so the tooltip names what a visitor is looking at.
+- `REPLACE_WITH_CLOUDFLARE_WEB_ANALYTICS_TOKEN` in `assets/analytics.js` —
+  see the table above.
+
+## Example repositories
+
+This repository is private, so it can never be the site's "see a repo running
+it" example. The link points at a public member of the fleet
+([GoogleCalendarEventCreator](https://github.com/missingbulb/GoogleCalendarEventCreator));
+check any replacement is public before linking it.
 
 ## Local preview
 

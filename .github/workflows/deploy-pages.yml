@@ -61,6 +61,15 @@ jobs:
             echo "Push rejected — rebasing on latest main and retrying (attempt $attempt)."
             git pull --rebase origin main
           done
+      - name: Stamp the released version into the pages
+        # The footer's copyright carries this build's version in its title
+        # tooltip, so a visitor can name what they are looking at. Injected
+        # here, into the artifact only, so the number is always the one that
+        # actually went out.
+        run: |
+          sed -i "s#REPLACE_WITH_SITE_VERSION#${{ steps.bump.outputs.version }}#" site/index.html site/privacy.html
+          echo "Stamped version ${{ steps.bump.outputs.version }} into the served pages."
+
       - name: Inject Cloudflare Web Analytics token
         # The beacon token is public (it ships in the client), so it lives in a
         # repo *variable*, not a secret. When set, substitute it into the served
