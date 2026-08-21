@@ -11,13 +11,42 @@ behind what gets promoted accumulates.
 
 ## Key insights
 
-- The headline names the substrate pain, not the category — "convention packs" means nothing to a cold visitor.
-- Promoted differentiation is the Market wiki's sharpest gap: rivals move files, Claudinite moves enforcement and procedure.
-- The 2026-07-31 competitor check holds the message: no rival's headline claims enforcement (one file-drift-CI footnote: Ruler).
-- A sharper line is now available: rivals check the rules arrived; Claudinite checks the rules are followed.
-- Four site claims are attackable in a teardown: CI-sweep scope, leave story, one-conversation adopt, generic "AI agents".
-- A scheduled promo pass edits one data file and cannot break layout; mechanism explanations stay static HTML.
+- The headline names the enforcement gap, not the category — "convention packs" means nothing to a cold visitor.
+- The page's strongest asset is Anthropic's own sentence: CLAUDE.md is "context, not enforced configuration."
+- Promoted differentiation: rivals check the rules arrived; Claudinite checks they were followed. Still true 2026-08-21.
+- Three benefits carry the page — rules that bite, a fleet that converges itself, lessons that travel; the rest is mechanism.
+- Copy cut ~38% on 2026-08-21: every claim keeps its visual, loses its paragraph.
+- The four attackable claims are fixed, which cost a promise: adoption is now "one conversation, then one wire-up".
 - No invented testimonials, stars or adoption numbers until real proof points exist — hence zero social proof today.
+
+## Messaging refocus (2026-08-21)
+
+Owner-directed pass (repo issue #233): re-research, re-evaluate the benefits,
+and cut the word count hard. What changed and why:
+
+- **Headline** moved from "Stop copy-pasting agent rules." to "Rules your
+  agent can't skip." The copy-paste pain is real but shared with the
+  rule-sync category, which sells the copy-paste fix; the enforcement gap is
+  the axis nobody else claims (Market wiki) and is now vendor-stated.
+- **One quotation, no other proof.** Anthropic's memory doc — "Claude treats
+  them as context, not enforced configuration" — is placed at the top of the
+  Why section, cited to the primary page. It is the only quotation on the
+  site, and it does the arguing three paragraphs used to do. This does not
+  breach the no-social-proof constraint: it is a vendor doc, not a
+  testimonial.
+- **Prose cut from ~1,000 to ~620 visible words** (excluding the terminal
+  transcripts). Every mechanism keeps its animation and its heading and
+  loses its explanatory paragraph; bullets became fragments. The bet: the
+  visuals were always carrying the explanation, and the prose was insurance.
+- **The promoted spotlight now names benefits, not features** — "rules that
+  bite", "the fleet converges itself", "lessons travel", "upkeep runs
+  itself" — matching the Positioning wiki's three-benefit distillation.
+- **The four attackable claims are retired**: "the same sweep runs again in
+  CI" → "the repo-facing ones run again in CI"; "leave by deleting a
+  directory and two hook entries" → the FAQ now lists all four artifacts;
+  "one conversation to adopt" → "One conversation, then one wire-up", with
+  the manual runner step named as step 3; and "AI coding agents" → Claude
+  Code, with a FAQ entry saying so plainly.
 
 ## Positioning decisions (2026-07-28, initial)
 
@@ -59,12 +88,13 @@ research they lean on is the [Market wiki](../Market/README.md):
   data-driven from `site/data/promoted.js` and rendered client-side, so a
   scheduled promo pass edits one file and cannot break layout.
 - Deploys ride GitHub Pages' artifact flow
-  ([deploy-pages.yml](../../.github/workflows/deploy-pages.yml)) on pushes to
-  `main` touching `site/**`; the claudinite.com domain is attached in the
-  repository's Pages settings.
+  ([deploy-pages.yml](../../.github/workflows/deploy-pages.yml)) on every
+  push to `main` (the workflow carries no `paths:` filter); the
+  claudinite.com domain is attached in the repository's Pages settings.
 
 ## Sources
 
+- [Claude Code docs: memory](https://code.claude.com/docs/en/memory) — the source of the one quotation the page carries, "Claude treats them as context, not enforced configuration" (primary page, opened directly 2026-08-21)
 - [Paperclip](https://paperclip.ing/) — the style reference: monochrome,
   typography-led SaaS landing page; hero → features → proof → one-command
   install CTA structure, FAQ for objection handling.
@@ -108,6 +138,19 @@ this page are owner calls, not researched claims.
   assets); generate one so link shares render a card.
 
 ## Growth log
+
+- **2026-08-21** — owner-directed messaging refocus (repo issue #233). New
+  research first (Market wiki: Anthropic's own docs state the
+  context-is-not-enforcement premise; the AGENTS.md request closed on an
+  import; auto memory is machine-local; Ruler re-read and still
+  distribution-only), then the benefit re-evaluation (Positioning wiki: three
+  benefits carry the product), then the page. Recorded above as the messaging
+  refocus section. Two standing open questions closed by being *done* rather
+  than answered — sharpen the differentiation line, and fix the four
+  attackable claims — and three new ones opened about what the cut might
+  have cost. `## Key insights` rewritten: five of seven bullets changed,
+  because the page's top-line understanding of what the site should say
+  changed.
 
 - **2026-07-28** — page created alongside the initial site build: launch
   positioning, promoted-feature choices, agentic-update architecture, and

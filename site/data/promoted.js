@@ -24,20 +24,20 @@ window.CLAUDINITE = {
 
   spotlight: [
     {
-      title: 'Checks, not suggestions',
-      tag: 'Every pack ships executable checks — blocking or advisory — run at session stop and again in CI.',
+      title: 'Rules that bite',
+      tag: 'Checks run at session stop; the repo-facing ones run again in CI. Blocking means blocking.',
     },
     {
-      title: 'Nightly baselining',
-      tag: 'Each repo re-vendors the latest canon on its own schedule; updates land as auto-merged PRs.',
+      title: 'The fleet converges itself',
+      tag: 'Each repo re-vendors the canon nightly; updates land as PRs through your own CI.',
     },
     {
-      title: 'The growth loop',
-      tag: 'Lessons mined from real sessions become local rules, then canon — one repo pays, every repo learns.',
+      title: 'Lessons travel',
+      tag: 'What one repo learns becomes a local rule, then canon — and every repo inherits it.',
     },
     {
-      title: 'Scheduled upkeep',
-      tag: 'Tidy sweeps, wiki growth, prose→checks conversion — the boring maintenance runs itself.',
+      title: 'Upkeep runs itself',
+      tag: 'Tidy sweeps, wiki growth, prose→checks conversion, on the repo’s own schedule.',
     },
   ],
 

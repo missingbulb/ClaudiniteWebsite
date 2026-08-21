@@ -11,13 +11,13 @@ through [`product-requirements/`](../product-requirements/README.md).
 
 ## Key insights
 
-- Claudinite's moat is the closed loop rivals lack: enforced checks plus auto-PR convergence plus a measured growth cycle.
+- Anthropic's own docs now say rules are "context, not enforced configuration" — the benefit claim needs no argument, only a citation.
+- The moat and the message are one trio: rules that bite, a fleet that converges itself, lessons that travel. The rest is mechanism.
 - The sharpest line available: rivals check the rules *arrived*; Claudinite checks the rules are *followed*.
 - Hard-coded single-tenant canon, Claude-Code-only, GitHub-only: the three gaps between today's repo and a sellable product.
 - Versioning is track-canon-head with no pinning or rollback — the opposite of what every winning comparable shipped.
 - SEO white space is real: multi-repo consistency and enforcement queries rank only blogs; "sync rules" is already taken.
 - "Context engineering" has the borrowed credibility; "AI-ready codebase" is unclaimed; "rules management" never formed.
-- The site's mechanism claims all verify against the implementation; its edges (CI-sweep scope, leave-story) are attackable.
 
 ## What Claudinite actually is (offering inventory)
 
@@ -205,9 +205,10 @@ Sources used directly on this page:
   canon (unlocks enterprise), AGENTS.md emission (unlocks multi-tool
   fleets), or pinning/channels (de-risks every fleet) — the requirements
   sink proposes an ordering; the owner decides. New evidence for the second
-  of the three as of 2026-08-02: the AGENTS.md demand signal (#6235, 4,487 👍,
-  eleven months unshipped) is the largest quantified demand in the research
-  set — see Market and Customers.
+  of the three as of 2026-08-21: the AGENTS.md demand signal (#6235,
+  4,944 👍) is the largest quantified demand in the research set, and its
+  `completed` close on an import rather than native reading makes the
+  interop whitespace durable — see Market and Customers.
 - Can the aggregation-pane gap be closed by *feeding* existing scorecard
   products (a Cortex/Port integration exposing pack-conformance facts)
   instead of building a dashboard? Would turn the from-above encroachers
@@ -227,6 +228,16 @@ Sources used directly on this page:
   multi-day dark spell this repo hit (PR #186)?
 
 ## Growth log
+
+- **2026-08-21** — benefit re-evaluation pass, commissioned to refocus the
+  site (repo issue #233). The three strengths that survive a cold read are
+  enforcement, convergence and travelling lessons; strengths 1 and 3 gained
+  vendor-primary citations rather than argued ones (Market wiki: "context,
+  not enforced configuration"; auto memory "machine-local"), which is what
+  lets the site state them in a line instead of a paragraph. Gap 2's
+  evidence updated for #6235's `completed` close on an import. `## Key
+  insights` gained the vendor-states-the-premise finding and the
+  three-benefit distillation; nothing was superseded.
 
 - **2026-08-16** — spot-check pass (Context: the product-wiki tree moved in
   the engine 3→4 window). Gap 6 was stale on two counts: it cited the

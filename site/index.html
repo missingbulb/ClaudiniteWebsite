@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Claudinite — Convention packs for AI coding agents</title>
-<meta name="description" content="Claudinite packages your engineering conventions as versioned packs — rules agents load, checks that block drift, skills, and scheduled upkeep — vendored into every repo and kept current automatically.">
+<title>Claudinite — agent conventions with teeth</title>
+<meta name="description" content="CLAUDE.md is context, not enforcement. Claudinite ships your conventions as packs — rules, blocking checks, skills, scheduled upkeep — vendored into every repo and kept current nightly.">
 <meta name="theme-color" content="#faf8f4">
 <link rel="canonical" href="https://claudinite.com/">
-<meta property="og:title" content="Claudinite — Convention packs for AI coding agents">
-<meta property="og:description" content="Stop copy-pasting agent rules. Versioned packs with enforcement, procedure, and scheduled work — synced to every repo, nightly.">
+<meta property="og:title" content="Claudinite — agent conventions with teeth">
+<meta property="og:description" content="Rules your agent can skip aren’t rules. Packs carry checks that block, and a nightly PR that keeps every repo current.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://claudinite.com/">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -39,19 +39,18 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">Convention packs for AI coding agents</p>
-      <h1>Stop copy-&#8203;pasting agent&nbsp;rules.</h1>
+      <p class="eyebrow">Convention packs for Claude Code</p>
+      <h1>Rules your agent can’t&nbsp;skip.</h1>
       <p class="lede">
-        Claudinite packages your engineering conventions as versioned
-        <strong>packs</strong> — prose your agents load, <strong>checks that
-        block drift</strong>, skills, and scheduled upkeep — vendored into
-        every repo and kept current automatically.
+        A pack is a convention plus its <strong>checks</strong>, its skills and
+        its scheduled work — one version, vendored into every repo, refreshed
+        nightly.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#adopt">Adopt it in your repo</a>
-        <a class="btn btn-ghost" href="https://github.com/missingbulb/Claudinite" rel="noopener">View the canon on GitHub</a>
+        <a class="btn btn-ghost" href="https://github.com/missingbulb/Claudinite" rel="noopener">The canon on GitHub</a>
       </div>
-      <p class="hero-fine">Plain files in your repo. No service, no lock-in — leave by deleting a directory.</p>
+      <p class="hero-fine">Plain files in your repo. No service, no account.</p>
     </div>
 
     <!-- Fleet diagram: one canon, many repos; a repo drifts, the pulse re-syncs it -->
@@ -77,21 +76,27 @@
   <div class="wrap">
     <p class="eyebrow">Why this exists</p>
     <h2>Prose doesn’t scale. Copies rot.</h2>
+
+    <blockquote class="quote reveal">
+      <p>“Claude treats them as context, not enforced configuration.”</p>
+      <cite><a href="https://code.claude.com/docs/en/memory" rel="noopener">Claude Code docs, on CLAUDE.md</a></cite>
+    </blockquote>
+
     <div class="why-grid">
       <article class="why-card reveal">
-        <h3><span class="why-num">01</span> Drift</h3>
-        <p>Every <code>CLAUDE.md</code> and <code>AGENTS.md</code> forks the day you paste it. Ten repos, ten slowly diverging rulebooks — and no way to tell which one is right.</p>
+        <h3><span class="why-num">01</span> No teeth</h3>
+        <p>Nothing fails when a written convention is ignored. So it is.</p>
       </article>
       <article class="why-card reveal">
-        <h3><span class="why-num">02</span> No teeth</h3>
-        <p>A convention written as prose is a suggestion. Agents skip it under pressure; humans skip it on Fridays. Nothing fails when it’s ignored, so it is.</p>
+        <h3><span class="why-num">02</span> Drift</h3>
+        <p>Ten repos, ten forks of one rulebook. No way to tell which is right.</p>
       </article>
       <article class="why-card reveal">
         <h3><span class="why-num">03</span> Stale</h3>
-        <p>Your team learns something hard-won in one repo. The other nine never hear about it. Best practice moves monthly; hand-syncing doesn’t.</p>
+        <p>One repo learns it the hard way. The other nine never hear.</p>
       </article>
     </div>
-    <p class="why-kicker reveal">Rule-sync tools move <em>files</em>. Claudinite moves <strong>enforcement, procedure, and scheduled work</strong> — as one versioned unit.</p>
+    <p class="why-kicker reveal">Rule-sync tools check the rules <em>arrived</em>. Claudinite checks they were <strong>followed</strong>.</p>
   </div>
 </section>
 
@@ -103,30 +108,30 @@
     <div class="mech-copy">
       <p class="eyebrow">Mechanism 01</p>
       <h2>The pack</h2>
-      <p>A pack is a convention that ships with its own means of survival. Not a document — a versioned unit with four layers, vendored into each consuming repo.</p>
+      <p>A convention that ships with its own means of survival — four layers, one version.</p>
       <ul class="mech-points">
-        <li><strong>Rules</strong> are injected into every agent session, automatically.</li>
-        <li><strong>Checks</strong> are executable — they fail the session or CI when work drifts, and the failure message carries the fix.</li>
-        <li><strong>Skills</strong> load on demand, so procedure never bloats context.</li>
-        <li><strong>Tasks</strong> run on the repo’s own scheduler, unattended.</li>
+        <li><strong>Rules</strong> — every session, automatically.</li>
+        <li><strong>Checks</strong> — executable: they fail the session, or the PR.</li>
+        <li><strong>Skills</strong> — loaded on demand, never carried.</li>
+        <li><strong>Tasks</strong> — upkeep, on your repo’s schedule.</li>
       </ul>
     </div>
     <div class="pack-stack" role="img" aria-label="Exploded view of a pack: RULES.md prose, checks, skills, and scheduled tasks.">
       <div class="pack-layer reveal" data-delay="0">
         <div class="pack-layer-head"><span class="file">RULES.md</span><span class="pill">every session</span></div>
-        <p>“Fix warnings, never tolerate them.” “An approval applies only backward.” The always-loaded working discipline.</p>
+        <p>“Fix warnings, never tolerate them.” The always-loaded discipline.</p>
       </div>
       <div class="pack-layer reveal" data-delay="1">
         <div class="pack-layer-head"><span class="file">checks/*.mjs</span><span class="pill pill-red">blocking</span><span class="pill pill-amber">advisory</span></div>
-        <p><code>reference-integrity</code> · <code>task-lifecycle</code> · <code>warning-suppression</code> — deterministic gates at session stop and in CI.</p>
+        <p><code>reference-integrity</code> · <code>task-lifecycle</code> · <code>warning-suppression</code></p>
       </div>
       <div class="pack-layer reveal" data-delay="2">
         <div class="pack-layer-head"><span class="file">skills/</span><span class="pill">on demand</span></div>
-        <p><code>merge-to-main</code> · <code>bug-investigation</code> · <code>writing-tests</code> — step-by-step procedure, loaded when the work calls for it.</p>
+        <p><code>merge-to-main</code> · <code>bug-investigation</code> · <code>writing-tests</code></p>
       </div>
       <div class="pack-layer reveal" data-delay="3">
         <div class="pack-layer-head"><span class="file">tasks/</span><span class="pill">scheduled</span></div>
-        <p><code>baselining</code> · <code>tidy-branches</code> · <code>wiki-growth</code> — upkeep the repo runs on itself, unattended.</p>
+        <p><code>baselining</code> · <code>tidy-branches</code> · <code>wiki-growth</code></p>
       </div>
     </div>
   </div>
@@ -138,26 +143,24 @@
     <div class="mech-copy">
       <p class="eyebrow">Mechanism 02</p>
       <h2>The session loop</h2>
-      <p>Hooks wire packs into Claude Code. Rules load at session start; checks run when the agent tries to stop. Drift is caught <em>before</em> it merges — and the finding is the instruction.</p>
+      <p>Checks run when the agent tries to stop. The finding <em>is</em> the instruction.</p>
       <ul class="mech-points">
-        <li>Blocking findings hold the session open until fixed.</li>
-        <li>Advisory findings surface without blocking.</li>
-        <li>The same sweep runs again in CI, so nothing slips past on a laptop.</li>
+        <li>Blocking findings hold the session open.</li>
+        <li>Advisory findings just surface.</li>
+        <li>The repo-facing ones run again in CI — a bypassed hook can’t merge drift.</li>
       </ul>
       <button class="btn btn-ghost btn-replay" id="term-replay" type="button">Replay ↺</button>
     </div>
     <div class="terminal" id="session-term" aria-label="Terminal transcript: checks catch a missing issue reference, the agent fixes it, all checks pass.">
       <div class="term-bar"><span></span><span></span><span></span><em>claude — your-repo</em></div>
       <div class="term-body" id="term-body">
-        <p class="t-line t-dim" data-t="0">$ claude</p>
-        <p class="t-line t-hook" data-t="1">◆ SessionStart · packs loaded: basics · git-github · html — rules injected</p>
+        <p class="t-line t-hook" data-t="1">◆ SessionStart · packs loaded: basics · git-github · html</p>
         <p class="t-line" data-t="2">&gt; implement the signup flow</p>
-        <p class="t-line t-dim" data-t="3">… agent edits files, commits, tries to end the session …</p>
-        <p class="t-line t-hook" data-t="4">◆ Stop · running work-scope checks</p>
-        <p class="t-line t-bad" data-t="5">✗ task-lifecycle <span class="t-tag">blocking</span> none of 3 commits references an issue (#N)</p>
-        <p class="t-line t-dim" data-t="6">&nbsp;&nbsp;fix: reference the task issue in a commit — e.g. “refs #42”</p>
+        <p class="t-line t-dim" data-t="3">… edits, commits, tries to end the session …</p>
+        <p class="t-line t-hook" data-t="4">◆ Stop · running checks</p>
+        <p class="t-line t-bad" data-t="5">✗ task-lifecycle <span class="t-tag">blocking</span> no commit references an issue</p>
+        <p class="t-line t-dim" data-t="6">&nbsp;&nbsp;fix: reference the task issue — e.g. “refs #42”</p>
         <p class="t-line" data-t="7">&gt; git commit --amend -m "Add signup flow (refs #42)"</p>
-        <p class="t-line t-hook" data-t="8">◆ Stop · running work-scope checks</p>
         <p class="t-line t-good" data-t="9">✓ 14 checks · all green — session ends clean</p>
       </div>
     </div>
@@ -170,11 +173,11 @@
     <div class="mech-copy">
       <p class="eyebrow">Mechanism 03</p>
       <h2>No repo falls behind</h2>
-      <p>Every consumer runs an hourly scheduler on its own repo-hashed minute — this site’s repo fires at <code>:26</code> — and a nightly <strong>baselining</strong> task re-vendors the latest canon.</p>
+      <p>Every repo runs an hourly scheduler — this site’s fires at <code>:26</code> — and re-vendors the canon nightly.</p>
       <ul class="mech-points">
-        <li>Updates arrive as ordinary PRs, gated by CI, auto-merged when green.</li>
-        <li>The canon is <em>vendored</em> — pinned, tracked, reviewable in your own history.</li>
-        <li>Sessions and CI read the same snapshot; there’s nothing to fetch and nothing to trust at runtime.</li>
+        <li>Updates arrive as PRs, gated by your CI.</li>
+        <li>The canon is vendored — pinned, tracked, in your history.</li>
+        <li>Nothing fetched at runtime.</li>
       </ul>
     </div>
     <div class="fleet-board" role="img" aria-label="Eight repositories flip from an old canon ref to the latest as the nightly baselining wave passes.">
@@ -184,7 +187,7 @@
         <span class="canon-pulse" id="canon-pulse" aria-hidden="true"></span>
       </div>
       <div class="repo-grid" id="repo-grid"></div>
-      <p class="viz-caption">nightly baselining · PR → CI → auto-merge</p>
+      <p class="viz-caption">nightly baselining · PR → CI → merge</p>
     </div>
   </div>
 </section>
@@ -195,13 +198,13 @@
     <div class="mech-copy">
       <p class="eyebrow">Mechanism 04</p>
       <h2>One repo pays.<br>Every repo learns.</h2>
-      <p>Claudinite doesn’t just distribute conventions — it grows them. Lessons are mined from real work: merged sessions, issues, PRs. Keepers land in the repo’s local packs, get deduped against the canon, and the portable ones are promoted so the whole fleet inherits them.</p>
+      <p>Lessons mined from real sessions land in your local packs; portable ones are promoted, and the fleet inherits them.</p>
       <p class="ladder" aria-label="The promotion ladder: prose becomes a skill becomes a check.">
         <span class="ladder-step">prose</span><span class="ladder-arrow">→</span>
         <span class="ladder-step">skill</span><span class="ladder-arrow">→</span>
         <span class="ladder-step ladder-final">check</span>
       </p>
-      <p class="mech-fine">The promotion ladder: a check relieves every session’s context completely; prose only relocates it. Growth writes more checks and less prose.</p>
+      <p class="mech-fine">A check frees the context prose only relocates.</p>
     </div>
     <figure class="growth-viz">
       <svg viewBox="0 0 560 560" role="img">
@@ -237,7 +240,7 @@
     <ol class="updates" id="updates-slot"></ol>
 
     <noscript>
-      <p>The canon currently ships 8 packs — basics, git-github, github-actions, grow_with_claudinite, tidy-repo, product-wiki, html, barriers — carrying 25+ deterministic checks, 15+ skills, and 10 scheduled task types. Browse them in <a href="https://github.com/missingbulb/Claudinite" rel="noopener">the canon repository</a>.</p>
+      <p>Eight packs ship today — basics, git-github, github-actions, grow_with_claudinite, tidy-repo, product-wiki, html, barriers — carrying 25+ checks, 15+ skills and 10 scheduled task types. Browse them in <a href="https://github.com/missingbulb/Claudinite" rel="noopener">the canon repository</a>.</p>
     </noscript>
   </div>
 </section>
@@ -247,20 +250,20 @@
   <div class="wrap adopt-grid">
     <div class="mech-copy">
       <p class="eyebrow">Adopt</p>
-      <h2>One conversation to&nbsp;adopt</h2>
+      <h2>One conversation,<br>then one wire-up</h2>
       <ol class="steps">
-        <li><b>Open Claude Code in your repo</b> and point it at the canon: <em>“Adopt Claudinite — follow missingbulb/Claudinite’s bootstrap.md.”</em></li>
-        <li><b>Answer the short adoption interview.</b> Bootstrap vendors the canon, declares your packs, wires the hooks, scheduler and CI sweep, and lands the whole thing green as one PR.</li>
-        <li><b>Merge it.</b> From here the scheduler takes over: nightly baselining, tidy sweeps, growth extraction. Your repos stop drifting today.</li>
+        <li><b>Point Claude Code at the canon.</b> <em>“Adopt Claudinite — follow missingbulb/Claudinite’s bootstrap.md.”</em></li>
+        <li><b>Answer the interview.</b> It vendors the canon, declares your packs, wires hooks, scheduler and CI — one green PR.</li>
+        <li><b>Merge, then wire the runner once</b> — an endpoint and a token, the one manual step. After that it runs itself.</li>
       </ol>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://github.com/missingbulb/Claudinite" rel="noopener">Get Claudinite</a>
         <a class="btn btn-ghost" href="https://github.com/missingbulb/ClaudiniteWebsite" rel="noopener">See a consumer repo</a>
       </div>
       <ul class="assure">
-        <li>Plain files, vendored into your repo — no server, no account, no runtime dependency.</li>
-        <li>Complements <code>AGENTS.md</code> / <code>CLAUDE.md</code> — packs carry what prose can’t: enforcement.</li>
-        <li>Every automated change is a PR through your CI. Nothing lands silently.</li>
+        <li>Plain vendored files — no server, no account.</li>
+        <li>Works alongside your <code>CLAUDE.md</code>.</li>
+        <li>Every automated change is a PR through your CI.</li>
       </ul>
     </div>
     <div class="terminal terminal-light" aria-label="Terminal: adopting Claudinite in a repository.">
@@ -272,8 +275,7 @@
           <p class="t-line t-dim">◆ fetching canon · running the adoption interview…</p>
           <p class="t-line">✓ canon vendored at <span class="mono">.claudinite/shared/</span> (ref <span class="mono">005edd2</span>)</p>
           <p class="t-line">✓ packs declared: basics · git-github · github-actions</p>
-          <p class="t-line">✓ hooks registered: SessionStart · Stop · PreToolUse</p>
-          <p class="t-line">✓ scheduler wired (hourly, minute :26) · CI sweep added</p>
+          <p class="t-line">✓ hooks registered · scheduler wired (minute :26) · CI sweep added</p>
           <p class="t-line t-good">✓ conformance sweep green — bootstrap PR opened</p>
         </div>
       </div>
@@ -288,28 +290,28 @@
     <h2>Fair questions</h2>
 
     <details>
-      <summary>What exactly gets added to my repo?</summary>
-      <p>A tracked, read-only vendored canon under <code>.claudinite/shared/</code> (engine + packs), a pack declaration in <code>.claudinite-checks.json</code>, Claude Code hooks in <code>.claude/settings.json</code>, one thin scheduler workflow, and a conformance step in CI. All of it arrives as a single reviewable bootstrap PR.</p>
+      <summary>What gets added to my repo?</summary>
+      <p>A vendored canon, a pack declaration, hooks, a scheduler workflow and a CI step — as one reviewable PR.</p>
     </details>
     <details>
-      <summary>Will it fight my existing CLAUDE.md or AGENTS.md?</summary>
-      <p>No. Packs carry the layer those files can’t — enforcement, procedure, scheduled work — and Claudinite’s own advisory check nudges your root <code>CLAUDE.md</code> to stay lean and universally applicable, which is where community best practice already points.</p>
+      <summary>Will it fight my CLAUDE.md?</summary>
+      <p>No. It adds the layer that file can’t carry, and keeps it lean.</p>
     </details>
     <details>
       <summary>What happens when a check fails?</summary>
-      <p>At session stop, blocking findings hold the session open — each one states what drifted and how to fix it, so the agent fixes it then and there. The same sweep runs in CI on every PR, so a bypassed hook still can’t merge drift.</p>
+      <p>It holds the session open and states what drifted and how to fix it. Repo-facing checks run again on every PR.</p>
     </details>
     <details>
-      <summary>Do I need a server or an account?</summary>
-      <p>No. Claudinite is files in your repo plus your existing GitHub Actions. There is no hosted service, nothing phones home, and leaving is deleting a directory and two hook entries.</p>
+      <summary>Which agents does it support?</summary>
+      <p>Claude Code today. Other agents keep reading your <code>CLAUDE.md</code>.</p>
     </details>
     <details>
-      <summary>How do updates reach my repos?</summary>
-      <p>A nightly baselining task re-vendors the latest canon and opens a PR; CI runs; green PRs auto-merge (that’s configurable). Your fleet converges on the current canon without anyone hand-copying anything.</p>
+      <summary>How do I leave?</summary>
+      <p>Delete <code>.claudinite/</code>, its hook entries, the scheduler workflow and the CI step.</p>
     </details>
     <details>
-      <summary>Can it learn rules specific to my codebase?</summary>
-      <p>Yes — that’s the growth lifecycle. Lessons extracted from your merged sessions and PRs land in your repo’s <em>local</em> packs. Portable ones can be promoted into the shared canon; repo-specific ones stay local. Either way they graduate from prose toward checks.</p>
+      <summary>Can it learn my codebase’s own rules?</summary>
+      <p>Yes — lessons from your merged sessions land in local packs; portable ones reach the canon.</p>
     </details>
   </div>
 </section>
@@ -334,7 +336,7 @@
     </nav>
   </div>
   <div class="wrap footer-meta">
-    <p>This page practices what it sells: it was designed, built, and shipped by an agent session governed by Claudinite’s own checks, and is updated by scheduled agent runs.</p>
+    <p>Built and shipped by an agent session governed by Claudinite’s own checks.</p>
     <p>© 2026 Claudinite</p>
   </div>
 </footer>
