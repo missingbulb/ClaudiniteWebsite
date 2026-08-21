@@ -5,9 +5,10 @@ Claudinite's strengths, market position, and the candid gaps in the offering
 [`Methods/`](../Methods/README.md), [`Business/`](../Business/README.md) and
 [`Customers/`](../Customers/README.md) research against what the product
 actually ships today (assessed from the vendored implementation in this
-repo, cited as `repo:` paths). Positioning *decisions* for the marketing
-site stay in [`Website/`](../Website/README.md); requirement candidates go
-through [`product-requirements/`](../product-requirements/README.md).
+repo, cited as `repo:` paths). How the category words its own pages is
+[`Website/`](../Website/README.md); requirement candidates, including every
+decision about our own marketing site, go through
+[`product-requirements/`](../product-requirements/README.md).
 
 ## Key insights
 

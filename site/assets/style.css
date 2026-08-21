@@ -319,7 +319,6 @@ h1 { margin-top: 0.2em; }
 
 /* ------------------------------ canon ------------------------------ */
 .canon { padding: clamp(64px, 10vw, 130px) 0; border-top: 1px solid var(--line); background: var(--paper-2); }
-.canon-sub { margin: 2.6em 0 1em; font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
 
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 2em 0 2.6em; }
 .stat {
@@ -340,28 +339,19 @@ h1 { margin-top: 0.2em; }
 .spot:first-child h3 { color: #7fd4ac; font-size: 1.4rem; }
 .spot p { font-size: 0.94rem; color: var(--ink-soft); max-width: none; }
 
-.packs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-.pack-card {
-  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 18px 20px; transition: border-color 0.2s ease, transform 0.2s ease;
+/* The pack field: many packs, a handful declared. No labels — the point is
+   the count and the choosing, not which ones. */
+.pack-field { margin: 0 0 2.4em; }
+.pack-field svg { width: 100%; height: auto; display: block; }
+.pf-cell {
+  fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; opacity: 0.22;
 }
-.pack-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.pack-card h4 { font-family: var(--mono); font-size: 0.95rem; margin-bottom: 6px; }
-.pack-card h4::before { content: "◆ "; color: var(--accent); }
-.pack-card p { font-size: 0.88rem; color: var(--ink-soft); max-width: none; }
-.pack-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.pack-chips span {
-  font-family: var(--mono); font-size: 0.66rem; color: var(--ink-soft);
-  border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px; background: var(--paper-2);
+.pf-cell.pf-on {
+  fill: var(--accent-wash); stroke: var(--accent-deep); stroke-width: 1.8; opacity: 1;
+  animation: pf-glow 9s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.7s);
 }
-
-.updates { list-style: none; display: grid; gap: 0; border-top: 1px solid var(--line); }
-.updates li {
-  display: grid; grid-template-columns: 110px 1fr; gap: 18px; align-items: baseline;
-  padding: 14px 4px; border-bottom: 1px solid var(--line); font-size: 0.95rem;
-}
-.updates time { font-family: var(--mono); font-size: 0.76rem; color: var(--accent-deep); }
-.updates p { max-width: none; color: var(--ink-soft); }
+@keyframes pf-glow { 0%, 100% { opacity: 1; } 45% { opacity: 0.45; } }
 
 /* ------------------------------ adopt ------------------------------ */
 .adopt { padding: clamp(64px, 10vw, 130px) 0; border-top: 1px solid var(--line); }
@@ -403,6 +393,8 @@ h1 { margin-top: 0.2em; }
   font-size: 0.8rem; color: var(--ink-soft);
 }
 .footer-meta p { max-width: 72ch; }
+/* The copyright carries the released version in its title tooltip. */
+.copyright { cursor: help; }
 
 /* ---------------------------- responsive --------------------------- */
 @media (max-width: 940px) {
@@ -411,10 +403,8 @@ h1 { margin-top: 0.2em; }
   .why-grid { grid-template-columns: 1fr; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .spotlight { grid-template-columns: 1fr; }
-  .packs-grid { grid-template-columns: 1fr; }
   .repo-grid { grid-template-columns: repeat(2, 1fr); }
   .nav nav a:not(.nav-cta) { display: none; }
-  .updates li { grid-template-columns: 1fr; gap: 2px; }
 }
 
 /* -------------------------- reduced motion ------------------------- */
@@ -422,8 +412,8 @@ h1 { margin-top: 0.2em; }
   html { scroll-behavior: auto; }
   .reveal, #term-body .t-line { opacity: 1; transform: none; transition: none; }
   .adopt-result { opacity: 1; }
-  .caret, .clock-hand, .loop-flow, .crystal-center, .canon-pulse { animation: none !important; }
-  .btn, .pack-card { transition: none; }
+  .caret, .clock-hand, .loop-flow, .crystal-center, .canon-pulse, .pf-cell { animation: none !important; }
+  .btn { transition: none; }
 }
 
 /* ---------- Legal pages (privacy) ---------- */

@@ -1,163 +1,158 @@
 # Website
 
-The marketing site itself as a research subject: the positioning, promoted
-features, and conversion decisions behind claudinite.com (`site/` in this
-repo), recorded so future passes can revisit them against evidence instead of
-re-deriving them. The site is built for frequent agentic refreshes — the
-rotating promo content lives in one data file
-([site/data/promoted.js](../../site/data/promoted.js), contract in
-[site/README.md](../../site/README.md)); this page is where the *reasoning*
-behind what gets promoted accumulates.
+How this category *markets* itself: the words on rivals' and adjacent
+vendors' landing pages and READMEs — what they claim, what they carefully
+don't, and which vocabulary is being taken. Capability research lives in
+[`Market/`](../Market/README.md); this page reads the same field one layer
+up, at the copy, because the messaging gap and the capability gap are not
+the same gap and close at different speeds.
+
+Claudinite's *own* positioning decisions are not research and do not live
+here — they are requirements, in
+[`product-requirements/`](../product-requirements/README.md) (R11–R14), with
+the mechanics of editing the page in
+[site/README.md](../../site/README.md).
 
 ## Key insights
 
-- The headline names the enforcement gap, not the category — "convention packs" means nothing to a cold visitor.
-- The page's strongest asset is Anthropic's own sentence: CLAUDE.md is "context, not enforced configuration."
-- Promoted differentiation: rivals check the rules arrived; Claudinite checks they were followed. Still true 2026-08-21.
-- Three benefits carry the page — rules that bite, a fleet that converges itself, lessons that travel; the rest is mechanism.
-- Copy cut ~38% on 2026-08-21: every claim keeps its visual, loses its paragraph.
-- The four attackable claims are fixed, which cost a promise: adoption is now "one conversation, then one wire-up".
-- No invented testimonials, stars or adoption numbers until real proof points exist — hence zero social proof today.
+- No rival's headline claims its rules are followed — every one claims the rules *arrived*, and that gap is a year old.
+- The governance vocabulary is being taken while the mechanism isn't: ai-rulez markets "governance" it ships as prose.
+- Anthropic's own docs are the category's most quotable marketing copy: "context, not enforced configuration".
+- The category sells the writing-once relief; nobody sells the failure it prevents.
+- Enterprise vendors market to the anxiety directly ("AI is writing your code. Who's watching your standards?").
+- Every rival page is a README or a docs site; nobody in the rule-sync tier has a marketing page worth the name.
+- Where a rival does say "verify", it always resolves to config-drift — committed output matching its source.
 
-## Messaging refocus (2026-08-21)
+## What the rule-sync tier actually claims
 
-Owner-directed pass (repo issue #233): re-research, re-evaluate the benefits,
-and cut the word count hard. What changed and why:
+Read directly, not from search snippets, on the dates given.
 
-- **Headline** moved from "Stop copy-pasting agent rules." to "Rules your
-  agent can't skip." The copy-paste pain is real but shared with the
-  rule-sync category, which sells the copy-paste fix; the enforcement gap is
-  the axis nobody else claims (Market wiki) and is now vendor-stated.
-- **One quotation, no other proof.** Anthropic's memory doc — "Claude treats
-  them as context, not enforced configuration" — is placed at the top of the
-  Why section, cited to the primary page. It is the only quotation on the
-  site, and it does the arguing three paragraphs used to do. This does not
-  breach the no-social-proof constraint: it is a vendor doc, not a
-  testimonial.
-- **Prose cut from ~1,000 to ~620 visible words** (excluding the terminal
-  transcripts). Every mechanism keeps its animation and its heading and
-  loses its explanatory paragraph; bullets became fragments. The bet: the
-  visuals were always carrying the explanation, and the prose was insurance.
-- **The promoted spotlight now names benefits, not features** — "rules that
-  bite", "the fleet converges itself", "lessons travel", "upkeep runs
-  itself" — matching the Positioning wiki's three-benefit distillation.
-- **The four attackable claims are retired**: "the same sweep runs again in
-  CI" → "the repo-facing ones run again in CI"; "leave by deleting a
-  directory and two hook entries" → the FAQ now lists all four artifacts;
-  "one conversation to adopt" → "One conversation, then one wire-up", with
-  the manual runner step named as step 3; and "AI coding agents" → Claude
-  Code, with a FAQ entry saying so plainly.
+- **Ruler** (2026-08-21, README opened directly): *"Ruler solves this by
+  providing a **single source of truth** for all your AI agent instructions,
+  automatically distributing them to the right configuration files."* The
+  one CI example in its docs verifies *"the committed agent files (AGENTS.md,
+  CLAUDE.md, skills) match the `.ruler/` source"*. Distribution plus
+  file-drift; no claim about the agent's behaviour, then or now.
+- **ai-rulez** (2026-08-21, README opened directly) is the interesting one:
+  it has moved furthest up the vocabulary ladder. Hero: *"A complete
+  development workflow for AI coding tools"*, and the pitch is the
+  write-once relief — *"Write your rules, context, skills, agents, and
+  commands once in `.ai-rulez/`. Run `generate`. Get native configs for
+  every tool you use."* It ships a builtin **`ai-governance`** domain whose
+  bullets read like enforcement (*"Verification before claiming success.
+  Critical review of subagent output."*). Checked against its own definition
+  of a domain, those are **rule text injected into agent configs**, not
+  checks that run: a domain contains *"Rules — What AI must/must not do;
+  Context…; Skills…; Agents…; Commands…"*, and `verify` is scoped to
+  *"prove committed output matches its sources"*. So the governance word is
+  taken; the governance mechanism is not.
+- **rulesync.dev** markets on the multi-repo axis Claudinite also claims
+  ("sync CLAUDE.md across repos" is its own SEO ground). The page is
+  egress-blocked to this repo's fetcher, so its current wording is *not*
+  verified here — the Market wiki's capability read stands, the copy read
+  does not. Marked in Open questions rather than asserted.
 
-## Positioning decisions (2026-07-28, initial)
+Across the tier the shape is constant: the promise is **relief from writing
+it twice**, never **the failure that follows when the rules are ignored**.
+Nobody in it has a marketing page — a README on GitHub is the whole funnel,
+which is also why a real page is cheap ground to take.
 
-Decisions made for launch — owner-editable calls, not researched claims; the
-research they lean on is the [Market wiki](../Market/README.md):
+## The vocabulary arms race
 
-- **Audience**: teams running Claude Code / AI coding agents across many
-  repositories; the individual staff-plus engineer as the entry point.
-- **Headline**: "Stop copy-pasting agent rules." Names the substrate pain
-  (CLAUDE.md/AGENTS.md copies drifting) rather than the category, because the
-  category ("convention packs") is unknown to cold visitors.
-- **Differentiation promoted above the fold-adjacent sections**: competitors
-  move *files*; Claudinite moves *enforcement (checks), procedure (skills),
-  and scheduled work (tasks)* as one versioned unit — the axis the Market
-  wiki identifies as the sharpest available gap.
-- **Promoted features (initial four, ordered)**: enforced checks; nightly
-  baselining; the growth loop; scheduled upkeep. Chosen because each is a
-  mechanism competitors in the rule-sync category demonstrably lack, and each
-  has a visual explanation on the page (animated: fleet sync, session loop,
-  baselining board, growth loop).
-- **Primary conversion action**: adopt Claudinite in a repo (the "one
-  conversation to adopt" section); secondary: visit the canon repository.
-  Trust reducers placed at the decision point: no server/account, vendored
-  plain files, every automated change is a PR through CI, leave by deleting a
-  directory.
-- **Style**: monochrome ink-on-paper with one malachite accent, large
-  grotesk headlines, terminal demos, generous whitespace — modeled on
-  paperclip.ing's typography-led minimalism (see Sources) but with an
-  ownable mineral/crystal motif; check-state semantics (red blocking, amber
-  advisory, green pass) are the only other colors.
-- **Honesty constraint**: no invented testimonials, stars, or adoption
-  numbers anywhere on the site; social proof waits until real proof points
-  exist (see Open questions).
+The words are moving faster than the mechanisms, which sets a clock on any
+message built purely on words:
 
-## Site architecture for agentic updates
+- "Governance" now appears in a free OSS tool's README (ai-rulez, above)
+  attached to prose rules.
+- "Drift detection" is marketed by the platform vendor's own team tier
+  (Cursor Teams — Market wiki) for team rule baselines.
+- "Enforce" is used loosely across the tier for config generation.
 
-- Evergreen mechanism explanations are static HTML (`site/index.html`);
-  rotating promo content (stats, spotlight, pack cards, dated updates) is
-  data-driven from `site/data/promoted.js` and rendered client-side, so a
-  scheduled promo pass edits one file and cannot break layout.
-- Deploys ride GitHub Pages' artifact flow
-  ([deploy-pages.yml](../../.github/workflows/deploy-pages.yml)) on every
-  push to `main` (the workflow carries no `paths:` filter); the
-  claudinite.com domain is attached in the repository's Pages settings.
+The line that survives this is the one that names *what is checked*, not
+that something is checked: rivals check the rules **arrived**; Claudinite
+checks they were **followed**. Every word in it is falsifiable against a
+rival's own docs, which is what makes it defensible when their copy moves.
+
+## The best copy in the category belongs to Anthropic
+
+The platform vendor documents the problem more plainly than any vendor in
+the category markets it (memory doc, opened directly 2026-08-21):
+
+- *"Claude treats them as context, not enforced configuration. To block an
+  action regardless of what Claude decides, use a PreToolUse hook instead."*
+- *"Settings rules are enforced by the client regardless of what Claude
+  decides to do. CLAUDE.md instructions shape Claude's behavior but are not
+  a hard enforcement layer."*
+- *"target under 200 lines per CLAUDE.md file"* — because *"longer files
+  consume more context and reduce adherence."*
+
+A quotation from the platform the buyer already trusts costs nothing, cannot
+be dismissed as vendor spin, and is not available to any rival whose product
+*is* the prose those sentences are about.
+
+## How the tier above markets it
+
+The enterprise scorecard vendors sell to the anxiety rather than the
+mechanism, and in doing so educate the buyer for free:
+
+- **Cortex**: *"AI is writing your code. Who's watching your standards?"* —
+  the thesis stated as a headline, by someone else's marketing budget.
+- **Port** positions on the "Agentic SDLC"; **OpsLevel** ships remediation
+  (Tidra) but markets campaigns, not continuous convergence (Market wiki).
+
+Their framing is observation ("who's watching"); the remediation framing
+("nothing merges that drifted") is unoccupied at that altitude.
 
 ## Sources
 
-- [Claude Code docs: memory](https://code.claude.com/docs/en/memory) — the source of the one quotation the page carries, "Claude treats them as context, not enforced configuration" (primary page, opened directly 2026-08-21)
-- [Paperclip](https://paperclip.ing/) — the style reference: monochrome,
-  typography-led SaaS landing page; hero → features → proof → one-command
-  install CTA structure, FAQ for objection handling.
+Capability claims about these same vendors are cited on their own primary
+sources in the [Market wiki](../Market/README.md) and are not re-cited here;
+what follows are the pages this one read for their *copy*.
 
-The competitive claims the positioning leans on are cited in the
-[Market wiki](../Market/README.md), not re-cited here; decisions recorded on
-this page are owner calls, not researched claims.
+- [intellectronica/ruler](https://raw.githubusercontent.com/intellectronica/ruler/main/README.md) — hero and CI-example wording (README opened directly, 2026-08-21)
+- [Goldziher/ai-rulez](https://raw.githubusercontent.com/Goldziher/ai-rulez/main/README.md) — hero, write-once pitch, the `ai-governance` domain, and the definition of a domain / scope of `verify` (README opened directly, 2026-08-21)
+- [Claude Code docs: memory](https://code.claude.com/docs/en/memory) — the three quotations above (primary page, opened directly 2026-08-21)
+- [Cortex: AI is writing your code. Who's watching your standards?](https://www.cortex.io/post/ai-is-writing-your-code-whos-watching-your-standards) — the enterprise-tier headline
+- [Paperclip](https://paperclip.ing/) — the monochrome, typography-led landing-page style this category has no example of
 
 ## Open questions
 
-- **Social proof**: what real proof points exist to put on the site — count
-  of repos on the home fleet, canon commit cadence, GitHub stars once the
-  canon repo is public? The site currently ships zero testimonials/numbers
-  by design.
-- **Canon repo visibility**: the site's CTAs link
-  `github.com/missingbulb/Claudinite` — is that repo public? If not, what
-  should "Get Claudinite" point to until it is?
-- **Domain + analytics**: is claudinite.com DNS connected to Pages yet, and
-  do we want privacy-respecting analytics (e.g. no-cookie counters) to learn
-  which promoted features draw clicks on the adopt CTA?
-- **Commercial model**: the research side now exists — the
-  [Business wiki](../Business/README.md) collects archetypes and price
-  anchors, and the requirements sink carries a proposed model — but the site
-  still ships no pricing page; a pricing/plans decision is an owner call
-  waiting on the requirements distillation being accepted.
-- **Sharpen the differentiation line?** The 2026-07-31 competitor scan
-  (Market wiki) found five rivals now advertise CI-failable *config-drift*
-  checks, so "rivals move files" alone will age; the sharper candidate is
-  "they check the rules arrived; we check the rules are followed." Worth a
-  copy pass on hero/differentiation sections.
-- **Fix the four attackable claims** (Positioning wiki, gap 9): "same sweep
-  in CI" (CI runs world-scope checks only), "leave by deleting a directory
-  and two hook entries" (undercounts the wiring), "one conversation to
-  adopt" (executor routine setup is real work), and generic "AI coding
-  agents" framing (Claude Code only today). Each has a truthful tightening
-  that costs little.
-- **Messaging test**: does "Stop copy-pasting agent rules" outperform a
-  category-first headline ("Convention packs for AI coding agents") with the
-  target audience? Worth a lightweight test once traffic exists.
-- **OG/social image**: the page has no raster og:image yet (SVG-only
-  assets); generate one so link shares render a card.
+- **rulesync.dev's live copy** is unverified — the domain is egress-blocked
+  to this repo's fetcher, and a search snippet is not the page. Needs an
+  unblocked environment or a human; it will not resolve on a later agent
+  pass from here.
+- **Does the write-once promise or the enforcement promise convert better?**
+  The whole tier sells the first and this site sells the second; nothing in
+  the research settles it, and the site has no traffic yet to test it on.
+- **How fast does the vocabulary move?** ai-rulez took "governance" while
+  shipping prose. Worth re-reading the same three READMEs quarterly: the day
+  a rival's headline claims the agent's *work* is checked, the differentiation
+  line needs a new axis, not a rewrite.
+- **Does anyone in the tier publish pricing copy yet?** rulesync.dev's beta
+  was the only commercial signal, and it is the blocked page.
+- **Is there a category page worth studying at all** — an AI-config product
+  with a real marketing site rather than a README? None found in two passes;
+  the style reference remains an unrelated SaaS page.
 
 ## Growth log
 
-- **2026-08-21** — owner-directed messaging refocus (repo issue #233). New
-  research first (Market wiki: Anthropic's own docs state the
-  context-is-not-enforcement premise; the AGENTS.md request closed on an
-  import; auto memory is machine-local; Ruler re-read and still
-  distribution-only), then the benefit re-evaluation (Positioning wiki: three
-  benefits carry the product), then the page. Recorded above as the messaging
-  refocus section. Two standing open questions closed by being *done* rather
-  than answered — sharpen the differentiation line, and fix the four
-  attackable claims — and three new ones opened about what the cut might
-  have cost. `## Key insights` rewritten: five of seven bullets changed,
-  because the page's top-line understanding of what the site should say
-  changed.
-
-- **2026-07-28** — page created alongside the initial site build: launch
-  positioning, promoted-feature choices, agentic-update architecture, and
-  the conversion strategy recorded; open questions seeded for future passes.
-- **2026-07-31** — ecosystem research pass: the competitor-marketing open
-  question is answered (no rival headline claims enforcement — message
-  holds, with a Ruler file-drift footnote), the commercial-model question
-  now points at the new Business wiki and requirements proposal, and two new
-  copy-facing questions added (sharpen the enforcement line; fix the four
-  attackable claims the Positioning wiki identifies).
+- **2026-08-21** — page re-scoped, on owner instruction, from a log of *our
+  own* site decisions to research about *how this category markets itself*.
+  The decisions it used to carry (headline choice, the naming constraints,
+  the terseness discipline, the version tooltip) were not research and are
+  now requirements R11–R14 in the human-reviewed sink; the site's editing
+  mechanics live in `site/README.md`. Fresh copy research landed with the
+  re-scope: Ruler and ai-rulez READMEs read directly, the `ai-governance`
+  domain checked against its own definition (prose, not checks), and the
+  Anthropic memory doc's three quotations recorded as the category's most
+  quotable copy. `## Key insights` rewritten end to end — the page's subject
+  changed, so every bullet did.
+- **2026-08-21** — (superseded by the re-scope above) messaging refocus pass
+  recorded the site rewrite: enforcement headline, the vendor quotation, the
+  ~46% copy cut, the retired attackable claims, and the two naming
+  constraints. Retained as a pointer so the growth log stays continuous; the
+  content moved to the requirements sink.
+- **2026-07-31** — ecosystem research pass: competitor-marketing question
+  answered (no rival headline claims enforcement — one file-drift-CI
+  footnote, Ruler).
+- **2026-07-28** — page created alongside the initial site build.

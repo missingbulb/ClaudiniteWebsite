@@ -24,6 +24,7 @@ build on.
 - [`Positioning/`](Positioning/README.md) — Claudinite's strengths, market
   position against each competitor class, and the candid gaps in the
   offering.
-- [`Website/`](Website/README.md) — claudinite.com itself: positioning,
-  promoted features, and conversion decisions behind the marketing site, and
-  the open questions future site passes should answer.
+- [`Website/`](Website/README.md) — how this category *markets* itself: the
+  words on rivals' and adjacent vendors' pages, which vocabulary is being
+  taken, and what none of them claims. Our own site decisions are
+  requirements, not research — they live in `product-requirements/`.

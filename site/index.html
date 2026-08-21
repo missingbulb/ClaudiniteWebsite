@@ -42,9 +42,8 @@
       <p class="eyebrow">Convention packs for Claude Code</p>
       <h1>Rules your agent can’t&nbsp;skip.</h1>
       <p class="lede">
-        A pack is a convention plus its <strong>checks</strong>, its skills and
-        its scheduled work — one version, vendored into every repo, refreshed
-        nightly.
+        Conventions ship as <strong>packs</strong> — with checks that block —
+        vendored into every repo, refreshed nightly.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#adopt">Adopt it in your repo</a>
@@ -85,15 +84,15 @@
     <div class="why-grid">
       <article class="why-card reveal">
         <h3><span class="why-num">01</span> No teeth</h3>
-        <p>Nothing fails when a written convention is ignored. So it is.</p>
+        <p>Nothing fails when a convention is ignored. So it is.</p>
       </article>
       <article class="why-card reveal">
         <h3><span class="why-num">02</span> Drift</h3>
-        <p>Ten repos, ten forks of one rulebook. No way to tell which is right.</p>
+        <p>Ten repos, ten forks of one rulebook.</p>
       </article>
       <article class="why-card reveal">
         <h3><span class="why-num">03</span> Stale</h3>
-        <p>One repo learns it the hard way. The other nine never hear.</p>
+        <p>One repo learns it. The other nine never hear.</p>
       </article>
     </div>
     <p class="why-kicker reveal">Rule-sync tools check the rules <em>arrived</em>. Claudinite checks they were <strong>followed</strong>.</p>
@@ -108,7 +107,7 @@
     <div class="mech-copy">
       <p class="eyebrow">Mechanism 01</p>
       <h2>The pack</h2>
-      <p>A convention that ships with its own means of survival — four layers, one version.</p>
+      <p>A convention that ships with its own means of survival.</p>
       <ul class="mech-points">
         <li><strong>Rules</strong> — every session, automatically.</li>
         <li><strong>Checks</strong> — executable: they fail the session, or the PR.</li>
@@ -119,19 +118,19 @@
     <div class="pack-stack" role="img" aria-label="Exploded view of a pack: RULES.md prose, checks, skills, and scheduled tasks.">
       <div class="pack-layer reveal" data-delay="0">
         <div class="pack-layer-head"><span class="file">RULES.md</span><span class="pill">every session</span></div>
-        <p>“Fix warnings, never tolerate them.” The always-loaded discipline.</p>
+        <p>Always loaded.</p>
       </div>
       <div class="pack-layer reveal" data-delay="1">
         <div class="pack-layer-head"><span class="file">checks/*.mjs</span><span class="pill pill-red">blocking</span><span class="pill pill-amber">advisory</span></div>
-        <p><code>reference-integrity</code> · <code>task-lifecycle</code> · <code>warning-suppression</code></p>
+        <p>The finding names the fix.</p>
       </div>
       <div class="pack-layer reveal" data-delay="2">
         <div class="pack-layer-head"><span class="file">skills/</span><span class="pill">on demand</span></div>
-        <p><code>merge-to-main</code> · <code>bug-investigation</code> · <code>writing-tests</code></p>
+        <p>Procedure, on demand.</p>
       </div>
       <div class="pack-layer reveal" data-delay="3">
         <div class="pack-layer-head"><span class="file">tasks/</span><span class="pill">scheduled</span></div>
-        <p><code>baselining</code> · <code>tidy-branches</code> · <code>wiki-growth</code></p>
+        <p>Upkeep the repo runs on itself.</p>
       </div>
     </div>
   </div>
@@ -147,16 +146,16 @@
       <ul class="mech-points">
         <li>Blocking findings hold the session open.</li>
         <li>Advisory findings just surface.</li>
-        <li>The repo-facing ones run again in CI — a bypassed hook can’t merge drift.</li>
+        <li>The repo-facing ones run again in CI.</li>
       </ul>
       <button class="btn btn-ghost btn-replay" id="term-replay" type="button">Replay ↺</button>
     </div>
     <div class="terminal" id="session-term" aria-label="Terminal transcript: checks catch a missing issue reference, the agent fixes it, all checks pass.">
       <div class="term-bar"><span></span><span></span><span></span><em>claude — your-repo</em></div>
       <div class="term-body" id="term-body">
-        <p class="t-line t-hook" data-t="1">◆ SessionStart · packs loaded: basics · git-github · html</p>
+        <p class="t-line t-hook" data-t="1">◆ SessionStart · 3 packs loaded · rules injected</p>
         <p class="t-line" data-t="2">&gt; implement the signup flow</p>
-        <p class="t-line t-dim" data-t="3">… edits, commits, tries to end the session …</p>
+        <p class="t-line t-dim" data-t="3">… edits, commits, tries to end …</p>
         <p class="t-line t-hook" data-t="4">◆ Stop · running checks</p>
         <p class="t-line t-bad" data-t="5">✗ task-lifecycle <span class="t-tag">blocking</span> no commit references an issue</p>
         <p class="t-line t-dim" data-t="6">&nbsp;&nbsp;fix: reference the task issue — e.g. “refs #42”</p>
@@ -173,10 +172,10 @@
     <div class="mech-copy">
       <p class="eyebrow">Mechanism 03</p>
       <h2>No repo falls behind</h2>
-      <p>Every repo runs an hourly scheduler — this site’s fires at <code>:26</code> — and re-vendors the canon nightly.</p>
+      <p>Every repo re-vendors the canon nightly, on its own schedule.</p>
       <ul class="mech-points">
         <li>Updates arrive as PRs, gated by your CI.</li>
-        <li>The canon is vendored — pinned, tracked, in your history.</li>
+        <li>Vendored — pinned, tracked, in your history.</li>
         <li>Nothing fetched at runtime.</li>
       </ul>
     </div>
@@ -198,7 +197,7 @@
     <div class="mech-copy">
       <p class="eyebrow">Mechanism 04</p>
       <h2>One repo pays.<br>Every repo learns.</h2>
-      <p>Lessons mined from real sessions land in your local packs; portable ones are promoted, and the fleet inherits them.</p>
+      <p>Lessons from real sessions become local rules; the portable ones reach the canon.</p>
       <p class="ladder" aria-label="The promotion ladder: prose becomes a skill becomes a check.">
         <span class="ladder-step">prose</span><span class="ladder-arrow">→</span>
         <span class="ladder-step">skill</span><span class="ladder-arrow">→</span>
@@ -231,16 +230,44 @@
 
     <div class="stats" id="stats-slot"></div>
 
+    <figure class="pack-field" aria-label="A field of pack glyphs with a handful lit: the canon is many packs, and a repo declares the ones it wants.">
+      <svg viewBox="0 0 720 222" role="img">
+        <title>Many packs; a repo declares the ones it wants</title>
+        <path class="pf-cell" style="--i:0" d="M46 24 66 39 59 66 33 66 26 39Z"/>
+        <path class="pf-cell" style="--i:1" d="M122 24 142 39 135 66 109 66 102 39Z"/>
+        <path class="pf-cell" style="--i:2" d="M198 24 218 39 211 66 185 66 178 39Z"/>
+        <path class="pf-cell pf-on" style="--i:3" d="M274 24 294 39 287 66 261 66 254 39Z"/>
+        <path class="pf-cell" style="--i:4" d="M350 24 370 39 363 66 337 66 330 39Z"/>
+        <path class="pf-cell" style="--i:5" d="M426 24 446 39 439 66 413 66 406 39Z"/>
+        <path class="pf-cell" style="--i:6" d="M502 24 522 39 515 66 489 66 482 39Z"/>
+        <path class="pf-cell" style="--i:7" d="M578 24 598 39 591 66 565 66 558 39Z"/>
+        <path class="pf-cell pf-on" style="--i:8" d="M654 24 674 39 667 66 641 66 634 39Z"/>
+        <path class="pf-cell pf-on" style="--i:9" d="M46 90 66 105 59 132 33 132 26 105Z"/>
+        <path class="pf-cell" style="--i:10" d="M122 90 142 105 135 132 109 132 102 105Z"/>
+        <path class="pf-cell" style="--i:11" d="M198 90 218 105 211 132 185 132 178 105Z"/>
+        <path class="pf-cell" style="--i:12" d="M274 90 294 105 287 132 261 132 254 105Z"/>
+        <path class="pf-cell" style="--i:13" d="M350 90 370 105 363 132 337 132 330 105Z"/>
+        <path class="pf-cell" style="--i:14" d="M426 90 446 105 439 132 413 132 406 105Z"/>
+        <path class="pf-cell" style="--i:15" d="M502 90 522 105 515 132 489 132 482 105Z"/>
+        <path class="pf-cell pf-on" style="--i:16" d="M578 90 598 105 591 132 565 132 558 105Z"/>
+        <path class="pf-cell" style="--i:17" d="M654 90 674 105 667 132 641 132 634 105Z"/>
+        <path class="pf-cell" style="--i:18" d="M46 156 66 171 59 198 33 198 26 171Z"/>
+        <path class="pf-cell" style="--i:19" d="M122 156 142 171 135 198 109 198 102 171Z"/>
+        <path class="pf-cell pf-on" style="--i:20" d="M198 156 218 171 211 198 185 198 178 171Z"/>
+        <path class="pf-cell" style="--i:21" d="M274 156 294 171 287 198 261 198 254 171Z"/>
+        <path class="pf-cell" style="--i:22" d="M350 156 370 171 363 198 337 198 330 171Z"/>
+        <path class="pf-cell pf-on" style="--i:23" d="M426 156 446 171 439 198 413 198 406 171Z"/>
+        <path class="pf-cell" style="--i:24" d="M502 156 522 171 515 198 489 198 482 171Z"/>
+        <path class="pf-cell" style="--i:25" d="M578 156 598 171 591 198 565 198 558 171Z"/>
+        <path class="pf-cell" style="--i:26" d="M654 156 674 171 667 198 641 198 634 171Z"/>
+      </svg>
+      <figcaption class="viz-caption">declare the ones you want</figcaption>
+    </figure>
+
     <div class="spotlight" id="spotlight-slot"></div>
 
-    <h3 class="canon-sub">The packs</h3>
-    <div class="packs-grid" id="packs-slot"></div>
-
-    <h3 class="canon-sub">Recent updates</h3>
-    <ol class="updates" id="updates-slot"></ol>
-
     <noscript>
-      <p>Eight packs ship today — basics, git-github, github-actions, grow_with_claudinite, tidy-repo, product-wiki, html, barriers — carrying 25+ checks, 15+ skills and 10 scheduled task types. Browse them in <a href="https://github.com/missingbulb/Claudinite" rel="noopener">the canon repository</a>.</p>
+      <p>Browse the canon in <a href="https://github.com/missingbulb/Claudinite" rel="noopener">its repository</a>.</p>
     </noscript>
   </div>
 </section>
@@ -253,17 +280,17 @@
       <h2>One conversation,<br>then one wire-up</h2>
       <ol class="steps">
         <li><b>Point Claude Code at the canon.</b> <em>“Adopt Claudinite — follow missingbulb/Claudinite’s bootstrap.md.”</em></li>
-        <li><b>Answer the interview.</b> It vendors the canon, declares your packs, wires hooks, scheduler and CI — one green PR.</li>
-        <li><b>Merge, then wire the runner once</b> — an endpoint and a token, the one manual step. After that it runs itself.</li>
+        <li><b>Answer the interview.</b> It vendors the canon, wires the hooks, scheduler and CI — one green PR.</li>
+        <li><b>Merge, then wire the runner once</b> — an endpoint and a token. After that it runs itself.</li>
       </ol>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://github.com/missingbulb/Claudinite" rel="noopener">Get Claudinite</a>
-        <a class="btn btn-ghost" href="https://github.com/missingbulb/ClaudiniteWebsite" rel="noopener">See a consumer repo</a>
+        <a class="btn btn-ghost" href="https://github.com/missingbulb/GoogleCalendarEventCreator" rel="noopener">See a repo running it</a>
       </div>
       <ul class="assure">
-        <li>Plain vendored files — no server, no account.</li>
+        <li>No server, no account.</li>
         <li>Works alongside your <code>CLAUDE.md</code>.</li>
-        <li>Every automated change is a PR through your CI.</li>
+        <li>Every automated change is a PR.</li>
       </ul>
     </div>
     <div class="terminal terminal-light" aria-label="Terminal: adopting Claudinite in a repository.">
@@ -274,7 +301,7 @@
         <div id="adopt-result" class="adopt-result">
           <p class="t-line t-dim">◆ fetching canon · running the adoption interview…</p>
           <p class="t-line">✓ canon vendored at <span class="mono">.claudinite/shared/</span> (ref <span class="mono">005edd2</span>)</p>
-          <p class="t-line">✓ packs declared: basics · git-github · github-actions</p>
+          <p class="t-line">✓ packs declared · interview answered</p>
           <p class="t-line">✓ hooks registered · scheduler wired (minute :26) · CI sweep added</p>
           <p class="t-line t-good">✓ conformance sweep green — bootstrap PR opened</p>
         </div>
@@ -291,7 +318,7 @@
 
     <details>
       <summary>What gets added to my repo?</summary>
-      <p>A vendored canon, a pack declaration, hooks, a scheduler workflow and a CI step — as one reviewable PR.</p>
+      <p>A vendored canon, a declaration, hooks, a scheduler workflow and a CI step — one PR.</p>
     </details>
     <details>
       <summary>Will it fight my CLAUDE.md?</summary>
@@ -299,7 +326,7 @@
     </details>
     <details>
       <summary>What happens when a check fails?</summary>
-      <p>It holds the session open and states what drifted and how to fix it. Repo-facing checks run again on every PR.</p>
+      <p>It holds the session open and states the fix. Repo-facing checks run again on every PR.</p>
     </details>
     <details>
       <summary>Which agents does it support?</summary>
@@ -311,7 +338,7 @@
     </details>
     <details>
       <summary>Can it learn my codebase’s own rules?</summary>
-      <p>Yes — lessons from your merged sessions land in local packs; portable ones reach the canon.</p>
+      <p>Yes — from your own merged sessions.</p>
     </details>
   </div>
 </section>
@@ -329,15 +356,14 @@
     </div>
     <nav class="footer-links" aria-label="Footer">
       <a href="https://github.com/missingbulb/Claudinite" rel="noopener">Canon repository</a>
-      <a href="https://github.com/missingbulb/ClaudiniteWebsite" rel="noopener">This site’s repo</a>
       <a href="#mechanisms">Mechanisms</a>
       <a href="#adopt">Adopt</a>
       <a href="privacy.html">Privacy</a>
     </nav>
   </div>
   <div class="wrap footer-meta">
-    <p>Built and shipped by an agent session governed by Claudinite’s own checks.</p>
-    <p>© 2026 Claudinite</p>
+    <p>Built by an agent session governed by Claudinite’s own checks.</p>
+    <p class="copyright" title="version 1.0821.34">© 2026 MissingBulb</p>
   </div>
 </footer>
 
