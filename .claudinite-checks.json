@@ -17,14 +17,13 @@
       ]
     },
     {
-      "id": "grow_with_claudinite",
+      "id": "claudinite-growth",
       "config": {
         "retention_days": 10
       }
     },
     "tidy-repo",
     "html",
-    "github-actions",
     "product-wiki",
     "local/claudinite-website",
     {
@@ -33,7 +32,7 @@
         "repo": "missingbulb/Shepherd"
       }
     },
-    "core"
+    "claudinite-lifecycle"
   ],
   "maintenance": {
     "delivery": "auto-merge",
@@ -53,7 +52,7 @@
   "claudinite": {
     "updated": "2026-08-10T00:00:00.000Z",
     "ref": "631a067f5a0413e154a0d4c1a66275f18b255af9",
-    "engineVersion": 4,
+    "engineVersion": "60820.1",
     "packVersions": {
       "basics": 5,
       "barriers": 2,
