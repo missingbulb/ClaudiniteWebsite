@@ -114,42 +114,80 @@ code, .mono {
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.8em; }
 
 /* ------------------------------- hero ------------------------------ */
-.hero { padding: clamp(64px, 10vw, 128px) 0 clamp(48px, 7vw, 96px); overflow: hidden; }
-.hero-grid {
-  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: clamp(24px, 5vw, 72px); align-items: center;
-}
+.hero { padding: clamp(56px, 8vw, 104px) 0 clamp(40px, 6vw, 72px); overflow: hidden; }
+.hero-copy { max-width: 46rem; }
 .lede { font-size: clamp(1.05rem, 1.7vw, 1.24rem); color: var(--ink-soft); margin-top: 1.2em; }
 .lede strong { color: var(--ink); }
 .hero-fine { font-size: 0.85rem; color: var(--ink-soft); margin-top: 1.2em; font-family: var(--mono); }
 h1 { margin-top: 0.2em; }
 
-.hero-viz { position: relative; }
-#fleet-viz { width: 100%; height: auto; display: block; }
 .viz-caption {
   font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft);
   text-align: center; margin-top: 4px; letter-spacing: 0.06em;
 }
-.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; vertical-align: middle; }
-.dot-green { background: var(--accent); }
-.dot-red { background: var(--red); }
 
 .crystal { fill: var(--accent-wash); stroke: var(--accent-deep); stroke-width: 2; stroke-linejoin: round; }
 .crystal-facets, .crystal-center-facets { fill: none; stroke: var(--accent-deep); stroke-width: 1; opacity: 0.6; }
 .viz-label { font-family: var(--mono); font-size: 13px; fill: var(--ink-soft); letter-spacing: 0.08em; }
 
-#fleet-links path { stroke: var(--line); }
-#fleet-links path.hot { stroke: var(--accent); transition: stroke 0.3s; }
-.repo-node rect {
-  fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; rx: 10;
-  transition: stroke 0.3s ease, fill 0.3s ease;
+/* ---------------------- the compounding chart ----------------------
+   The page's central argument. Curves and end-state meter widths are authored
+   in the markup; assets/main.js only animates the reveal. */
+.compound { margin: clamp(32px, 5vw, 56px) auto 0; max-width: 960px; }
+.compound svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+.cx-axis line { stroke: var(--line); stroke-width: 1.5; }
+.cx-axis-label,
+.cx-meter-head,
+.cx-meter-label,
+.cx-caption,
+.cx-pin text {
+  font-family: var(--mono); fill: var(--ink-soft); letter-spacing: 0.06em;
 }
-.repo-node text { font-family: var(--mono); font-size: 12.5px; fill: var(--ink); }
-.repo-node .repo-status { font-size: 11px; fill: var(--accent-deep); }
-.repo-node.drift rect { stroke: var(--red); stroke-dasharray: 5 4; fill: var(--red-wash); }
-.repo-node.drift .repo-status { fill: var(--red); }
-.repo-node.flash rect { stroke: var(--accent); fill: var(--accent-wash); }
-.pulse-dot { fill: var(--accent); }
+.cx-axis-label { font-size: 13px; text-transform: uppercase; }
+.cx-meter-head { font-size: 13px; text-transform: uppercase; }
+.cx-meter-label { font-size: 14px; }
+.cx-caption { font-size: 13px; }
+.cx-end { text-anchor: end; }
+
+/* The distance between the two paths — what the lede calls the compounding. */
+.cx-gap { fill: var(--accent-wash); stroke: none; }
+.cx-line { fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.cx-prose { stroke: var(--ink-soft); opacity: 0.45; stroke-dasharray: 7 6; }
+.cx-claud { stroke: var(--accent); }
+
+.cx-key { font-family: var(--mono); font-size: 15px; font-weight: 700; letter-spacing: 0.04em; }
+.cx-key-prose { fill: var(--ink-soft); }
+.cx-key-claud { fill: var(--accent-deep); }
+
+/* The plateau marker only makes sense once the prose meter has actually
+   filled, so it is held back until the sweep reaches that session. */
+.cx-pin circle { fill: var(--red); }
+.cx-pin text { font-size: 13px; fill: var(--red); }
+.cx-pin, .cx-key { opacity: 1; transition: opacity 0.5s ease; }
+.cx-running .cx-pin, .cx-running .cx-key { opacity: 0; }
+.cx-running.cx-pinned .cx-pin { opacity: 1; }
+.cx-running.cx-late .cx-key { opacity: 1; }
+
+.cx-meter-frame { fill: var(--paper-2); stroke: var(--line); stroke-width: 1.5; }
+.cx-fill-prose { fill: var(--red); opacity: 0.75; }
+.cx-fill-claud { fill: var(--accent); }
+
+/* Each promotion hands budget back; the flash is that moment. */
+.cx-freed { animation: cx-freed 0.6s ease-out; }
+@keyframes cx-freed { 0% { fill: #7fd4ac; } 100% { fill: var(--accent); } }
+
+.compound-caption {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; flex-wrap: wrap; margin-top: 10px;
+}
+
+.cx-replay {
+  font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em;
+  color: var(--ink-soft); background: none; border: 1px solid var(--line);
+  border-radius: 999px; padding: 5px 14px; cursor: pointer;
+}
+.cx-replay:hover { color: var(--ink); border-color: var(--ink-soft); }
 
 /* ------------------------------- why ------------------------------- */
 .why { padding: clamp(56px, 9vw, 120px) 0; border-top: 1px solid var(--line); background: var(--paper-2); }
@@ -313,14 +351,24 @@ h1 { margin-top: 0.2em; }
 .loop-node text { font-family: var(--mono); font-size: 13.5px; fill: var(--ink); }
 .crystal-center { transform-origin: 280px 280px; animation: breathe 6s ease-in-out infinite; }
 @keyframes breathe { 50% { transform: scale(1.05); } }
-.ladder { margin-top: 1.6em; display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 0.9rem; flex-wrap: wrap; }
-.ladder-step { border: 1.5px solid var(--ink); border-radius: 999px; padding: 6px 16px; background: var(--paper); }
-.ladder-final { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.ladder-arrow { color: var(--accent-deep); font-weight: 700; }
-/* On the dark section the ink-on-ink chip and deep-green arrows vanish. */
-.mech-dark .ladder-step { border-color: #eef1ea; color: #eef1ea; background: transparent; }
-.mech-dark .ladder-final { background: #7fd4ac; border-color: #7fd4ac; color: var(--term-bg); }
-.mech-dark .ladder-arrow { color: #7fd4ac; }
+.rungs {
+  list-style: none; margin: 1.6em 0 0; display: grid; gap: 8px;
+  font-family: var(--mono); font-size: 0.86rem;
+}
+.rung {
+  display: grid; grid-template-columns: 5.5rem 8rem 1fr; align-items: center; gap: 12px;
+  border: 1.5px solid currentColor; border-radius: 999px; padding: 9px 18px;
+}
+.rung-name { font-weight: 700; }
+.rung-cost { opacity: 0.75; }
+.rung-force { opacity: 0.75; }
+/* The last rung is the one that costs nothing and still binds — the whole point. */
+.rung-final { background: #7fd4ac; border-color: #7fd4ac; color: var(--term-bg); }
+.rung-final .rung-cost, .rung-final .rung-force { opacity: 0.9; font-weight: 620; }
+
+/* ---------------------- multipliers preamble ----------------------- */
+.mult-intro { padding: clamp(56px, 8vw, 104px) 0 clamp(28px, 4vw, 44px); border-top: 1px solid var(--line); }
+.mult-lede { font-size: clamp(1.05rem, 1.9vw, 1.3rem); color: var(--ink-soft); }
 
 /* ------------------------------ canon ------------------------------ */
 .canon { padding: clamp(64px, 10vw, 130px) 0; border-top: 1px solid var(--line); background: var(--paper-2); }
@@ -403,13 +451,23 @@ h1 { margin-top: 0.2em; }
 
 /* ---------------------------- responsive --------------------------- */
 @media (max-width: 940px) {
-  .hero-grid, .mech-grid, .adopt-grid { grid-template-columns: 1fr; }
+  .mech-grid, .adopt-grid { grid-template-columns: 1fr; }
   .mech-grid-flip > .mech-copy { order: 0; }
   .why-grid { grid-template-columns: 1fr; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .spotlight { grid-template-columns: 1fr; }
   .repo-grid { grid-template-columns: repeat(2, 1fr); }
   .nav nav a:not(.nav-cta) { display: none; }
+  .rung { grid-template-columns: 1fr; gap: 2px; border-radius: var(--radius); text-align: left; }
+}
+
+/* SVG text scales with the viewBox, so on a narrow screen the chart's labels
+   shrink below reading size. Enlarge them in user units to compensate. */
+@media (max-width: 720px) {
+  .cx-axis-label, .cx-meter-head, .cx-caption, .cx-pin text { font-size: 18px; }
+  .cx-meter-label { font-size: 19px; }
+  .cx-key { font-size: 21px; }
+  .cx-line { stroke-width: 4.5; }
 }
 
 /* -------------------------- reduced motion ------------------------- */
@@ -417,7 +475,9 @@ h1 { margin-top: 0.2em; }
   html { scroll-behavior: auto; }
   .reveal, #term-body .t-line { opacity: 1; transform: none; transition: none; }
   .adopt-result { opacity: 1; }
-  .caret, .clock-hand, .loop-flow, .crystal-center, .canon-pulse, .pf-cell { animation: none !important; }
+  .caret, .clock-hand, .loop-flow, .crystal-center, .canon-pulse, .pf-cell,
+  .cx-freed { animation: none !important; }
+  .cx-pin, .cx-key { opacity: 1 !important; }
   .btn { transition: none; }
 }
 

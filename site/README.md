@@ -10,7 +10,7 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 
 | Path | What it is | Who edits it |
 |---|---|---|
-| [index.html](index.html) | The one page: evergreen copy framed around "your work, exponentially better" — the grow/enforce/automate/disseminate mechanism explainers, the scale tiers, and the executable-requirements workflow. Copy is deliberately terse — a claim earns its words or goes | Rarely — structure and evergreen claims |
+| [index.html](index.html) | The one page. Its spine is the compounding chart in the hero; everything after it explains a part of that chart — the ceiling, the three multipliers, the pack, the scale tiers, the executable-requirements workflow. Copy is deliberately terse — a claim earns its words or goes | Rarely — structure and evergreen claims |
 | [assets/style.css](assets/style.css) | The whole design system (tokens at the top) | Rarely |
 | [assets/main.js](assets/main.js) | Animations + rendering of the promoted-content slots | Rarely |
 | [assets/analytics.js](assets/analytics.js) | Cookieless Cloudflare Web Analytics loader; no-ops until the deploy injects the token | Never — the token comes from the `CLOUDFLARE_ANALYTICS_TOKEN` repo variable |
@@ -29,13 +29,32 @@ workflow carries no `paths:` filter, so a push that touches nothing under
   Benefits, never named packs: the page shows *how many* packs there are (the
   `pack-field` graphic and the `stats` count) and never *which*, so no copy
   goes stale when the canon's pack set moves.
-- **`canonRef`** — keep in step with the `ref` stamp in
-  [../.claudinite-checks.json](../.claudinite-checks.json) (short form).
+- **`canonRef`** — illustrative only. It seeds the sample refs the baselining
+  board animates through; it tracks nothing, because the declaration stopped
+  carrying a canon `ref` when Claudinite moved to per-pack version stamps.
 - Keep the file a plain script (`window.CLAUDINITE = {...}`) — it must run
   from `file://` with no module loader.
 
 Evergreen sections (hero, mechanisms, adopt, FAQ) state how Claudinite works;
 change them only when the product's mechanisms actually change.
+
+## The compounding chart
+
+The hero chart is the page's argument, not decoration: a prose-only corpus
+saturates once its rules fill the context budget, and promoting prose into
+checks keeps freeing that budget so the curve never has to flatten.
+
+It is **schematic and asserts no magnitudes** — the axes carry no numbers, and
+the FAQ says so outright. Keep it that way: putting real-looking figures on it
+would claim a measurement nobody has made.
+
+Both curves, the shaded gap between them and the meters' end states are
+authored as literal geometry in `index.html`, generated from the closed-form
+curves recorded in this repo's history. [assets/main.js](assets/main.js) only
+animates the reveal, so the argument still stands with scripting off or with
+`prefers-reduced-motion` set. If you change the shape of either curve, the
+plateau marker, the gap path and the meter that explains the plateau all have
+to move with it — they are one drawing, not four.
 
 ## The footer's version tooltip
 
