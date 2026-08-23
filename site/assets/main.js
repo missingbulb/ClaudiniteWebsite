@@ -1,7 +1,7 @@
 /* claudinite.com — behavior. Vanilla JS, no dependencies.
-   Four jobs: reveal-on-scroll, the hero compounding chart, the mechanism
-   animations (session terminal, baselining board, adopt typewriter), and
-   rendering the promoted-content slots from data/promoted.js.
+   Five jobs: reveal-on-scroll, the hero desk scene, the compounding chart,
+   the mechanism animations (session terminal, baselining board, adopt
+   typewriter), and rendering the promoted-content slots from data/promoted.js.
    All motion is skipped under prefers-reduced-motion. */
 (function () {
   'use strict';
@@ -30,7 +30,76 @@
     revealed.forEach(function (n) { ro.observe(n); });
   }
 
-  /* ------------- hero: the compounding chart -------------------
+  /* ------------------ hero: the desk scene ----------------------
+     Eight beats of one operator's desk. The scheduler only adds cumulative
+     classes b1..b8 to the svg; every visual state is a CSS rule keyed off a
+     beat, which keeps eight beats editable and makes the loop reset a matter
+     of dropping the classes. Beat 4 stacks three novelties, so its screen,
+     bugs and jolts are staggered as sub-cues rather than landing together. */
+  (function deskScene() {
+    var svg = document.getElementById('scene-viz');
+    if (!svg) return;
+
+    var BEATS = [2500, 2000, 2500, 3000, 2000, 3000, 2500, 2500];
+    var HOLD = 1200;
+    var known = ['sc-s5', 'sc-s6'];   // screens whose technology gets learned
+    var timers = [];
+
+    function clear() {
+      timers.forEach(clearTimeout); timers = [];
+      for (var i = 1; i <= 8; i++) svg.classList.remove('b' + i);
+      known.forEach(function (id) {
+        var n = document.getElementById(id);
+        if (n) n.classList.remove('sc-known');
+      });
+    }
+
+    function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+
+    if (REDUCED) {
+      // A still frame cannot tell an arc, so it states the destination: six
+      // clean screens, small tidy agents, the assistant grown, nobody typing.
+      for (var b = 1; b <= 8; b++) svg.classList.add('b' + b);
+      known.forEach(function (id) {
+        var n = document.getElementById(id);
+        if (n) n.classList.add('sc-known');
+      });
+      return;
+    }
+
+    function play() {
+      clear();
+      var t = 0;
+      BEATS.forEach(function (dur, i) {
+        at(t, function () { svg.classList.add('b' + (i + 1)); });
+        t += dur;
+      });
+      // The technology on a screen is only known once the pack has landed.
+      at(BEATS.slice(0, 6).reduce(function (a, b) { return a + b; }, 0) + 1400, function () {
+        var n = document.getElementById('sc-s5');
+        if (n) n.classList.add('sc-known');
+      });
+      at(BEATS.slice(0, 7).reduce(function (a, b) { return a + b; }, 0) + 500, function () {
+        var n = document.getElementById('sc-s6');
+        if (n) n.classList.add('sc-known');
+      });
+      at(t + HOLD, play);
+    }
+
+    var replay = document.getElementById('sc-replay');
+    if (replay) replay.addEventListener('click', play);
+
+    if (!('IntersectionObserver' in window)) { play(); return; }
+    var seen = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !seen) { seen = true; play(); io.disconnect(); }
+      });
+    }, { threshold: 0.25 });
+    io.observe(svg);
+  })();
+
+  /* ---------------- the compounding chart ----------------------
      The curves and the meters' end states are authored in the markup, so the
      page states its argument with scripting off. This only animates the way
      in: a left-to-right sweep over the curves, the meters filling beneath it,

@@ -44,8 +44,8 @@
       <p class="lede">
         Claudinite learns how you work from the sessions you already run, then
         promotes what it learns into <strong>checks that enforce themselves and
-        cost no context</strong>. More certainty, no more context — and that gap
-        is the compounding.
+        cost no context</strong>. Your rulebook stops competing with the work —
+        and you stop typing and start approving.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#adopt">Adopt it in your repo</a>
@@ -54,60 +54,219 @@
       <p class="hero-fine">Plain files in your repo. No service, no account.</p>
     </div>
 
-    <!-- The page's core argument, drawn: a prose-only corpus saturates when it
-         fills the context budget; promoting prose to checks keeps freeing that
-         budget, so the curve never has to flatten. Geometry is schematic — the
-         shapes are the claim, and no magnitudes are asserted. -->
-    <figure class="compound">
-      <svg id="compound-viz" viewBox="0 0 680 470" role="img" aria-labelledby="cx-title cx-desc">
-        <title id="cx-title">Rules in force over sessions, with and without Claudinite</title>
-        <desc id="cx-desc">Two curves over a run of sessions. A prose-only rulebook climbs and then
-        flattens into a plateau once its rules fill the session's context budget. A Claudinite
-        rulebook starts slower, crosses over, and keeps accelerating, because each batch of prose
-        promoted into checks frees the context budget again. Below the curves, two meters show
-        context spent per session: the prose-only meter fills and stays full, while the Claudinite
-        meter repeatedly drops as promotions free space.</desc>
+<figure class="scene">
+      <svg id="scene-viz" viewBox="0 52 960 368" role="img" aria-labelledby="sc-title sc-desc">
+        <title id="sc-title">One developer's desk, over time</title>
+        <desc id="sc-desc">An operator at a desk. It begins with one screen and one small agent, and the
+        person types constantly. More screens arrive and the agent is grown to keep up, but as it grows it
+        accretes cruft, stales, throws sparks and starts writing bugs into the code. That cruft is then
+        stripped out and crystallised into a small, precise assistant, which grows as the agent shrinks
+        back down and the bugs disappear. A pack of knowledge arrives from off-screen and both know a new
+        technology at once. By the end six screens are running clean, and the person has stopped typing —
+        they only approve. Behind it all, an exponential curve climbs.</desc>
 
-        <defs>
-          <clipPath id="cx-clip"><rect id="cx-clip-rect" x="96" y="40" width="554" height="270"/></clipPath>
-        </defs>
-
-        <g class="cx-axis">
-          <line x1="96" y1="56" x2="96" y2="300"/>
-          <line x1="96" y1="300" x2="650" y2="300"/>
-        </g>
-        <text class="cx-axis-label" x="96" y="40">rules in force</text>
-        <text class="cx-axis-label cx-end" x="650" y="324">sessions</text>
-
-        <g clip-path="url(#cx-clip)">
-          <path class="cx-gap" d="M418.2 226.1 L423.9 223.6 L429.7 221.0 L435.5 218.4 L441.3 215.7 L447.1 212.9 L452.9 210.1 L458.7 207.2 L464.5 204.2 L470.3 201.1 L476.1 198.0 L481.9 194.8 L487.7 191.5 L493.5 188.1 L499.3 184.7 L505.1 181.1 L510.9 177.5 L516.7 173.7 L522.5 169.9 L528.3 166.0 L534.1 161.9 L539.9 157.8 L545.7 153.6 L551.5 149.2 L557.3 144.8 L563.1 140.2 L568.9 135.5 L574.6 130.7 L580.4 125.8 L586.2 120.8 L592.0 115.6 L597.8 110.3 L603.6 104.8 L609.4 99.3 L615.2 93.5 L621.0 87.7 L626.8 81.6 L632.6 75.5 L638.4 69.1 L644.2 62.7 L650.0 56.0 L650.0 217.0 L644.2 217.1 L638.4 217.3 L632.6 217.4 L626.8 217.5 L621.0 217.6 L615.2 217.7 L609.4 217.8 L603.6 218.0 L597.8 218.1 L592.0 218.3 L586.2 218.4 L580.4 218.6 L574.6 218.7 L568.9 218.9 L563.1 219.1 L557.3 219.2 L551.5 219.4 L545.7 219.6 L539.9 219.8 L534.1 220.0 L528.3 220.2 L522.5 220.4 L516.7 220.7 L510.9 220.9 L505.1 221.1 L499.3 221.4 L493.5 221.7 L487.7 221.9 L481.9 222.2 L476.1 222.5 L470.3 222.8 L464.5 223.1 L458.7 223.4 L452.9 223.8 L447.1 224.1 L441.3 224.5 L435.5 224.9 L429.7 225.2 L423.9 225.6 L418.2 226.1 Z"/>
-          <path class="cx-line cx-prose" d="M96.0 300.0 L102.9 296.4 L109.8 293.0 L116.8 289.7 L123.7 286.6 L130.6 283.6 L137.6 280.7 L144.5 277.9 L151.4 275.3 L158.3 272.7 L165.2 270.3 L172.2 268.0 L179.1 265.7 L186.0 263.6 L192.9 261.5 L199.9 259.5 L206.8 257.7 L213.7 255.8 L220.7 254.1 L227.6 252.5 L234.5 250.9 L241.4 249.3 L248.4 247.9 L255.3 246.5 L262.2 245.1 L269.1 243.8 L276.1 242.6 L283.0 241.4 L289.9 240.3 L296.8 239.2 L303.8 238.2 L310.7 237.2 L317.6 236.2 L324.5 235.3 L331.4 234.4 L338.4 233.6 L345.3 232.8 L352.2 232.0 L359.1 231.2 L366.1 230.5 L373.0 229.9 L379.9 229.2 L386.9 228.6 L393.8 228.0 L400.7 227.4 L407.6 226.9 L414.5 226.3 L421.5 225.8 L428.4 225.3 L435.3 224.9 L442.2 224.4 L449.2 224.0 L456.1 223.6 L463.0 223.2 L470.0 222.8 L476.9 222.5 L483.8 222.1 L490.7 221.8 L497.6 221.5 L504.6 221.2 L511.5 220.9 L518.4 220.6 L525.4 220.3 L532.3 220.1 L539.2 219.8 L546.1 219.6 L553.0 219.4 L560.0 219.2 L566.9 218.9 L573.8 218.7 L580.8 218.6 L587.7 218.4 L594.6 218.2 L601.5 218.0 L608.5 217.9 L615.4 217.7 L622.3 217.6 L629.2 217.4 L636.1 217.3 L643.1 217.2 L650.0 217.0"/>
-          <path class="cx-line cx-claud" d="M96.0 300.0 L102.9 299.3 L109.8 298.5 L116.8 297.7 L123.7 296.9 L130.6 296.1 L137.6 295.2 L144.5 294.3 L151.4 293.4 L158.3 292.5 L165.2 291.5 L172.2 290.5 L179.1 289.5 L186.0 288.4 L192.9 287.3 L199.9 286.2 L206.8 285.0 L213.7 283.8 L220.7 282.6 L227.6 281.3 L234.5 280.0 L241.4 278.6 L248.4 277.2 L255.3 275.8 L262.2 274.3 L269.1 272.8 L276.1 271.2 L283.0 269.6 L289.9 268.0 L296.8 266.2 L303.8 264.5 L310.7 262.6 L317.6 260.8 L324.5 258.8 L331.4 256.8 L338.4 254.8 L345.3 252.7 L352.2 250.5 L359.1 248.2 L366.1 245.9 L373.0 243.5 L379.9 241.1 L386.9 238.5 L393.8 235.9 L400.7 233.2 L407.6 230.4 L414.5 227.6 L421.5 224.6 L428.4 221.6 L435.3 218.5 L442.2 215.2 L449.2 211.9 L456.1 208.5 L463.0 205.0 L470.0 201.3 L476.9 197.6 L483.8 193.7 L490.7 189.7 L497.6 185.6 L504.6 181.4 L511.5 177.1 L518.4 172.6 L525.4 168.0 L532.3 163.2 L539.2 158.3 L546.1 153.2 L553.0 148.0 L560.0 142.7 L566.9 137.1 L573.8 131.4 L580.8 125.5 L587.7 119.5 L594.6 113.3 L601.5 106.8 L608.5 100.2 L615.4 93.4 L622.3 86.3 L629.2 79.1 L636.1 71.6 L643.1 63.9 L650.0 56.0"/>
+        <g class="sc-bg" aria-hidden="true">
+          <path class="sc-curve" pathLength="1" d="M20.0 396.0 L35.3 395.0 L50.7 394.0 L66.0 393.0 L81.3 391.9 L96.7 390.7 L112.0 389.5 L127.3 388.2 L142.7 386.8 L158.0 385.4 L173.3 383.9 L188.7 382.3 L204.0 380.7 L219.3 378.9 L234.7 377.1 L250.0 375.2 L265.3 373.1 L280.7 371.0 L296.0 368.8 L311.3 366.4 L326.7 363.9 L342.0 361.3 L357.3 358.6 L372.7 355.7 L388.0 352.7 L403.3 349.5 L418.7 346.2 L434.0 342.7 L449.3 339.0 L464.7 335.1 L480.0 331.1 L495.3 326.8 L510.7 322.3 L526.0 317.5 L541.3 312.5 L556.7 307.3 L572.0 301.8 L587.3 296.0 L602.7 289.9 L618.0 283.5 L633.3 276.8 L648.7 269.8 L664.0 262.3 L679.3 254.5 L694.7 246.3 L710.0 237.7 L725.3 228.6 L740.7 219.1 L756.0 209.0 L771.3 198.5 L786.7 187.4 L802.0 175.8 L817.3 163.5 L832.7 150.6 L848.0 137.1 L863.3 122.9 L878.7 107.9 L894.0 92.2 L909.3 75.7 L924.7 58.3 L940.0 40.0"/>
         </g>
 
-        <g class="cx-pin" id="cx-pin">
-          <circle cx="400.7" cy="227.4" r="4.5"/>
-          <text x="646" y="286" class="cx-end">context full — growth stops</text>
+        <g class="sc-set" aria-hidden="true">
+          <path class="sc-ground" d="M20 392 H940"/>
+          <path class="sc-desk" d="M150 300 H948 M180 300 V392 M910 300 V392"/>
+          <rect class="sc-keys" x="186" y="291" width="52" height="7" rx="3"/>
         </g>
 
-        <text class="cx-key cx-key-claud cx-end" x="646" y="50">with Claudinite</text>
-        <text class="cx-key cx-key-prose cx-end" x="646" y="209">prose only</text>
+        <g class="sc-work" aria-hidden="true">
+          <path class="sc-wl sc-wl-a f1" id="wl-a1" d="M790 250 L400 235"/>
+          <path class="sc-wl sc-wl-a f2" id="wl-a2" d="M790 250 L574 235"/>
+          <path class="sc-wl sc-wl-a f2" id="wl-b2" d="M858 262 L574 241"/>
+          <path class="sc-wl sc-wl-a f4" id="wl-a3" d="M790 250 L748 235"/>
+          <path class="sc-wl sc-wl-r f5" id="wl-r4" d="M905 272 L391 114"/>
+          <path class="sc-wl sc-wl-r f6" id="wl-r1" d="M905 272 L400 240"/>
+          <path class="sc-wl sc-wl-r f6" id="wl-r3" d="M905 272 L748 240"/>
+          <path class="sc-wl sc-wl-a f7" id="wl-a5" d="M790 250 L565 114"/>
+          <path class="sc-wl sc-wl-r f7" id="wl-r5" d="M905 272 L565 119"/>
+          <path class="sc-wl sc-wl-r f8" id="wl-r6" d="M905 272 L739 119"/>
+        </g>
 
-        <text class="cx-meter-head" x="96" y="358">context per session</text>
+        <g class="sc-screens" aria-hidden="true">
+  <g class="sc-screen f1" id="sc-s1">
+    <path class="sc-stand" d="M325 290 V300 M313 300 H337"/>
+    <rect class="sc-glass" x="250" y="180" width="150" height="110" rx="8"/>
+    <path class="sc-bar" d="M250 196 H400"/>
+    <path class="sc-code" style="--n:0" d="M264 210 h72"/>
+    <path class="sc-code" style="--n:1" d="M276 224 h51"/>
+    <path class="sc-code sc-code-good" style="--n:2" d="M264 238 h81"/>
+    <path class="sc-code" style="--n:3" d="M276 252 h44"/>
+    <path class="sc-code" style="--n:4" d="M276 266 h64"/>
+    <g class="sc-bug">
+      <path class="sc-x" d="M276 248 l8 8 M284 248 l-8 8"/>
+      <path class="sc-zig" d="M292 252 l5 -4 5 8 5 -8 5 8 5 -4"/>
+    </g>
+    <path class="sc-tick" d="M276 252 l4 4 7 -9"/>
+  </g>
+  <g class="sc-screen f2" id="sc-s2">
+    <path class="sc-stand" d="M499 290 V300 M487 300 H511"/>
+    <rect class="sc-glass" x="424" y="180" width="150" height="110" rx="8"/>
+    <path class="sc-bar" d="M424 196 H574"/>
+    <path class="sc-code" style="--n:0" d="M438 210 h72"/>
+    <path class="sc-code" style="--n:1" d="M450 224 h51"/>
+    <path class="sc-code sc-code-good" style="--n:2" d="M438 238 h81"/>
+    <path class="sc-code" style="--n:3" d="M450 252 h44"/>
+    <path class="sc-code" style="--n:4" d="M450 266 h64"/>
+  </g>
+  <g class="sc-screen f4" id="sc-s3">
+    <path class="sc-stand" d="M673 290 V300 M661 300 H685"/>
+    <rect class="sc-glass" x="598" y="180" width="150" height="110" rx="8"/>
+    <path class="sc-bar" d="M598 196 H748"/>
+    <path class="sc-code" style="--n:0" d="M612 210 h72"/>
+    <path class="sc-code" style="--n:1" d="M624 224 h51"/>
+    <path class="sc-code sc-code-good" style="--n:2" d="M612 238 h81"/>
+    <path class="sc-code" style="--n:3" d="M624 252 h44"/>
+    <path class="sc-code" style="--n:4" d="M624 266 h64"/>
+    <g class="sc-bug">
+      <path class="sc-x" d="M624 248 l8 8 M632 248 l-8 8"/>
+      <path class="sc-zig" d="M640 252 l5 -4 5 8 5 -8 5 8 5 -4"/>
+    </g>
+    <path class="sc-tick" d="M624 252 l4 4 7 -9"/>
+  </g>
+  <g class="sc-screen f5" id="sc-s4">
+    <path class="sc-arm" d="M325 158 V180"/>
+    <rect class="sc-glass" x="259" y="70" width="132" height="88" rx="8"/>
+    <path class="sc-bar" d="M259 86 H391"/>
+    <path class="sc-code" style="--n:0" d="M273 100 h61"/>
+    <path class="sc-code" style="--n:1" d="M285 114 h43"/>
+    <path class="sc-code sc-code-good" style="--n:2" d="M273 128 h69"/>
+    <path class="sc-code" style="--n:3" d="M285 142 h37"/>
+  </g>
+  <g class="sc-screen f7" id="sc-s5">
+    <path class="sc-arm" d="M499 158 V180"/>
+    <rect class="sc-glass" x="433" y="70" width="132" height="88" rx="8"/>
+    <path class="sc-bar" d="M433 86 H565"/>
+    <path class="sc-tech" d="M521.0 122.0 L510.0 141.1 L488.0 141.1 L477.0 122.0 L488.0 102.9 L510.0 102.9 Z"/>
+    <circle class="sc-tech-dot" cx="499.0" cy="122.0" r="3"/>
+    <path class="sc-code" style="--n:0" d="M447 100 h61"/>
+    <path class="sc-code" style="--n:1" d="M459 114 h43"/>
+    <path class="sc-code sc-code-good" style="--n:2" d="M447 128 h69"/>
+    <path class="sc-code" style="--n:3" d="M459 142 h37"/>
+  </g>
+  <g class="sc-screen f8" id="sc-s6">
+    <path class="sc-arm" d="M673 158 V180"/>
+    <rect class="sc-glass" x="607" y="70" width="132" height="88" rx="8"/>
+    <path class="sc-bar" d="M607 86 H739"/>
+    <path class="sc-tech" d="M657.0 114.0 a16 5 0 1 0 32 0 a16 5 0 1 0 -32 0 M657.0 114.0 v22 a16 5 0 0 0 32 0 v-22 M657.0 125.0 a16 5 0 0 0 32 0"/>
+    <path class="sc-code" style="--n:0" d="M621 100 h61"/>
+    <path class="sc-code" style="--n:1" d="M633 114 h43"/>
+    <path class="sc-code sc-code-good" style="--n:2" d="M621 128 h69"/>
+    <path class="sc-code" style="--n:3" d="M633 142 h37"/>
+  </g>
+        </g>
 
-        <text class="cx-meter-label cx-end" x="212" y="390">prose only</text>
-        <rect class="cx-meter-frame" x="224" y="376" width="426" height="18" rx="5"/>
-        <rect class="cx-meter-fill cx-fill-prose" id="cx-fill-prose" x="224" y="376" width="426" height="18" rx="5"/>
+        <g class="sc-stage" aria-hidden="true">
+          <g class="sc-agent" id="sc-agent-a">
+            <path class="crystal sc-cryst" d="M812.0 258.0 L832.0 272.8 L824.4 300.0 L799.6 300.0 L792.0 272.8 Z"/>
+            <path class="crystal-facets sc-facet" d="M812.0 258.0 V300.0 M792.0 272.8 L812.0 282.4 L832.0 272.8"/>
+            <g class="sc-crust">
+      <path class="sc-barn" style="--n:0" transform="translate(786 286) rotate(-22)" d="M0.0 -6.3 L3.0 -4.1 L1.9 0.0 L-1.9 0.0 L-3.0 -4.1 Z"/>
+      <path class="sc-barn" style="--n:1" transform="translate(782 274) rotate(15)" d="M0.0 -8.4 L4.0 -5.4 L2.5 0.0 L-2.5 0.0 L-4.0 -5.4 Z"/>
+      <path class="sc-barn" style="--n:2" transform="translate(794 266) rotate(-40)" d="M0.0 -6.3 L3.0 -4.1 L1.9 0.0 L-1.9 0.0 L-3.0 -4.1 Z"/>
+      <path class="sc-barn" style="--n:3" transform="translate(780 294) rotate(32)" d="M0.0 -8.4 L4.0 -5.4 L2.5 0.0 L-2.5 0.0 L-4.0 -5.4 Z"/>
+      <path class="sc-barn" style="--n:4" transform="translate(800 256) rotate(20)" d="M0.0 -6.3 L3.0 -4.1 L1.9 0.0 L-1.9 0.0 L-3.0 -4.1 Z"/>
+      <path class="sc-barn" style="--n:5" transform="translate(776 282) rotate(-8)" d="M0.0 -8.4 L4.0 -5.4 L2.5 0.0 L-2.5 0.0 L-4.0 -5.4 Z"/>
+      <path class="sc-barn" style="--n:6" transform="translate(790 276) rotate(44)" d="M0.0 -6.3 L3.0 -4.1 L1.9 0.0 L-1.9 0.0 L-3.0 -4.1 Z"/>
+              <path class="sc-moss" d="M794 300 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0"/>
+              <path class="sc-moss sc-moss-2" d="M816 300 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0"/>
+              <path class="sc-drip" d="M800 302 v6 M820 302 v5"/>
+            </g>
+            <g class="sc-jolts">
+              <path class="sc-jolt sc-jolt-1" d="M832 268 l7 -4 -3 -7 8 -5 -2 -6"/>
+              <path class="sc-jolt sc-jolt-2" d="M792 272 l-7 -4 3 -7 -8 -5 2 -6"/>
+            </g>
+          </g>
 
-        <text class="cx-meter-label cx-end" x="212" y="430">with Claudinite</text>
-        <rect class="cx-meter-frame" x="224" y="416" width="426" height="18" rx="5"/>
-        <rect class="cx-meter-fill cx-fill-claud" id="cx-fill-claud" x="224" y="416" width="135" height="18" rx="5"/>
+          <g class="sc-agent" id="sc-agent-b">
+            <path class="crystal sc-cryst" d="M872.0 258.0 L892.0 272.8 L884.4 300.0 L859.6 300.0 L852.0 272.8 Z"/>
+            <path class="crystal-facets sc-facet" d="M872.0 258.0 V300.0 M852.0 272.8 L872.0 282.4 L892.0 272.8"/>
+            <g class="sc-crust">
+      <path class="sc-barn" style="--n:0" transform="translate(846 286) rotate(-22)" d="M0.0 -6.3 L3.0 -4.1 L1.9 0.0 L-1.9 0.0 L-3.0 -4.1 Z"/>
+      <path class="sc-barn" style="--n:1" transform="translate(842 274) rotate(15)" d="M0.0 -8.4 L4.0 -5.4 L2.5 0.0 L-2.5 0.0 L-4.0 -5.4 Z"/>
+              <path class="sc-moss" d="M858 300 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0"/>
+            </g>
+            <g class="sc-jolts">
+              <path class="sc-jolt sc-jolt-3" d="M872 258 l6 -5 -4 -7 7 -5"/>
+            </g>
+          </g>
 
-        <text class="cx-caption" x="96" y="460">each drop is prose promoted to a check</text>
+          <g class="sc-robot" id="sc-robot">
+            <rect class="sc-bot-body" x="909" y="278" width="26" height="22" rx="2"/>
+            <path class="sc-bot-grid" d="M909 285 H935 M909 292 H935 M922 278 V300"/>
+            <rect class="sc-bot-head" x="912" y="262" width="20" height="14" rx="2"/>
+            <rect class="sc-eye" x="917" y="266" width="2" height="5"/>
+            <rect class="sc-eye" x="925" y="266" width="2" height="5"/>
+            <path class="sc-bot-ant" d="M922 262 V256"/>
+            <circle class="sc-bot-dot" cx="922" cy="253" r="2.5"/>
+            <path class="sc-bot-feet" d="M913 300 v4 M931 300 v4"/>
+            <path class="sc-bot-arm" d="M909 284 H899 V294 l-4 3 M935 284 H945 V294 l4 3"/>
+          </g>
+        </g>
+
+        <g class="sc-pack" aria-hidden="true">
+          <path class="sc-pack-arc" d="M970 60 C930 100 890 150 864 190"/>
+          <path class="sc-pack-cell" d="M864.0 176.8 L876.0 185.7 L871.4 202.0 L856.6 202.0 L852.0 185.7 Z"/>
+          <path class="sc-pack-shard sc-shard-a" d="M864.0 189.4 L870.0 193.8 L867.7 202.0 L860.3 202.0 L858.0 193.8 Z"/>
+          <path class="sc-pack-shard sc-shard-b" d="M864.0 189.4 L870.0 193.8 L867.7 202.0 L860.3 202.0 L858.0 193.8 Z"/>
+        </g>
+
+
+        <g class="sc-person" aria-hidden="true">
+          <path class="sc-chair" d="M70 388 h44 M92 388 v-52 M70 336 h52 M74 336 L66 270"/>
+
+          <g class="sc-pose sc-pose-a">
+            <path class="sc-limb sc-far" d="M108 332 L154 344 L150 386"/>
+            <path class="sc-body" d="M100 330 C110 300 122 272 136 254"/>
+            <path class="sc-limb" d="M100 332 L146 344 L142 386 M142 386 h12"/>
+            <path class="sc-limb sc-far" d="M139 263 L173 287 L201 294"/>
+            <g class="sc-typing">
+              <path class="sc-limb" d="M134 258 L168 282 L196 289 M196 289 v5"/>
+            </g>
+            <circle class="sc-head" cx="152" cy="238" r="16"/>
+            <g class="sc-vex">
+              <path class="sc-vex-1" d="M166 214 l-7 -7"/>
+              <path class="sc-vex-2" d="M174 208 l1 -9"/>
+              <path class="sc-vex-3" d="M180 214 l8 -5"/>
+            </g>
+            <path class="sc-hit" d="M196 284 v-6 M206 284 v-6 M216 284 v-6"/>
+          </g>
+
+          <g class="sc-pose sc-pose-b">
+            <path class="sc-limb sc-far" d="M108 332 L160 340 L166 386"/>
+            <path class="sc-body" d="M100 330 C104 296 108 266 114 248"/>
+            <path class="sc-limb" d="M100 332 L152 340 L158 386 M158 386 h12"/>
+            <path class="sc-limb sc-far" d="M118 260 L150 286 L172 292"/>
+            <g class="sc-gesture">
+              <path class="sc-limb" d="M116 256 L150 262 L182 244 M182 244 l6 -4 M182 244 l4 6"/>
+            </g>
+            <circle class="sc-head" cx="124" cy="232" r="16"/>
+          </g>
+        </g>
+
+        <g class="sc-chips" aria-hidden="true">
+          <g class="sc-chip sc-chip-1">
+            <rect x="196" y="228" width="74" height="20" rx="10"/>
+            <text x="233" y="242">APPROVED</text>
+          </g>
+          <g class="sc-chip sc-chip-2">
+            <rect x="196" y="228" width="30" height="20" rx="10"/>
+            <text x="211" y="242">2</text>
+          </g>
+          <g class="sc-chip sc-chip-3">
+            <rect x="196" y="228" width="30" height="20" rx="10"/>
+            <text x="211" y="242">OK</text>
+          </g>
+        </g>
       </svg>
-      <figcaption class="viz-caption compound-caption">
-        <span>the shaded gap is the compounding</span>
-        <button class="cx-replay" id="cx-replay" type="button">Replay ↺</button>
+      <figcaption class="viz-caption scene-caption">
+        <span>one developer · six workstreams · the curve behind is the compounding</span>
+        <button class="cx-replay" id="sc-replay" type="button">Replay ↺</button>
       </figcaption>
     </figure>
   </div>
@@ -151,6 +310,65 @@
       Exponential is not a bigger number. It is a rate that keeps rising, because
       the thing limiting it keeps getting relieved.
     </p>
+  </div>
+
+  <div class="wrap">
+    <!-- The page's core argument, drawn: a prose-only corpus saturates when it
+           fills the context budget; promoting prose to checks keeps freeing that
+           budget, so the curve never has to flatten. Geometry is schematic — the
+           shapes are the claim, and no magnitudes are asserted. -->
+      <figure class="compound">
+        <svg id="compound-viz" viewBox="0 0 680 470" role="img" aria-labelledby="cx-title cx-desc">
+          <title id="cx-title">Rules in force over sessions, with and without Claudinite</title>
+          <desc id="cx-desc">Two curves over a run of sessions. A prose-only rulebook climbs and then
+          flattens into a plateau once its rules fill the session's context budget. A Claudinite
+          rulebook starts slower, crosses over, and keeps accelerating, because each batch of prose
+          promoted into checks frees the context budget again. Below the curves, two meters show
+          context spent per session: the prose-only meter fills and stays full, while the Claudinite
+          meter repeatedly drops as promotions free space.</desc>
+  
+          <defs>
+            <clipPath id="cx-clip"><rect id="cx-clip-rect" x="96" y="40" width="554" height="270"/></clipPath>
+          </defs>
+  
+          <g class="cx-axis">
+            <line x1="96" y1="56" x2="96" y2="300"/>
+            <line x1="96" y1="300" x2="650" y2="300"/>
+          </g>
+          <text class="cx-axis-label" x="96" y="40">rules in force</text>
+          <text class="cx-axis-label cx-end" x="650" y="324">sessions</text>
+  
+          <g clip-path="url(#cx-clip)">
+            <path class="cx-gap" d="M418.2 226.1 L423.9 223.6 L429.7 221.0 L435.5 218.4 L441.3 215.7 L447.1 212.9 L452.9 210.1 L458.7 207.2 L464.5 204.2 L470.3 201.1 L476.1 198.0 L481.9 194.8 L487.7 191.5 L493.5 188.1 L499.3 184.7 L505.1 181.1 L510.9 177.5 L516.7 173.7 L522.5 169.9 L528.3 166.0 L534.1 161.9 L539.9 157.8 L545.7 153.6 L551.5 149.2 L557.3 144.8 L563.1 140.2 L568.9 135.5 L574.6 130.7 L580.4 125.8 L586.2 120.8 L592.0 115.6 L597.8 110.3 L603.6 104.8 L609.4 99.3 L615.2 93.5 L621.0 87.7 L626.8 81.6 L632.6 75.5 L638.4 69.1 L644.2 62.7 L650.0 56.0 L650.0 217.0 L644.2 217.1 L638.4 217.3 L632.6 217.4 L626.8 217.5 L621.0 217.6 L615.2 217.7 L609.4 217.8 L603.6 218.0 L597.8 218.1 L592.0 218.3 L586.2 218.4 L580.4 218.6 L574.6 218.7 L568.9 218.9 L563.1 219.1 L557.3 219.2 L551.5 219.4 L545.7 219.6 L539.9 219.8 L534.1 220.0 L528.3 220.2 L522.5 220.4 L516.7 220.7 L510.9 220.9 L505.1 221.1 L499.3 221.4 L493.5 221.7 L487.7 221.9 L481.9 222.2 L476.1 222.5 L470.3 222.8 L464.5 223.1 L458.7 223.4 L452.9 223.8 L447.1 224.1 L441.3 224.5 L435.5 224.9 L429.7 225.2 L423.9 225.6 L418.2 226.1 Z"/>
+            <path class="cx-line cx-prose" d="M96.0 300.0 L102.9 296.4 L109.8 293.0 L116.8 289.7 L123.7 286.6 L130.6 283.6 L137.6 280.7 L144.5 277.9 L151.4 275.3 L158.3 272.7 L165.2 270.3 L172.2 268.0 L179.1 265.7 L186.0 263.6 L192.9 261.5 L199.9 259.5 L206.8 257.7 L213.7 255.8 L220.7 254.1 L227.6 252.5 L234.5 250.9 L241.4 249.3 L248.4 247.9 L255.3 246.5 L262.2 245.1 L269.1 243.8 L276.1 242.6 L283.0 241.4 L289.9 240.3 L296.8 239.2 L303.8 238.2 L310.7 237.2 L317.6 236.2 L324.5 235.3 L331.4 234.4 L338.4 233.6 L345.3 232.8 L352.2 232.0 L359.1 231.2 L366.1 230.5 L373.0 229.9 L379.9 229.2 L386.9 228.6 L393.8 228.0 L400.7 227.4 L407.6 226.9 L414.5 226.3 L421.5 225.8 L428.4 225.3 L435.3 224.9 L442.2 224.4 L449.2 224.0 L456.1 223.6 L463.0 223.2 L470.0 222.8 L476.9 222.5 L483.8 222.1 L490.7 221.8 L497.6 221.5 L504.6 221.2 L511.5 220.9 L518.4 220.6 L525.4 220.3 L532.3 220.1 L539.2 219.8 L546.1 219.6 L553.0 219.4 L560.0 219.2 L566.9 218.9 L573.8 218.7 L580.8 218.6 L587.7 218.4 L594.6 218.2 L601.5 218.0 L608.5 217.9 L615.4 217.7 L622.3 217.6 L629.2 217.4 L636.1 217.3 L643.1 217.2 L650.0 217.0"/>
+            <path class="cx-line cx-claud" d="M96.0 300.0 L102.9 299.3 L109.8 298.5 L116.8 297.7 L123.7 296.9 L130.6 296.1 L137.6 295.2 L144.5 294.3 L151.4 293.4 L158.3 292.5 L165.2 291.5 L172.2 290.5 L179.1 289.5 L186.0 288.4 L192.9 287.3 L199.9 286.2 L206.8 285.0 L213.7 283.8 L220.7 282.6 L227.6 281.3 L234.5 280.0 L241.4 278.6 L248.4 277.2 L255.3 275.8 L262.2 274.3 L269.1 272.8 L276.1 271.2 L283.0 269.6 L289.9 268.0 L296.8 266.2 L303.8 264.5 L310.7 262.6 L317.6 260.8 L324.5 258.8 L331.4 256.8 L338.4 254.8 L345.3 252.7 L352.2 250.5 L359.1 248.2 L366.1 245.9 L373.0 243.5 L379.9 241.1 L386.9 238.5 L393.8 235.9 L400.7 233.2 L407.6 230.4 L414.5 227.6 L421.5 224.6 L428.4 221.6 L435.3 218.5 L442.2 215.2 L449.2 211.9 L456.1 208.5 L463.0 205.0 L470.0 201.3 L476.9 197.6 L483.8 193.7 L490.7 189.7 L497.6 185.6 L504.6 181.4 L511.5 177.1 L518.4 172.6 L525.4 168.0 L532.3 163.2 L539.2 158.3 L546.1 153.2 L553.0 148.0 L560.0 142.7 L566.9 137.1 L573.8 131.4 L580.8 125.5 L587.7 119.5 L594.6 113.3 L601.5 106.8 L608.5 100.2 L615.4 93.4 L622.3 86.3 L629.2 79.1 L636.1 71.6 L643.1 63.9 L650.0 56.0"/>
+          </g>
+  
+          <g class="cx-pin" id="cx-pin">
+            <circle cx="400.7" cy="227.4" r="4.5"/>
+            <text x="646" y="286" class="cx-end">context full — growth stops</text>
+          </g>
+  
+          <text class="cx-key cx-key-claud cx-end" x="646" y="50">with Claudinite</text>
+          <text class="cx-key cx-key-prose cx-end" x="646" y="209">prose only</text>
+  
+          <text class="cx-meter-head" x="96" y="358">context per session</text>
+  
+          <text class="cx-meter-label cx-end" x="212" y="390">prose only</text>
+          <rect class="cx-meter-frame" x="224" y="376" width="426" height="18" rx="5"/>
+          <rect class="cx-meter-fill cx-fill-prose" id="cx-fill-prose" x="224" y="376" width="426" height="18" rx="5"/>
+  
+          <text class="cx-meter-label cx-end" x="212" y="430">with Claudinite</text>
+          <rect class="cx-meter-frame" x="224" y="416" width="426" height="18" rx="5"/>
+          <rect class="cx-meter-fill cx-fill-claud" id="cx-fill-claud" x="224" y="416" width="135" height="18" rx="5"/>
+  
+          <text class="cx-caption" x="96" y="460">each drop is prose promoted to a check</text>
+        </svg>
+        <figcaption class="viz-caption compound-caption">
+          <span>the shaded gap is the compounding</span>
+          <button class="cx-replay" id="cx-replay" type="button">Replay ↺</button>
+        </figcaption>
+      </figure>
   </div>
 </section>
 
