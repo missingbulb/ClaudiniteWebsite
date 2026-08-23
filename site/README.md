@@ -54,10 +54,8 @@ the table above.
 
 ## Example repositories
 
-This repository is private, so it can never be the site's "see a repo running
-it" example. The link points at a public member of the fleet
-([GoogleCalendarEventCreator](https://github.com/missingbulb/GoogleCalendarEventCreator));
-check any replacement is public before linking it.
+The site links a repository that visibly runs Claudinite; today that is
+[GoogleCalendarEventCreator](https://github.com/missingbulb/GoogleCalendarEventCreator).
 
 ## Local preview
 
