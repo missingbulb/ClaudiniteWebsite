@@ -213,6 +213,7 @@ h1 { margin-top: 0.2em; }
 .reveal[data-delay="1"] { transition-delay: 0.12s; }
 .reveal[data-delay="2"] { transition-delay: 0.24s; }
 .reveal[data-delay="3"] { transition-delay: 0.36s; }
+.reveal[data-delay="4"] { transition-delay: 0.48s; }
 .reveal.in { opacity: 1; transform: none; }
 
 /* --------------------------- terminals ----------------------------- */
@@ -316,6 +317,10 @@ h1 { margin-top: 0.2em; }
 .ladder-step { border: 1.5px solid var(--ink); border-radius: 999px; padding: 6px 16px; background: var(--paper); }
 .ladder-final { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .ladder-arrow { color: var(--accent-deep); font-weight: 700; }
+/* On the dark section the ink-on-ink chip and deep-green arrows vanish. */
+.mech-dark .ladder-step { border-color: #eef1ea; color: #eef1ea; background: transparent; }
+.mech-dark .ladder-final { background: #7fd4ac; border-color: #7fd4ac; color: var(--term-bg); }
+.mech-dark .ladder-arrow { color: #7fd4ac; }
 
 /* ------------------------------ canon ------------------------------ */
 .canon { padding: clamp(64px, 10vw, 130px) 0; border-top: 1px solid var(--line); background: var(--paper-2); }

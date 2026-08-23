@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Claudinite — agent conventions with teeth</title>
-<meta name="description" content="CLAUDE.md is context, not enforcement. Claudinite ships your conventions as packs — rules, blocking checks, skills, scheduled upkeep — vendored into every repo and kept current nightly.">
+<title>Claudinite — your work, exponentially better</title>
+<meta name="description" content="Claudinite grows a corpus from the way you actually work, turns its prose into generated checks that enforce themselves, and runs growth and upkeep automatically — for one repo, a private fleet, or an organization.">
 <meta name="theme-color" content="#faf8f4">
 <link rel="canonical" href="https://claudinite.com/">
-<meta property="og:title" content="Claudinite — agent conventions with teeth">
-<meta property="og:description" content="Rules your agent can skip aren’t rules. Packs carry checks that block, and a nightly PR that keeps every repo current.">
+<meta property="og:title" content="Claudinite — your work, exponentially better">
+<meta property="og:description" content="It learns from your sessions, promotes prose into checks that block, and runs the upkeep itself — so every session starts ahead of the last.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://claudinite.com/">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -25,8 +25,8 @@
     </a>
     <nav aria-label="Primary">
       <a href="#why">Why</a>
-      <a href="#mechanisms">Mechanisms</a>
-      <a href="#canon">The canon</a>
+      <a href="#mechanisms">How</a>
+      <a href="#scale">Scale</a>
       <a href="#faq">FAQ</a>
       <a class="nav-cta" href="#adopt">Adopt</a>
     </nav>
@@ -39,11 +39,12 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">Convention packs for Claude Code</p>
-      <h1>Rules your agent can’t&nbsp;skip.</h1>
+      <p class="eyebrow">A growth system for Claude Code</p>
+      <h1>Your work, exponentially better.</h1>
       <p class="lede">
-        Conventions ship as <strong>packs</strong> — with checks that block —
-        vendored into every repo, refreshed nightly.
+        Claudinite grows a corpus from the way <strong>you</strong> actually work —
+        then <strong>enforces</strong> it with generated checks and
+        <strong>runs the upkeep</strong> itself. Every session starts ahead of the last.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#adopt">Adopt it in your repo</a>
@@ -74,7 +75,7 @@
 <section class="why" id="why">
   <div class="wrap">
     <p class="eyebrow">Why this exists</p>
-    <h2>Prose doesn’t scale. Copies rot.</h2>
+    <h2>Agents don’t compound on their own.</h2>
 
     <blockquote class="quote reveal">
       <p>“Claude treats them as context, not enforced configuration.”</p>
@@ -83,71 +84,72 @@
 
     <div class="why-grid">
       <article class="why-card reveal">
-        <h3><span class="why-num">01</span> No teeth</h3>
+        <h3><span class="why-num">01</span> Amnesia</h3>
+        <p>Every session starts from zero. Your decisions evaporate on exit.</p>
+      </article>
+      <article class="why-card reveal">
+        <h3><span class="why-num">02</span> No teeth</h3>
         <p>Nothing fails when a convention is ignored. So it is.</p>
       </article>
       <article class="why-card reveal">
-        <h3><span class="why-num">02</span> Drift</h3>
-        <p>Ten repos, ten forks of one rulebook.</p>
-      </article>
-      <article class="why-card reveal">
-        <h3><span class="why-num">03</span> Stale</h3>
-        <p>One repo learns it. The other nine never hear.</p>
+        <h3><span class="why-num">03</span> Suffocation</h3>
+        <p>Pile the growing rulebook into context and it crowds out the work.</p>
       </article>
     </div>
-    <p class="why-kicker reveal">Rule-sync tools check the rules <em>arrived</em>. Claudinite checks they were <strong>followed</strong>.</p>
+    <p class="why-kicker reveal">Compounding needs all three fixed: <strong>memory that grows, rules that bite, context left free</strong>. Claudinite is that system.</p>
   </div>
 </section>
 
 <div id="mechanisms" aria-hidden="true"></div>
 
-<!-- ===================== MECHANISM 1 · THE PACK ===================== -->
-<section class="mech" id="pack-anatomy">
+<!-- ==================== MECHANISM 1 · GROW ==================== -->
+<section class="mech" id="growth">
   <div class="wrap mech-grid">
     <div class="mech-copy">
-      <p class="eyebrow">Mechanism 01</p>
-      <h2>The pack</h2>
-      <p>A convention that ships with its own means of survival.</p>
+      <p class="eyebrow">Mechanism 01 · grow</p>
+      <h2>It grows from<br><em>your</em> work</h2>
+      <p>Not all possible work — yours: the things you work on, and the way you work on them, read from your own sessions and decisions.</p>
       <ul class="mech-points">
-        <li><strong>Rules</strong> — every session, automatically.</li>
-        <li><strong>Checks</strong> — executable: they fail the session, or the PR.</li>
-        <li><strong>Skills</strong> — loaded on demand, never carried.</li>
-        <li><strong>Tasks</strong> — upkeep, on your repo’s schedule.</li>
+        <li><strong>Sessions are captured</strong> — friction, backtracks and calls you made become lessons.</li>
+        <li><strong>Lessons land as local rules</strong>, in a PR you review.</li>
+        <li><strong>The portable ones promote to the canon</strong> — and reach every repo you run.</li>
       </ul>
     </div>
-    <div class="pack-stack" role="img" aria-label="Exploded view of a pack: RULES.md prose, checks, skills, and scheduled tasks.">
-      <div class="pack-layer reveal" data-delay="0">
-        <div class="pack-layer-head"><span class="file">RULES.md</span><span class="pill">every session</span></div>
-        <p>Always loaded.</p>
-      </div>
-      <div class="pack-layer reveal" data-delay="1">
-        <div class="pack-layer-head"><span class="file">checks/*.mjs</span><span class="pill pill-red">blocking</span><span class="pill pill-amber">advisory</span></div>
-        <p>The finding names the fix.</p>
-      </div>
-      <div class="pack-layer reveal" data-delay="2">
-        <div class="pack-layer-head"><span class="file">skills/</span><span class="pill">on demand</span></div>
-        <p>Procedure, on demand.</p>
-      </div>
-      <div class="pack-layer reveal" data-delay="3">
-        <div class="pack-layer-head"><span class="file">tasks/</span><span class="pill">scheduled</span></div>
-        <p>Upkeep the repo runs on itself.</p>
-      </div>
-    </div>
+    <figure class="growth-viz">
+      <svg viewBox="0 0 560 560" role="img">
+        <title>The growth loop: session lessons become local packs, are promoted to the canon, and baseline out to the fleet.</title>
+        <circle class="loop-ring" cx="280" cy="280" r="200"/>
+        <circle class="loop-flow" cx="280" cy="280" r="200"/>
+        <g class="loop-node" transform="translate(280,64)"><circle r="9"/><text y="-20" text-anchor="middle">session lesson</text></g>
+        <g class="loop-node" transform="translate(485,217)"><circle r="9"/><text y="-20" text-anchor="middle">local pack</text></g>
+        <g class="loop-node" transform="translate(407,449)"><circle r="9"/><text y="34" text-anchor="middle">dedup</text></g>
+        <g class="loop-node" transform="translate(153,449)"><circle r="9"/><text y="34" text-anchor="middle">promote to canon</text></g>
+        <g class="loop-node" transform="translate(75,217)"><circle r="9"/><text y="-20" text-anchor="middle">baseline to fleet</text></g>
+        <path class="crystal crystal-center" d="M280 236 318 264l-14.5 55h-47L242 264Z"/>
+        <text x="280" y="336" class="viz-label" text-anchor="middle">the growth loop</text>
+      </svg>
+    </figure>
   </div>
 </section>
 
-<!-- ================== MECHANISM 2 · THE SESSION LOOP ================== -->
+<!-- ==================== MECHANISM 2 · ENFORCE ==================== -->
 <section class="mech mech-dark" id="session-loop">
   <div class="wrap mech-grid mech-grid-flip">
     <div class="mech-copy">
-      <p class="eyebrow">Mechanism 02</p>
-      <h2>The session loop</h2>
-      <p>Checks run when the agent tries to stop. The finding <em>is</em> the instruction.</p>
+      <p class="eyebrow">Mechanism 02 · enforce</p>
+      <h2>Predictable,<br>not hopeful</h2>
+      <p>A rule the agent <em>might</em> apply is a hope. So prose is grown into generated checks — lint for how you work. They run when the agent tries to stop; the finding <em>is</em> the instruction.</p>
       <ul class="mech-points">
         <li>Blocking findings hold the session open.</li>
         <li>Advisory findings just surface.</li>
         <li>The repo-facing ones run again in CI.</li>
       </ul>
+      <p class="ladder" aria-label="The promotion ladder: prose becomes a skill becomes a check.">
+        <span class="ladder-step">prose</span><span class="ladder-arrow">→</span>
+        <span class="ladder-step">skill</span><span class="ladder-arrow">→</span>
+        <span class="ladder-step ladder-final">check</span>
+      </p>
+      <p class="mech-fine">Each rung up adds certainty and frees context — the corpus keeps growing without suffocating the session.</p>
       <button class="btn btn-ghost btn-replay" id="term-replay" type="button">Replay ↺</button>
     </div>
     <div class="terminal" id="session-term" aria-label="Terminal transcript: checks catch a missing issue reference, the agent fixes it, all checks pass.">
@@ -166,17 +168,17 @@
   </div>
 </section>
 
-<!-- ================= MECHANISM 3 · THE FLEET STAYS CURRENT ================= -->
+<!-- ==================== MECHANISM 3 · AUTOMATE ==================== -->
 <section class="mech" id="fleet">
   <div class="wrap mech-grid">
     <div class="mech-copy">
-      <p class="eyebrow">Mechanism 03</p>
-      <h2>No repo falls behind</h2>
-      <p>Every repo re-vendors the canon nightly, on its own schedule.</p>
+      <p class="eyebrow">Mechanism 03 · automate</p>
+      <h2>Work that<br>runs itself</h2>
+      <p>Growth is scheduled, and so is the work: lightweight tasks the fleet executes unattended, each with a verifiable outcome.</p>
       <ul class="mech-points">
-        <li>Updates arrive as PRs, gated by your CI.</li>
-        <li>Vendored — pinned, tracked, in your history.</li>
-        <li>Nothing fetched at runtime.</li>
+        <li><strong>Upkeep on the repo’s schedule</strong> — tidy sweeps, wiki growth, prose→check conversion.</li>
+        <li><strong>Every repo re-vendors the canon nightly</strong> — no repo falls behind.</li>
+        <li><strong>Every automated change is a PR</strong>, gated by your own CI.</li>
       </ul>
     </div>
     <div class="fleet-board" role="img" aria-label="Eight repositories flip from an old canon ref to the latest as the nightly baselining wave passes.">
@@ -191,34 +193,92 @@
   </div>
 </section>
 
-<!-- =================== MECHANISM 4 · THE GROWTH LOOP =================== -->
-<section class="mech" id="growth">
+<!-- ==================== MECHANISM 4 · DISSEMINATE ==================== -->
+<section class="mech" id="pack-anatomy">
   <div class="wrap mech-grid mech-grid-flip">
     <div class="mech-copy">
-      <p class="eyebrow">Mechanism 04</p>
-      <h2>One repo pays.<br>Every repo learns.</h2>
-      <p>Lessons from real sessions become local rules; the portable ones reach the canon.</p>
-      <p class="ladder" aria-label="The promotion ladder: prose becomes a skill becomes a check.">
-        <span class="ladder-step">prose</span><span class="ladder-arrow">→</span>
-        <span class="ladder-step">skill</span><span class="ladder-arrow">→</span>
-        <span class="ladder-step ladder-final">check</span>
-      </p>
-      <p class="mech-fine">A check frees the context prose only relocates.</p>
+      <p class="eyebrow">Mechanism 04 · disseminate</p>
+      <h2>The pack<br>carries it</h2>
+      <p>Knowledge compounds only if it travels whole. A pack ships a practice with everything it needs to survive — and to be found.</p>
+      <ul class="mech-points">
+        <li><strong>Prose</strong> — every session, automatically.</li>
+        <li><strong>Checks</strong> — the generated lint that enforces it.</li>
+        <li><strong>Skills and tasks</strong> — procedure on demand, upkeep on schedule.</li>
+        <li><strong>A manifest</strong> — discoverable in the catalog, adopted by interview, visible per repo.</li>
+      </ul>
     </div>
-    <figure class="growth-viz">
-      <svg viewBox="0 0 560 560" role="img">
-        <title>The growth loop: session lessons become local packs, are promoted to the canon, and baseline out to the fleet.</title>
-        <circle class="loop-ring" cx="280" cy="280" r="200"/>
-        <circle class="loop-flow" cx="280" cy="280" r="200"/>
-        <g class="loop-node" transform="translate(280,64)"><circle r="9"/><text y="-20" text-anchor="middle">session lesson</text></g>
-        <g class="loop-node" transform="translate(485,217)"><circle r="9"/><text y="-20" text-anchor="middle">local pack</text></g>
-        <g class="loop-node" transform="translate(407,449)"><circle r="9"/><text y="34" text-anchor="middle">dedup</text></g>
-        <g class="loop-node" transform="translate(153,449)"><circle r="9"/><text y="34" text-anchor="middle">promote to canon</text></g>
-        <g class="loop-node" transform="translate(75,217)"><circle r="9"/><text y="-20" text-anchor="middle">baseline to fleet</text></g>
-        <path class="crystal crystal-center" d="M280 236 318 264l-14.5 55h-47L242 264Z"/>
-        <text x="280" y="336" class="viz-label" text-anchor="middle">the growth loop</text>
-      </svg>
-    </figure>
+    <div class="pack-stack" role="img" aria-label="Exploded view of a pack: RULES.md prose, checks, skills, scheduled tasks, and the manifest that makes it discoverable.">
+      <div class="pack-layer reveal" data-delay="0">
+        <div class="pack-layer-head"><span class="file">RULES.md</span><span class="pill">every session</span></div>
+        <p>Always loaded.</p>
+      </div>
+      <div class="pack-layer reveal" data-delay="1">
+        <div class="pack-layer-head"><span class="file">checks/*.mjs</span><span class="pill pill-red">blocking</span><span class="pill pill-amber">advisory</span></div>
+        <p>The finding names the fix.</p>
+      </div>
+      <div class="pack-layer reveal" data-delay="2">
+        <div class="pack-layer-head"><span class="file">skills/</span><span class="pill">on demand</span></div>
+        <p>Procedure, on demand.</p>
+      </div>
+      <div class="pack-layer reveal" data-delay="3">
+        <div class="pack-layer-head"><span class="file">tasks/</span><span class="pill">scheduled</span></div>
+        <p>Upkeep the repo runs on itself.</p>
+      </div>
+      <div class="pack-layer reveal" data-delay="4">
+        <div class="pack-layer-head"><span class="file">pack.mjs</span><span class="pill">visibility</span></div>
+        <p>Declares itself: catalog entry, adoption interview, a badge per repo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SCALE ============================ -->
+<section class="why" id="scale">
+  <div class="wrap">
+    <p class="eyebrow">Who it’s for</p>
+    <h2>One repo. A fleet. An organization.</h2>
+
+    <div class="why-grid">
+      <article class="why-card reveal">
+        <h3><span class="why-num">01</span> One developer, one repo</h3>
+        <p>The session loop alone: your repo gets stricter and smarter every time you work it.</p>
+      </article>
+      <article class="why-card reveal">
+        <h3><span class="why-num">02</span> One developer, a fleet</h3>
+        <p>A private canon: a lesson paid for in one repo reaches all of them by morning.</p>
+      </article>
+      <article class="why-card reveal">
+        <h3><span class="why-num">03</span> An organization</h3>
+        <p>Teams in symphony: shared packs carry how the org works, and every repo visibly keeps up.</p>
+      </article>
+    </div>
+    <p class="why-kicker reveal">Different flows, different mechanisms — <strong>one compounding loop</strong>.</p>
+  </div>
+</section>
+
+<!-- ================== BEYOND THE CORE · EXECUTABLE REQUIREMENTS ================== -->
+<section class="mech" id="exec-req">
+  <div class="wrap mech-grid">
+    <div class="mech-copy">
+      <p class="eyebrow">Beyond the core</p>
+      <h2>Requirements<br>you can execute</h2>
+      <p>The workflow this buys: state a UI change as a requirement, and the agent finishes the build-run-verify loop against it — repeatably, without you driving it.</p>
+      <ul class="mech-points">
+        <li><strong>The requirement becomes an executable spec</strong> — a test that fails first.</li>
+        <li><strong>Claude runs the loop</strong>: change, build, verify — again, until it passes.</li>
+        <li><strong>You review a change that already proved itself.</strong></li>
+      </ul>
+    </div>
+    <div class="terminal terminal-light" aria-label="Terminal: a stated requirement becomes an executable spec; the agent iterates until the spec passes.">
+      <div class="term-bar"><span></span><span></span><span></span><em>claude — your-app</em></div>
+      <div class="term-body">
+        <p class="t-line">&gt; the signup button stays disabled until the form validates</p>
+        <p class="t-line t-hook">◆ requirement recorded → executable spec</p>
+        <p class="t-line t-bad">✗ spec fails: button enabled on empty form</p>
+        <p class="t-line t-dim">… edit · rebuild · re-run the spec …</p>
+        <p class="t-line t-good">✓ spec passes — change ready for review</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -321,6 +381,10 @@
       <p>A vendored canon, a declaration, hooks, a scheduler workflow and a CI step — one PR.</p>
     </details>
     <details>
+      <summary>Do I have to write the rules myself?</summary>
+      <p>No. Most arrive as lessons mined from your own sessions; you review the PRs that land them.</p>
+    </details>
+    <details>
       <summary>Will it fight my CLAUDE.md?</summary>
       <p>No. It adds the layer that file can’t carry, and keeps it lean.</p>
     </details>
@@ -336,10 +400,6 @@
       <summary>How do I leave?</summary>
       <p>Delete <code>.claudinite/</code>, its hook entries, the scheduler workflow and the CI step.</p>
     </details>
-    <details>
-      <summary>Can it learn my codebase’s own rules?</summary>
-      <p>Yes — from your own merged sessions.</p>
-    </details>
   </div>
 </section>
 
@@ -352,7 +412,7 @@
         <svg class="brand-glyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 28 11l-4.5 17h-15L4 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 2v26M4 11l12 6 12-6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
         <span>claudinite</span>
       </a>
-      <p class="footer-tag">Conventions, with teeth.</p>
+      <p class="footer-tag">Your work, compounding.</p>
     </div>
     <nav class="footer-links" aria-label="Footer">
       <a href="https://github.com/missingbulb/Claudinite" rel="noopener">Canon repository</a>

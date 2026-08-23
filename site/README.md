@@ -10,7 +10,7 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 
 | Path | What it is | Who edits it |
 |---|---|---|
-| [index.html](index.html) | The one page: evergreen copy + the four mechanism explainers. Copy is deliberately terse — a claim earns its words or goes | Rarely — structure and evergreen claims |
+| [index.html](index.html) | The one page: evergreen copy framed around "your work, exponentially better" — the grow/enforce/automate/disseminate mechanism explainers, the scale tiers, and the executable-requirements workflow. Copy is deliberately terse — a claim earns its words or goes | Rarely — structure and evergreen claims |
 | [assets/style.css](assets/style.css) | The whole design system (tokens at the top) | Rarely |
 | [assets/main.js](assets/main.js) | Animations + rendering of the promoted-content slots | Rarely |
 | [assets/analytics.js](assets/analytics.js) | Cookieless Cloudflare Web Analytics loader; no-ops until the deploy injects the token | Never — the token comes from the `CLOUDFLARE_ANALYTICS_TOKEN` repo variable |
