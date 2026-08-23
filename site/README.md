@@ -10,7 +10,7 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 
 | Path | What it is | Who edits it |
 |---|---|---|
-| [index.html](index.html) | The one page. Its spine is the compounding chart in the hero; everything after it explains a part of that chart — the ceiling, the three multipliers, the pack, the scale tiers, the executable-requirements workflow. Copy is deliberately terse — a claim earns its words or goes | Rarely — structure and evergreen claims |
+| [index.html](index.html) | The one page. The hero is the desk scene; the ceiling, the three multipliers (opening with the compounding chart), the pack, the scale tiers and the executable-requirements workflow follow. Copy is deliberately terse — a claim earns its words or goes | Rarely — structure and evergreen claims |
 | [assets/style.css](assets/style.css) | The whole design system (tokens at the top) | Rarely |
 | [assets/main.js](assets/main.js) | Animations + rendering of the promoted-content slots | Rarely |
 | [assets/analytics.js](assets/analytics.js) | Cookieless Cloudflare Web Analytics loader; no-ops until the deploy injects the token | Never — the token comes from the `CLOUDFLARE_ANALYTICS_TOKEN` repo variable |
