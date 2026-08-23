@@ -175,8 +175,12 @@ GitHub API on 2026-07-31:
   category's strongest "enforcement."
 - **dyoshikawa/rulesync** (1,273 ★, 298 npm releases, very active) — CLI
   generating configs for 30+ tools from one `.rulesync/` source. Its
-  supported-tools matrix now lists "checks" and "hooks" as feature columns —
-  category vocabulary drifting toward checks without shipping enforcement.
+  supported-tools matrix lists "checks" as a feature column, and the CLI
+  reference resolves what that means (2026-08-23): it is the `generate`
+  command's `--check` flag, which "exits with code 1 if files are not up to
+  date" — a drift/staleness check on the *generated config files*, the same
+  class as Ruler's CI example, not a check on the rules being followed. The
+  vocabulary reads as enforcement; the mechanism is still config-file drift.
 - **RuleSync (rulesync.dev)** — the only commercial player found: a hosted
   dashboard + `rsc pull/push` CLI syncing CLAUDE.md/AGENTS.md/.cursorrules
   across repos, with a CI-failable `check` command. Free during beta, team
@@ -288,7 +292,7 @@ lives in [`Customers/`](../Customers/README.md).
 - [Agent Skills spec (agentskills/agentskills)](https://raw.githubusercontent.com/agentskills/agentskills/main/README.md) and [Claude Code skills docs](https://code.claude.com/docs/en/skills); cross-vendor adoption: [paperclipped.de](https://www.paperclipped.de/en/blog/agent-skills-open-standard-interoperability/)
 - [anthropics/skills](https://github.com/anthropics/skills) — 165,327 ★ (GitHub API, 2026-07-31)
 - [intellectronica/ruler](https://github.com/intellectronica/ruler) — 2,833 ★; README re-read 2026-08-21: "a **single source of truth** for all your AI agent instructions, automatically distributing them", and its CI example "[v]erifies the committed agent files (AGENTS.md, CLAUDE.md, skills) match the .ruler/ source" — distribution plus file-drift, no work-product enforcement
-- [dyoshikawa/rulesync](https://github.com/dyoshikawa/rulesync) — 1,273 ★; [supported-tools matrix](https://raw.githubusercontent.com/dyoshikawa/rulesync/main/docs/reference/supported-tools.md)
+- [dyoshikawa/rulesync](https://github.com/dyoshikawa/rulesync) — 1,273 ★; [supported-tools matrix](https://raw.githubusercontent.com/dyoshikawa/rulesync/main/docs/reference/supported-tools.md); [CLI commands reference](https://raw.githubusercontent.com/dyoshikawa/rulesync/main/docs/reference/cli-commands.md) — the `--check` flag's definition (opened directly, 2026-08-23)
 - [RuleSync (hosted)](https://www.rulesync.dev/) and [rulesync-cli on npm](https://registry.npmjs.org/rulesync-cli) — free beta, paid plans planned
 - [Goldziher/ai-rulez](https://github.com/Goldziher/ai-rulez) — enforce/verify hooks, remote includes
 - [agent-sh/agnix](https://github.com/agent-sh/agnix) — 444-rule agent-config linter
@@ -312,9 +316,6 @@ lives in [`Customers/`](../Customers/README.md).
 
 ## Open questions
 
-- What does dyoshikawa/rulesync's "checks" feature column actually generate
-  (its docs site was egress-blocked this pass), and does it map to native
-  check primitives in Amp/Cursor?
 - rulesync.dev's concrete paid pricing and team once out of beta — the first
   direct commercial test of this category's willingness to pay.
 - npm weekly downloads for ruler/rulesync/knowhub/ai-rules-sync (npm stats
@@ -339,10 +340,14 @@ lives in [`Customers/`](../Customers/README.md).
 - Current plugin counts in `claude-plugins-official`/`community` and their
   growth rate — the pace of native absorption is the platform-risk metric.
 - Does any AAIF working group plan to add structure (schemas, checks,
-  versioning) to AGENTS.md? No evidence found this pass; re-check.
+  versioning) to AGENTS.md? `agents.md` is egress-blocked to this pass's
+  fetcher (checked 2026-08-23); needs an unblocked environment or a human,
+  not a later agent pass from here.
 - Whether Cursor Teams' drift-detecting Team Commands extend beyond
   Cursor-native rules (to AGENTS.md/CLAUDE.md) — if so, first-party
-  absorption reaches further than assumed.
+  absorption reaches further than assumed. `cursor.com` is egress-blocked to
+  this pass's fetcher (checked 2026-08-23); needs an unblocked environment or
+  a human, not a later agent pass from here.
 - Has any tool announced a Renovate-style auto-PR convergence bot for agent
   conventions? Re-checked 2026-08-02 (web search plus a GitHub repository
   search restricted to tools pushed since June 2026): none found — every
@@ -350,6 +355,22 @@ lives in [`Customers/`](../Customers/README.md).
   from two search surfaces, not proof; re-check next pass.
 
 ## Growth log
+
+- **2026-08-23** — wiki-growth pass (Context: the product-wiki tree moved in
+  the window — the Website re-scope, #236). Spot-checked Website and
+  Positioning against that move: both already reconcile cleanly, no
+  correction needed. Researched the standing open question on
+  dyoshikawa/rulesync's "checks" feature: its CLI reference (opened directly)
+  resolves it as the `generate` command's `--check` flag — a drift check on
+  generated config files, the same class as Ruler's CI example, not a check
+  on agent behavior — closing the citation gap without changing the page's
+  differentiation line. Two other open questions (Cursor Team Commands'
+  AGENTS.md/CLAUDE.md scope; AAIF working-group plans for AGENTS.md
+  structure) hit hard `EGRESS_BLOCKED` responses on `cursor.com` and
+  `agents.md` — recorded as needing a human or an unblocked environment
+  rather than left to re-check later. `## Key insights` left unchanged: the
+  finding reinforces the existing config-drift-only conclusion rather than
+  changing it.
 
 - **2026-08-21** — owner-directed pass ahead of a site messaging rewrite.
   Three findings, all from primary sources: `anthropics/claude-code` #6235
