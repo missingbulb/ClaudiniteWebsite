@@ -56,8 +56,6 @@ the table above.
 
 The site links a repository that visibly runs Claudinite; today that is
 [GoogleCalendarEventCreator](https://github.com/missingbulb/GoogleCalendarEventCreator).
-Check any replacement is public before linking it — a private one 404s for
-every visitor who is not a collaborator.
 
 ## Local preview
 
