@@ -43,16 +43,18 @@ repo's vendored Claudinite mount.
 
 - **After a merge lands on GitHub, syncing local `main` is a convenience, not part
   of landing — if the environment refuses it, record that and stop, don't retry
-  variants.** `git checkout main` and its neighbours are refused by the session's
-  permission classifier here; the two merge sessions on 2026-08-01 hit five straight
-  denials between them, one of them after three rephrasings of the same intent
-  (`checkout && pull`, then bare `checkout`, then `fetch origin main`), burning about
-  four minutes on a step with nothing downstream of it. The `merge-to-main` recipe's
-  sync step exists so *your working copy* isn't stale; the squash-merge already
-  happened server-side and `merge_pull_request` returning `"merged":true` is the
-  whole proof. Take one attempt, and on a refusal say plainly that local `main` is
-  behind and move to the next step (the growth-pack capture) rather than looking for
-  a phrasing that gets through.
+  variants.** The two merge sessions on 2026-08-01 hit five straight denials on
+  `git checkout main` and its neighbours from the session's permission classifier,
+  one of them after three rephrasings of the same intent (`checkout && pull`, then
+  bare `checkout`, then `fetch origin main`), burning about four minutes on a step
+  with nothing downstream of it — but a plain `git checkout main` now runs clean,
+  with no prompt or denial, so the block was intermittent, not standing. The
+  `merge-to-main` recipe's sync step exists so *your working copy* isn't stale; the
+  squash-merge already happened server-side and `merge_pull_request` returning
+  `"merged":true` is the whole proof regardless of whether the sync succeeds. Take
+  one attempt, and on a refusal say plainly that local `main` is behind and move to
+  the next step (the growth-pack capture) rather than looking for a phrasing that
+  gets through.
 
 - **`mcp__github__search_issues`/`list_issues` located by title (`in:title`) can
   blow the MCP token limit — this repo's tracker issues (`Claudinite tracker:
