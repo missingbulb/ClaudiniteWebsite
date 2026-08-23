@@ -38,11 +38,39 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 Evergreen sections (hero, mechanisms, adopt, FAQ) state how Claudinite works;
 change them only when the product's mechanisms actually change.
 
+## The desk scene
+
+The hero is a narrative loop: one operator's desk over eight beats, from a
+single screen and constant typing to six clean workstreams and a person who
+only approves. It carries the same argument the chart makes, in the register
+the chart cannot reach — what it feels like.
+
+Two things in it are load-bearing rather than decorative, and must survive any
+edit:
+
+- **The assistant is born from the cruft.** The agent accretes barnacles and
+  moss as it grows, and that accretion is what gets stripped and crystallised
+  into the small precise robot. If the robot simply arrives from outside, the
+  scene stops being about promotion and becomes "he added a second AI".
+- **Motion signature.** The agent eases and breathes; the robot moves in
+  `steps()` and blinks on a metronome. Organic versus deterministic is doing
+  the work of a label neither one carries.
+
+The agent is deliberately **our own pentagon**, never a third party's mark: the
+thing that decays in this story is an unmanaged corpus, not somebody's model.
+
+Staging is driven by cumulative beat classes `.b1`…`.b8` that
+[assets/main.js](assets/main.js) adds to the SVG on a timer — every visual state
+is a CSS rule keyed off a beat, so beats stay editable and the loop reset is
+just dropping the classes. Reduced motion applies all eight at once, which
+freezes the destination rather than the struggle.
+
 ## The compounding chart
 
-The hero chart is the page's argument, not decoration: a prose-only corpus
-saturates once its rules fill the context budget, and promoting prose into
-checks keeps freeing that budget so the curve never has to flatten.
+Below the fold, opening "What compounds", the chart is the argument's proof: a
+prose-only corpus saturates once its rules fill the context budget, and
+promoting prose into checks keeps freeing that budget so the curve never has to
+flatten. A faded version of the same exponential runs behind the hero scene.
 
 It is **schematic and asserts no magnitudes** — the axes carry no numbers, and
 the FAQ says so outright. Keep it that way: putting real-looking figures on it
