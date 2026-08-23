@@ -61,3 +61,9 @@ media queries; the CLI flag does not.
 
 A raw full-page capture is rejected as too large — downscale to roughly 600–720px
 wide and send it as JPEG (quality ~82), alongside a full-size hero crop.
+
+A tall mobile full-page shot can still be rejected (`400`) after that width/byte
+downscale — the delivery channel also caps **pixel height**, independent of width
+or file size. A ~9,100px-tall half-page split still tripped it; quartering
+(~4,266px tall) got through. Split a long mobile capture into quarters by height
+before sending, not halves.
