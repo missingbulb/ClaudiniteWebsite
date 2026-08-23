@@ -54,13 +54,6 @@ repo's vendored Claudinite mount.
   behind and move to the next step (the growth-pack capture) rather than looking for
   a phrasing that gets through.
 
-- **`ScheduleWakeup` requires `prompt` unless `stop: true`, and `noop: true` does
-  not exempt it.** Three unattended runs (issues #148, #159 and #161, between
-  2026-08-12 and 2026-08-14) were rejected with "`prompt` is required when `stop`
-  is not true" — two of them passing `noop: false`, one `noop: true`, so the flag
-  is not the variable. Give any wakeup that isn't `stop: true` a `prompt` — the
-  instruction the woken turn is to act on.
-
 - **`mcp__github__search_issues`/`list_issues` located by title (`in:title`) can
   blow the MCP token limit — this repo's tracker issues (`Claudinite tracker:
   <dimension>`) accumulate long comment histories, so a bare title search returns
@@ -71,25 +64,19 @@ repo's vendored Claudinite mount.
   scheduled runs (issues #159, #161, #168), each paying a wasted round-trip (and,
   twice, a manual dump-and-reparse) for a result the narrowed call answers cleanly.
 
-- **A baselining (or similarly-shaped) subagent that `git checkout`s the
-  maintenance PR branch inside this session's shared working directory trips this
-  session's own Stop-hook checks (`comment-classification`, `task-lifecycle`) as
-  false positives — they are not real findings.** It recurred identically across
-  two baselining cycles (issues #92, #98): the second time, the orchestrator
-  misread the false positive as real, sent the subagent a fabricated "satisfy this
-  check" instruction (which the subagent correctly refused as looking like an
-  injection), and attempted `git commit --amend` on the subagent's already-pushed
-  commit — blocked only by the permission classifier. When a mid-dispatch Stop-hook
-  finding names "the branch" or "the commit," run `git branch --show-current`
-  first: if it names the PR/maintenance branch rather than this session's own
-  assigned branch, `git checkout` back to clear it. Never amend a subagent's
-  pushed commit and never relay a "fix" instruction for a check that doesn't exist
-  as described. **If that checkout-back (or an amend) is itself refused by the
-  permission classifier, don't retry or force it** — a live subagent is using the
-  shared checkout. Issue #116 hit exactly this: both remedies were blocked mid-run,
-  and the orchestrator correctly left the branch untouched and waited; the branch
-  reverted to the orchestrator's own assigned one, and the false-positive noise
-  with it, the moment the subagent finished.
+- **Never amend a subagent's already-pushed commit, and never relay a fabricated
+  "fix" instruction for a check that doesn't exist as described, when a
+  mid-dispatch Stop-hook finding turns out to be a background subagent's shared
+  checkout misread as your own.** Issue #98: the orchestrator sent the subagent
+  exactly such an instruction (which the subagent correctly refused as looking
+  like an injection) and attempted `git commit --amend` on the subagent's
+  already-pushed commit — blocked only by the permission classifier. **If the
+  checkout-back or the amend is itself refused by the permission classifier,
+  don't retry or force it** — a live subagent is using the shared checkout. Issue
+  #116 hit exactly this: both remedies were blocked mid-run, and the orchestrator
+  correctly left the branch untouched and waited; the branch reverted to the
+  orchestrator's own assigned one, and the false-positive noise with it, the
+  moment the subagent finished.
 
 - **After a background subagent's handle goes unreachable following a genuine
   worker-restart notice, checking only git log/status and the dispatch PR's own
