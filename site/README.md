@@ -30,7 +30,7 @@ workflow carries no `paths:` filter, so a push that touches nothing under
   `pack-field` graphic and the `stats` count) and never *which*, so no copy
   goes stale when the canon's pack set moves.
 - **`canonRef`** — keep in step with the `ref` stamp in
-  [../.claudinite-checks.json](../.claudinite-checks.json) (short form).
+  [../.claudinite-settings.json](../.claudinite-settings.json) (short form).
 - Keep the file a plain script (`window.CLAUDINITE = {...}`) — it must run
   from `file://` with no module loader.
 
