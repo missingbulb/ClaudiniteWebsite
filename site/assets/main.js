@@ -1,6 +1,6 @@
 /* claudinite.com — behavior. Vanilla JS, no dependencies.
-   Four jobs: reveal-on-scroll, the three mechanism animations (fleet sync,
-   session terminal, baselining board, plus the adopt typewriter), and
+   Four jobs: reveal-on-scroll, the hero compounding chart, the mechanism
+   animations (session terminal, baselining board, adopt typewriter), and
    rendering the promoted-content slots from data/promoted.js.
    All motion is skipped under prefers-reduced-motion. */
 (function () {
@@ -30,96 +30,82 @@
     revealed.forEach(function (n) { ro.observe(n); });
   }
 
-  /* ------------------- hero: fleet sync diagram ------------------ */
-  (function heroFleet() {
-    var svg = document.getElementById('fleet-viz');
+  /* ------------- hero: the compounding chart -------------------
+     The curves and the meters' end states are authored in the markup, so the
+     page states its argument with scripting off. This only animates the way
+     in: a left-to-right sweep over the curves, the meters filling beneath it,
+     and the prose-only meter pinning at full exactly where its curve flattens.
+     Geometry constants mirror the SVG's own coordinates. */
+  (function compoundChart() {
+    var svg = document.getElementById('compound-viz');
     if (!svg) return;
-    var CX = 320, CY = 262;
-    var repos = [
-      { name: 'payments', x: 112, y: 92 },
-      { name: 'web-app', x: 320, y: 46 },
-      { name: 'infra', x: 532, y: 96 },
-      { name: 'ml-service', x: 92, y: 328 },
-      { name: 'cli', x: 548, y: 330 },
-      { name: 'docs-site', x: 320, y: 468 },
-    ];
-    var links = document.getElementById('fleet-links');
-    var pulses = document.getElementById('fleet-pulses');
-    var nodesG = document.getElementById('fleet-repos');
-    var W = 116, H = 38;
+    var clip = document.getElementById('cx-clip-rect');
+    var fillProse = document.getElementById('cx-fill-prose');
+    var fillClaud = document.getElementById('cx-fill-claud');
+    var pin = document.getElementById('cx-pin');
+    var replay = document.getElementById('cx-replay');
 
-    repos.forEach(function (r, i) {
-      var path = document.createElementNS(SVG_NS, 'path');
-      path.setAttribute('d', 'M' + CX + ' ' + CY + ' L' + r.x + ' ' + r.y);
-      path.dataset.i = i;
-      links.appendChild(path);
+    var SWEEP = 554, METER = 426;
+    var PIN_T = 0.55;             // prose fills the budget here, and stops climbing
+    var LATE_T = 0.72;            // the curves are far enough along to be named
+    var PROMOS = [0.30, 0.50, 0.66, 0.79, 0.90];  // promotions, arriving faster
+    var FREED = 0.30;             // budget each promotion hands back
+    var FLOOR = 0.10;
+    var DUR = 7200, HOLD = 2800;
 
-      var g = document.createElementNS(SVG_NS, 'g');
-      g.setAttribute('class', 'repo-node');
-      g.dataset.i = i;
-      var rect = document.createElementNS(SVG_NS, 'rect');
-      rect.setAttribute('x', r.x - W / 2); rect.setAttribute('y', r.y - H / 2);
-      rect.setAttribute('width', W); rect.setAttribute('height', H);
-      rect.setAttribute('rx', 10);
-      var label = document.createElementNS(SVG_NS, 'text');
-      label.setAttribute('x', r.x - W / 2 + 12); label.setAttribute('y', r.y + 4.5);
-      label.textContent = r.name;
-      var status = document.createElementNS(SVG_NS, 'text');
-      status.setAttribute('class', 'repo-status');
-      status.setAttribute('x', r.x + W / 2 - 22); status.setAttribute('y', r.y + 4.5);
-      status.textContent = '✓';
-      g.appendChild(rect); g.appendChild(label); g.appendChild(status);
-      nodesG.appendChild(g);
-    });
+    function proseFill(t) { return Math.min(1, t / PIN_T); }
+    function claudFill(t) {
+      var freed = 0;
+      for (var i = 0; i < PROMOS.length; i++) if (t >= PROMOS[i]) freed += FREED;
+      return Math.max(FLOOR, Math.min(1, t / PIN_T - freed));
+    }
 
-    if (REDUCED) return;
+    function draw(t) {
+      clip.setAttribute('width', SWEEP * t);
+      fillProse.setAttribute('width', METER * proseFill(t));
+      fillClaud.setAttribute('width', METER * claudFill(t));
+      svg.classList.toggle('cx-pinned', t >= PIN_T);
+      svg.classList.toggle('cx-late', t >= LATE_T);
+    }
 
-    function nodeAt(i) { return nodesG.querySelector('[data-i="' + i + '"]'); }
-    function linkAt(i) { return links.querySelector('[data-i="' + i + '"]'); }
+    // With motion suppressed the authored end state is already correct.
+    if (REDUCED) { svg.classList.add('cx-pinned'); svg.classList.add('cx-late'); return; }
 
-    function sendPulse(i, done) {
-      var r = repos[i];
-      var c = document.createElementNS(SVG_NS, 'circle');
-      c.setAttribute('class', 'pulse-dot');
-      c.setAttribute('r', 5);
-      c.setAttribute('cx', CX); c.setAttribute('cy', CY);
-      c.style.transition = 'transform 0.9s cubic-bezier(.4,0,.6,1)';
-      pulses.appendChild(c);
-      linkAt(i).classList.add('hot');
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          c.style.transform = 'translate(' + (r.x - CX) + 'px,' + (r.y - CY) + 'px)';
-        });
+    var raf = null, timer = null, promoIdx = 0;
+
+    function flash() {
+      fillClaud.classList.remove('cx-freed');
+      void fillClaud.getBoundingClientRect();   // restart the animation
+      fillClaud.classList.add('cx-freed');
+    }
+
+    function play() {
+      if (raf) cancelAnimationFrame(raf);
+      if (timer) clearTimeout(timer);
+      promoIdx = 0;
+      var start = null;
+      svg.classList.add('cx-running');
+      (function step(now) {
+        if (start === null) start = now;
+        var t = Math.min(1, (now - start) / DUR);
+        draw(t);
+        while (promoIdx < PROMOS.length && t >= PROMOS[promoIdx]) { flash(); promoIdx++; }
+        if (t < 1) raf = requestAnimationFrame(step);
+        else { svg.classList.remove('cx-running'); timer = setTimeout(play, HOLD); }
+      })(performance.now());
+    }
+
+    if (replay) replay.addEventListener('click', play);
+
+    draw(0);
+    if (!('IntersectionObserver' in window)) { play(); return; }
+    var seen = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !seen) { seen = true; play(); io.disconnect(); }
       });
-      setTimeout(function () {
-        pulses.removeChild(c);
-        linkAt(i).classList.remove('hot');
-        if (done) done();
-      }, 920);
-    }
-
-    var driftIdx = null;
-    function tick() {
-      if (driftIdx === null) {
-        driftIdx = Math.floor(Math.random() * repos.length);
-        var g = nodeAt(driftIdx);
-        g.classList.add('drift');
-        g.querySelector('.repo-status').textContent = '✗';
-        setTimeout(function () {
-          sendPulse(driftIdx, function () {
-            g.classList.remove('drift');
-            g.classList.add('flash');
-            g.querySelector('.repo-status').textContent = '✓';
-            setTimeout(function () { g.classList.remove('flash'); }, 700);
-            driftIdx = null;
-          });
-        }, 1300);
-      } else {
-        sendPulse(Math.floor(Math.random() * repos.length));
-      }
-    }
-    tick();
-    setInterval(tick, 4200);
+    }, { threshold: 0.3 });
+    io.observe(svg);
   })();
 
   /* ------------------ session-loop terminal ---------------------- */

@@ -15,13 +15,17 @@ window.CLAUDINITE = {
   canonRef: '005edd2',
 
   stats: [
-    { n: '8', label: 'packs in the canon' },
-    { n: '25+', label: 'deterministic checks' },
-    { n: '15+', label: 'skills on demand' },
-    { n: '10', label: 'scheduled task types' },
+    { n: '32', label: 'packs in the canon' },
+    { n: '28+', label: 'deterministic checks' },
+    { n: '24+', label: 'skills on demand' },
+    { n: '15+', label: 'scheduled task types' },
   ],
 
   spotlight: [
+    {
+      title: 'Certainty that costs no context',
+      tag: 'Promoted to a check, a rule stops competing for attention and starts blocking instead.',
+    },
     {
       title: 'Rules that bite',
       tag: 'Checks run at session stop; the repo-facing ones run again in CI. Blocking means blocking.',
