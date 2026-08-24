@@ -1,3 +1,3 @@
 // A legacy-path shim — see ../legacy-entry.mjs.
 import '../legacy-entry.mjs';
-export * from '../../../packs/claudinite-tasks/queue/readiness.mjs';
+export * from '../../../packs/claudinite-tasks/queue/secrets-bag.mjs';
