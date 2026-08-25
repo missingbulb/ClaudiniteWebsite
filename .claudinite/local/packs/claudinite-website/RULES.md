@@ -64,29 +64,6 @@ repo's vendored Claudinite mount.
   *reads*: use it, and where it still can't settle the cause, report only that
   the mount lacks the file.
 
-- **After a merge lands on GitHub, syncing local `main` is a convenience, not part
-  of landing — if the environment refuses it, record that and stop, don't retry
-  variants.** `git checkout main` and its neighbours are refused by the session's
-  permission classifier here; the two merge sessions on 2026-08-01 hit five straight
-  denials between them, one of them after three rephrasings of the same intent
-  (`checkout && pull`, then bare `checkout`, then `fetch origin main`), burning about
-  four minutes on a step with nothing downstream of it. The `merge-to-main` recipe's
-  sync step exists so *your working copy* isn't stale; the squash-merge already
-  happened server-side and `merge_pull_request` returning `"merged":true` is the
-  whole proof. Take one attempt, and on a refusal say plainly that local `main` is
-  behind and move to the next step (the growth-pack capture) rather than looking for
-  a phrasing that gets through.
-
-- **`mcp__github__search_issues`/`list_issues` located by title (`in:title`) can
-  blow the MCP token limit — this repo's tracker issues (`Claudinite tracker:
-  <dimension>`) accumulate long comment histories, so a bare title search returns
-  every match's full body and errors before it returns anything.** Pass
-  `fields: ["number", "title", "state"]` (or similarly narrow) on the *first* call
-  whenever the search is only locating an issue by title, not after the "exceeds
-  maximum allowed tokens" error forces a retry. Hit independently in three separate
-  scheduled runs (issues #159, #161, #168), each paying a wasted round-trip (and,
-  twice, a manual dump-and-reparse) for a result the narrowed call answers cleanly.
-
 - **Never amend a subagent's already-pushed commit, and never relay a fabricated
   "fix" instruction for a check that doesn't exist as described, when a
   mid-dispatch Stop-hook finding turns out to be a background subagent's shared
