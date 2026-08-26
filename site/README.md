@@ -23,9 +23,9 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 
 - **Truthful and verifiable.** Every stat, count, and update must be checkable
   against the canon or against this repo's history. No aspirational numbers, no
-  invented dates. The `stats` counts are **canon-wide**, and this repo mounts
-  only the packs it declares, so they are not countable from `.claudinite/`:
-  count them in a checkout of the canon, from `packs/directory.GENERATED.md`
+  invented dates. The `stats` counts are **canon-wide**, and this repo's
+  vendored mount holds only the packs it declares, so they are not countable
+  here: count them in a checkout of the canon, from `packs/directory.GENERATED.md`
   (the pack count, and the pack list every other count sums over) and each
   pack's `README.md` — its check tables for the checks, its `skills/` and
   `tasks/` directories for the other two. Packs the directory omits (a `hidden`
