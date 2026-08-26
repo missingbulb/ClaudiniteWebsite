@@ -16,9 +16,9 @@ window.CLAUDINITE = {
 
   stats: [
     { n: '33', label: 'packs in the canon' },
-    { n: '45+', label: 'deterministic checks' },
-    { n: '24+', label: 'skills on demand' },
-    { n: '15+', label: 'scheduled task types' },
+    { n: '92', label: 'deterministic checks' },
+    { n: '33', label: 'skills on demand' },
+    { n: '23', label: 'scheduled task types' },
   ],
 
   spotlight: [
