@@ -22,8 +22,14 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 `data/promoted.js` is the single file a routine promo run edits. Contract:
 
 - **Truthful and verifiable.** Every stat, count, and update must be checkable
-  against the vendored canon packs in this repo or against its history. No
-  aspirational numbers, no invented dates.
+  against the canon or against this repo's history. No aspirational numbers, no
+  invented dates. The `stats` counts are **canon-wide**, and this repo's
+  vendored mount holds only the packs it declares, so they are not countable
+  here: count them in a checkout of the canon, from `packs/directory.GENERATED.md`
+  (the pack count, and the pack list every other count sums over) and each
+  pack's `README.md` — its check tables for the checks, its `skills/` and
+  `tasks/` directories for the other two. Packs the directory omits (a `hidden`
+  pack such as the canary) are not adoptable and count for nothing.
 - **`spotlight`** — the 3–5 benefits currently being promoted, ordered; the
   first entry renders full-width (visual priority). Taglines ≤ 90 chars.
   Benefits, never named packs: the page shows *how many* packs there are (the
