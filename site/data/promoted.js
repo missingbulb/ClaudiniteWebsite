@@ -5,7 +5,7 @@
  * valid ES5-ish (a plain script, no modules) — it must run from file:// too.
  *
  * Editing contract (see site/README.md for the full guide):
- *  - `stats`: keep claims verifiable against the vendored canon in .claudinite/.
+ *  - `stats`: machine-maintained by the weekly `site-stats` task — leave them alone.
  *  - `spotlight`: ordered, first item gets visual priority; 3–5 items, taglines
  *    ≤ 90 chars, no unverifiable claims. Benefits, never named packs — the page
  *    shows how many packs there are and never which.
