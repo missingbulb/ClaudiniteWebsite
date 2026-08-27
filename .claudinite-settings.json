@@ -2,7 +2,7 @@
   "packs": [
     {
       "id": "basics",
-      "version": "60824.1"
+      "version": "60827.2"
     },
     {
       "id": "barriers",
@@ -23,14 +23,14 @@
     },
     {
       "id": "claudinite-growth",
-      "version": "60824.1",
+      "version": "60827.1",
       "config": {
         "retention_days": 10
       }
     },
     {
       "id": "tidy-repo",
-      "version": "60824.1"
+      "version": "60827.1"
     },
     {
       "id": "html",
@@ -54,7 +54,7 @@
     },
     {
       "id": "claudinite-tasks",
-      "version": "60824.9"
+      "version": "60827.4"
     }
   ],
   "taskScheduler": {
