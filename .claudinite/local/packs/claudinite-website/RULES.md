@@ -78,6 +78,16 @@ repo's vendored Claudinite mount.
   orchestrator's own assigned one, and the false-positive noise with it, the
   moment the subagent finished.
 
+- **A background subagent dispatched to analyze a file makes the parent's own
+  read of that same file redundant while it's running — wait on the subagent,
+  don't shadow it.** Issue #211: while four background subagents each mined one
+  conversation log for lessons, the orchestrator itself also directly read and
+  grepped those same four files throughout the ~7.5-minute wait — 69 tool calls
+  that fed nothing, since the two lessons it eventually landed matched the
+  subagents' own reports verbatim. Idle on `ReadNotifications`/`ScheduleWakeup`
+  for the wait, or spend it on genuinely different work, rather than re-deriving
+  what a dispatched subagent is already computing.
+
 - **After a background subagent's handle goes unreachable following a genuine
   worker-restart notice, checking only git log/status and the dispatch PR's own
   comments is not enough to tell whether it made progress — it may already have
