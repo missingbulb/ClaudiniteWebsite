@@ -30,7 +30,7 @@
     },
     {
       "id": "tidy-repo",
-      "version": "60827.1"
+      "version": "60827.2"
     },
     {
       "id": "html",
@@ -54,7 +54,7 @@
     },
     {
       "id": "claudinite-tasks",
-      "version": "60827.4"
+      "version": "60827.5"
     }
   ],
   "taskScheduler": {
