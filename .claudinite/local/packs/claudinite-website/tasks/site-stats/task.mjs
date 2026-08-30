@@ -5,9 +5,12 @@
 // skills and tasks out of the canon is arithmetic over a file listing, with no
 // judgment anywhere in it, so the whole run is code and no session is ever started.
 //
-// `expected_outcome: 'merged-pr'` because the change it makes is four numbers in a
-// data file, each one re-derivable from the canon by the same code that wrote it.
-// The PR lands per this repo's delivery settings.
+// `expected_outcome: 'pr'` with `automerge: ['single-file-code-changes']` because the
+// change it makes is four numbers in one data file (`site/data/promoted.js`), each one
+// re-derivable from the canon by the same code that wrote it. The policy is measured
+// against the actual diff rather than trusted: a run that somehow touched a second code
+// file, or any doc, parks for review instead of landing. The PR still lands per this
+// repo's delivery settings.
 //
 // WHY WEEKLY. The numbers move when the canon gains a pack, a check, a skill or a
 // task — a thing that happens on the canon's clock, not this repo's, and never
@@ -21,7 +24,8 @@ export default {
   frequency: 'weekly',
   precondition_signals: [],
   agent_model: 'none',                   // pure code — arithmetic over the canon's own files
-  expected_outcome: 'merged-pr',         // four numbers in a data file, landed per the repo's delivery settings
+  expected_outcome: 'pr',
+  automerge: ['single-file-code-changes'], // four numbers in one data file — anything wider parks for review
   code_work: 'node worker.mjs',
   code_work_timeout: 300,                // a shallow clone of the canon plus a read per pack
 
