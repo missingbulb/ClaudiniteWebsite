@@ -16,7 +16,7 @@ Claudinite in [`Positioning/`](../Positioning/README.md).
 - The rule-sync category is nearly all free OSS under 3k stars; the one hosted SaaS (rulesync.dev) is in free beta.
 - Enterprise scorecard vendors (Cortex, Port, OpsLevel) now sell AI-agent governance from above; OpsLevel's Tidra ships auto-PRs.
 - Anthropic's own docs say CLAUDE.md is "context, not enforced configuration" — the vendor states Claudinite's premise.
-- The AGENTS.md request (4,944 👍) was closed *completed* on 2026-08-17 by shipping an import; Claude Code still won't read the file.
+- The AGENTS.md ask (4,944 👍) closed *completed* via a one-time import; Anthropic's own `.agents/skills/` standard stays unaddressed.
 
 ## The substrate: per-repo convention files
 
@@ -64,6 +64,21 @@ with them:
   therefore *durable by decision*, not by backlog: the interop whitespace
   stays open, and a copy-in bridge is itself a drift source, which is the
   territory Claudinite is already in.
+- **The close settled file-reading only — the parallel `.agents/skills/` ask
+  is a separate, still-open thread** (researched 2026-08-30). Two more
+  specific issues split off the same demand cluster: `anthropics/claude-code`
+  #31005 ("Support for AGENTS.md and .agents/skills/, the community has been
+  asking since August 2025," opened 2026-03-05, citing 3,020 👍 on #6235 at
+  the time it was filed) is still **open** as of this pass — thirteen days
+  after #6235's close. #50778 (opened 2026-04-19, a four-part consolidated
+  spec: AGENTS.md dual-read with CLAUDE.md-wins precedence on collision,
+  `.agents/skills/` dual-discovery merged into the skill registry, plus
+  optional future hooks/commands extensions) was closed as a duplicate of
+  #6235 without any of its four parts shipping. `.agents/skills/` is
+  Anthropic's *own* published Agent Skills standard (agentskills.io) — Claude
+  Code reads only `.claude/skills/` — so the unaddressed half of the demand
+  is non-adoption of the platform's own standard directory, not third-party
+  interop.
 - **Anthropic now states the enforcement gap in its own docs, in Claudinite's
   own terms** (primary page, 2026-08-21). The memory doc's opening comparison
   says of CLAUDE.md and auto memory: "Claude treats them as context, not
@@ -296,7 +311,9 @@ lives in [`Customers/`](../Customers/README.md).
 - [RuleSync (hosted)](https://www.rulesync.dev/) and [rulesync-cli on npm](https://registry.npmjs.org/rulesync-cli) — free beta, paid plans planned
 - [Goldziher/ai-rulez](https://github.com/Goldziher/ai-rulez) — enforce/verify hooks, remote includes
 - [agent-sh/agnix](https://github.com/agent-sh/agnix) — 444-rule agent-config linter
-- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — closed `completed` 2026-08-17T03:37Z by bcherny, 4,944 👍 / 6,367 reactions / 374 comments, opened 2025-08-21 (GitHub API, 2026-08-21); corroborating [#31005](https://github.com/anthropics/claude-code/issues/31005) (277 👍) and [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
+- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — closed `completed` 2026-08-17T03:37Z by bcherny, 4,944 👍 / 6,367 reactions / 374 comments, opened 2025-08-21 (GitHub API, 2026-08-21); corroborating [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
+- [anthropics/claude-code #31005 "Support for AGENTS.md and .agents/skills/, the community has been asking since August 2025"](https://github.com/anthropics/claude-code/issues/31005) — opened 2026-03-05, still **open** as of 2026-08-30 (fetched directly); *correction (2026-08-30): this page previously listed #31005 only as a 277-👍 corroborating vote for #6235 — it is in fact a distinct ask specifically for `.agents/skills/` directory support, and the one still open after #6235 closed*
+- [anthropics/claude-code #50778 "Feature Request: Native support for AGENTS.md and .agents/skills/ as portable alternatives to CLAUDE.md and .claude/skills/"](https://github.com/anthropics/claude-code/issues/50778) — opened 2026-04-19, closed as a duplicate (fetched directly, 2026-08-30); its four-part spec (AGENTS.md dual-read, `.agents/skills/` dual-discovery, optional hooks/commands extensions, zero breaking changes) shipped none of it
 - [Claude Code docs: memory](https://code.claude.com/docs/en/memory) — primary page, re-opened directly 2026-08-21: "Claude treats them as context, not enforced configuration"; "CLAUDE.md instructions shape Claude's behavior but are not a hard enforcement layer"; "target under 200 lines"; "Claude Code reads `CLAUDE.md`, not `AGENTS.md`" with the `@AGENTS.md` import, symlink, `/init` and `/import` (v2.1.213+) bridges; "Auto memory is machine-local… Files are not shared across machines or cloud environments"
 - [dallay/agentsync](https://github.com/dallay/agentsync) — 52 ★, Rust, symlink-based agent-config sync (2026-08-02)
 - [yujiosaka/knowhub](https://github.com/yujiosaka/knowhub) — dormant since 2025-07
@@ -330,10 +347,14 @@ lives in [`Customers/`](../Customers/README.md).
   permanent answer for CLI fleets, or does #45323 being closed "not planned"
   just mean deprioritized rather than rejected in principle? No roadmap
   signal found this pass.
-- Answered 2026-08-21: it was the "the import is the answer" stance —
-  #6235 closed `completed` on the `/import` command, with the docs unchanged
-  on native reading. Still open: is that final, or a staging post? No
-  maintainer statement was located this pass beyond the close itself.
+- Answered in two parts. 2026-08-21: file-reading closed with the "the
+  import is the answer" stance — #6235 closed `completed` on the `/import`
+  command, docs unchanged on native reading; no reopening or maintainer
+  statement found as of 2026-08-30, so that half reads as final. 2026-08-30:
+  the `.agents/skills/` half is not settled either way — #31005 stays open
+  and #50778's duplicate-close shipped none of its four-part spec, with no
+  maintainer rationale for either, so it reads as unaddressed rather than
+  declined.
 - Do the rival CLIs treat Claude Code's `@AGENTS.md` import/symlink bridge as
   a first-class output target? If the bridge is becoming the de-facto
   standard, emitting it is cheaper than emitting a second rules corpus.
@@ -355,6 +376,21 @@ lives in [`Customers/`](../Customers/README.md).
   from two search surfaces, not proof; re-check next pass.
 
 ## Growth log
+
+- **2026-08-30** — wiki-growth pass (Context: the product-wiki tree moved in
+  the window — re-checked; no product-wiki-affecting change landed since the
+  2026-08-23 pass, which already spot-checked Website and Positioning
+  against the #236 move, so nothing further to spot-check here). Researched
+  the standing open question on whether #6235's `completed` close is final
+  or a staging post: it is two separate asks, not one.
+  `anthropics/claude-code` #31005 (opened 2026-03-05) is still open, and
+  #50778 (opened 2026-04-19, a four-part consolidated spec covering
+  `.agents/skills/` dual-discovery) was closed as a duplicate without
+  shipping — the close resolved plain AGENTS.md file-reading only; the
+  parallel ask for Anthropic's own `.agents/skills/` standard remains
+  unaddressed. Corrects this page's prior citation of #31005 as a mere
+  277-👍 corroborating vote — it is a distinct, still-open ask. `## Key
+  insights` bullet on the AGENTS.md close rewritten to carry both halves.
 
 - **2026-08-23** — wiki-growth pass (Context: the product-wiki tree moved in
   the window — the Website re-scope, #236). Spot-checked Website and
