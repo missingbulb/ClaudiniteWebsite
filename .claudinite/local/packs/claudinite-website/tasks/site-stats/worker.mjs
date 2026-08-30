@@ -17,7 +17,7 @@ import { pathToFileURL } from 'node:url';
 // Landing a PR under a member's delivery settings is claudinite-tasks' to own — it
 // is the same library the canon's own agentless tasks call — and a local copy of it
 // here would be a second implementation of the one thing that must not have two.
-import { deliverGenerated, baseTip, readAt, remoteUrl } from '../../../../shared/packs/claudinite-tasks/deliver-generated.mjs';
+import { deliverGenerated, baseTip, readAt, remoteUrl } from '../../../../../shared/packs/claudinite-tasks/deliver-generated.mjs';
 import { countCanonStats } from './count-canon-stats.mjs';
 import { applyStats, canonRepoUrl, STAT_LABELS } from './promoted-stats.mjs';
 
