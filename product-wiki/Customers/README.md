@@ -11,7 +11,7 @@ for the offering in [`Positioning/`](../Positioning/README.md).
 
 - 90% of developers use AI at work; only ~24–33% trust its output — the adoption/trust scissor is the buying condition.
 - Claude Code went from ~3% to 18% work usage in eight months with the category's best satisfaction — the fastest-growing agent.
-- Users file issues titled "need enforcement mechanism"; the tracker's loudest ask (AGENTS.md, 4,944 👍) closed on an import.
+- Users file "need enforcement" issues; AGENTS.md (4,944 👍) closed on an import — its skills-portability half stayed open.
 - Solo devs run dotfiles and symlinks; agencies copy a shared config repo per client — drift machines with no update path.
 - Indies pay $199–249 one-time for vendored starter files (ShipFast: $250k in 5 months); shops absorb $125/seat for Claude Premium.
 - Enterprise near-blockers, in order: security review, multi-agent (AGENTS.md) support, private canon — then metrics and SLA.
@@ -157,6 +157,17 @@ does not scale with agent output volume.
   dashboard exists; (8) EU AI Act / NIST AI RMF mapping — a differentiator,
   not a burden: deployers' main in-force obligation is AI literacy, and a
   distributed, codified AI stance is the natural compliance artifact.
+- **The AGENTS.md demand cluster isn't one ask.** Researched 2026-08-30:
+  alongside plain file-reading, two more specific issues ask for Anthropic's
+  own `.agents/skills/` directory standard — `anthropics/claude-code` #31005
+  (opened 2026-03-05, still **open**) and #50778 (opened 2026-04-19, a
+  four-part spec merging `.agents/skills/` into the skill registry, closed
+  as a duplicate with none of it shipped). #6235's `completed` close
+  addressed only near-blocker #2's file-reading half; the skills-portability
+  half of the same enterprise ask is still open and unimplemented — which
+  matters because a multi-tool fleet (Copilot + Cursor + Claude Code) is
+  exactly where shared skills, not just shared instructions, would need to
+  travel.
 - **Regulatory tailwind**: under the EU AI Act, enterprises using coding
   assistants are "deployers" (model obligations fall on providers); NIST's
   RMF ecosystem pushes documented AI governance. Both reward "clear,
@@ -182,7 +193,8 @@ does not scale with agent output volume.
 - [How Uber uses AI for development — Pragmatic Engineer](https://newsletter.pragmaticengineer.com/p/how-uber-uses-ai-for-development) and [uReview](https://www.uber.com/us/en/blog/ureview/)
 - [Spotify Honk part 1](https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1) and [Fleet-wide refactoring](https://engineering.atspotify.com/2023/05/fleet-management-at-spotify-part-3-fleet-wide-refactoring) — 270k PRs, 77% automerged
 - [Accenture Copilot study — GitHub blog](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/); [TELUS/Rakuten figures](https://agentmarketcap.ai/blog/2026/04/05/anthropic-agentic-coding-trends-report-claude-code-eight-shifts)
-- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — 4,944 👍 / 6,367 reactions / 374 comments, opened 2025-08-21, closed `completed` 2026-08-17 (GitHub API, 2026-08-21); [#31005](https://github.com/anthropics/claude-code/issues/31005) (277 👍), [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
+- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — 4,944 👍 / 6,367 reactions / 374 comments, opened 2025-08-21, closed `completed` 2026-08-17 (GitHub API, 2026-08-21); [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
+- [anthropics/claude-code #31005](https://github.com/anthropics/claude-code/issues/31005) — "Support for AGENTS.md and .agents/skills/", opened 2026-03-05, still open as of 2026-08-30 (fetched directly); [#50778](https://github.com/anthropics/claude-code/issues/50778) — consolidated four-part spec including `.agents/skills/` dual-discovery, opened 2026-04-19, closed as a duplicate with none of it shipped (fetched directly, 2026-08-30) — detail in the [Market wiki](../Market/README.md)
 - [Claude Code docs: memory](https://code.claude.com/docs/en/memory) — "Claude Code reads `CLAUDE.md`, not `AGENTS.md`" (primary page opened directly, 2026-08-02)
 - [Claude Code admin setup (managed settings)](https://code.claude.com/docs/en/admin-setup)
 - [SOC 2 for enterprise clients — Bright Defense](https://www.brightdefense.com/resources/soc-2-for-enterprise-clients/); [on-prem AI code review — Dextralabs](https://dextralabs.com/blog/on-premise-ai-code-review-for-enterprise/); [vendor viability — FirmAdapt](https://firmadapt.com/blog/how-procurement-teams-evaluate-vendor-companies)
@@ -220,12 +232,33 @@ does not scale with agent output volume.
   recommend) as satisfying near-blocker #2, or does the requirement only
   clear with tool-native parity? Decides whether emission is a cheap
   unblock or a deep one.
-- What are the 374 comments on #6235 actually asking for — pure file
-  recognition, or skills/rules portability too? The thread is the largest
-  free-text corpus of user-side demand in this category and has not been
-  read; it would sharpen the multi-agent requirement's real shape.
+- Answered 2026-08-30, partially: the demand splits into two asks, not
+  one. Plain AGENTS.md file-reading closed `completed` on 2026-08-17 via
+  `/import`. The parallel ask for `.agents/skills/` directory support —
+  Anthropic's own published Agent Skills standard — split into its own
+  issues (#31005, #50778) and stayed open/unshipped; see Market wiki for
+  detail. Still open: has anyone quantified what share of the original
+  #6235 thread's 374 comments were asking for skills specifically, versus
+  just file reading? The two split-off issues confirm the ask exists but
+  not its relative weight in the original thread.
 
 ## Growth log
+
+- **2026-08-30** — wiki-growth pass. Answered the standing open question on
+  what the AGENTS.md demand cluster (#6235 and its follow-ons) actually asks
+  for: not one ask but two. `anthropics/claude-code` #31005 (opened
+  2026-03-05) is still open and #50778 (opened 2026-04-19, a four-part spec)
+  was closed as a duplicate without shipping — both ask specifically for
+  `.agents/skills/` directory support, Anthropic's own published standard,
+  which #6235's `completed` close (file-reading via `/import`) never
+  addressed. Sharpens near-blocker #2 and Market's platform-risk framing;
+  detail and citations in the [Market wiki](../Market/README.md). `## Key
+  insights` bullet 3 rewritten to carry both halves. **Note for the human
+  reviewing `product-requirements/`:** this is fresh evidence that
+  multi-agent/interop demand (bearing on proposed R2) explicitly includes
+  skills portability, not just instruction-file portability — worth
+  weighing when R2's scope is finalized; no requirement edited, per the
+  isolation wall.
 
 - **2026-08-21** — re-verification pass alongside the site messaging rewrite:
   the AGENTS.md demand signal this page leans on for near-blocker #2 closed
