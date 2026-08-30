@@ -29,28 +29,14 @@ repo's vendored Claudinite mount.
   carrying the full `git diff` as a patch block plus the verification you ran
   (#59 is the shape), so a session that does have canon scope can `git apply` it.
 
-- **A `queue/instructions.md` step 6 `converge-item.mjs` failure from a session is
-  a known, standing gap — recognize it immediately and never hand-replicate the
-  transition with `mcp__github__issue_write`'s `labels` field.** This session
-  type carries a GitHub credential wired for MCP tools only; `converge-item.mjs`
-  (like any direct `curl`/raw-`fetch` call to `api.github.com`, e.g. a hand-rolled
-  CI-status poll) needs the Action's own `GITHUB_TOKEN` and fails from here —
-  first with `GITHUB_REPOSITORY is not set`, then (once set) a plain `401`, and
-  under `NODE_USE_ENV_PROXY=1` a proxy `403` ("GitHub access is not enabled for
-  this session. An org admin must connect the Claude GitHub App"). Seven
-  work-item sessions in one day (2026-08-23) independently spent 2–5 minutes each
-  re-deriving this exact chain via env/curl/`gh.mjs` archaeology before landing on
-  the same conclusion, already filed as #274 and #277 — search for those before
-  re-diagnosing rather than re-tracing env vars and script internals from
-  scratch. Two of those sessions then made it worse: read `converge-item.mjs`'s
-  internals to hand-replicate its labeling step and called
-  `mcp__github__issue_write` with `labels: ["task:done"]` — that field is a full
-  **overwrite** of the issue's label set, not an add, so it silently clobbered
-  the item's actual queue-state labels (`task:agent`, etc.), exactly the failure
-  `instructions.md` names ("doing it by hand anyway is how an item ends up closed
-  wearing `task:agent`"). The only correct response, per `instructions.md`
-  itself: post a plain comment naming the failure (citing #274/#277) and leave
-  the item's labels and state untouched for a human.
+- **A session's GitHub credential is wired for MCP tools only — a direct
+  `curl`/raw-`fetch` call to `api.github.com` (e.g. a hand-rolled CI-status poll)
+  fails from here: first `GITHUB_REPOSITORY is not set`, then a plain `401`, and
+  under `NODE_USE_ENV_PROXY=1` a proxy `403`.** Seven work-item sessions in one
+  day (2026-08-23) independently spent 2–5 minutes each re-deriving this exact
+  chain via env/curl/`gh.mjs` archaeology before landing on the same conclusion,
+  already filed as #274 and #277 — search for those before re-diagnosing rather
+  than re-tracing env vars and script internals from scratch.
 
 - **A file missing from the mount is evidence about the *vendor set*, not about
   the canon — read the canon before an issue names the gap.** Three
