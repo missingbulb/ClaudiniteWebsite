@@ -36,13 +36,7 @@ export default {
   code_work: 'node worker.mjs',
   code_work_timeout: 300,                // a shallow clone of the canon plus a read per pack
 
-  // No gate — `none` is the empty precondition, and the weekly anchor is the whole
-  // trigger. There is nothing to observe that would tell this task whether the
-  // canon's counts moved: the answer IS the count, and the count is the run.
-  //
-  // What keeps that from being a weekly PR of noise is idempotence rather than a
-  // precondition: the worker compares its recount against the page as it stands on
-  // the base branch and delivers only a difference. "Recounted, the page was already
-  // right, nothing delivered" is an empty outcome, not a skip.
+  // The recount cannot be gated — the answer IS the count. What keeps it from being
+  // a weekly PR of noise is the worker delivering only a difference.
   preconditions: ['none'],
 };
