@@ -19,20 +19,19 @@
 //
 // Self-contained (imports nothing): the whole contract is this default export.
 
-// The folder the recount writes into, root-anchored: `worker.mjs`'s PROMOTED_PATH is
-// the file inside it, and this is the scope of what the run may land unreviewed.
-const PROMOTED_DIR = 'site/data';
-
 export default {
   id: 'site-stats',
   frequency: 'weekly',
   agent_model: 'none',                   // pure code — arithmetic over the canon's own files
   expected_outcome: 'pr',
-  // Scoped to the folder the worker writes — `PROMOTED_PATH` is the only file in it —
-  // so a diff reaching anywhere else in the repo is covered by no allow term and the
-  // recount parks. On a mount predating the `under:` scope the policy reads as invalid,
-  // which is that same park, never a wider merge.
-  automerge: [`under:${PROMOTED_DIR}`],
+  // The folder the recount writes into, root-anchored: `worker.mjs`'s PROMOTED_PATH is
+  // the only file in it, and this is the scope of what the run may land unreviewed. A
+  // diff reaching anywhere else in the repo is covered by no allow term and the recount
+  // parks; on a mount predating the `under:` scope the policy reads as invalid, which is
+  // that same park, never a wider merge. The path is spelled here rather than referenced
+  // because this declaration imports nothing, so task.test.mjs guards the two against
+  // drifting apart.
+  automerge: ['under:site/data'],
   code_work: 'node worker.mjs',
   code_work_timeout: 300,                // a shallow clone of the canon plus a read per pack
 
