@@ -21,7 +21,10 @@ import { deliverGenerated, baseTip, readAt, remoteUrl } from '../../../../../sha
 import { countCanonStats } from './count-canon-stats.mjs';
 import { applyStats, canonRepoUrl, STAT_LABELS } from './promoted-stats.mjs';
 
-const PROMOTED_PATH = 'site/data/promoted.js';
+// Exported for the declaration's drift guard: `task.mjs` cannot import this — it is
+// a pure data literal by design — so its automerge scope carries a copy of the
+// folder, and task.test.mjs asserts the copy still contains this path.
+export const PROMOTED_PATH = 'site/data/promoted.js';
 const PR_BRANCH_PREFIX = 'claudinite/site-stats';
 
 const log = (m) => console.log(`site-stats: ${m}`);
