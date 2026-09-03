@@ -1,8 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import task from './task.mjs';
+import { readFileSync } from 'node:fs';
 import { PROMOTED_PATH } from './worker.mjs';
+import { parseTaskDeclaration } from '../../../../../shared/packs/claudinite-tasks/task-declaration-text.mjs';
 import { validateTaskDeclaration } from '../../../../../shared/packs/claudinite-tasks/task-contract.mjs';
+
+const task = parseTaskDeclaration(readFileSync(new URL('./task.json', import.meta.url), 'utf8'));
 
 // The declaration is checked against THIS REPO'S OWN vendored contract, not a
 // canon copy: the mount is what discovery validates against, and a declaration
@@ -18,7 +21,7 @@ test('the vendored contract accepts it', () => {
   assert.deepEqual(validateTaskDeclaration(task, new Map()), []);
 });
 
-// DRIFT GUARD. `task.mjs` is a pure data literal — it imports nothing, so it cannot
+// DRIFT GUARD. `task.json` is a pure data literal — it imports nothing, so it cannot
 // reference the path `worker.mjs` writes and instead carries a copy of the folder
 // holding it, as its automerge scope. The two are free to drift, and the failure is
 // silent in the worst direction: a scope that no longer covers the written file

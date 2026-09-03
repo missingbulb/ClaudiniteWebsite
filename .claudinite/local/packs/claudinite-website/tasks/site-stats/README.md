@@ -4,7 +4,8 @@ Recounts the four canon-wide figures `site/data/promoted.js` promotes — packs,
 deterministic checks, skills, scheduled task types — and lands the difference.
 
 There is no `task.md` because there is no agent: counting is arithmetic over the
-canon's own files, and [`task.mjs`](task.mjs) says why that makes the whole run code.
+canon's own files, and ["Why the declaration reads as it does"](#why-the-declaration-reads-as-it-does)
+below says why that makes the whole run code.
 
 ## The count
 
@@ -52,3 +53,39 @@ Two consequences worth knowing:
 - **A label that is gone parks the item for a decision** rather than being appended
   back. The entry is missing because a person rewrote the stats block, and a task
   that restores its own row is overruling that edit instead of maintaining it.
+
+## Why the declaration reads as it does
+
+Carried over from the declaration's comments when it became task.json.
+
+claudinite-website task: site-stats — keep the four canon-wide figures on
+claudinite.com true.
+
+`agent_model: 'none'` with `code_work: 'node worker.mjs'`: counting packs, checks,
+skills and tasks out of the canon is arithmetic over a file listing, with no
+judgment anywhere in it, so the whole run is code and no session is ever started.
+
+`expected_outcome: 'pr'` with an `automerge` policy scoped to `site/data/` because the
+change it makes is four numbers in the one data file that folder holds, each one
+re-derivable from the canon by the same code that wrote it. The policy is measured
+against the actual diff rather than trusted: a run that wrote anywhere else in the
+repo parks for review instead of landing. The PR still lands per this repo's
+delivery settings.
+
+WHY WEEKLY. The numbers move when the canon gains a pack, a check, a skill or a
+task — a thing that happens on the canon's clock, not this repo's, and never
+urgently: a figure that is a week behind reads the same as one that is current.
+Daily would spend a run to re-derive the same four numbers six times out of seven.
+
+Self-contained (imports nothing): the whole contract is this default export.
+pure code — arithmetic over the canon's own files
+The folder the recount writes into, root-anchored: `worker.mjs`'s PROMOTED_PATH is
+the only file in it, and this is the scope of what the run may land unreviewed. A
+diff reaching anywhere else in the repo is covered by no allow term and the recount
+parks; on a mount predating the `under:` scope the policy reads as invalid, which is
+that same park, never a wider merge. The path is spelled here rather than referenced
+because this declaration imports nothing, so task.test.mjs guards the two against
+drifting apart.
+a shallow clone of the canon plus a read per pack
+The recount cannot be gated — the answer IS the count. What keeps it from being
+a weekly PR of noise is the worker delivering only a difference.
