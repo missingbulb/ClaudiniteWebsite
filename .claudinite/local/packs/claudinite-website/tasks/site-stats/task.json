@@ -1,6 +1,7 @@
 {
   "$schema": "../../../../../shared/packs/claudinite-tasks/task.schema.json",
   "id": "site-stats",
+  "description": "Recounts the four canon-wide figures the site promotes — packs, checks, skills, tasks — against the canon at its current head, and lands the difference so claudinite.com's promoted stats stay true.",
   "frequency": "weekly",
   "preconditions": [
     "none"

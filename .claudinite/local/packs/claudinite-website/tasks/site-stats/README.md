@@ -4,7 +4,8 @@ Recounts the four canon-wide figures `site/data/promoted.js` promotes — packs,
 deterministic checks, skills, scheduled task types — and lands the difference.
 
 There is no `task.md` because there is no agent: counting is arithmetic over the
-canon's own files, and [`task.mjs`](task.mjs) says why that makes the whole run code.
+canon's own files, and ["Why the declaration reads as it does"](#why-the-declaration-reads-as-it-does)
+below says why that makes the whole run code.
 
 ## The count
 
