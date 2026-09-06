@@ -4,6 +4,7 @@
 // is authoritative (detect: null skips the drift check in both directions).
 import nodeTestDiscovery from './node-test-discovery.mjs';
 import siteVersionTooltip from './site-version-tooltip.mjs';
+import deployTriggerClaim from './deploy-trigger-claim.mjs';
 
 export default {
   id: 'claudinite-website',
@@ -14,6 +15,6 @@ export default {
   marker: null,
   detect: null,
   prose: 'RULES.md',
-  worldRules: [nodeTestDiscovery, siteVersionTooltip],
+  worldRules: [nodeTestDiscovery, siteVersionTooltip, deployTriggerClaim],
   skills: ['site-visual-check'],
 };
