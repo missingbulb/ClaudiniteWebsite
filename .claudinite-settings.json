@@ -45,6 +45,10 @@
     {
       "id": "node",
       "version": "60906.2"
+    },
+    {
+      "id": "headless-browser",
+      "version": "60902.1"
     }
   ],
   "taskScheduler": {
