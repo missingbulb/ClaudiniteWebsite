@@ -5,6 +5,10 @@
       "version": "60906.3"
     },
     {
+      "id": "claudinite-lifecycle",
+      "version": "60906.3"
+    },
+    {
       "id": "git-github",
       "version": "60906.1",
       "via": [
@@ -17,10 +21,6 @@
       "config": {
         "retention_days": 10
       }
-    },
-    {
-      "id": "tidy-repo",
-      "version": "60906.1"
     },
     {
       "id": "html",
@@ -39,12 +39,16 @@
       }
     },
     {
-      "id": "claudinite-lifecycle",
-      "version": "60906.3"
-    },
-    {
       "id": "claudinite-tasks",
       "version": "60906.5"
+    },
+    {
+      "id": "node",
+      "version": "60906.2"
+    },
+    {
+      "id": "headless-browser",
+      "version": "60902.1"
     }
   ],
   "taskScheduler": {
