@@ -6,7 +6,7 @@
   "preconditions": [
     "none"
   ],
-  "expected_outcome": "pr",
+  "expected_outcome": "fresh_pr",
   "automerge": [
     "under:site/data"
   ],
