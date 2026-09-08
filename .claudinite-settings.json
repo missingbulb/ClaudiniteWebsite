@@ -2,25 +2,21 @@
   "packs": [
     {
       "id": "basics",
-      "version": "60906.3"
+      "version": "60908.1"
     },
     {
       "id": "git-github",
-      "version": "60906.1",
+      "version": "60907.1",
       "via": [
         "basics"
       ]
     },
     {
       "id": "claudinite-growth",
-      "version": "60906.3",
+      "version": "60907.3",
       "config": {
         "retention_days": 10
       }
-    },
-    {
-      "id": "tidy-repo",
-      "version": "60906.1"
     },
     {
       "id": "html",
@@ -28,7 +24,7 @@
     },
     {
       "id": "product-wiki",
-      "version": "60905.1"
+      "version": "60907.1"
     },
     "local/claudinite-website",
     {
@@ -40,11 +36,11 @@
     },
     {
       "id": "claudinite-lifecycle",
-      "version": "60906.3"
+      "version": "60907.2"
     },
     {
       "id": "claudinite-tasks",
-      "version": "60906.5"
+      "version": "60907.3"
     }
   ],
   "taskScheduler": {
