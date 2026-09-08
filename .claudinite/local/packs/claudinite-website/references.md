@@ -47,3 +47,42 @@ end-of-line `(n)` marker in `RULES.md` cites `RULES-n`, one in a skill cites
   from-scratch briefing — which re-investigated the same root cause and filed a duplicate,
   issue #114, wasting about 5m42s of redundant subagent work. Retire only if a subagent's
   filed-issue output is surfaced to the orchestrator automatically on worker-restart.
+- **(RULES-8)** Owner request, 2026-09-08 (#454): two asks in a row — host the site on Cloudflare
+  Pages; email three fleet repos every morning through Cloudflare Email Service — had the same
+  shape ("research online … how to do this correctly", "create a skill", "create a claudinite
+  task", "add declared checks") and were each improvised in prose. Retire only if the skill's
+  prompt trigger is shown to catch every such ask on its own.
+- **(learning-a-technology-1)** The session that wrote the skill (#454) probed
+  `developers.cloudflare.com` from a Claude Code web sandbox and got `CONNECT tunnel failed,
+  response 403` — the environment's network policy, which `fetching-from-the-web` says no
+  alternate source or later pass crosses. Neither earlier ask could tell whether its research
+  had actually reached the vendor's documentation. Retire only if every session's environment
+  is known to allow vendor-documentation egress, or the `## Verified` record is checked by
+  machine against a real fetch log.
+- **(learning-a-technology-2)** Owner request, 2026-09-08 (#454): "consider the difference
+  between the project-specific task and the technology skills, and try to assess if the
+  project-specific task is also an ad-hoc thing for the current project or could fit in a
+  different pack"; the no-technology-local-pack rule and the promote stage's ownership of the
+  call are `extracting-lessons.md`'s. Retire only if the growth lifecycle gains a way to read a
+  task's intended home other than a recorded verdict.
+- **(learning-a-technology-3)** Promotion lifts a skill's folder into a canon pack and the
+  `growth-dedup` pass then removes the local copy; a worker that imports the skill's code by a
+  relative path spelled in more than one place breaks at that removal with nothing red pointing
+  at the cause. Retire only if the engine resolves a skill's code by skill name rather than by
+  path.
+- **(check:technology-skill-cites-dated-sources)** Every session that loads a technology skill
+  reads its procedure as verified, and the two shapes that are not — a skill written from search
+  snippets, a skill written from memory behind an egress block — leave no other mark in the
+  tree. The dated URL and the `## Verified` section are the only signatures a scan can see.
+  Retire only if a skill's provenance is recorded somewhere a check can read it.
+- **(check:technology-skill-links-inside-its-folder)** The basics rule on writing file A to
+  depend on file B already forbids re-spelling B; the residue here is that a technology skill
+  is promoted by moving its folder, so a link out of it dangles at the landing — the failure
+  `references-integrity` catches for markers, uncaught for links. Retire only if promotion
+  rewrites relative links.
+- **(check:technology-skill-code-imports-inside-its-folder)** Same lifting failure for code:
+  an outward import resolves in the local pack and throws `ERR_MODULE_NOT_FOUND` at the
+  landing, and this session hit exactly that on its own fixture's first run (an engine import
+  one directory short). Test files are exempt because the fixture must reach the engine's
+  declaration loader, and that one line is the known cost of a promotion. Retire only if
+  skill code is bundled at promotion time.

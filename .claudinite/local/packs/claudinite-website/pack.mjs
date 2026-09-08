@@ -1,5 +1,5 @@
 // This repo's own pack: conventions for the claudinite.com marketing site and
-// for maintaining this repo's Claudinite mount. Prose + one bundled skill, no
+// for maintaining this repo's Claudinite mount. Prose + two bundled skills, no
 // structural fingerprint of its own — the declaration in .claudinite-checks.json
 // is authoritative (detect: null skips the drift check in both directions).
 import nodeTestDiscovery from './node-test-discovery.mjs';
@@ -15,5 +15,5 @@ export default {
   detect: null,
   prose: 'RULES.md',
   worldRules: [nodeTestDiscovery, siteVersionTooltip],
-  skills: ['site-visual-check'],
+  skills: ['learning-a-technology', 'site-visual-check'],
 };
