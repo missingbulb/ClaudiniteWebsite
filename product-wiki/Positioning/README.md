@@ -138,7 +138,12 @@ profiles:
    so the platform is not about to absorb the interop bridge. The same finding
    raises the cost of *not* emitting: cross-vendor interop is the single
    most-demanded capability in the agent-config space, and Claudinite
-   currently emits none of it.
+   currently emits none of it. A 2026-08-30 pass sharpens this further:
+   #6235's close (2026-08-17) only bridged plain-file reading — the parallel
+   ask for skills portability (`anthropics/claude-code` #31005, #50778) is
+   still open and unshipped, so even where Claudinite does eventually emit
+   AGENTS.md, matching skills portability is a second, currently-unaddressed
+   platform gap rather than one racing an imminent native fix (Market wiki).
 3. **No pinning, no rollback, no release channels.** Versioning is a single
    whole-corpus sha stamp always converged to canon head; a bad canon change
    propagates fleet-wide in one cycle, gated only by per-repo CI and the
@@ -229,6 +234,14 @@ Sources used directly on this page:
   multi-day dark spell this repo hit (PR #186)?
 
 ## Growth log
+
+- **2026-08-30** — spot-check pass, no tree move found since the 2026-08-23
+  pass (which already checked this page against #236). Gap 2's evidence
+  sharpened with a citation: #6235's close addressed file-reading only; the
+  parallel skills-portability ask (#31005, #50778 — Market wiki) is still
+  unshipped. `## Key insights` left unchanged: the pass added evidence to
+  gap 2's reasoning, not the page's top-line understanding of what the gaps
+  are.
 
 - **2026-08-21** — benefit re-evaluation pass, commissioned to refocus the
   site (repo issue #233). The three strengths that survive a cold read are
