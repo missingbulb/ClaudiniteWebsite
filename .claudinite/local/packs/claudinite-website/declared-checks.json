@@ -8,7 +8,122 @@
       {
         "match": "/^(<{7}|\\|{7}|>{7}) \\S/",
         "what": "a merge-conflict marker line survives here",
-        "fix": "Finish the resolution, delete the marker line, then re-read the whole file before staging — never chain the grep that checks for markers with the command that stages."
+        "fix": "Finish the resolution, delete the marker line, then re-read the whole file before staging \u2014 never chain the grep that checks for markers with the command that stages."
+      }
+    ]
+  },
+  {
+    "id": "claudinite-website/release-publishes-only-the-site",
+    "severity": "blocking",
+    "since": "2026-09-08",
+    "failureMessage": "the repo root holds the vendored canon and every pack, so a widened assets directory publishes the agent tooling to claudinite.com",
+    "requirePaths": [
+      {
+        "path": "wrangler.json",
+        "what": "wrangler.json is gone, so nothing declares what the release uploads",
+        "fix": "restore wrangler.json \u2014 the release reads its assets.directory and its custom-domain routes, and without it `wrangler deploy` has no target at all"
+      }
+    ],
+    "checkParsedFiles": [
+      {
+        "file": "wrangler.json",
+        "requireFieldMatching": {
+          "field": "assets.directory",
+          "pattern": "/^\\.\\/site$/"
+        },
+        "what": "wrangler.json does not upload ./site",
+        "fix": "set assets.directory to \"./site\" \u2014 the one published tree; widening it publishes the vendored mount and the packs beside it"
+      },
+      {
+        "file": "wrangler.json",
+        "forbidField": "main",
+        "what": "wrangler.json names a Worker script entry point",
+        "fix": "drop \"main\" \u2014 claudinite.com is static assets only, and site/privacy.html tells visitors there is no server of ours behind the page; adding one changes that promise and its disclosure first"
+      },
+      {
+        "file": "wrangler.json",
+        "requireField": "compatibility_date",
+        "what": "wrangler.json declares no compatibility_date",
+        "fix": "pin compatibility_date, so the runtime a release lands on is a value in the repo rather than whatever the deploy day defaults to"
+      }
+    ]
+  },
+  {
+    "id": "claudinite-website/no-second-path-to-production",
+    "severity": "blocking",
+    "since": "2026-09-08",
+    "failureMessage": "a workflow that publishes ships the site with no version cut, no gate and no park lane \u2014 and a green run looks exactly like success",
+    "scanFiles": "/^\\.github\\/workflows\\/.*\\.ya?ml$/",
+    "matchLines": [
+      {
+        "match": "/actions\\/(deploy-pages|upload-pages-artifact|configure-pages)|cloudflare\\/wrangler-action|wrangler(@\\S+)?\\s+(pages\\s+)?deploy/",
+        "unlessLineMatches": "/^\\s*#/",
+        "what": "{match} publishes the site from a workflow",
+        "fix": "publish from the site-release task's worker instead \u2014 `wrangler` is a CLI, so the release needs no `uses:` step"
+      }
+    ]
+  },
+  {
+    "id": "claudinite-website/release-declares-its-credentials",
+    "severity": "blocking",
+    "since": "2026-09-08",
+    "failureMessage": "the executor hands code-work only the secrets a task names, so an undeclared one can never arrive and the run fails inside wrangler instead of parking",
+    "checkParsedFiles": [
+      {
+        "filesMatching": "/(^|\\/)tasks\\/site-release\\/task\\.json$/",
+        "requireValueInArray": {
+          "atField": "code_work_required_secrets",
+          "value": "CLOUDFLARE_API_TOKEN"
+        },
+        "what": "{path} does not declare CLOUDFLARE_API_TOKEN",
+        "fix": "list CLOUDFLARE_API_TOKEN in code_work_required_secrets \u2014 the executor hands a task only the secrets it names, and parks naming the one a repo has not configured"
+      },
+      {
+        "filesMatching": "/(^|\\/)tasks\\/site-release\\/task\\.json$/",
+        "requireValueInArray": {
+          "atField": "code_work_required_secrets",
+          "value": "CLOUDFLARE_ACCOUNT_ID"
+        },
+        "what": "{path} does not declare CLOUDFLARE_ACCOUNT_ID",
+        "fix": "list CLOUDFLARE_ACCOUNT_ID in code_work_required_secrets \u2014 wrangler needs the account as much as the token, and an unset one fails mid-upload rather than at the gate"
+      },
+      {
+        "filesMatching": "/(^|\\/)tasks\\/site-release\\/task\\.json$/",
+        "requireFieldMatching": {
+          "field": "on_interrupt",
+          "pattern": "/^needs-human$/"
+        },
+        "what": "{path} does not declare on_interrupt: needs-human",
+        "fix": "declare on_interrupt: \"needs-human\" \u2014 publishing is a one-shot external effect, so a recovery path that re-executes the run must converge to triage instead"
+      }
+    ]
+  },
+  {
+    "id": "claudinite-website/analytics-token-stays-uninjected",
+    "severity": "blocking",
+    "since": "2026-09-08",
+    "failureMessage": "a committed token beacons from every checkout and a rewritten placeholder stops counting visits \u2014 and neither makes the page look wrong",
+    "scanFiles": "site/assets/analytics.js",
+    "checkEachFile": [
+      {
+        "require": "/REPLACE_WITH_CLOUDFLARE_WEB_ANALYTICS_TOKEN/",
+        "what": "carries no REPLACE_WITH_CLOUDFLARE_WEB_ANALYTICS_TOKEN placeholder",
+        "fix": "restore the placeholder as the token's only value in the committed file \u2014 the release substitutes it at upload time, and the token is never committed"
+      }
+    ]
+  },
+  {
+    "id": "claudinite-website/release-contract-carries-its-description",
+    "severity": "blocking",
+    "since": "2026-09-08",
+    "scope": "work",
+    "failureMessage": "site/README.md tells the next reader how the site reaches production, and a confident description of a flow that no longer exists is worse than none",
+    "requireCoChange": [
+      {
+        "whenChangedFileMatches": "/^wrangler\\.json$|(^|\\/)tasks\\/site-release\\/task\\.json$/",
+        "requireChangedFileMatching": "/^site\\/README\\.md$/",
+        "what": "{path} changes the release contract, and site/README.md did not change with it",
+        "fix": "correct the release paragraph in site/README.md in this same commit, or make the change one that leaves the description true"
       }
     ]
   }

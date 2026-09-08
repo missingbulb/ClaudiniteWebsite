@@ -1,0 +1,12 @@
+{
+  "name": "claudinite-website",
+  "compatibility_date": "2026-09-08",
+  "assets": {
+    "directory": "./site"
+  },
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "claudinite.com", "custom_domain": true },
+    { "pattern": "www.claudinite.com", "custom_domain": true }
+  ]
+}

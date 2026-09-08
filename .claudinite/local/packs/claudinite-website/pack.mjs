@@ -15,5 +15,5 @@ export default {
   detect: null,
   prose: 'RULES.md',
   worldRules: [nodeTestDiscovery, siteVersionTooltip],
-  skills: ['site-visual-check'],
+  skills: ['site-visual-check', 'releasing-the-site'],
 };
