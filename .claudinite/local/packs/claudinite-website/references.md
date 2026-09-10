@@ -8,8 +8,10 @@ end-of-line `(n)` marker in `RULES.md` cites `RULES-n`, one in a skill cites
 
 - **(RULES-1)** `site/README.md` made a checkable claim about when the site publishes;
   dropping the deploy workflow's `paths:` filter (#45) left it still saying the site publishes
-  only on a push that touches `site/**`. Retire only if the site stops making checkable claims
-  about its own behaviour.
+  only on a push that touches `site/**`. The README half is now the
+  `release-contract-carries-its-description` check (#457), so the rule keeps only the half a
+  check cannot see — the claims the *pages* make. Retire only if the site stops making
+  checkable claims about its own behaviour in its own copy.
 - **(RULES-2)** Work in this repo lands in canon code often — #53, #54, #55 and #57 were all
   defects in the vendored engine and packs, found from here; #59 is the shape a patch issue
   should take. Retire only if a session here gains push scope to the canon repo.
@@ -47,3 +49,28 @@ end-of-line `(n)` marker in `RULES.md` cites `RULES-n`, one in a skill cites
   from-scratch briefing — which re-investigated the same root cause and filed a duplicate,
   issue #114, wasting about 5m42s of redundant subagent work. Retire only if a subagent's
   filed-issue output is surfaced to the orchestrator automatically on worker-restart.
+- **(check:claudinite-website/release-publishes-only-the-site)** The GitHub Pages deploy this
+  replaced carried `path: site` in its `upload-pages-artifact` step, with a comment explaining
+  that uploading the repo root would publish the agent-tooling directories. Moving that value
+  into `wrangler.json` (#457) moved it somewhere a one-character edit is invisible in review, so
+  the boundary is asserted rather than commented. The `main` half is the same boundary on the
+  other axis: `site/privacy.html` tells visitors there is no server of ours behind the page, and
+  a Worker script entry point would make that false silently. Retire only if the site stops being
+  static assets only.
+- **(check:claudinite-website/no-second-path-to-production)** The release moved out of
+  `deploy-pages.yml` and into the `site-release` task (#457) so the version bump, the gate and
+  the failure lane are the queue's. A workflow that publishes would restore the exact shape that
+  move removed — and would do it silently, since a green workflow deploying the site looks like
+  success. Retire only if the release stops being a task.
+- **(check:claudinite-website/release-declares-its-credentials)** The executor hands a task's
+  code-work only the secrets that task declared, so an undeclared credential is not merely
+  missing at run time — it can never arrive, and the run fails inside `wrangler` instead of
+  parking with the name of what a person must set. `on_interrupt` is in the same check because
+  both fields are the declaration's statement that publishing is a credentialled one-shot effect.
+  Retire only if the release stops calling an external API.
+- **(check:claudinite-website/analytics-token-stays-uninjected)** The loader is written to
+  no-op on its placeholder, which makes both failure modes silent: a committed real token
+  beacons from every local checkout and every fork, and a placeholder rewritten to something
+  else stops counting visits with the page still looking correct. The deploy-time substitution
+  is what `site/privacy.html` describes, so the placeholder is the disclosure's mechanism as
+  much as the loader's. Retire only if the token stops being injected at release time.

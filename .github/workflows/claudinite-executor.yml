@@ -57,6 +57,8 @@ jobs:
           #
           # The converge writes the list directly beneath this line, so it stays last.
           # claudinite:secrets
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CCR_ROUTINE_TOKEN: ${{ secrets.CCR_ROUTINE_TOKEN }}
         run: node .claudinite/shared/packs/claudinite-tasks/queue/executor.mjs
 

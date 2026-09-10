@@ -5,12 +5,11 @@ repo's vendored Claudinite mount.
 
 ## Rules
 
-- **The site describes itself in prose beyond its privacy claims — a behaviour
-  change to something like deploy triggers must still correct every
-  self-description it falsifies, in the same commit.** Before landing a change
-  to site behaviour or to `deploy-pages.yml`, grep `site/README.md` and the
-  page copy for what the change makes false, and ship the correction in the
-  same commit as the behaviour. (1)
+- **The site's own pages describe how it behaves — a behaviour change must
+  correct the page copy it falsifies, in the same commit.** Before landing a
+  change to site behaviour or to how it is released, grep `site/privacy.html`
+  and `site/index.html` for what the change makes false — what the site loads,
+  logs, or promises about who serves it — and ship the correction beside it. (1)
 
 - **A fix that belongs in the canon can be written here but never *pushed* from
   here — preserve it as a patch on an issue in this repo rather than routing

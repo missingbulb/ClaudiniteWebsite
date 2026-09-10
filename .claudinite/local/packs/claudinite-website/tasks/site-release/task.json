@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../../../shared/packs/claudinite-tasks/task.schema.json",
+  "id": "site-release",
+  "description": "Cuts the next site version, stamps it into the pages and uploads site/ to Cloudflare so claudinite.com serves what the default branch says. The bump lands on the branch before the upload, so the repo never records a release that did not go out.",
+  "frequency": "daily",
+  "preconditions": [
+    "unreleased-commits"
+  ],
+  "schedule_after": [
+    "claudinite-website/site-stats"
+  ],
+  "expected_outcome": "no_code_changes",
+  "on_interrupt": "needs-human",
+  "code_work": "node worker.mjs",
+  "code_work_timeout": 900,
+  "code_work_required_secrets": [
+    "CLOUDFLARE_API_TOKEN",
+    "CLOUDFLARE_ACCOUNT_ID"
+  ],
+  "agent_model": "none"
+}

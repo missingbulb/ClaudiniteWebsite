@@ -24,6 +24,9 @@ const ctxWith = (files) => ({
   files: Object.keys(files),
   allFiles: Object.keys(files),
   read: (p) => (p in files ? files[p] : null),
+  // `requirePaths` asks the tree directly, and the scan is shared across the pack's
+  // rules — so every context one of them is run against carries this.
+  exists: (p) => p in files,
 });
 
 const conflicted = (...markers) => [
