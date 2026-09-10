@@ -5,8 +5,8 @@ where the page answers it. Weight **core** means the main messaging answers it
 unprompted; **small** means the FAQ may. Personas: **L** engineering leader
 buying for a fleet, **F** founder or lead at a shop or agency, **E** the
 engineer who lives in it daily, **S** the security or platform reviewer who
-approves it. Derived from `product-wiki/Customers`, `Positioning`, `Business`,
-`Market`, `Landscape`, `Methods` and the vendored engine; the honest answer is
+approves it. Derived from the product wiki’s Customers, Positioning, Business,
+Market, Landscape and Methods pages and from the vendored engine; the honest answer is
 what the page must say, not what would sell.
 
 `Where` names the page section by its `id`; `faq` is the FAQ.
