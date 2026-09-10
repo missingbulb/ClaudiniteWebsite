@@ -26,9 +26,11 @@ change to it must not break.
 - **A release cannot re-arm itself.** The gate is "the branch has moved past the last
   release commit", read off the `Claudinite-Task:` trailer. Anything that makes the
   release's own commit look like ordinary work releases nightly, forever.
-- **Only `site/` is published.** `wrangler.json`'s `assets.directory` is the whole
+- **Only `site/` is published.** `wrangler.json`'s `assets.directory` is the outer
   boundary, and the repo root holds the vendored mount, the queue's workers and the
-  packs — none of which may reach a public URL.
+  packs — none of which may reach a public URL. Inside it, `site/.assetsignore`
+  (`.gitignore` syntax, wrangler's own mechanism) holds back what is documentation
+  rather than page, so a file landing in `site/` is not automatically a public URL.
 - **The beacon token is injected, never committed.** `site/assets/analytics.js` ships
   with its placeholder and no-ops; the deploy substitutes the
   `CLOUDFLARE_ANALYTICS_TOKEN` repository variable into the copy it uploads. Changing
@@ -60,6 +62,11 @@ whether `claudinite.com` is a zone on that account at all. `wrangler.json` claim
 apex and `www` as custom domains, so a deploy fails outright until the zone is there.
 That is the intended failure: a release that quietly published to a URL nobody visits
 is worse than one that stops and says so.
+
+A custom domain cannot be attached to a hostname that already carries a `CNAME`
+record, and adding a zone imports whatever the previous host had — so a `www` record
+inherited from the old host blocks the deploy until a person deletes it, and the
+apex's old records serve the old host for as long as they are left in place.
 
 ## Reading a park
 

@@ -1,8 +1,10 @@
 # site/ — claudinite.com
 
 The static marketing site for Claudinite. No build step, no dependencies: the
-directory is uploaded as-is to Cloudflare (Workers static assets — [wrangler.json](../wrangler.json)
-names `site/` and nothing else) by the `claudinite-website/site-release` task,
+directory is uploaded to Cloudflare (Workers static assets —
+[wrangler.json](../wrangler.json) names `site/` and nothing else, and
+[.assetsignore](.assetsignore) holds back the files under it that are
+documentation rather than page) by the `claudinite-website/site-release` task,
 which runs nightly and releases whenever `main` has moved since the last release.
 A night with nothing new on `main` releases nothing.
 
@@ -20,6 +22,7 @@ says how to force a release, roll one back, or read a parked one.
 | [assets/analytics.js](assets/analytics.js) | Cookieless Cloudflare Web Analytics loader; no-ops until the release injects the token | Never — the token comes from the `CLOUDFLARE_ANALYTICS_TOKEN` repo variable |
 | [privacy.html](privacy.html) | The privacy disclosure the analytics behaviour requires | When what the site collects changes — same commit as the change |
 | [data/promoted.js](data/promoted.js) | **The promoted content: stats and the spotlight** | **Every promo refresh — edit this, usually nothing else** |
+| [.assetsignore](.assetsignore) | What wrangler leaves out of the upload — this README, and itself | When a file lands here that is not part of the page |
 
 ## Updating promoted content (the expected frequent, agentic change)
 
@@ -118,6 +121,9 @@ Open `index.html` directly, or `python3 -m http.server -d site` and browse
 
 ## Custom domain
 
-The Pages artifact flow takes its domain from the repository's Pages settings
-(no `CNAME` file needed). When claudinite.com is connected there, the
-`<link rel="canonical">` in `index.html` is already correct.
+`claudinite.com` and `www.claudinite.com` are custom-domain routes on the Worker,
+declared in [wrangler.json](../wrangler.json). Cloudflare creates the DNS record
+and issues the certificate for each hostname as the deploy attaches it, so
+nothing in this directory names the domain and there is no `CNAME` file. The
+`<link rel="canonical">` in `index.html` names the apex, which is where a search
+engine should land whichever of the two a visitor typed.

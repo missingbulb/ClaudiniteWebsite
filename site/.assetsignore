@@ -1,0 +1,4 @@
+# This directory doubles as its own documentation, and wrangler uploads every file
+# under it. Held back here, README.md is not served from claudinite.com.
+# `.assetsignore` itself is never uploaded.
+README.md
