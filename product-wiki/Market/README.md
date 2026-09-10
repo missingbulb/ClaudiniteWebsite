@@ -3,17 +3,20 @@
 The competitive landscape for Claudinite: the open substrate standards every
 coding-agent user already has on disk, the platform-native layer Anthropic now
 ships itself, the direct rule-sync competitors, the adjacent content
-ecosystems, and the enterprise vendors encroaching from above. Business models
+ecosystems, the orchestration products that run the sessions, and the
+enterprise vendors encroaching from above. This page is the per-vendor
+inventory; the layer model that explains which of these compete and which
+merely compose is [`Landscape/`](../Landscape/README.md). Business models
 and price anchors live in [`Business/`](../Business/README.md); customer
 segments in [`Customers/`](../Customers/README.md); what this means for
 Claudinite in [`Positioning/`](../Positioning/README.md).
 
 ## Key insights
 
-- Anthropic ships the session half natively, but CLI auto-install of org-mandated plugins was closed "not planned."
+- No Claude Code plugin scope carries repo-scoped enforcement: project scope is advisory, managed scope follows people.
 - Nobody converges repos: no auto-PR loop from a canon, no CI convention gates; native auto memory is machine-local, never shared.
 - Rival enforcement is config-drift only: they check the rules arrived; nothing checks the rules are followed.
-- The rule-sync category is nearly all free OSS under 3k stars; the one hosted SaaS (rulesync.dev) is in free beta.
+- Spotify and Steve Yegge both shipped multi-agent orchestration in 2026; neither product checks a rule it displays.
 - Enterprise scorecard vendors (Cortex, Port, OpsLevel) now sell AI-agent governance from above; OpsLevel's Tidra ships auto-PRs.
 - Anthropic's own docs say CLAUDE.md is "context, not enforced configuration" — the vendor states Claudinite's premise.
 - The AGENTS.md request (4,944 👍) was closed *completed* on 2026-08-17 by shipping an import; Claude Code still won't read the file.
@@ -134,6 +137,20 @@ distribution stack (all verified against current Claude Code docs,
 - **Managed settings** give admins non-overridable org-wide permission rules,
   hooks (`allowManagedHooksOnly`), MCP allowlists, model restrictions, and
   even an org-wide CLAUDE.md blob — delivered by MDM, machine-wide.
+- **The non-install behaviour is now stated in the docs, not just in the
+  tracker** (researched 2026-09-10). The correction above rests on issue
+  #45323; the install page now says it outright: "As of Claude Code v2.1.195,
+  adding the marketplace doesn't install plugins that come from an external
+  source, on any path that loads plugins… Claude Code reports the plugin as
+  not installed and shows the `claude plugin install` command to run"
+  ([discover-plugins](https://code.claude.com/docs/en/discover-plugins)). A
+  primary, versioned statement replaces a closed issue as the citation for
+  this page's conclusion, which is unchanged. Read against the four install
+  scopes, it generalises: **project scope reaches the repository but is
+  advisory and locally overridable, while managed scope is genuinely enforced
+  but attached to identities and devices rather than to a repository** — so no
+  scope carries repo-scoped enforcement. Worked through in
+  [`Landscape/`](../Landscape/README.md).
 - **Hooks** provide deterministic in-session blocking (exit code 2 /
   `permissionDecision: "deny"`); Anthropic's own docs route enforcement away
   from prose to hooks — validating Claudinite's thesis while shipping the
@@ -252,6 +269,43 @@ Category-level answers to this page's former open questions:
   community hub for Claude Code assets, independent of Anthropic's plugin
   system.
 
+## The orchestration layer: products that run the sessions
+
+A class this page did not previously carry, and one that competes with
+Claudinite for *attention* rather than for the job. Both entrants shipped in
+2026, both bundle skills and rules into their surface, and **neither reads or
+enforces the rule files it displays** — the same blind spot as the direct
+rivals, arrived at from the opposite direction. The layer model, the
+head-to-head differentiators and the transferable mechanisms are
+[`Landscape/`](../Landscape/README.md); this section records the entrants.
+
+- **Spotify Xirp** (beta, researched 2026-09-10) — a macOS desktop app for
+  running many coding-agent sessions in parallel across Claude Code, Codex and
+  Gemini, each task in its own Git worktree, optionally paired with **Spotify
+  Portal** for catalog and Workspace context served over MCP. The launch post
+  claims thousands of Spotify engineers and **more than 36,000 sessions**, and
+  states harness portability as an architectural requirement — switch agent or
+  model mid-task, including to self-hosted open models, and the working state
+  carries over. Its **Rules tab is a viewer**: it lists `CLAUDE.md`,
+  `AGENTS.md` and supported agent config files and does nothing with them.
+  Portal's learning loop is a manual transcript upload plus a generated wiki a
+  human accepts or rejects. This is the same vendor whose Soundcheck scorecard
+  already appears under *From above* — Spotify now sells at two layers.
+- **Gas Town** (Steve Yegge, open-sourced 2026-01-01) — an open-source Go CLI
+  orchestrating 20–30 concurrent worker agents against a git-backed issue
+  ledger, with a three-tier watchdog chain, severity-routed escalation and a
+  Bors-style bisecting merge queue. It has **no static conformance layer at
+  all**: its gates are shell commands plus agentic review, and each installation
+  re-derives its own conventions with nothing distributing a versioned rule
+  corpus between them. Its gating design is nonetheless the strongest external
+  prior art found for running checks as in-session stages before a PR exists,
+  and is recorded in depth in [`Landscape/`](../Landscape/README.md).
+
+Neither is a rule-distribution product, so neither belongs in *Direct rivals*.
+Both are plausible *hosts* for a governance layer, which is the commercially
+interesting reading: they multiply the number of sessions per engineer without
+adding anything that constrains them.
+
 ## From above: enterprise scorecard vendors
 
 Internal-developer-portal vendors sell "standards enforced across many
@@ -288,6 +342,10 @@ lives in [`Customers/`](../Customers/README.md).
 - [Top AI Agent Standards to Know in 2026 — Agentailor](https://blog.agentailor.com/posts/top-ai-agent-standards-2026) — standards overview (spot-checked alive 2026-07-31)
 - [Keeping Agent Behavior Consistent Across Separate Repositories — Antigravity Lab](https://antigravitylab.net/en/articles/antigravity/antigravity-multi-repo-agent-governance-design) — multi-repo governance framing (spot-checked alive 2026-07-31)
 - [Claude Code docs: plugins](https://code.claude.com/docs/en/plugins), [plugin marketplaces](https://code.claude.com/docs/en/plugin-marketplaces), [settings](https://code.claude.com/docs/en/settings), [hooks](https://code.claude.com/docs/en/hooks), [memory](https://code.claude.com/docs/en/memory), [scheduled tasks](https://code.claude.com/docs/en/scheduled-tasks), [discover plugins](https://code.claude.com/docs/en/discover-plugins)
+- [Claude Code: plugins reference](https://code.claude.com/docs/en/plugins-reference) and [managed settings](https://code.claude.com/docs/en/managed-settings) — component types, install scopes, the four managed delivery mechanisms
+- [Xirp — Spotify for Backstage documentation](https://backstage.spotify.com/docs/xirp) — beta scope, macOS-only, supported agents, the Rules tab as a listing
+- [What we've learned scaling AI coding agents at Spotify — Tyson Singer, 2026-08-10](https://portal.spotify.com/blog/introducing-xirp) — 36,000+ sessions, vendor-neutrality as an architectural requirement
+- [gastownhall/gastown](https://github.com/gastownhall/gastown) and [Gas Town — Steve Yegge](https://yegge.ai/gastown) — orchestration model, watchdogs, merge queue
 - [anthropics/claude-code#45323 — CLI auto-install from org managed settings, closed "not planned"](https://github.com/anthropics/claude-code/issues/45323) (filed 2026-04-08; opened directly, verified 2026-08-09); desktop/web auto-install behavior per the issue's own text and [Manage plugins for your organization — Claude Help Center](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization) (page egress-blocked to this pass's fetcher — via search-quoted context)
 - [Agent Skills spec (agentskills/agentskills)](https://raw.githubusercontent.com/agentskills/agentskills/main/README.md) and [Claude Code skills docs](https://code.claude.com/docs/en/skills); cross-vendor adoption: [paperclipped.de](https://www.paperclipped.de/en/blog/agent-skills-open-standard-interoperability/)
 - [anthropics/skills](https://github.com/anthropics/skills) — 165,327 ★ (GitHub API, 2026-07-31)
@@ -348,6 +406,17 @@ lives in [`Customers/`](../Customers/README.md).
   absorption reaches further than assumed. `cursor.com` is egress-blocked to
   this pass's fetcher (checked 2026-08-23); needs an unblocked environment or
   a human, not a later agent pass from here.
+- Is Xirp sold, bundled with Portal, or free outside Spotify? The docs are a
+  beta-invitation surface; `xirp.spotify.com`, which the launch post points at,
+  was not opened this pass. It decides whether Xirp ever reaches
+  [`Business/`](../Business/README.md) as a price anchor.
+- Are Xirp and Spotify Soundcheck wired together? Both sit inside Portal, and
+  a scorecard that gated what an agent session may do would move Spotify from
+  the orchestration layer into governance — the first vendor to hold both.
+  Nothing in the Xirp docs read this pass suggests it.
+- Gas Town's adoption: no star count, install figure or user estimate captured
+  this pass. Its trajectory decides whether the orchestration layer becomes a
+  buyer of governance or grows its own.
 - Has any tool announced a Renovate-style auto-PR convergence bot for agent
   conventions? Re-checked 2026-08-02 (web search plus a GitHub repository
   search restricted to tools pushed since June 2026): none found — every
@@ -355,6 +424,25 @@ lives in [`Customers/`](../Customers/README.md).
   from two search surfaces, not proof; re-check next pass.
 
 ## Growth log
+
+- **2026-09-10** — owner-directed pass out of a session comparison
+  (ClaudiniteWebsite #480). Added **the orchestration layer** as a sixth
+  competitor class — Spotify Xirp and Steve Yegge's Gas Town, both absent from
+  this page entirely, both shipped in 2026, and neither reading or enforcing
+  the rule files it displays. Xirp puts Spotify in this wiki at two layers at
+  once (Soundcheck already sits under *From above*). Also replaced the
+  citation behind the plugin-mandate conclusion: the non-install behaviour is
+  now stated in Anthropic's own install docs with a version (v2.1.195), where
+  this page previously rested on issue #45323 being closed "not planned" — the
+  conclusion is unchanged and the correction above stands, but the evidence is
+  now primary and versioned. Read against the four install scopes it
+  generalises to "no scope carries repo-scoped enforcement," which is the
+  organising finding of the new [`Landscape/`](../Landscape/README.md) wiki.
+  `## Key insights`: two bullets rewritten — the plugin-mandate bullet, now
+  superseded by the sharper scope finding, and the free-OSS/star-count bullet,
+  whose evidence stays in *Direct rivals* and whose commercial reading is
+  already the header of [`Business/`](../Business/README.md), replaced by the
+  orchestration finding. The other five were untouched by this pass and stay.
 
 - **2026-08-23** — wiki-growth pass (Context: the product-wiki tree moved in
   the window — the Website re-scope, #236). Spot-checked Website and

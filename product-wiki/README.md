@@ -11,7 +11,12 @@ build on.
 
 - [`Market/`](Market/README.md) — the competitive landscape: substrate
   standards, the platform-native layer, direct rule-sync rivals, adjacent
-  content ecosystems, and the enterprise scorecard vendors above.
+  content ecosystems, the orchestration products that run the sessions, and
+  the enterprise scorecard vendors above.
+- [`Landscape/`](Landscape/README.md) — the layer model over that inventory:
+  which offerings compete and which merely compose, the head-to-head
+  differentiators against Claude Code plugins, Spotify Xirp and Gas Town, and
+  where enforcement is absent across the whole stack.
 - [`Methods/`](Methods/README.md) — how the pre-AI world propagated and
   enforced conventions across repos (pre-commit, Renovate, template sync,
   policy bundles), and what those systems' fates teach.
