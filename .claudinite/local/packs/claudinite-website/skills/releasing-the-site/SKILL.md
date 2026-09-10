@@ -28,9 +28,9 @@ change to it must not break.
   release's own commit look like ordinary work releases nightly, forever.
 - **Only `site/` is published.** `wrangler.json`'s `assets.directory` is the outer
   boundary, and the repo root holds the vendored mount, the queue's workers and the
-  packs — none of which may reach a public URL. Inside it, `site/.assetsignore`
-  (`.gitignore` syntax, wrangler's own mechanism) holds back what is documentation
-  rather than page, so a file landing in `site/` is not automatically a public URL.
+  packs — none of which may reach a public URL. Inside it, `site/.assetsignore` holds
+  back what is documentation rather than page, so a file landing in `site/` is not
+  automatically a public URL.
 - **The beacon token is injected, never committed.** `site/assets/analytics.js` ships
   with its placeholder and no-ops; the deploy substitutes the
   `CLOUDFLARE_ANALYTICS_TOKEN` repository variable into the copy it uploads. Changing
@@ -63,10 +63,10 @@ apex and `www` as custom domains, so a deploy fails outright until the zone is t
 That is the intended failure: a release that quietly published to a URL nobody visits
 is worse than one that stops and says so.
 
-A custom domain cannot be attached to a hostname that already carries a `CNAME`
-record, and adding a zone imports whatever the previous host had — so a `www` record
-inherited from the old host blocks the deploy until a person deletes it, and the
-apex's old records serve the old host for as long as they are left in place.
+Adding a zone imports the records the previous host was serving, and a custom domain
+cannot be attached over an existing `CNAME` — so an inherited `www` record blocks the
+deploy until a person deletes it, and the apex's old records keep serving the old host
+until they go too.
 
 ## Reading a park
 
