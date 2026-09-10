@@ -1,20 +1,32 @@
 /* claudinite.com — behavior. Vanilla JS, no dependencies.
-   Five jobs: reveal-on-scroll, the hero desk scene, the compounding chart,
-   the mechanism animations (session terminal, baselining board, adopt
-   typewriter), and rendering the promoted-content slots from data/promoted.js.
-   All motion is skipped under prefers-reduced-motion. */
+   Jobs: reveal-on-scroll, the hero gates, the building, the ladder, the
+   session terminal, the fleet board, the adopt typewriter, and rendering the
+   promoted-content slots from data/promoted.js. Every figure is authored in
+   its still frame in the markup; this file only moves things, and does not
+   under prefers-reduced-motion. */
 (function () {
   'use strict';
 
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var DATA = window.CLAUDINITE || null;
-  var SVG_NS = 'http://www.w3.org/2000/svg';
 
   function el(tag, cls, text) {
     var n = document.createElement(tag);
     if (cls) n.className = cls;
     if (text !== undefined) n.textContent = text;
     return n;
+  }
+
+  // Runs fn once, the first time node scrolls into view.
+  function onceVisible(node, threshold, fn) {
+    if (!('IntersectionObserver' in window)) { fn(); return; }
+    var seen = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !seen) { seen = true; fn(); io.disconnect(); }
+      });
+    }, { threshold: threshold });
+    io.observe(node);
   }
 
   /* ---------------------- reveal on scroll ---------------------- */
@@ -30,151 +42,152 @@
     revealed.forEach(function (n) { ro.observe(n); });
   }
 
-  /* ------------------ hero: the desk scene ----------------------
-     Eight beats of one operator's desk. The scheduler only adds cumulative
-     classes b1..b8 to the svg; every visual state is a CSS rule keyed off a
-     beat, which keeps eight beats editable and makes the loop reset a matter
-     of dropping the classes. Beat 4 stacks three novelties, so its screen,
-     bugs and jolts are staggered as sub-cues rather than landing together. */
-  (function deskScene() {
-    var svg = document.getElementById('scene-viz');
-    if (!svg) return;
+  /* --------------------- hero: the two gates ---------------------
+     Three changes travel their lanes. One fails the Stop gate and goes back to
+     its session with the fix; one fails the CI gate the same way; what passes
+     both lands on main. Positions are the svg's own x coordinates. */
+  (function gates() {
+    var svg = document.getElementById('gates-viz');
+    if (!svg || REDUCED) return;
 
-    var BEATS = [2500, 2000, 2500, 3000, 2000, 3000, 2500, 2500];
-    var HOLD = 1200;
-    var known = ['sc-s5', 'sc-s6'];   // screens whose technology gets learned
+    var X = { session: 166, gate1: 392, gate2: 660, main: 788 };
+    var LANES = [82, 180, 278];
+    var chips = [1, 2, 3].map(function (i) { return document.getElementById('chip-' + i); });
+    var tags = [document.getElementById('tag-1'), document.getElementById('tag-2')];
+    var lamps = [document.querySelector('#gate-1 .gt-lamp'), document.querySelector('#gate-2 .gt-lamp')];
+    var landed = Array.prototype.slice.call(svg.querySelectorAll('.gt-landed'));
     var timers = [];
-
-    function clear() {
-      timers.forEach(clearTimeout); timers = [];
-      for (var i = 1; i <= 8; i++) svg.classList.remove('b' + i);
-      known.forEach(function (id) {
-        var n = document.getElementById(id);
-        if (n) n.classList.remove('sc-known');
-      });
-    }
+    var slot = 0;
 
     function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+    function place(chip, x, lane, ms) {
+      chip.style.transition = ms ? 'transform ' + ms + 'ms linear, opacity 0.3s ease' : 'opacity 0.3s ease';
+      chip.style.transform = 'translate(' + x + 'px, ' + lane + 'px)';
+    }
+    function state(chip, cls) {
+      chip.classList.remove('chip-bad'); chip.classList.remove('chip-good');
+      if (cls) chip.classList.add(cls);
+    }
+    function lamp(i, cls) {
+      lamps[i].classList.remove('bad'); lamps[i].classList.remove('good');
+      if (cls) lamps[i].classList.add(cls);
+    }
+    function tag(i, on, lane) {
+      tags[i].style.transform = 'translate(' + (i === 0 ? X.gate1 - 74 : X.gate2 - 74) + 'px, ' + lane + 'px)';
+      tags[i].classList.toggle('on', on);
+    }
+    function land(chip) {
+      chip.classList.remove('on');
+      if (slot >= landed.length) { landed.forEach(function (r) { r.classList.remove('on'); }); slot = 0; }
+      landed[slot++].classList.add('on');
+    }
 
-    if (REDUCED) {
-      // A still frame cannot tell an arc, so it states the destination: six
-      // clean screens, small tidy agents, the assistant grown, nobody typing.
-      for (var b = 1; b <= 8; b++) svg.classList.add('b' + b);
-      known.forEach(function (id) {
-        var n = document.getElementById(id);
-        if (n) n.classList.add('sc-known');
-      });
-      return;
+    function reset() {
+      timers.forEach(clearTimeout); timers = [];
+      chips.forEach(function (c, i) { c.classList.remove('on'); state(c, null); place(c, X.session, LANES[i], 0); });
+      tags.forEach(function (t) { t.classList.remove('on'); });
+      lamp(0, null); lamp(1, null);
+      if (slot === 0) landed.forEach(function (r) { r.classList.remove('on'); });
+    }
+
+    // One change's trip: out to a gate, and either through or back.
+    function travel(chip, lane, t0, failAt, done) {
+      var t = t0;
+      at(t, function () { chip.classList.add('on'); });
+      at(t + 100, function () { place(chip, X.gate1, lane, 1300); }); t += 1500;
+      if (failAt === 1) {
+        at(t, function () { state(chip, 'chip-bad'); lamp(0, 'bad'); tag(0, true, lane); });
+        at(t + 900, function () { place(chip, X.session, lane, 1100); lamp(0, null); }); t += 2100;
+        at(t, function () { state(chip, null); tag(0, false, lane); });
+        at(t + 500, function () { place(chip, X.gate1, lane, 1300); }); t += 1900;
+      }
+      at(t, function () { state(chip, 'chip-good'); lamp(0, 'good'); });
+      at(t + 300, function () { place(chip, X.gate2, lane, 1200); lamp(0, null); }); t += 1600;
+      if (failAt === 2) {
+        at(t, function () { state(chip, 'chip-bad'); lamp(1, 'bad'); tag(1, true, lane); });
+        at(t + 900, function () { place(chip, X.session, lane, 1900); lamp(1, null); }); t += 2900;
+        at(t, function () { state(chip, null); tag(1, false, lane); });
+        at(t + 500, function () { place(chip, X.gate1, lane, 1300); }); t += 1900;
+        at(t, function () { state(chip, 'chip-good'); lamp(0, 'good'); });
+        at(t + 300, function () { place(chip, X.gate2, lane, 1200); lamp(0, null); }); t += 1600;
+      }
+      at(t, function () { lamp(1, 'good'); });
+      at(t + 300, function () { place(chip, X.main, lane, 700); lamp(1, null); }); t += 1100;
+      at(t, function () { land(chip); });
+      if (done) at(t + 1400, done);
+      return t;
     }
 
     function play() {
-      clear();
-      var t = 0;
-      BEATS.forEach(function (dur, i) {
-        at(t, function () { svg.classList.add('b' + (i + 1)); });
-        t += dur;
-      });
-      // The technology on a screen is only known once the pack has landed.
-      at(BEATS.slice(0, 6).reduce(function (a, b) { return a + b; }, 0) + 1400, function () {
-        var n = document.getElementById('sc-s5');
-        if (n) n.classList.add('sc-known');
-      });
-      at(BEATS.slice(0, 7).reduce(function (a, b) { return a + b; }, 0) + 500, function () {
-        var n = document.getElementById('sc-s6');
-        if (n) n.classList.add('sc-known');
-      });
-      at(t + HOLD, play);
+      reset();
+      var end = 0;
+      end = Math.max(end, travel(chips[0], LANES[0], 0, 1));
+      end = Math.max(end, travel(chips[1], LANES[1], 900, 2));
+      end = Math.max(end, travel(chips[2], LANES[2], 1800, 0));
+      at(end + 1600, play);
     }
 
-    var replay = document.getElementById('sc-replay');
+    var replay = document.getElementById('gates-replay');
     if (replay) replay.addEventListener('click', play);
-
-    if (!('IntersectionObserver' in window)) { play(); return; }
-    var seen = false;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting && !seen) { seen = true; play(); io.disconnect(); }
-      });
-    }, { threshold: 0.25 });
-    io.observe(svg);
+    onceVisible(svg, 0.25, play);
   })();
 
-  /* ---------------- the compounding chart ----------------------
-     The curves and the meters' end states are authored in the markup, so the
-     page states its argument with scripting off. This only animates the way
-     in: a left-to-right sweep over the curves, the meters filling beneath it,
-     and the prose-only meter pinning at full exactly where its curve flattens.
-     Geometry constants mirror the SVG's own coordinates. */
-  (function compoundChart() {
-    var svg = document.getElementById('compound-viz');
-    if (!svg) return;
-    var clip = document.getElementById('cx-clip-rect');
-    var fillProse = document.getElementById('cx-fill-prose');
-    var fillClaud = document.getElementById('cx-fill-claud');
-    var pin = document.getElementById('cx-pin');
-    var replay = document.getElementById('cx-replay');
-
-    var SWEEP = 554, METER = 426;
-    var PIN_T = 0.55;             // prose fills the budget here, and stops climbing
-    var LATE_T = 0.72;            // the curves are far enough along to be named
-    var PROMOS = [0.30, 0.50, 0.66, 0.79, 0.90];  // promotions, arriving faster
-    var FREED = 0.30;             // budget each promotion hands back
-    var FLOOR = 0.10;
-    var DUR = 7200, HOLD = 2800;
-
-    function proseFill(t) { return Math.min(1, t / PIN_T); }
-    function claudFill(t) {
-      var freed = 0;
-      for (var i = 0; i < PROMOS.length; i++) if (t >= PROMOS[i]) freed += FREED;
-      return Math.max(FLOOR, Math.min(1, t / PIN_T - freed));
-    }
-
-    function draw(t) {
-      clip.setAttribute('width', SWEEP * t);
-      fillProse.setAttribute('width', METER * proseFill(t));
-      fillClaud.setAttribute('width', METER * claudFill(t));
-      svg.classList.toggle('cx-pinned', t >= PIN_T);
-      svg.classList.toggle('cx-late', t >= LATE_T);
-    }
-
-    // With motion suppressed the authored end state is already correct.
-    if (REDUCED) { svg.classList.add('cx-pinned'); svg.classList.add('cx-late'); return; }
-
-    var raf = null, timer = null, promoIdx = 0;
-
-    function flash() {
-      fillClaud.classList.remove('cx-freed');
-      void fillClaud.getBoundingClientRect();   // restart the animation
-      fillClaud.classList.add('cx-freed');
-    }
+  /* ------------------- the building settles ---------------------
+     The markup is authored settled; dropping the class and putting it back
+     runs the per-floor transitions in style.css. */
+  (function building() {
+    var svg = document.getElementById('building-viz');
+    if (!svg || REDUCED) return;
 
     function play() {
-      if (raf) cancelAnimationFrame(raf);
-      if (timer) clearTimeout(timer);
-      promoIdx = 0;
-      var start = null;
-      svg.classList.add('cx-running');
-      (function step(now) {
-        if (start === null) start = now;
-        var t = Math.min(1, (now - start) / DUR);
-        draw(t);
-        while (promoIdx < PROMOS.length && t >= PROMOS[promoIdx]) { flash(); promoIdx++; }
-        if (t < 1) raf = requestAnimationFrame(step);
-        else { svg.classList.remove('cx-running'); timer = setTimeout(play, HOLD); }
-      })(performance.now());
+      svg.classList.remove('settled'); svg.classList.remove('pulse');
+      void svg.getBoundingClientRect();
+      svg.classList.add('settled'); svg.classList.add('pulse');
     }
 
+    var replay = document.getElementById('building-replay');
     if (replay) replay.addEventListener('click', play);
+    svg.classList.remove('settled');
+    onceVisible(svg, 0.35, play);
+  })();
 
-    draw(0);
-    if (!('IntersectionObserver' in window)) { play(); return; }
-    var seen = false;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting && !seen) { seen = true; play(); io.disconnect(); }
+  /* ---------------------- the ladder climbs ---------------------
+     One rule token climbs from prose to setting; the meter drains beside it.
+     The rungs' geometry is read live, so the token lands wherever the
+     stylesheet put each tread at the current width. */
+  (function ladder() {
+    var box = document.getElementById('ladder');
+    var token = document.getElementById('ladder-token');
+    if (!box || !token) return;
+    var rungs = Array.prototype.slice.call(box.querySelectorAll('.rung'));
+    var timers = [];
+
+    function setRung(n) {
+      for (var i = 0; i < rungs.length; i++) box.classList.remove('at-' + i);
+      box.classList.add('at-' + n);
+      var rung = rungs[n];
+      var tread = rung.querySelector('.rung-tread');
+      var x = rung.offsetLeft + tread.offsetLeft + tread.offsetWidth - token.offsetWidth + 6;
+      var y = rung.offsetTop - token.offsetHeight / 2 + 1;
+      token.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    }
+
+    if (REDUCED) { setRung(rungs.length - 1); window.addEventListener('resize', function () { setRung(rungs.length - 1); }); return; }
+
+    var current = rungs.length - 1;
+    function play() {
+      timers.forEach(clearTimeout); timers = [];
+      rungs.forEach(function (r, i) {
+        timers.push(setTimeout(function () { current = i; setRung(i); }, i * 1100));
       });
-    }, { threshold: 0.3 });
-    io.observe(svg);
+      timers.push(setTimeout(play, rungs.length * 1100 + 2600));
+    }
+    window.addEventListener('resize', function () { setRung(current); });
+
+    var replay = document.getElementById('ladder-replay');
+    if (replay) replay.addEventListener('click', play);
+    setRung(current);
+    onceVisible(box, 0.4, play);
   })();
 
   /* ------------------ session-loop terminal ---------------------- */
@@ -191,26 +204,18 @@
       var t = 200;
       lines.forEach(function (l) {
         timers.push(setTimeout(function () { l.classList.add('on'); }, t));
-        // linger on the failing check and its fix line, so the story reads
-        var idx = Number(l.dataset.t);
-        t += (idx === 5 || idx === 6) ? 1100 : 480;
+        // linger on the failing check and its why/fix line, so the story reads
+        var idx = Number(l.getAttribute('data-t'));
+        t += (idx === 6 || idx === 7) ? 1100 : 480;
       });
     }
 
     var replay = document.getElementById('term-replay');
     if (replay) replay.addEventListener('click', play);
-
-    if (!('IntersectionObserver' in window)) { play(); return; }
-    var seen = false;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting && !seen) { seen = true; play(); io.disconnect(); }
-      });
-    }, { threshold: 0.35 });
-    io.observe(body);
+    onceVisible(body, 0.35, play);
   })();
 
-  /* ------------------- fleet board: baselining ------------------- */
+  /* ------------------- fleet board: the daily update ------------- */
   (function fleetBoard() {
     var grid = document.getElementById('repo-grid');
     if (!grid) return;
@@ -237,7 +242,7 @@
     }
     tiles.forEach(function (t) { t.classList.add('stale'); });
 
-    function baseline() {
+    function update() {
       if (pulse) { pulse.classList.remove('go'); void pulse.offsetWidth; pulse.classList.add('go'); }
       tiles.forEach(function (t, i) {
         setTimeout(function () {
@@ -253,8 +258,8 @@
         tiles.forEach(function (t) { t.classList.remove('fresh'); t.classList.add('stale'); });
       }, 4600);
     }
-    baseline();
-    setInterval(baseline, 6400);
+    update();
+    setInterval(update, 6400);
   })();
 
   /* --------------------- adopt: typewriter ----------------------- */
@@ -276,11 +281,7 @@
         else setTimeout(function () { result.classList.add('on'); }, 350);
       })();
     }
-    if (!('IntersectionObserver' in window)) { play(); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { play(); io.disconnect(); } });
-    }, { threshold: 0.4 });
-    io.observe(target);
+    onceVisible(target, 0.4, play);
   })();
 
   /* -------------- promoted-content slots (data-driven) ----------- */

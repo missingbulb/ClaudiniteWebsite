@@ -10,7 +10,7 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 
 | Path | What it is | Who edits it |
 |---|---|---|
-| [index.html](index.html) | The one page. The hero is the desk scene; the ceiling, the three multipliers (opening with the compounding chart), the pack, the scale tiers and the executable-requirements workflow follow. Copy is deliberately terse — a claim earns its words or goes | Rarely — structure and evergreen claims |
+| [index.html](index.html) | The one page. The hero is the two gates; the layer stack, what runs when, the promotion ladder, the fleet, the growth ring, the data flow, the pack, the audiences, the limits band, adoption and the FAQ follow. Copy is deliberately terse — a claim earns its words or goes | Rarely — structure and evergreen claims. What the page *claims* starts in [docs/messaging/MESSAGING.md](../docs/messaging/MESSAGING.md); the page follows the brief |
 | [assets/style.css](assets/style.css) | The whole design system (tokens at the top) | Rarely |
 | [assets/main.js](assets/main.js) | Animations + rendering of the promoted-content slots | Rarely |
 | [assets/analytics.js](assets/analytics.js) | Cookieless Cloudflare Web Analytics loader; no-ops until the deploy injects the token | Never — the token comes from the `CLOUDFLARE_ANALYTICS_TOKEN` repo variable |
@@ -30,62 +30,49 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 - **`spotlight`** — the 3–5 benefits currently being promoted, ordered; the
   first entry renders full-width (visual priority). Taglines ≤ 90 chars.
   Benefits, never named packs: the page shows *how many* packs there are (the
-  `pack-field` graphic and the `stats` count) and never *which*, so no copy
-  goes stale when the canon's pack set moves.
+  `stats` count) and never *which*, so no copy goes stale when the canon's pack
+  set moves.
 - **`canonRef`** — illustrative only. It seeds the sample refs the baselining
   board animates through; it tracks nothing, because the declaration stopped
   carrying a canon `ref` when Claudinite moved to per-pack version stamps.
 - Keep the file a plain script (`window.CLAUDINITE = {...}`) — it must run
   from `file://` with no module loader.
 
-Evergreen sections (hero, mechanisms, adopt, FAQ) state how Claudinite works;
-change them only when the product's mechanisms actually change.
+Evergreen sections (hero, mechanisms, limits, adopt, FAQ) state how Claudinite
+works; change them only when the product's mechanisms actually change — and
+when one does, the *limits* band is the first place to re-read, because it
+states what the product does not do yet and goes false the moment it does.
 
-## The desk scene
+## The figures
 
-The hero is a narrative loop: one operator's desk over eight beats, from a
-single screen and constant typing to six clean workstreams and a person who
-only approves. It carries the same argument the chart makes, in the register
-the chart cannot reach — what it feels like.
+The page argues in pictures so the copy can stay terse: every figure is
+literal SVG in `index.html`, so the argument stands with scripting off, and
+[assets/main.js](assets/main.js) only animates a way in, gated by
+`prefers-reduced-motion` with a still frame that states the destination. What
+is load-bearing in each, and must survive an edit:
 
-Two things in it are load-bearing rather than decorative, and must survive any
-edit:
+- **The two gates** (hero). Changes from several sessions cross a stop gate and
+  a CI gate before they land on `main`. A gate that only passes things is not a
+  gate: at least one change must turn back with its fix named, and `main` must
+  hold only what got through.
+- **The stack as a building** (the gap). Four floors compose on one foundation,
+  and the foundation is the only floor stamped as checking anything. The claim
+  is *exactly one layer enforces*; drawing a second stamp anywhere breaks it.
+- **The ladder** (context). Rungs rise from prose to platform setting; the
+  meter beside drains as a rule climbs. Cost and force move together — a rung
+  that costs less must also bind harder, or the ladder lies.
+- **The growth ring** (loop). Session → transcript → local pack → canon →
+  every repo, and back. The canon node is the only accent: promotion into it is
+  the gated step.
+- **The data flow** (trust). Static on purpose. Exactly three arrows — the
+  canon in, the session out to Anthropic as before, promoted lessons back out
+  with an opt-out — and the empty space labelled as having no Claudinite
+  server. Adding an arrow is a disclosure change, and [privacy.html](privacy.html)
+  moves in the same commit.
 
-- **The assistant is born from the cruft.** The agent accretes barnacles and
-  moss as it grows, and that accretion is what gets stripped and crystallised
-  into the small precise robot. If the robot simply arrives from outside, the
-  scene stops being about promotion and becomes "he added a second AI".
-- **Motion signature.** The agent eases and breathes; the robot moves in
-  `steps()` and blinks on a metronome. Organic versus deterministic is doing
-  the work of a label neither one carries.
-
-The agent is deliberately **our own pentagon**, never a third party's mark: the
-thing that decays in this story is an unmanaged corpus, not somebody's model.
-
-Staging is driven by cumulative beat classes `.b1`…`.b8` that
-[assets/main.js](assets/main.js) adds to the SVG on a timer — every visual state
-is a CSS rule keyed off a beat, so beats stay editable and the loop reset is
-just dropping the classes. Reduced motion applies all eight at once, which
-freezes the destination rather than the struggle.
-
-## The compounding chart
-
-Below the fold, opening "What compounds", the chart is the argument's proof: a
-prose-only corpus saturates once its rules fill the context budget, and
-promoting prose into checks keeps freeing that budget so the curve never has to
-flatten. A faded version of the same exponential runs behind the hero scene.
-
-It is **schematic and asserts no magnitudes** — the axes carry no numbers, and
-the FAQ says so outright. Keep it that way: putting real-looking figures on it
-would claim a measurement nobody has made.
-
-Both curves, the shaded gap between them and the meters' end states are
-authored as literal geometry in `index.html`, generated from the closed-form
-curves recorded in this repo's history. [assets/main.js](assets/main.js) only
-animates the reveal, so the argument still stands with scripting off or with
-`prefers-reduced-motion` set. If you change the shape of either curve, the
-plateau marker, the gap path and the meter that explains the plateau all have
-to move with it — they are one drawing, not four.
+The figures assert **no magnitudes**: the terminal's counts are the ones a real
+session prints, and nothing else on the page carries a number the canon does
+not.
 
 ## The footer's version tooltip
 
