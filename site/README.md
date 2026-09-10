@@ -10,7 +10,7 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 
 | Path | What it is | Who edits it |
 |---|---|---|
-| [index.html](index.html) | The one page. The hero is the desk scene; the ceiling, the three multipliers (opening with the compounding chart), the pack, the scale tiers and the executable-requirements workflow follow. Copy is deliberately terse — a claim earns its words or goes | Rarely — structure and evergreen claims |
+| [index.html](index.html) | The one page. The hero is the layer scene; the enforcement gap, the layer model, the promotion ladder (with the compounding chart), the two gates, convergence, the growth loop, the pack, the canon, the stated limits and adoption follow. Copy is deliberately terse — a claim earns its words or goes | Rarely — structure and evergreen claims |
 | [assets/style.css](assets/style.css) | The whole design system (tokens at the top) | Rarely |
 | [assets/main.js](assets/main.js) | Animations + rendering of the promoted-content slots | Rarely |
 | [assets/analytics.js](assets/analytics.js) | Cookieless Cloudflare Web Analytics loader; no-ops until the deploy injects the token | Never — the token comes from the `CLOUDFLARE_ANALYTICS_TOKEN` repo variable |
@@ -38,35 +38,53 @@ workflow carries no `paths:` filter, so a push that touches nothing under
 - Keep the file a plain script (`window.CLAUDINITE = {...}`) — it must run
   from `file://` with no module loader.
 
-Evergreen sections (hero, mechanisms, adopt, FAQ) state how Claudinite works;
-change them only when the product's mechanisms actually change.
+Evergreen sections (hero, mechanisms, limits, adopt, FAQ) state how Claudinite
+works; change them only when the product's mechanisms actually change. What
+argument those sections are making, and why they are in that order, is
+[docs/messaging/MESSAGING.md](../docs/messaging/MESSAGING.md); the buyer and
+user questions the page is answerable to are
+[docs/messaging/QUESTIONS.md](../docs/messaging/QUESTIONS.md). A change to what
+the page *claims* belongs in those two first — the page is their output.
 
-## The desk scene
+**The limits section is not an oversight.** `#limits` names what Claudinite
+does not do yet, in four cards, and it is there on purpose: the research is
+explicit that the page's earlier attackable claims were retired rather than
+softened, and a page that survives a teardown is worth more than one that
+reads better. Do not quietly drop a card because the sentence is unflattering —
+drop it when the limit is actually gone.
 
-The hero is a narrative loop: one operator's desk over eight beats, from a
-single screen and constant typing to six clean workstreams and a person who
-only approves. It carries the same argument the chart makes, in the register
-the chart cannot reach — what it feels like.
+## The layer scene
 
-Two things in it are load-bearing rather than decorative, and must survive any
-edit:
+The hero states the page's argument as a picture: three dashed bands across the
+top that all *multiply* sessions, changes falling from them, one gate, and a
+floor that only holds what got through. The copy beside it makes the same claim
+in words; the drawing is what makes it a position rather than a boast.
 
-- **The assistant is born from the cruft.** The agent accretes barnacles and
-  moss as it grows, and that accretion is what gets stripped and crystallised
-  into the small precise robot. If the robot simply arrives from outside, the
-  scene stops being about promotion and becomes "he added a second AI".
-- **Motion signature.** The agent eases and breathes; the robot moves in
-  `steps()` and blinks on a metronome. Organic versus deterministic is doing
-  the work of a label neither one carries.
+Three things in it are load-bearing rather than decorative:
 
-The agent is deliberately **our own pentagon**, never a third party's mark: the
-thing that decays in this story is an unmanaged corpus, not somebody's model.
+- **The three bands are unlabelled by vendor, and stay that way.** They are
+  named for what they do — orchestrators, cockpits, marketplaces — so the
+  drawing does not date when a product does, and so the page never has to
+  defend a characterisation of somebody's roadmap.
+- **Two changes are turned back, with the fix named.** A gate that only ever
+  passes things is not a gate; a gate that only rejects is a wall. The mix is
+  the message, and so is the red label — the finding says what to do.
+- **The drawing is authored visible.** With scripting off, or between loop
+  passes, it still reads: the bands, the gate and the floor are all in the
+  static state, and the beats only move the changes and resolve the gate. This
+  is the same discipline the compounding chart follows.
 
-Staging is driven by cumulative beat classes `.b1`…`.b8` that
+Staging is driven by cumulative beat classes `.b1`…`.b4` that
 [assets/main.js](assets/main.js) adds to the SVG on a timer — every visual state
 is a CSS rule keyed off a beat, so beats stay editable and the loop reset is
-just dropping the classes. Reduced motion applies all eight at once, which
-freezes the destination rather than the struggle.
+just dropping the classes. Reduced motion applies all four at once, which
+states the destination rather than the journey.
+
+**It is hidden below 720px, deliberately.** The figure is 960 user units wide,
+so on a phone every label in it renders at about a third of its authored size —
+illegible, and not fixable by enlarging text that then no longer fits. The same
+content is carried there by the layer list in `#layers`, which is real
+selectable text and reads better on a phone than the drawing ever would.
 
 ## The compounding chart
 

@@ -65,7 +65,7 @@ claudinite.com true.
 skills and tasks out of the canon is arithmetic over a file listing, with no
 judgment anywhere in it, so the whole run is code and no session is ever started.
 
-`expected_outcome: 'pr'` with an `automerge` policy scoped to `site/data/` because the
+`expected_outcome: 'fresh_pr'` with an `automerge` policy scoped to `site/data/` because the
 change it makes is four numbers in the one data file that folder holds, each one
 re-derivable from the canon by the same code that wrote it. The policy is measured
 against the actual diff rather than trusted: a run that wrote anywhere else in the

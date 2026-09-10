@@ -1,5 +1,5 @@
 /* claudinite.com — behavior. Vanilla JS, no dependencies.
-   Five jobs: reveal-on-scroll, the hero desk scene, the compounding chart,
+   Five jobs: reveal-on-scroll, the hero layer scene, the compounding chart,
    the mechanism animations (session terminal, baselining board, adopt
    typewriter), and rendering the promoted-content slots from data/promoted.js.
    All motion is skipped under prefers-reduced-motion. */
@@ -30,40 +30,30 @@
     revealed.forEach(function (n) { ro.observe(n); });
   }
 
-  /* ------------------ hero: the desk scene ----------------------
-     Eight beats of one operator's desk. The scheduler only adds cumulative
-     classes b1..b8 to the svg; every visual state is a CSS rule keyed off a
-     beat, which keeps eight beats editable and makes the loop reset a matter
-     of dropping the classes. Beat 4 stacks three novelties, so its screen,
-     bugs and jolts are staggered as sub-cues rather than landing together. */
-  (function deskScene() {
-    var svg = document.getElementById('scene-viz');
+  /* ------------------ hero: layers and the gate ------------------
+     Four beats. The scheduler only adds cumulative classes b1..b4 to the svg;
+     every visual state is a CSS rule keyed off a beat, which keeps the beats
+     editable and makes the loop reset a matter of dropping the classes. The
+     scene is authored readable, so that reset is the still drawing rather than
+     an empty frame. Beat 3 carries the argument — the gate resolves and two
+     changes go back up instead of through — so it holds longest. */
+  (function stackScene() {
+    var svg = document.getElementById('stack-viz');
     if (!svg) return;
 
-    var BEATS = [2500, 2000, 2500, 3000, 2000, 3000, 2500, 2500];
-    var HOLD = 1200;
-    var known = ['sc-s5', 'sc-s6'];   // screens whose technology gets learned
+    var BEATS = [1400, 1500, 2800, 1600];
+    var HOLD = 1600;
     var timers = [];
 
     function clear() {
       timers.forEach(clearTimeout); timers = [];
-      for (var i = 1; i <= 8; i++) svg.classList.remove('b' + i);
-      known.forEach(function (id) {
-        var n = document.getElementById(id);
-        if (n) n.classList.remove('sc-known');
-      });
+      for (var i = 1; i <= 4; i++) svg.classList.remove('b' + i);
     }
 
-    function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
-
     if (REDUCED) {
-      // A still frame cannot tell an arc, so it states the destination: six
-      // clean screens, small tidy agents, the assistant grown, nobody typing.
-      for (var b = 1; b <= 8; b++) svg.classList.add('b' + b);
-      known.forEach(function (id) {
-        var n = document.getElementById(id);
-        if (n) n.classList.add('sc-known');
-      });
+      // A still frame cannot tell an arc, so it states the destination: the
+      // gate resolved, two changes turned back, the rest landed.
+      for (var b = 1; b <= 4; b++) svg.classList.add('b' + b);
       return;
     }
 
@@ -71,22 +61,13 @@
       clear();
       var t = 0;
       BEATS.forEach(function (dur, i) {
-        at(t, function () { svg.classList.add('b' + (i + 1)); });
+        timers.push(setTimeout(function () { svg.classList.add('b' + (i + 1)); }, t));
         t += dur;
       });
-      // The technology on a screen is only known once the pack has landed.
-      at(BEATS.slice(0, 6).reduce(function (a, b) { return a + b; }, 0) + 1400, function () {
-        var n = document.getElementById('sc-s5');
-        if (n) n.classList.add('sc-known');
-      });
-      at(BEATS.slice(0, 7).reduce(function (a, b) { return a + b; }, 0) + 500, function () {
-        var n = document.getElementById('sc-s6');
-        if (n) n.classList.add('sc-known');
-      });
-      at(t + HOLD, play);
+      timers.push(setTimeout(play, t + HOLD));
     }
 
-    var replay = document.getElementById('sc-replay');
+    var replay = document.getElementById('hv-replay');
     if (replay) replay.addEventListener('click', play);
 
     if (!('IntersectionObserver' in window)) { play(); return; }
