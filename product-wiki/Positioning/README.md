@@ -14,7 +14,7 @@ decision about our own marketing site, go through
 
 - Anthropic's own docs now say rules are "context, not enforced configuration" — the benefit claim needs no argument, only a citation.
 - The moat and the message are one trio: rules that bite, a fleet that converges itself, lessons that travel. The rest is mechanism.
-- The sharpest line available: rivals check the rules *arrived*; Claudinite checks the rules are *followed*.
+- Four categories checked — rivals, platform, scorecards, orchestrators — none enforces: they check rules *arrived*, not *followed*.
 - Hard-coded single-tenant canon, Claude-Code-only, GitHub-only: the three gaps between today's repo and a sellable product.
 - Versioning is track-canon-head with no pinning or rollback — the opposite of what every winning comparable shipped.
 - SEO white space is real: multi-repo consistency and enforcement queries rank only blogs; "sync rules" is already taken.
@@ -91,6 +91,17 @@ than prose.
   session assets as a plugin; emit SKILL.md-standard skills) while owning
   the repo-side loop — and to watch absorption pace (three major native
   features shipped in nine months; Peril is the cautionary tale).
+- **Against the orchestration layer** (Spotify Xirp, Gas Town — see
+  [`Landscape/`](../Landscape/README.md)): not competitors, and the sales
+  motion follows from that. Both multiply sessions per engineer without adding
+  anything that constrains them, and both merely *list* rule files — Xirp's
+  Rules tab is a viewer; Gas Town has no conformance layer at all. They are
+  demand generators for governance rather than substitutes for it, and the
+  strongest evidence yet that enforcement is nobody else's job: two
+  well-resourced 2026 entrants, from opposite ends of the market, both skipped
+  it. The asymmetry to press: **plugins, Xirp and Gas Town all fail to carry a
+  rule into a repository in a way that outlives the session**, which is what a
+  vendored corpus does by construction.
 - **Against enterprise scorecards** (Cortex, Port, OpsLevel): they sell
   observation dashboards to leadership; Claudinite sells remediation
   mechanics to the repo. Cortex's own marketing ("AI is writing your code.
@@ -199,6 +210,7 @@ Sources used directly on this page:
 - [Cortex: AI is writing your code. Who's watching your standards?](https://www.cortex.io/post/ai-is-writing-your-code-whos-watching-your-standards) — the thesis-validating quote used directly on this page
 - [Andrej Karpathy on context engineering](https://x.com/karpathy/status/1937902205765607626) and [Anthropic: effective context engineering](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) — category-language claims used directly on this page
 - [github/spec-kit](https://github.com/github/spec-kit) — 124.7k ★ (verified via GitHub API 2026-07-31)
+- [Xirp docs](https://backstage.spotify.com/docs/xirp) and [gastownhall/gastown](https://github.com/gastownhall/gastown) — the orchestration-layer entrants assessed on this page; the layer model is [`Landscape/`](../Landscape/README.md)
 
 ## Open questions
 
@@ -229,6 +241,22 @@ Sources used directly on this page:
   multi-day dark spell this repo hit (PR #186)?
 
 ## Growth log
+
+- **2026-09-10** — owner-directed pass alongside the new
+  [`Landscape/`](../Landscape/README.md) wiki (ClaudiniteWebsite #480). Added
+  a *Market position* entry for the orchestration layer (Spotify Xirp, Gas
+  Town): both are non-competitors that multiply sessions without constraining
+  them, so they read as demand generators rather than substitutes. The pass
+  did not change any stated gap — the three in the header still hold — but it
+  reframes one of them: being Claude-Code-only looks less exceptional now that
+  Anthropic's own plugin system turns out to have no repo-scoped enforcement
+  scope at all, while the portability gap it shares with nobody else looks
+  more material given Xirp markets harness-neutrality as architecture.
+  `## Key insights`: one bullet rewritten — the differentiation line now says
+  *four categories checked, none enforces*, because this pass is what made the
+  claim exhaustive rather than a statement about rivals alone. No
+  `product-requirements/` change; a human decides whether the harness-neutrality
+  reframe becomes a requirement.
 
 - **2026-08-21** — benefit re-evaluation pass, commissioned to refocus the
   site (repo issue #233). The three strengths that survive a cold read are
