@@ -67,8 +67,3 @@ repo's vendored Claudinite mount.
   after a worker-restart, also search GitHub issues (`search_issues`/`list_issues`)
   for anything the lost subagent may have filed — not just the dispatch PR's own
   comments and local git log. (7)
-
-- **Asked to make the repo do a new job with a technology nobody here has used** (host it
-  on X, send through Y) — load the `learning-a-technology` skill before researching or
-  writing anything: it probes egress first and keeps the portable technology skill apart
-  from the project's own task. (8)
