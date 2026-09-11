@@ -5,13 +5,6 @@ repo's vendored Claudinite mount.
 
 ## Rules
 
-- **The site describes itself in prose beyond its privacy claims — a behaviour
-  change to something like deploy triggers must still correct every
-  self-description it falsifies, in the same commit.** Before landing a change
-  to site behaviour or to `deploy-pages.yml`, grep `site/README.md` and the
-  page copy for what the change makes false, and ship the correction in the
-  same commit as the behaviour. (1)
-
 - **A fix that belongs in the canon can be written here but never *pushed* from
   here — preserve it as a patch on an issue in this repo rather than routing
   around the block.** A scratch clone of the canon is read-only in practice:
@@ -26,25 +19,15 @@ repo's vendored Claudinite mount.
   `git apply` it. (2)
 
 - **A `queue/instructions.md` step 6 `converge-item.mjs` failure from a session is
-  a known, standing gap — recognize it immediately and never hand-replicate the
-  transition with `mcp__github__issue_write`'s `labels` field.** This session
+  a known, standing gap — recognize it immediately.** This session
   type carries a GitHub credential wired for MCP tools only; `converge-item.mjs`
   (like any direct `curl`/raw-`fetch` call to `api.github.com`, e.g. a hand-rolled
   CI-status poll) needs the Action's own `GITHUB_TOKEN` and fails from here —
   first with `GITHUB_REPOSITORY is not set`, then (once set) a plain `401`, and
   under `NODE_USE_ENV_PROXY=1` a proxy `403` ("GitHub access is not enabled for
-  this session. An org admin must connect the Claude GitHub App"). That
-  `labels` field is a full **overwrite** of the issue's label set, not an add,
-  so hand-replicating it silently clobbers the item's actual queue-state
-  labels (`task:agent`, etc.). The only correct response, per `instructions.md`
-  itself: post a plain comment naming the failure and leave the item's labels
-  and state untouched for a human. (3)
-
-- **A file missing from the mount is evidence about the *vendor set*, not about
-  the canon — read the canon before an issue names the gap.** The scratch
-  canon clone the rule above names is read-only, but it *reads*: use it, and
-  where it still can't settle the cause, report only that the mount lacks the
-  file. (4)
+  this session. An org admin must connect the Claude GitHub App"). The only
+  correct response, per `instructions.md` itself: post a plain comment naming
+  the failure and leave the item's labels and state untouched for a human. (3)
 
 - **Never amend a subagent's already-pushed commit, and never relay a fabricated
   "fix" instruction for a check that doesn't exist as described, when a
