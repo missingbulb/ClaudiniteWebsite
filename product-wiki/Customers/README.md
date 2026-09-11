@@ -182,7 +182,8 @@ does not scale with agent output volume.
 - [How Uber uses AI for development — Pragmatic Engineer](https://newsletter.pragmaticengineer.com/p/how-uber-uses-ai-for-development) and [uReview](https://www.uber.com/us/en/blog/ureview/)
 - [Spotify Honk part 1](https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1) and [Fleet-wide refactoring](https://engineering.atspotify.com/2023/05/fleet-management-at-spotify-part-3-fleet-wide-refactoring) — 270k PRs, 77% automerged
 - [Accenture Copilot study — GitHub blog](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/); [TELUS/Rakuten figures](https://agentmarketcap.ai/blog/2026/04/05/anthropic-agentic-coding-trends-report-claude-code-eight-shifts)
-- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — 4,944 👍 / 6,367 reactions / 374 comments, opened 2025-08-21, closed `completed` 2026-08-17 (GitHub API, 2026-08-21); [#31005](https://github.com/anthropics/claude-code/issues/31005) (277 👍), [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
+- [anthropics/claude-code #6235 "Feature Request: Support AGENTS.md."](https://github.com/anthropics/claude-code/issues/6235) — 4,944 👍 / 6,367 reactions / 374 comments, opened 2025-08-21, closed `completed` 2026-08-17 (GitHub API, 2026-08-21); [#31005 "Support for AGENTS.md and `.agents/skills/`, the community has been asking since August 2025"](https://github.com/anthropics/claude-code/issues/31005) (277 👍, title via search snippet, 2026-09-11 — `github.com` itself is proxy-blocked to this session), [#34235](https://github.com/anthropics/claude-code/issues/34235) (90 👍)
+- [AGENTS.md/CLAUDE.md sync patterns gist — yurukusa](https://gist.github.com/yurukusa/d36197848911f025add142abefcde685) — third-party, unverified; catalogs five operator-side sync patterns and cites 5,200+ reactions on the #6235 cluster as of 2026-06-03 (2026-09-11)
 - [Claude Code docs: memory](https://code.claude.com/docs/en/memory) — "Claude Code reads `CLAUDE.md`, not `AGENTS.md`" (primary page opened directly, 2026-08-02)
 - [Claude Code admin setup (managed settings)](https://code.claude.com/docs/en/admin-setup)
 - [SOC 2 for enterprise clients — Bright Defense](https://www.brightdefense.com/resources/soc-2-for-enterprise-clients/); [on-prem AI code review — Dextralabs](https://dextralabs.com/blog/on-premise-ai-code-review-for-enterprise/); [vendor viability — FirmAdapt](https://firmadapt.com/blog/how-procurement-teams-evaluate-vendor-companies)
@@ -220,12 +221,44 @@ does not scale with agent output volume.
   recommend) as satisfying near-blocker #2, or does the requirement only
   clear with tool-native parity? Decides whether emission is a cheap
   unblock or a deep one.
-- What are the 374 comments on #6235 actually asking for — pure file
-  recognition, or skills/rules portability too? The thread is the largest
-  free-text corpus of user-side demand in this category and has not been
-  read; it would sharpen the multi-agent requirement's real shape.
+- Partially answered 2026-09-11: not pure file recognition. The sibling
+  request `anthropics/claude-code` #31005 is titled "Support for AGENTS.md
+  and `.agents/skills/`, the community has been asking since August 2025"
+  (its own GitHub title, via search snippet) — skills-folder portability is
+  explicitly inside the demand cluster, not just AGENTS.md reading. A
+  third-party gist analyzing the cluster (unverified secondary source,
+  5,200+ reactions as of 2026-06-03 — lower than and predating this wiki's
+  own primary 6,367-reaction close figure) reads the same way and catalogs
+  five community-invented CLAUDE.md/AGENTS.md sync patterns (`@AGENTS.md`
+  import, symlink, pre-commit mirror, SessionStart merge, diff-watch) — all
+  operator-side workarounds, none official. The 374 comments themselves are
+  still unread, and now for a different reason than "not gotten to yet":
+  this session's GitHub access proxy denies every `github.com`/
+  `api.github.com` fetch for a repository outside this session's own scope
+  (confirmed via both WebFetch and curl, each returning "GitHub access to
+  this repository is not enabled for this session"), while
+  `raw.githubusercontent.com` (file content, no comments) stays reachable.
+  That is a session-scope wall, not a rate limit or a stale search — it
+  needs a human, or a session scoped to read `anthropics/claude-code`, never
+  another wiki-growth pass from this session type.
 
 ## Growth log
+
+- **2026-09-11** — wiki-growth pass: chased the standing "what are the 374
+  comments on #6235 actually asking for" question. Found #31005's own title
+  ("Support for AGENTS.md and `.agents/skills/`...") and a third-party gist
+  corroborating that the demand cluster includes skills-folder portability,
+  not just AGENTS.md file recognition — partial answer, both cited as
+  secondary (search snippet / unverified gist). The primary comment thread
+  stayed unread for a newly-identified structural reason: this session's
+  GitHub access proxy blocks every `github.com`/`api.github.com` fetch
+  outside this session's own repository scope (WebFetch and curl both
+  confirmed this), while `raw.githubusercontent.com` still works. Recorded
+  as needing a human or a differently-scoped session rather than left to
+  "re-check next pass," per the fetching-from-the-web convention for a
+  domain-wide access wall. No `product-requirements/` change; nothing here
+  moved the page's top-line understanding, so `## Key insights` is
+  untouched.
 
 - **2026-08-21** — re-verification pass alongside the site messaging rewrite:
   the AGENTS.md demand signal this page leans on for near-blocker #2 closed
