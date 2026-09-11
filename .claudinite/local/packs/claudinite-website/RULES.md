@@ -67,3 +67,9 @@ repo's vendored Claudinite mount.
   after a worker-restart, also search GitHub issues (`search_issues`/`list_issues`)
   for anything the lost subagent may have filed — not just the dispatch PR's own
   comments and local git log. (7)
+
+- **Opening or amending a PR that delivers a queue work item** — never give its
+  body a closing keyword (`Closes #<n>`) naming that issue: GitHub auto-closes it
+  on merge, racing ahead of `converge-item.mjs`'s own comment-and-label
+  transition, so recovery means reopening the issue by hand and rerunning
+  convergence from scratch. (8)

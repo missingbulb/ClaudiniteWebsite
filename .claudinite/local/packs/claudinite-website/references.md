@@ -47,3 +47,10 @@ end-of-line `(n)` marker in `RULES.md` cites `RULES-n`, one in a skill cites
   from-scratch briefing — which re-investigated the same root cause and filed a duplicate,
   issue #114, wasting about 5m42s of redundant subagent work. Retire only if a subagent's
   filed-issue output is surfaced to the orchestrator automatically on worker-restart.
+- **(RULES-8)** Issue #402 (2026-09-02): the PR delivering that ad-hoc queue item carried
+  `Closes #402` in its body. GitHub auto-closed the issue on squash-merge, before
+  `converge-item.mjs` ran; the command then refused with "#402 is already closed — it was
+  converged once already." The session had to reopen the issue by hand, re-fetch it, and rerun
+  the whole convergence. Nothing in `queue/instructions.md` or `deliver-pr.md` warns against a
+  closing keyword on a queue item's PR, so the trap is still live. Retire only if the delivery
+  procedure itself starts stripping or rejecting a closing keyword aimed at the item issue.
