@@ -426,6 +426,7 @@ h1 { margin-top: 0.2em; }
 .cards-dark { margin-top: clamp(40px, 5vw, 64px); }
 .cards-dark .card { background: #1b1f19; border-color: #2a2f26; }
 .cards-dark .card h3 { color: #7fd4ac; font-size: 1.05rem; }
+.card h3 .big { display: block; font-size: 2.4rem; line-height: 1; margin-bottom: 4px; }
 .cards-dark .card p { color: #a9b3a2; font-size: 0.92rem; }
 
 /* ------------------------- canon stats + spotlight ----------------- */

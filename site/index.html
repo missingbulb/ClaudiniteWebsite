@@ -42,11 +42,7 @@
     <div class="hero-copy">
       <p class="eyebrow">For every repository your agents touch</p>
       <h1>Rules your agent can't skip.</h1>
-      <p class="lede">
-        Your agent reads your rules as advice. Claudinite checks the work
-        instead — when the session tries to stop, and again in CI — from plain
-        files in every repository you own.
-      </p>
+      <p class="lede">Your agent reads rules as advice. Claudinite checks the work — at the stop, and in CI — from plain files in every repo you own.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#adopt">Adopt it in a repo →</a>
         <a class="btn btn-ghost" href="https://github.com/missingbulb/Claudinite" rel="noopener">The canon on GitHub</a>
@@ -173,10 +169,10 @@
       <p class="eyebrow">Arrived is not followed</p>
       <h2>Every tool checks the rules arrived. One checks they were followed.</h2>
       <ul class="mech-points">
-        <li>Rule-distribution tools verify a file matches its source — drift, not conduct.</li>
-        <li>Orchestrators and cockpits list your rule files. Nothing reads them back.</li>
-        <li>Plugins and marketplaces deliver capability into a session. No plugin scope is enforced per repository.</li>
-        <li>Claudinite checks the diff, the transcript and the repo against the rules — and holds the door.</li>
+        <li>Rule-distribution tools — file matches source. Drift, not conduct.</li>
+        <li>Orchestrators, cockpits — rule files listed, never read back.</li>
+        <li>Plugins, marketplaces — capability in; nothing enforced per repo.</li>
+        <li>Claudinite — diff, transcript and repo checked. Door held.</li>
       </ul>
       <p class="kicker">Whatever runs your agents, this sits under it.</p>
     </div>
@@ -245,12 +241,12 @@
       <h2>A check is a compiler error, not a comment.</h2>
       <p class="lede-sm">Hooks decide by exit code, not by what the model says.</p>
       <ul class="mech-points">
-        <li><strong>Session start</strong> — rules loaded, seven probes prove the machinery works.</li>
-        <li><strong>Every tool call</strong> — a guarded call is denied before it runs.</li>
-        <li><strong>Stop</strong> — checks over the diff and the transcript. Blocking means the session stays open, and the finding names what, why and the fix.</li>
-        <li><strong>CI</strong> — repo-state checks gate the pull request.</li>
+        <li><strong>Start</strong> — rules loaded, 7 probes passed.</li>
+        <li><strong>Tool call</strong> — guarded calls denied.</li>
+        <li><strong>Stop</strong> — diff and transcript checked; blocking holds the session.</li>
+        <li><strong>CI</strong> — repo checks gate the PR.</li>
       </ul>
-      <p class="mech-fine">A clean tree exits at once. Repo-state checks run again in CI; transcript checks never do.</p>
+      <p class="mech-fine">Clean tree, instant exit. Repo checks again in CI; transcript checks never.</p>
       <button class="btn btn-ghost btn-replay" id="term-replay" type="button">Replay ↺</button>
     </div>
     <div class="terminal" id="session-term" aria-label="Terminal transcript: a session's checks catch a commit with no issue reference, the agent fixes it, the session ends green, and CI merges.">
@@ -273,16 +269,16 @@
   <div class="wrap">
     <ul class="cards cards-dark fair">
       <li class="card reveal">
-        <h3>14 days advisory</h3>
-        <p>A new check reports before it blocks.</p>
+        <h3><span class="big">14</span> days</h3>
+        <p>advisory before a new check blocks</p>
       </li>
       <li class="card reveal" data-delay="1">
-        <h3>Accept, with a reason</h3>
-        <p>A finding you disagree with is silenced by a recorded reason; a reasonless acceptance is itself a finding.</p>
+        <h3><span class="big">1</span> reason</h3>
+        <p>recorded, silences a finding</p>
       </li>
       <li class="card reveal" data-delay="2">
-        <h3>Two tries, then it lets go</h3>
-        <p>The same findings surviving two fixes never trap a session.</p>
+        <h3><span class="big">2</span> tries</h3>
+        <p>then the stop lets go</p>
       </li>
     </ul>
   </div>
@@ -294,8 +290,8 @@
     <div class="mech-copy">
       <p class="eyebrow">A check costs no context</p>
       <h2>Prose spends attention. A check spends none.</h2>
-      <p class="lede-sm">Every rule you write dilutes every other. So rules climb a ladder: the higher the rung, the less context it costs and the harder it binds.</p>
-      <p class="mech-fine">Your session’s first line reports the price — packs, checks, rule tokens.</p>
+      <p class="lede-sm">Every rule dilutes every other. Higher rung: less context, harder bind.</p>
+      <p class="mech-fine">Your session’s first line prints the price.</p>
     </div>
 
     <!-- The ladder: an ordered list drawn as steps rising left to right, with
@@ -327,12 +323,12 @@
       <p class="eyebrow">Fix it once. Every repo inherits it.</p>
       <h2>One canon. Every tap.</h2>
       <ul class="mech-points">
-        <li>Each repo re-vendors the canon daily, as one pull request.</li>
-        <li>It lands itself when CI is green — or waits for your review, one setting.</li>
-        <li>Migrations ride the same PR. Nobody hand-edits forty repos.</li>
-        <li>Upkeep is scheduled work the repo runs on itself; every change is a PR through your own CI.</li>
+        <li>Daily — one PR per repo.</li>
+        <li>Green CI — lands itself. Or waits for review, one setting.</li>
+        <li>Migrations ride along. No hand-edits across forty repos.</li>
+        <li>Upkeep on schedule — every change a PR, through your CI.</li>
       </ul>
-      <p class="mech-fine">A bad canon change reaches every repo next cycle, gated by each repo’s CI — there is no pin or rollback yet.</p>
+      <p class="mech-fine">No pin, no rollback yet — each repo’s CI gates each cycle.</p>
     </div>
     <div class="fleet-board" role="img" aria-label="Eight repositories flip from an old canon ref to the latest as the daily update wave passes.">
       <div class="canon-bar">
@@ -353,10 +349,10 @@
       <p class="eyebrow">What one repo learns, all repos keep</p>
       <h2>Fought once. Remembered everywhere.</h2>
       <ul class="mech-points">
-        <li>Transcripts are captured to a branch in your own repo — secret-scrubbed, pruned after a retention you set.</li>
-        <li>Lessons land as rules in the repo’s own local pack, in a PR you review.</li>
-        <li>The portable ones are promoted to the canon — a gated PR — and every repo has them by morning.</li>
-        <li>Weekly, prose that can be a check becomes one.</li>
+        <li>Transcript → a branch in your repo, scrubbed, pruned.</li>
+        <li>Lesson → local pack, in a PR you review.</li>
+        <li>Portable → canon, gated PR → every repo by morning.</li>
+        <li>Weekly — prose that can be a check, becomes one.</li>
       </ul>
     </div>
 
@@ -398,11 +394,11 @@
       <p class="eyebrow">Nothing leaves your repo</p>
       <h2>A paper map, not a subscription.</h2>
       <ul class="mech-points">
-        <li><strong>In</strong>: the canon, pulled into a PR you can read.</li>
-        <li><strong>Out to Anthropic</strong>: the session — exactly as before.</li>
-        <li><strong>Out to the canon</strong>: promoted lessons, in reviewed PRs, unless the repo opts out.</li>
-        <li><strong>The bots hold</strong>: your own workflows’ Actions token, and one routine token you create.</li>
-        <li><strong>To leave</strong>: delete tracked files — the vendored tree, the settings file, six hook entries, the rules import, two workflows, a CI step.</li>
+        <li><strong>In</strong> — the canon, as a PR.</li>
+        <li><strong>Out to Anthropic</strong> — the session, as before.</li>
+        <li><strong>Out to the canon</strong> — promoted lessons, reviewed, opt-out.</li>
+        <li><strong>Bots hold</strong> — your Actions token, 1 routine token.</li>
+        <li><strong>To leave</strong> — delete tracked files: the tree, the settings, 6 hooks, 1 import, 2 workflows, 1 CI step.</li>
       </ul>
     </div>
 
@@ -468,10 +464,10 @@
       <p class="eyebrow">The unit that travels</p>
       <h2>The pack carries it.</h2>
       <ul class="mech-points">
-        <li><strong>Rules</strong> — loaded every session.</li>
-        <li><strong>Checks</strong> — blocking or advisory; the finding names the fix.</li>
-        <li><strong>Skills and tasks</strong> — procedure on demand, upkeep on schedule.</li>
-        <li><strong>A manifest</strong> — a catalog entry, an adoption interview, files the repo then owns.</li>
+        <li><strong>Rules</strong> — every session.</li>
+        <li><strong>Checks</strong> — blocking or advisory, fix named.</li>
+        <li><strong>Skills, tasks</strong> — on demand, on schedule.</li>
+        <li><strong>Manifest</strong> — catalog, interview, seeded files.</li>
       </ul>
     </div>
     <div class="pack-stack" role="img" aria-label="Exploded view of a pack: rules loaded every session, blocking and advisory checks, skills on demand, scheduled tasks, and the manifest with its adoption interview.">
@@ -511,15 +507,15 @@
     <ul class="cards">
       <li class="card reveal">
         <h3>One developer, one repo</h3>
-        <p>Your repo gets stricter every time you work it.</p>
+        <p>Stricter every session.</p>
       </li>
       <li class="card reveal" data-delay="1">
         <h3>A shop or agency</h3>
-        <p>One canon across client repos; each repo keeps its own local pack.</p>
+        <p>One canon, many client repos, a local pack each.</p>
       </li>
       <li class="card reveal" data-delay="2">
         <h3>An organisation</h3>
-        <p>Shared packs carry how the org works, and every repo visibly keeps up.</p>
+        <p>Shared packs; every repo visibly current.</p>
       </li>
     </ul>
   </div>
@@ -533,31 +529,31 @@
     <ul class="cards cards-tight">
       <li class="card reveal">
         <h3>Claude Code only</h3>
-        <p>Other agents still read your rules file; CI’s repo checks run on their changes too.</p>
+        <p>Others read the rules; CI still checks their PRs.</p>
       </li>
       <li class="card reveal">
         <h3>GitHub only</h3>
-        <p>Issues, Actions and pull requests are load-bearing.</p>
+        <p>Issues, Actions, PRs.</p>
       </li>
       <li class="card reveal">
         <h3>One canon</h3>
-        <p>Public and shared; a private canon per organisation is not yet a thing.</p>
+        <p>Public, shared. Private canons: not yet.</p>
       </li>
       <li class="card reveal">
         <h3>No pin, no rollback</h3>
-        <p>A canon change reaches every repo next cycle, gated by your CI.</p>
+        <p>Next cycle reaches every repo; your CI gates it.</p>
       </li>
       <li class="card reveal">
         <h3>No fleet roll-up</h3>
-        <p>Each repo reports for itself: its PRs, issues and CI runs.</p>
+        <p>Per repo: PRs, issues, CI runs.</p>
       </li>
       <li class="card reveal">
         <h3>One hand-wired step</h3>
-        <p>Adoption ends with a routine and a token a person creates.</p>
+        <p>One routine, one token, by hand.</p>
       </li>
       <li class="card reveal">
         <h3>No published price</h3>
-        <p>The canon is a public repository today.</p>
+        <p>A public repo, no price yet.</p>
       </li>
     </ul>
   </div>
@@ -571,8 +567,8 @@
       <h2>One conversation, then one wire-up.</h2>
       <ol class="steps">
         <li><b>Point Claude Code at the canon.</b> <em>“Adopt Claudinite — follow missingbulb/Claudinite’s bootstrap.md.”</em></li>
-        <li><b>Answer the interview.</b> It vendors the canon and wires hooks, scheduler and CI — one green PR.</li>
-        <li><b>Merge, then wire the runner once</b> — a routine and a token. After that it runs itself.</li>
+        <li><b>Answer the interview.</b> One green PR: canon, hooks, scheduler, CI.</li>
+        <li><b>Merge, wire the runner once.</b> Then it runs itself.</li>
       </ol>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://github.com/missingbulb/Claudinite" rel="noopener">Get Claudinite →</a>
@@ -609,35 +605,35 @@
 
     <details>
       <summary>What if Anthropic ships this natively?</summary>
-      <p>Anthropic ships distribution fast, and nothing yet that checks conduct in the repo, converges a fleet or shares lessons between repos.</p>
+      <p>Distribution ships fast; nothing yet checks conduct, converges a fleet or shares lessons.</p>
     </details>
     <details>
       <summary>What if you disappear?</summary>
-      <p>The files keep working; only the update stream stops.</p>
+      <p>Files keep working; updates stop.</p>
     </details>
     <details>
       <summary>How is this different from a scorecard?</summary>
-      <p>A scorecard observes from outside; this fixes inside the repo, and has no roll-up pane.</p>
+      <p>It observes from outside; this fixes inside the repo.</p>
     </details>
     <details>
       <summary>Is there a SOC 2?</summary>
-      <p>No, and there is no hosted component to certify.</p>
+      <p>No — nothing hosted to certify.</p>
     </details>
     <details>
       <summary>What is the licence?</summary>
-      <p>None is published yet.</p>
+      <p>None published yet.</p>
     </details>
     <details>
       <summary>Does it help with an AI policy or the EU AI Act?</summary>
-      <p>A codified, distributed stance is the artifact those ask for; no formal mapping exists.</p>
+      <p>A codified, distributed stance; no formal mapping.</p>
     </details>
     <details>
       <summary>Can a developer disable it locally?</summary>
-      <p>The hooks live in a committed settings file; nothing stops a local edit, and CI still runs.</p>
+      <p>A local edit can. CI still runs.</p>
     </details>
     <details>
       <summary>Windows? Monorepos?</summary>
-      <p>Node and bash: Windows means WSL; a monorepo is one repo.</p>
+      <p>Node and bash — WSL on Windows. A monorepo is one repo.</p>
     </details>
     <details>
       <summary>Does it work in Claude Code on the web and in CI containers?</summary>
@@ -645,7 +641,7 @@
     </details>
     <details>
       <summary>Will it fight my CLAUDE.md?</summary>
-      <p>No; it imports rules through it and keeps it lean.</p>
+      <p>No — it imports through it, keeps it lean.</p>
     </details>
   </div>
 </section>
