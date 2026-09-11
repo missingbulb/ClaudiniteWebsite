@@ -12,7 +12,7 @@ const task = parseTaskDeclaration(readFileSync(new URL('./task.json', import.met
 // that fails it is skipped with an error rather than failing the mount — so the
 // task would simply stop running with nothing red to say so.
 test('site-stats declares the one precondition mechanism, and no legacy remnant', () => {
-  assert.deepEqual(task.preconditions, ['none']);
+  assert.deepEqual(task.preconditions, ['due:weekly']);
   assert.equal(task.precondition, undefined);
   assert.equal(task.precondition_signals, undefined);
 });
