@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Claudinite — your work, exponentially better</title>
-<meta name="description" content="Every rulebook hits a context ceiling. Claudinite learns your conventions from the sessions you already run and promotes them into checks that enforce themselves and cost no context — so the rulebook keeps growing instead of plateauing.">
+<title>Claudinite — rules your agent can't skip</title>
+<meta name="description" content="Your coding agent reads your rules as advice. Claudinite checks the work instead — at session stop and in CI — from plain files in every repository you own.">
 <meta name="theme-color" content="#faf8f4">
 <link rel="canonical" href="https://claudinite.com/">
-<meta property="og:title" content="Claudinite — your work, exponentially better">
-<meta property="og:description" content="More certainty, no more context. The gap between those two is the compounding.">
+<meta property="og:title" content="Claudinite — rules your agent can't skip">
+<meta property="og:description" content="Claudinite turns the rules you write for your coding agent into checks it cannot skip, in every repository you own.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://claudinite.com/">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -17,16 +17,17 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="nav" id="top">
+<header class="nav">
   <div class="nav-inner">
     <a class="brand" href="#top" aria-label="Claudinite home">
       <svg class="brand-glyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 28 11l-4.5 17h-15L4 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 2v26M4 11l12 6 12-6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
       <span>claudinite</span>
     </a>
     <nav aria-label="Primary">
-      <a href="#ceiling">The ceiling</a>
-      <a href="#multipliers">What compounds</a>
-      <a href="#scale">Scale</a>
+      <a href="#gap">The gap</a>
+      <a href="#runs">What runs</a>
+      <a href="#fleet">The fleet</a>
+      <a href="#limits">Limits</a>
       <a href="#faq">FAQ</a>
       <a class="nav-cta" href="#adopt">Adopt</a>
     </nav>
@@ -36,584 +37,525 @@
 <main id="main">
 
 <!-- ============================== HERO ============================== -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="wrap">
     <div class="hero-copy">
-      <p class="eyebrow">A compounding system for Claude Code</p>
-      <h1>Your work, exponentially better.</h1>
-      <p class="lede">
-        Claudinite learns how you work from the sessions you already run, then
-        promotes what it learns into <strong>checks that enforce themselves and
-        cost no context</strong>. Your rulebook stops competing with the work —
-        and you stop typing and start approving.
-      </p>
+      <p class="eyebrow">For every repository your agents touch</p>
+      <h1>Rules your agent can't skip.</h1>
+      <p class="lede">Your agent reads rules as advice. Claudinite checks the work — at the stop, and in CI — from plain files in every repo you own.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#adopt">Adopt it in your repo</a>
+        <a class="btn btn-primary" href="#adopt">Adopt it in a repo →</a>
         <a class="btn btn-ghost" href="https://github.com/missingbulb/Claudinite" rel="noopener">The canon on GitHub</a>
       </div>
-      <p class="hero-fine">Plain files in your repo. No service, no account.</p>
+      <p class="hero-fine">Plain files in your repo. No server, no account.</p>
     </div>
 
-<figure class="scene">
-      <svg id="scene-viz" viewBox="0 52 960 368" role="img" aria-labelledby="sc-title sc-desc">
-        <title id="sc-title">One developer's desk, over time</title>
-        <desc id="sc-desc">An operator at a desk. It begins with one screen and one small agent, and the
-        person types constantly. More screens arrive and the agent is grown to keep up, but as it grows it
-        accretes cruft, stales, throws sparks and starts writing bugs into the code. That cruft is then
-        stripped out and crystallised into a small, precise assistant, which grows as the agent shrinks
-        back down and the bugs disappear. A pack of knowledge arrives from off-screen and both know a new
-        technology at once. By the end six screens are running clean, and the person has stopped typing —
-        they only approve. Behind it all, an exponential curve climbs.</desc>
+    <!-- The two gates. Authored in its still frame: one change held red at the
+         first gate with its fix, one landing green on main. assets/main.js
+         only moves the chips. -->
+    <figure class="gates">
+      <svg id="gates-viz" class="gates-viz" viewBox="0 0 960 360" role="img" aria-labelledby="gt-title gt-desc">
+        <title id="gt-title">Two gates between a session and main</title>
+        <desc id="gt-desc">Three agent sessions each send a change along a lane toward main. The first
+        gate, at session stop, checks the diff and the session; the second, in CI, checks the repository.
+        A change that fails a gate turns red, carries a tag naming the fix, and returns to its session
+        before coming back green. Only changes that pass both gates stack up on main.</desc>
 
-        <g class="sc-bg" aria-hidden="true">
-          <path class="sc-curve" pathLength="1" d="M20.0 396.0 L35.3 395.0 L50.7 394.0 L66.0 393.0 L81.3 391.9 L96.7 390.7 L112.0 389.5 L127.3 388.2 L142.7 386.8 L158.0 385.4 L173.3 383.9 L188.7 382.3 L204.0 380.7 L219.3 378.9 L234.7 377.1 L250.0 375.2 L265.3 373.1 L280.7 371.0 L296.0 368.8 L311.3 366.4 L326.7 363.9 L342.0 361.3 L357.3 358.6 L372.7 355.7 L388.0 352.7 L403.3 349.5 L418.7 346.2 L434.0 342.7 L449.3 339.0 L464.7 335.1 L480.0 331.1 L495.3 326.8 L510.7 322.3 L526.0 317.5 L541.3 312.5 L556.7 307.3 L572.0 301.8 L587.3 296.0 L602.7 289.9 L618.0 283.5 L633.3 276.8 L648.7 269.8 L664.0 262.3 L679.3 254.5 L694.7 246.3 L710.0 237.7 L725.3 228.6 L740.7 219.1 L756.0 209.0 L771.3 198.5 L786.7 187.4 L802.0 175.8 L817.3 163.5 L832.7 150.6 L848.0 137.1 L863.3 122.9 L878.7 107.9 L894.0 92.2 L909.3 75.7 L924.7 58.3 L940.0 40.0"/>
+        <g class="gt-lanes" aria-hidden="true">
+          <path d="M166 82 H800"/>
+          <path d="M166 180 H800"/>
+          <path d="M166 278 H800"/>
         </g>
 
-        <g class="sc-set" aria-hidden="true">
-          <path class="sc-ground" d="M20 392 H940"/>
-          <path class="sc-desk" d="M150 300 H948 M180 300 V392 M910 300 V392"/>
-          <rect class="sc-keys" x="186" y="291" width="52" height="7" rx="3"/>
-        </g>
-
-        <g class="sc-work" aria-hidden="true">
-          <path class="sc-wl sc-wl-a f1" id="wl-a1" d="M790 250 L400 235"/>
-          <path class="sc-wl sc-wl-a f2" id="wl-a2" d="M790 250 L574 235"/>
-          <path class="sc-wl sc-wl-a f2" id="wl-b2" d="M858 262 L574 241"/>
-          <path class="sc-wl sc-wl-a f4" id="wl-a3" d="M790 250 L748 235"/>
-          <path class="sc-wl sc-wl-r f5" id="wl-r4" d="M905 272 L391 114"/>
-          <path class="sc-wl sc-wl-r f6" id="wl-r1" d="M905 272 L400 240"/>
-          <path class="sc-wl sc-wl-r f6" id="wl-r3" d="M905 272 L748 240"/>
-          <path class="sc-wl sc-wl-a f7" id="wl-a5" d="M790 250 L565 114"/>
-          <path class="sc-wl sc-wl-r f7" id="wl-r5" d="M905 272 L565 119"/>
-          <path class="sc-wl sc-wl-r f8" id="wl-r6" d="M905 272 L739 119"/>
-        </g>
-
-        <g class="sc-screens" aria-hidden="true">
-  <g class="sc-screen f1" id="sc-s1">
-    <path class="sc-stand" d="M325 290 V300 M313 300 H337"/>
-    <rect class="sc-glass" x="250" y="180" width="150" height="110" rx="8"/>
-    <path class="sc-bar" d="M250 196 H400"/>
-    <path class="sc-code" style="--n:0" d="M264 210 h72"/>
-    <path class="sc-code" style="--n:1" d="M276 224 h51"/>
-    <path class="sc-code sc-code-good" style="--n:2" d="M264 238 h81"/>
-    <path class="sc-code" style="--n:3" d="M276 252 h44"/>
-    <path class="sc-code" style="--n:4" d="M276 266 h64"/>
-    <g class="sc-bug">
-      <path class="sc-x" d="M276 248 l8 8 M284 248 l-8 8"/>
-      <path class="sc-zig" d="M292 252 l5 -4 5 8 5 -8 5 8 5 -4"/>
-    </g>
-    <path class="sc-tick" d="M276 252 l4 4 7 -9"/>
-  </g>
-  <g class="sc-screen f2" id="sc-s2">
-    <path class="sc-stand" d="M499 290 V300 M487 300 H511"/>
-    <rect class="sc-glass" x="424" y="180" width="150" height="110" rx="8"/>
-    <path class="sc-bar" d="M424 196 H574"/>
-    <path class="sc-code" style="--n:0" d="M438 210 h72"/>
-    <path class="sc-code" style="--n:1" d="M450 224 h51"/>
-    <path class="sc-code sc-code-good" style="--n:2" d="M438 238 h81"/>
-    <path class="sc-code" style="--n:3" d="M450 252 h44"/>
-    <path class="sc-code" style="--n:4" d="M450 266 h64"/>
-  </g>
-  <g class="sc-screen f4" id="sc-s3">
-    <path class="sc-stand" d="M673 290 V300 M661 300 H685"/>
-    <rect class="sc-glass" x="598" y="180" width="150" height="110" rx="8"/>
-    <path class="sc-bar" d="M598 196 H748"/>
-    <path class="sc-code" style="--n:0" d="M612 210 h72"/>
-    <path class="sc-code" style="--n:1" d="M624 224 h51"/>
-    <path class="sc-code sc-code-good" style="--n:2" d="M612 238 h81"/>
-    <path class="sc-code" style="--n:3" d="M624 252 h44"/>
-    <path class="sc-code" style="--n:4" d="M624 266 h64"/>
-    <g class="sc-bug">
-      <path class="sc-x" d="M624 248 l8 8 M632 248 l-8 8"/>
-      <path class="sc-zig" d="M640 252 l5 -4 5 8 5 -8 5 8 5 -4"/>
-    </g>
-    <path class="sc-tick" d="M624 252 l4 4 7 -9"/>
-  </g>
-  <g class="sc-screen f5" id="sc-s4">
-    <path class="sc-arm" d="M325 158 V180"/>
-    <rect class="sc-glass" x="259" y="70" width="132" height="88" rx="8"/>
-    <path class="sc-bar" d="M259 86 H391"/>
-    <path class="sc-code" style="--n:0" d="M273 100 h61"/>
-    <path class="sc-code" style="--n:1" d="M285 114 h43"/>
-    <path class="sc-code sc-code-good" style="--n:2" d="M273 128 h69"/>
-    <path class="sc-code" style="--n:3" d="M285 142 h37"/>
-  </g>
-  <g class="sc-screen f7" id="sc-s5">
-    <path class="sc-arm" d="M499 158 V180"/>
-    <rect class="sc-glass" x="433" y="70" width="132" height="88" rx="8"/>
-    <path class="sc-bar" d="M433 86 H565"/>
-    <path class="sc-tech" d="M521.0 122.0 L510.0 141.1 L488.0 141.1 L477.0 122.0 L488.0 102.9 L510.0 102.9 Z"/>
-    <circle class="sc-tech-dot" cx="499.0" cy="122.0" r="3"/>
-    <path class="sc-code" style="--n:0" d="M447 100 h61"/>
-    <path class="sc-code" style="--n:1" d="M459 114 h43"/>
-    <path class="sc-code sc-code-good" style="--n:2" d="M447 128 h69"/>
-    <path class="sc-code" style="--n:3" d="M459 142 h37"/>
-  </g>
-  <g class="sc-screen f8" id="sc-s6">
-    <path class="sc-arm" d="M673 158 V180"/>
-    <rect class="sc-glass" x="607" y="70" width="132" height="88" rx="8"/>
-    <path class="sc-bar" d="M607 86 H739"/>
-    <path class="sc-tech" d="M657.0 114.0 a16 5 0 1 0 32 0 a16 5 0 1 0 -32 0 M657.0 114.0 v22 a16 5 0 0 0 32 0 v-22 M657.0 125.0 a16 5 0 0 0 32 0"/>
-    <path class="sc-code" style="--n:0" d="M621 100 h61"/>
-    <path class="sc-code" style="--n:1" d="M633 114 h43"/>
-    <path class="sc-code sc-code-good" style="--n:2" d="M621 128 h69"/>
-    <path class="sc-code" style="--n:3" d="M633 142 h37"/>
-  </g>
-        </g>
-
-        <g class="sc-stage" aria-hidden="true">
-          <g class="sc-agent" id="sc-agent-a">
-            <path class="crystal sc-cryst" d="M812.0 258.0 L832.0 272.8 L824.4 300.0 L799.6 300.0 L792.0 272.8 Z"/>
-            <path class="crystal-facets sc-facet" d="M812.0 258.0 V300.0 M792.0 272.8 L812.0 282.4 L832.0 272.8"/>
-            <g class="sc-crust">
-      <path class="sc-barn" style="--n:0" transform="translate(786 286) rotate(-22)" d="M0.0 -6.3 L3.0 -4.1 L1.9 0.0 L-1.9 0.0 L-3.0 -4.1 Z"/>
-      <path class="sc-barn" style="--n:1" transform="translate(782 274) rotate(15)" d="M0.0 -8.4 L4.0 -5.4 L2.5 0.0 L-2.5 0.0 L-4.0 -5.4 Z"/>
-      <path class="sc-barn" style="--n:2" transform="translate(794 266) rotate(-40)" d="M0.0 -6.3 L3.0 -4.1 L1.9 0.0 L-1.9 0.0 L-3.0 -4.1 Z"/>
-      <path class="sc-barn" style="--n:3" transform="translate(780 294) rotate(32)" d="M0.0 -8.4 L4.0 -5.4 L2.5 0.0 L-2.5 0.0 L-4.0 -5.4 Z"/>
-      <path class="sc-barn" style="--n:4" transform="translate(800 256) rotate(20)" d="M0.0 -6.3 L3.0 -4.1 L1.9 0.0 L-1.9 0.0 L-3.0 -4.1 Z"/>
-      <path class="sc-barn" style="--n:5" transform="translate(776 282) rotate(-8)" d="M0.0 -8.4 L4.0 -5.4 L2.5 0.0 L-2.5 0.0 L-4.0 -5.4 Z"/>
-      <path class="sc-barn" style="--n:6" transform="translate(790 276) rotate(44)" d="M0.0 -6.3 L3.0 -4.1 L1.9 0.0 L-1.9 0.0 L-3.0 -4.1 Z"/>
-              <path class="sc-moss" d="M794 300 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0"/>
-              <path class="sc-moss sc-moss-2" d="M816 300 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0"/>
-              <path class="sc-drip" d="M800 302 v6 M820 302 v5"/>
-            </g>
-            <g class="sc-jolts">
-              <path class="sc-jolt sc-jolt-1" d="M832 268 l7 -4 -3 -7 8 -5 -2 -6"/>
-              <path class="sc-jolt sc-jolt-2" d="M792 272 l-7 -4 3 -7 -8 -5 2 -6"/>
-            </g>
+        <g class="gt-sessions" aria-hidden="true">
+          <g class="gt-term">
+            <rect x="16" y="48" width="150" height="68" rx="8"/>
+            <path class="gt-term-bar" d="M16 66 H166"/>
+            <circle cx="28" cy="57" r="2.5"/><circle cx="37" cy="57" r="2.5"/><circle cx="46" cy="57" r="2.5"/>
+            <text x="60" y="60.5">session</text>
+            <path class="gt-code" d="M30 80 h52 M30 92 h74 M30 104 h38"/>
           </g>
-
-          <g class="sc-agent" id="sc-agent-b">
-            <path class="crystal sc-cryst" d="M872.0 258.0 L892.0 272.8 L884.4 300.0 L859.6 300.0 L852.0 272.8 Z"/>
-            <path class="crystal-facets sc-facet" d="M872.0 258.0 V300.0 M852.0 272.8 L872.0 282.4 L892.0 272.8"/>
-            <g class="sc-crust">
-      <path class="sc-barn" style="--n:0" transform="translate(846 286) rotate(-22)" d="M0.0 -6.3 L3.0 -4.1 L1.9 0.0 L-1.9 0.0 L-3.0 -4.1 Z"/>
-      <path class="sc-barn" style="--n:1" transform="translate(842 274) rotate(15)" d="M0.0 -8.4 L4.0 -5.4 L2.5 0.0 L-2.5 0.0 L-4.0 -5.4 Z"/>
-              <path class="sc-moss" d="M858 300 a5 5 0 0 1 10 0 a5 5 0 0 1 10 0"/>
-            </g>
-            <g class="sc-jolts">
-              <path class="sc-jolt sc-jolt-3" d="M872 258 l6 -5 -4 -7 7 -5"/>
-            </g>
+          <g class="gt-term">
+            <rect x="16" y="146" width="150" height="68" rx="8"/>
+            <path class="gt-term-bar" d="M16 164 H166"/>
+            <circle cx="28" cy="155" r="2.5"/><circle cx="37" cy="155" r="2.5"/><circle cx="46" cy="155" r="2.5"/>
+            <text x="60" y="158.5">session</text>
+            <path class="gt-code" d="M30 178 h68 M30 190 h44 M30 202 h80"/>
           </g>
-
-          <g class="sc-robot" id="sc-robot">
-            <rect class="sc-bot-body" x="909" y="278" width="26" height="22" rx="2"/>
-            <path class="sc-bot-grid" d="M909 285 H935 M909 292 H935 M922 278 V300"/>
-            <rect class="sc-bot-head" x="912" y="262" width="20" height="14" rx="2"/>
-            <rect class="sc-eye" x="917" y="266" width="2" height="5"/>
-            <rect class="sc-eye" x="925" y="266" width="2" height="5"/>
-            <path class="sc-bot-ant" d="M922 262 V256"/>
-            <circle class="sc-bot-dot" cx="922" cy="253" r="2.5"/>
-            <path class="sc-bot-feet" d="M913 300 v4 M931 300 v4"/>
-            <path class="sc-bot-arm" d="M909 284 H899 V294 l-4 3 M935 284 H945 V294 l4 3"/>
+          <g class="gt-term">
+            <rect x="16" y="244" width="150" height="68" rx="8"/>
+            <path class="gt-term-bar" d="M16 262 H166"/>
+            <circle cx="28" cy="253" r="2.5"/><circle cx="37" cy="253" r="2.5"/><circle cx="46" cy="253" r="2.5"/>
+            <text x="60" y="256.5">session</text>
+            <path class="gt-code" d="M30 276 h40 M30 288 h84 M30 300 h56"/>
           </g>
         </g>
 
-        <g class="sc-pack" aria-hidden="true">
-          <path class="sc-pack-arc" d="M970 60 C930 100 890 150 864 190"/>
-          <path class="sc-pack-cell" d="M864.0 176.8 L876.0 185.7 L871.4 202.0 L856.6 202.0 L852.0 185.7 Z"/>
-          <path class="sc-pack-shard sc-shard-a" d="M864.0 189.4 L870.0 193.8 L867.7 202.0 L860.3 202.0 L858.0 193.8 Z"/>
-          <path class="sc-pack-shard sc-shard-b" d="M864.0 189.4 L870.0 193.8 L867.7 202.0 L860.3 202.0 L858.0 193.8 Z"/>
+        <g class="gt-gate" id="gate-1" aria-hidden="true">
+          <text class="gt-gate-name" x="392" y="20">Stop</text>
+          <text class="gt-gate-note" x="392" y="36">checks on the diff and the session</text>
+          <rect x="378" y="46" width="28" height="278" rx="5"/>
+          <circle class="gt-lamp bad" cx="392" cy="58" r="5"/>
+        </g>
+        <g class="gt-gate" id="gate-2" aria-hidden="true">
+          <text class="gt-gate-name" x="660" y="20">CI</text>
+          <text class="gt-gate-note" x="660" y="36">checks on the repo</text>
+          <rect x="646" y="46" width="28" height="278" rx="5"/>
+          <circle class="gt-lamp" cx="660" cy="58" r="5"/>
         </g>
 
-
-        <g class="sc-person" aria-hidden="true">
-          <path class="sc-chair" d="M70 388 h44 M92 388 v-52 M70 336 h52 M74 336 L66 270"/>
-
-          <g class="sc-pose sc-pose-a">
-            <path class="sc-limb sc-far" d="M108 332 L154 344 L150 386"/>
-            <path class="sc-body" d="M100 330 C110 300 122 272 136 254"/>
-            <path class="sc-limb" d="M100 332 L146 344 L142 386 M142 386 h12"/>
-            <path class="sc-limb sc-far" d="M139 263 L173 287 L201 294"/>
-            <g class="sc-typing">
-              <path class="sc-limb" d="M134 258 L168 282 L196 289 M196 289 v5"/>
-            </g>
-            <circle class="sc-head" cx="152" cy="238" r="16"/>
-            <g class="sc-vex">
-              <path class="sc-vex-1" d="M166 214 l-7 -7"/>
-              <path class="sc-vex-2" d="M174 208 l1 -9"/>
-              <path class="sc-vex-3" d="M180 214 l8 -5"/>
-            </g>
-            <path class="sc-hit" d="M196 284 v-6 M206 284 v-6 M216 284 v-6"/>
-          </g>
-
-          <g class="sc-pose sc-pose-b">
-            <path class="sc-limb sc-far" d="M108 332 L160 340 L166 386"/>
-            <path class="sc-body" d="M100 330 C104 296 108 266 114 248"/>
-            <path class="sc-limb" d="M100 332 L152 340 L158 386 M158 386 h12"/>
-            <path class="sc-limb sc-far" d="M118 260 L150 286 L172 292"/>
-            <g class="sc-gesture">
-              <path class="sc-limb" d="M116 256 L150 262 L182 244 M182 244 l6 -4 M182 244 l4 6"/>
-            </g>
-            <circle class="sc-head" cx="124" cy="232" r="16"/>
+        <g class="gt-main" aria-hidden="true">
+          <rect x="800" y="46" width="144" height="278" rx="10"/>
+          <path class="gt-main-bar" d="M800 76 H944"/>
+          <text x="872" y="66">main</text>
+          <g class="gt-ledger" id="gt-ledger">
+            <rect class="gt-landed on" x="822" y="298" width="100" height="14" rx="4"/>
+            <rect class="gt-landed on" x="822" y="276" width="100" height="14" rx="4"/>
+            <rect class="gt-landed on" x="822" y="254" width="100" height="14" rx="4"/>
+            <rect class="gt-landed" x="822" y="232" width="100" height="14" rx="4"/>
+            <rect class="gt-landed" x="822" y="210" width="100" height="14" rx="4"/>
+            <rect class="gt-landed" x="822" y="188" width="100" height="14" rx="4"/>
+            <rect class="gt-landed" x="822" y="166" width="100" height="14" rx="4"/>
+            <rect class="gt-landed" x="822" y="144" width="100" height="14" rx="4"/>
+            <rect class="gt-landed" x="822" y="122" width="100" height="14" rx="4"/>
           </g>
         </g>
 
-        <g class="sc-chips" aria-hidden="true">
-          <g class="sc-chip sc-chip-1">
-            <rect x="196" y="228" width="74" height="20" rx="10"/>
-            <text x="233" y="242">APPROVED</text>
+        <g class="gt-chips" aria-hidden="true">
+          <g class="gt-chip on chip-bad" id="chip-1" style="transform: translate(392px, 82px)">
+            <rect x="-18" y="-9" width="36" height="18" rx="5"/>
+            <path d="M-10 -3 h14 M-10 3 h9"/>
           </g>
-          <g class="sc-chip sc-chip-2">
-            <rect x="196" y="228" width="30" height="20" rx="10"/>
-            <text x="211" y="242">2</text>
+          <g class="gt-chip" id="chip-2" style="transform: translate(166px, 180px)">
+            <rect x="-18" y="-9" width="36" height="18" rx="5"/>
+            <path d="M-10 -3 h14 M-10 3 h9"/>
           </g>
-          <g class="sc-chip sc-chip-3">
-            <rect x="196" y="228" width="30" height="20" rx="10"/>
-            <text x="211" y="242">OK</text>
+          <g class="gt-chip on chip-good" id="chip-3" style="transform: translate(788px, 278px)">
+            <rect x="-18" y="-9" width="36" height="18" rx="5"/>
+            <path d="M-10 -3 h14 M-10 3 h9"/>
+          </g>
+          <g class="gt-tag on" id="tag-1" style="transform: translate(318px, 82px)">
+            <rect x="-30" y="-32" width="72" height="20" rx="4"/>
+            <text x="6" y="-18">✗ fix: …</text>
+          </g>
+          <g class="gt-tag" id="tag-2" style="transform: translate(586px, 180px)">
+            <rect x="-30" y="-32" width="72" height="20" rx="4"/>
+            <text x="6" y="-18">✗ fix: …</text>
           </g>
         </g>
       </svg>
-      <figcaption class="viz-caption scene-caption">
-        <span>one developer · six workstreams · the curve behind is the compounding</span>
-        <button class="cx-replay" id="sc-replay" type="button">Replay ↺</button>
+      <figcaption class="viz-caption fig-caption">
+        <span>two gates · the finding names the fix · main only holds what got through</span>
+        <button class="replay" id="gates-replay" type="button">Replay ↺</button>
       </figcaption>
     </figure>
   </div>
 </section>
 
-<!-- ============================= THE CEILING ============================= -->
-<section class="why" id="ceiling">
+<!-- ============================== QUOTE ============================== -->
+<section class="quote-band">
   <div class="wrap">
-    <p class="eyebrow">Why rulebooks stall</p>
-    <h2>Every rulebook hits a ceiling.</h2>
-
     <blockquote class="quote reveal">
       <p>“Claude treats them as context, not enforced configuration.”</p>
-      <cite><a href="https://code.claude.com/docs/en/memory" rel="noopener">Claude Code docs, on CLAUDE.md</a></cite>
+      <cite>— <a href="https://code.claude.com/docs/en/memory" rel="noopener">Claude Code docs, on CLAUDE.md</a></cite>
     </blockquote>
-
-    <div class="why-grid">
-      <article class="why-card reveal">
-        <h3><span class="why-num">01</span> Nothing accumulates</h3>
-        <p>Every session starts from zero. What you worked out evaporates on exit.</p>
-      </article>
-      <article class="why-card reveal">
-        <h3><span class="why-num">02</span> Nothing binds</h3>
-        <p>A rule the agent may skip is a hope. Nothing fails when it is ignored.</p>
-      </article>
-      <article class="why-card reveal">
-        <h3><span class="why-num">03</span> Nothing scales</h3>
-        <p>Every rule you add spends the context the work needs. The rulebook competes with the job.</p>
-      </article>
-    </div>
-    <p class="why-kicker reveal">Fix one and you get a better rulebook. Fix all three and the rulebook starts <strong>paying for itself</strong>.</p>
   </div>
 </section>
 
-<!-- =========================== THE MULTIPLIERS =========================== -->
-<section class="mult-intro" id="multipliers">
-  <div class="wrap wrap-narrow">
-    <p class="eyebrow">What compounds</p>
-    <h2>Three multipliers</h2>
-    <p class="mult-lede">
-      Exponential is not a bigger number. It is a rate that keeps rising, because
-      the thing limiting it keeps getting relieved.
-    </p>
-  </div>
-
-  <div class="wrap">
-    <!-- The page's core argument, drawn: a prose-only corpus saturates when it
-           fills the context budget; promoting prose to checks keeps freeing that
-           budget, so the curve never has to flatten. Geometry is schematic — the
-           shapes are the claim, and no magnitudes are asserted. -->
-      <figure class="compound">
-        <svg id="compound-viz" viewBox="0 0 680 470" role="img" aria-labelledby="cx-title cx-desc">
-          <title id="cx-title">Rules in force over sessions, with and without Claudinite</title>
-          <desc id="cx-desc">Two curves over a run of sessions. A prose-only rulebook climbs and then
-          flattens into a plateau once its rules fill the session's context budget. A Claudinite
-          rulebook starts slower, crosses over, and keeps accelerating, because each batch of prose
-          promoted into checks frees the context budget again. Below the curves, two meters show
-          context spent per session: the prose-only meter fills and stays full, while the Claudinite
-          meter repeatedly drops as promotions free space.</desc>
-  
-          <defs>
-            <clipPath id="cx-clip"><rect id="cx-clip-rect" x="96" y="40" width="554" height="270"/></clipPath>
-          </defs>
-  
-          <g class="cx-axis">
-            <line x1="96" y1="56" x2="96" y2="300"/>
-            <line x1="96" y1="300" x2="650" y2="300"/>
-          </g>
-          <text class="cx-axis-label" x="96" y="40">rules in force</text>
-          <text class="cx-axis-label cx-end" x="650" y="324">sessions</text>
-  
-          <g clip-path="url(#cx-clip)">
-            <path class="cx-gap" d="M418.2 226.1 L423.9 223.6 L429.7 221.0 L435.5 218.4 L441.3 215.7 L447.1 212.9 L452.9 210.1 L458.7 207.2 L464.5 204.2 L470.3 201.1 L476.1 198.0 L481.9 194.8 L487.7 191.5 L493.5 188.1 L499.3 184.7 L505.1 181.1 L510.9 177.5 L516.7 173.7 L522.5 169.9 L528.3 166.0 L534.1 161.9 L539.9 157.8 L545.7 153.6 L551.5 149.2 L557.3 144.8 L563.1 140.2 L568.9 135.5 L574.6 130.7 L580.4 125.8 L586.2 120.8 L592.0 115.6 L597.8 110.3 L603.6 104.8 L609.4 99.3 L615.2 93.5 L621.0 87.7 L626.8 81.6 L632.6 75.5 L638.4 69.1 L644.2 62.7 L650.0 56.0 L650.0 217.0 L644.2 217.1 L638.4 217.3 L632.6 217.4 L626.8 217.5 L621.0 217.6 L615.2 217.7 L609.4 217.8 L603.6 218.0 L597.8 218.1 L592.0 218.3 L586.2 218.4 L580.4 218.6 L574.6 218.7 L568.9 218.9 L563.1 219.1 L557.3 219.2 L551.5 219.4 L545.7 219.6 L539.9 219.8 L534.1 220.0 L528.3 220.2 L522.5 220.4 L516.7 220.7 L510.9 220.9 L505.1 221.1 L499.3 221.4 L493.5 221.7 L487.7 221.9 L481.9 222.2 L476.1 222.5 L470.3 222.8 L464.5 223.1 L458.7 223.4 L452.9 223.8 L447.1 224.1 L441.3 224.5 L435.5 224.9 L429.7 225.2 L423.9 225.6 L418.2 226.1 Z"/>
-            <path class="cx-line cx-prose" d="M96.0 300.0 L102.9 296.4 L109.8 293.0 L116.8 289.7 L123.7 286.6 L130.6 283.6 L137.6 280.7 L144.5 277.9 L151.4 275.3 L158.3 272.7 L165.2 270.3 L172.2 268.0 L179.1 265.7 L186.0 263.6 L192.9 261.5 L199.9 259.5 L206.8 257.7 L213.7 255.8 L220.7 254.1 L227.6 252.5 L234.5 250.9 L241.4 249.3 L248.4 247.9 L255.3 246.5 L262.2 245.1 L269.1 243.8 L276.1 242.6 L283.0 241.4 L289.9 240.3 L296.8 239.2 L303.8 238.2 L310.7 237.2 L317.6 236.2 L324.5 235.3 L331.4 234.4 L338.4 233.6 L345.3 232.8 L352.2 232.0 L359.1 231.2 L366.1 230.5 L373.0 229.9 L379.9 229.2 L386.9 228.6 L393.8 228.0 L400.7 227.4 L407.6 226.9 L414.5 226.3 L421.5 225.8 L428.4 225.3 L435.3 224.9 L442.2 224.4 L449.2 224.0 L456.1 223.6 L463.0 223.2 L470.0 222.8 L476.9 222.5 L483.8 222.1 L490.7 221.8 L497.6 221.5 L504.6 221.2 L511.5 220.9 L518.4 220.6 L525.4 220.3 L532.3 220.1 L539.2 219.8 L546.1 219.6 L553.0 219.4 L560.0 219.2 L566.9 218.9 L573.8 218.7 L580.8 218.6 L587.7 218.4 L594.6 218.2 L601.5 218.0 L608.5 217.9 L615.4 217.7 L622.3 217.6 L629.2 217.4 L636.1 217.3 L643.1 217.2 L650.0 217.0"/>
-            <path class="cx-line cx-claud" d="M96.0 300.0 L102.9 299.3 L109.8 298.5 L116.8 297.7 L123.7 296.9 L130.6 296.1 L137.6 295.2 L144.5 294.3 L151.4 293.4 L158.3 292.5 L165.2 291.5 L172.2 290.5 L179.1 289.5 L186.0 288.4 L192.9 287.3 L199.9 286.2 L206.8 285.0 L213.7 283.8 L220.7 282.6 L227.6 281.3 L234.5 280.0 L241.4 278.6 L248.4 277.2 L255.3 275.8 L262.2 274.3 L269.1 272.8 L276.1 271.2 L283.0 269.6 L289.9 268.0 L296.8 266.2 L303.8 264.5 L310.7 262.6 L317.6 260.8 L324.5 258.8 L331.4 256.8 L338.4 254.8 L345.3 252.7 L352.2 250.5 L359.1 248.2 L366.1 245.9 L373.0 243.5 L379.9 241.1 L386.9 238.5 L393.8 235.9 L400.7 233.2 L407.6 230.4 L414.5 227.6 L421.5 224.6 L428.4 221.6 L435.3 218.5 L442.2 215.2 L449.2 211.9 L456.1 208.5 L463.0 205.0 L470.0 201.3 L476.9 197.6 L483.8 193.7 L490.7 189.7 L497.6 185.6 L504.6 181.4 L511.5 177.1 L518.4 172.6 L525.4 168.0 L532.3 163.2 L539.2 158.3 L546.1 153.2 L553.0 148.0 L560.0 142.7 L566.9 137.1 L573.8 131.4 L580.8 125.5 L587.7 119.5 L594.6 113.3 L601.5 106.8 L608.5 100.2 L615.4 93.4 L622.3 86.3 L629.2 79.1 L636.1 71.6 L643.1 63.9 L650.0 56.0"/>
-          </g>
-  
-          <g class="cx-pin" id="cx-pin">
-            <circle cx="400.7" cy="227.4" r="4.5"/>
-            <text x="646" y="286" class="cx-end">context full — growth stops</text>
-          </g>
-  
-          <text class="cx-key cx-key-claud cx-end" x="646" y="50">with Claudinite</text>
-          <text class="cx-key cx-key-prose cx-end" x="646" y="209">prose only</text>
-  
-          <text class="cx-meter-head" x="96" y="358">context per session</text>
-  
-          <text class="cx-meter-label cx-end" x="212" y="390">prose only</text>
-          <rect class="cx-meter-frame" x="224" y="376" width="426" height="18" rx="5"/>
-          <rect class="cx-meter-fill cx-fill-prose" id="cx-fill-prose" x="224" y="376" width="426" height="18" rx="5"/>
-  
-          <text class="cx-meter-label cx-end" x="212" y="430">with Claudinite</text>
-          <rect class="cx-meter-frame" x="224" y="416" width="426" height="18" rx="5"/>
-          <rect class="cx-meter-fill cx-fill-claud" id="cx-fill-claud" x="224" y="416" width="135" height="18" rx="5"/>
-  
-          <text class="cx-caption" x="96" y="460">each drop is prose promoted to a check</text>
-        </svg>
-        <figcaption class="viz-caption compound-caption">
-          <span>the shaded gap is the compounding</span>
-          <button class="cx-replay" id="cx-replay" type="button">Replay ↺</button>
-        </figcaption>
-      </figure>
-  </div>
-</section>
-
-<!-- ==================== MULTIPLIER 1 · GROW ==================== -->
-<section class="mech" id="growth">
-  <div class="wrap mech-grid">
+<!-- =============================== GAP =============================== -->
+<section class="mech" id="gap">
+  <div class="wrap mech-grid mech-grid-flip">
     <div class="mech-copy">
-      <p class="eyebrow">Multiplier 01</p>
-      <h2>It grows from<br><em>your</em> work</h2>
-      <p>Not all possible work — yours: the things you work on, and the way you work on them, read from your own sessions and decisions.</p>
+      <p class="eyebrow">Arrived is not followed</p>
+      <h2>Every tool checks the rules arrived. One checks they were followed.</h2>
       <ul class="mech-points">
-        <li><strong>Sessions are captured</strong> — friction, backtracks and calls you made become lessons.</li>
-        <li><strong>Lessons land as local rules</strong>, in a PR you review.</li>
-        <li><strong>The portable ones promote to the canon</strong> — and reach every repo you run.</li>
+        <li>Rule-distribution tools — file matches source. Drift, not conduct.</li>
+        <li>Orchestrators, cockpits — rule files listed, never read back.</li>
+        <li>Plugins, marketplaces — capability in; nothing enforced per repo.</li>
+        <li>Claudinite — diff, transcript and repo checked. Door held.</li>
       </ul>
-      <p class="mech-fine">Nothing to author up front. The corpus is a by-product of working.</p>
+      <p class="kicker">Whatever runs your agents, this sits under it.</p>
     </div>
-    <figure class="growth-viz">
-      <svg viewBox="0 0 560 560" role="img">
-        <title>The growth loop: session lessons become local packs, are promoted to the canon, and baseline out to the fleet.</title>
-        <circle class="loop-ring" cx="280" cy="280" r="200"/>
-        <circle class="loop-flow" cx="280" cy="280" r="200"/>
-        <g class="loop-node" transform="translate(280,64)"><circle r="9"/><text y="-20" text-anchor="middle">session lesson</text></g>
-        <g class="loop-node" transform="translate(485,217)"><circle r="9"/><text y="-20" text-anchor="middle">local pack</text></g>
-        <g class="loop-node" transform="translate(407,449)"><circle r="9"/><text y="34" text-anchor="middle">dedup</text></g>
-        <g class="loop-node" transform="translate(153,449)"><circle r="9"/><text y="34" text-anchor="middle">promote to canon</text></g>
-        <g class="loop-node" transform="translate(75,217)"><circle r="9"/><text y="-20" text-anchor="middle">baseline to fleet</text></g>
-        <path class="crystal crystal-center" d="M280 236 318 264l-14.5 55h-47L242 264Z"/>
-        <text x="280" y="336" class="viz-label" text-anchor="middle">the growth loop</text>
+
+    <!-- The stack as a building. Authored settled; assets/main.js drops the
+         floors in when the figure scrolls into view. -->
+    <figure class="fig">
+      <svg id="building-viz" class="building settled" viewBox="0 0 520 412" role="img" aria-labelledby="bf-title bf-desc">
+        <title id="bf-title">The agent stack as a building, in cross-section</title>
+        <desc id="bf-desc">Four floors, top to bottom: who does the work — orchestrators, many sessions;
+        how do you watch it — cockpits, grids of sessions; how does capability reach a session — plugins,
+        marketplaces, rule delivery; what file does the agent read — CLAUDE.md, AGENTS.md, SKILL.md.
+        The ground floor, in the accent colour, asks whether the rule was followed: Claudinite, stamped
+        “checks run here”.</desc>
+
+        <g class="bf-floor bf-floor-4">
+          <rect x="44" y="20" width="432" height="60" rx="3"/>
+          <text class="bf-q" x="62" y="46">4 · Who does the work?</text>
+          <text class="bf-note" x="62" y="66">orchestrators, many sessions</text>
+        </g>
+        <g class="bf-floor bf-floor-3">
+          <rect x="44" y="86" width="432" height="60" rx="3"/>
+          <text class="bf-q" x="62" y="112">3 · How do you watch it?</text>
+          <text class="bf-note" x="62" y="132">cockpits, grids of sessions</text>
+        </g>
+        <g class="bf-floor bf-floor-2">
+          <rect x="44" y="152" width="432" height="60" rx="3"/>
+          <text class="bf-q" x="62" y="178">2 · How does capability arrive?</text>
+          <text class="bf-note" x="62" y="198">plugins, marketplaces, rule delivery</text>
+        </g>
+        <g class="bf-floor bf-floor-1">
+          <rect x="44" y="218" width="432" height="60" rx="3"/>
+          <text class="bf-q" x="62" y="244">1 · What file does the agent read?</text>
+          <text class="bf-note" x="62" y="264">CLAUDE.md, AGENTS.md, SKILL.md</text>
+        </g>
+
+        <g class="bf-ground">
+          <rect x="44" y="284" width="432" height="78" rx="3"/>
+          <text class="bf-q" x="62" y="310">ground · Was the rule followed?</text>
+          <text class="bf-note" x="62" y="332">Claudinite</text>
+          <g transform="rotate(-6 404 344)">
+            <g class="bf-stamp">
+              <rect x="342" y="330" width="124" height="28" rx="5"/>
+              <text x="404" y="348.5">checks run here</text>
+            </g>
+          </g>
+        </g>
+
+        <g class="bf-foundation" aria-hidden="true">
+          <path class="bf-earth" d="M20 370 H500"/>
+          <path class="bf-hatch" d="M40 370 l-10 12 M80 370 l-10 12 M120 370 l-10 12 M160 370 l-10 12 M200 370 l-10 12 M240 370 l-10 12 M280 370 l-10 12 M320 370 l-10 12 M360 370 l-10 12 M400 370 l-10 12 M440 370 l-10 12 M480 370 l-10 12"/>
+        </g>
       </svg>
+      <figcaption class="viz-caption fig-caption">
+        <button class="replay" id="building-replay" type="button">Replay ↺</button>
+      </figcaption>
     </figure>
   </div>
 </section>
 
-<!-- ==================== MULTIPLIER 2 · ENFORCE ==================== -->
-<section class="mech mech-dark" id="session-loop">
-  <div class="wrap mech-grid mech-grid-flip">
+<!-- ============================== RUNS ============================== -->
+<section class="mech mech-dark" id="runs">
+  <div class="wrap mech-grid">
     <div class="mech-copy">
-      <p class="eyebrow">Multiplier 02 · the one that lifts the ceiling</p>
-      <h2>Prose becomes<br>checks</h2>
-      <p>A rule the agent <em>might</em> apply is a hope, and it costs context every session to hope it. So prose is promoted into generated checks — lint for how you work. They run when the agent tries to stop; the finding <em>is</em> the instruction.</p>
-
-      <ol class="rungs" aria-label="The promotion ladder: what each rung costs in context and how strongly it binds.">
-        <li class="rung">
-          <span class="rung-name">prose</span>
-          <span class="rung-cost">every session</span>
-          <span class="rung-force">the agent may apply it</span>
-        </li>
-        <li class="rung">
-          <span class="rung-name">skill</span>
-          <span class="rung-cost">on demand</span>
-          <span class="rung-force">the agent may apply it</span>
-        </li>
-        <li class="rung rung-final">
-          <span class="rung-name">check</span>
-          <span class="rung-cost">no context</span>
-          <span class="rung-force">it blocks</span>
-        </li>
-      </ol>
-
-      <p class="mech-fine">Every promotion buys certainty <em>and</em> hands back the budget that bought it. That is the exponent.</p>
+      <p class="eyebrow">Caught before the commit, again in CI</p>
+      <h2>A check is a compiler error, not a comment.</h2>
+      <p class="lede-sm">Hooks decide by exit code, not by what the model says.</p>
+      <ul class="mech-points">
+        <li><strong>Start</strong> — rules loaded, 7 probes passed.</li>
+        <li><strong>Tool call</strong> — guarded calls denied.</li>
+        <li><strong>Stop</strong> — diff and transcript checked; blocking holds the session.</li>
+        <li><strong>CI</strong> — repo checks gate the PR.</li>
+      </ul>
+      <p class="mech-fine">Clean tree, instant exit. Repo checks again in CI; transcript checks never.</p>
       <button class="btn btn-ghost btn-replay" id="term-replay" type="button">Replay ↺</button>
     </div>
-    <div class="terminal" id="session-term" aria-label="Terminal transcript: checks catch a missing issue reference, the agent fixes it, all checks pass.">
+    <div class="terminal" id="session-term" aria-label="Terminal transcript: a session's checks catch a commit with no issue reference, the agent fixes it, the session ends green, and CI merges.">
       <div class="term-bar"><span></span><span></span><span></span><em>claude — your-repo</em></div>
       <div class="term-body" id="term-body">
-        <p class="t-line t-hook" data-t="1">◆ SessionStart · 3 packs loaded · rules injected</p>
+        <p class="t-line t-hook" data-t="1">◆ SessionStart · 10 packs · 67 checks · self-test 7 probes passed</p>
         <p class="t-line" data-t="2">&gt; implement the signup flow</p>
-        <p class="t-line t-dim" data-t="3">… edits, commits, tries to end …</p>
-        <p class="t-line t-hook" data-t="4">◆ Stop · running checks</p>
-        <p class="t-line t-bad" data-t="5">✗ task-lifecycle <span class="t-tag">blocking</span> no commit references an issue</p>
-        <p class="t-line t-dim" data-t="6">&nbsp;&nbsp;fix: reference the task issue — e.g. “refs #42”</p>
-        <p class="t-line" data-t="7">&gt; git commit --amend -m "Add signup flow (refs #42)"</p>
-        <p class="t-line t-good" data-t="9">✓ 14 checks · all green — session ends clean</p>
+        <p class="t-line t-hook" data-t="3">◆ PreToolUse · denied: deleting a remote branch</p>
+        <p class="t-line t-dim" data-t="4">… edits, commits, tries to end …</p>
+        <p class="t-line t-hook" data-t="5">◆ Stop · checks on the diff and the transcript</p>
+        <p class="t-line t-bad" data-t="6">✗ <span class="t-tag">blocking</span> no commit references an issue</p>
+        <p class="t-line t-dim" data-t="7">&nbsp;&nbsp;why: the issue is the change’s record &nbsp; fix: reference it — “refs #42”</p>
+        <p class="t-line" data-t="8">&gt; git commit --amend -m "Add signup flow (refs #42)"</p>
+        <p class="t-line t-good" data-t="9">✓ all green — session ends</p>
+        <p class="t-line t-hook" data-t="10">◆ SessionEnd · transcript captured</p>
+        <p class="t-line t-hook" data-t="11">◆ CI · repo-state checks green → merge</p>
       </div>
     </div>
   </div>
+  <div class="wrap">
+    <ul class="cards cards-dark fair">
+      <li class="card reveal">
+        <h3><span class="big">14</span> days</h3>
+        <p>advisory before a new check blocks</p>
+      </li>
+      <li class="card reveal" data-delay="1">
+        <h3><span class="big">1</span> reason</h3>
+        <p>recorded, silences a finding</p>
+      </li>
+      <li class="card reveal" data-delay="2">
+        <h3><span class="big">2</span> tries</h3>
+        <p>then the stop lets go</p>
+      </li>
+    </ul>
+  </div>
 </section>
 
-<!-- ==================== MULTIPLIER 3 · AUTOMATE ==================== -->
-<section class="mech" id="fleet">
+<!-- ============================= CONTEXT ============================= -->
+<section class="mech" id="context">
   <div class="wrap mech-grid">
     <div class="mech-copy">
-      <p class="eyebrow">Multiplier 03</p>
-      <h2>It turns<br>without you</h2>
-      <p>A loop you have to remember to run is not a loop. Growth and upkeep are scheduled work the repo executes on itself, each with a verifiable outcome.</p>
-      <ul class="mech-points">
-        <li><strong>Upkeep on the repo’s schedule</strong> — tidy sweeps, wiki growth, prose→check conversion.</li>
-        <li><strong>Every repo re-vendors the canon nightly</strong> — no repo falls behind.</li>
-        <li><strong>Every automated change is a PR</strong>, gated by your own CI.</li>
-      </ul>
+      <p class="eyebrow">A check costs no context</p>
+      <h2>Prose spends attention. A check spends none.</h2>
+      <p class="lede-sm">Every rule dilutes every other. Higher rung: less context, harder bind.</p>
+      <p class="mech-fine">Your session’s first line prints the price.</p>
     </div>
-    <div class="fleet-board" role="img" aria-label="Eight repositories flip from an old canon ref to the latest as the nightly baselining wave passes.">
+
+    <!-- The ladder: an ordered list drawn as steps rising left to right, with
+         a context meter that drains as a rule climbs. Authored at the top
+         rung; assets/main.js walks the token up from prose. -->
+    <figure class="fig ladder-fig">
+      <div class="ladder at-4" id="ladder">
+        <ol class="ladder-steps" aria-label="The promotion ladder, from the bottom rung up: name, what it costs, how it binds.">
+          <li class="rung" data-rung="0"><span class="rung-tread"></span><span class="rung-name">prose</span><span class="rung-meta"><span class="rung-cost">every session</span><span class="rung-force">the agent may apply it</span></span></li>
+          <li class="rung" data-rung="1"><span class="rung-tread"></span><span class="rung-name">skill</span><span class="rung-meta"><span class="rung-cost">on demand</span><span class="rung-force">the agent may apply it</span></span></li>
+          <li class="rung" data-rung="2"><span class="rung-tread"></span><span class="rung-name">check</span><span class="rung-meta"><span class="rung-cost">no context</span><span class="rung-force">it blocks</span></span></li>
+          <li class="rung" data-rung="3"><span class="rung-tread"></span><span class="rung-name">hook</span><span class="rung-meta"><span class="rung-cost">no context</span><span class="rung-force">it denies the call</span></span></li>
+          <li class="rung" data-rung="4"><span class="rung-tread"></span><span class="rung-name">setting</span><span class="rung-meta"><span class="rung-cost">no context</span><span class="rung-force">the platform refuses</span></span></li>
+        </ol>
+        <div class="meter" aria-hidden="true"><div class="meter-track"><div class="meter-fill"></div></div><span class="meter-label">context</span></div>
+        <span class="token" id="ladder-token" aria-hidden="true">rule</span>
+      </div>
+      <figcaption class="viz-caption fig-caption">
+        <button class="replay" id="ladder-replay" type="button">Replay ↺</button>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================== FLEET ============================== -->
+<section class="mech" id="fleet">
+  <div class="wrap mech-grid mech-grid-flip">
+    <div class="mech-copy">
+      <p class="eyebrow">Fix it once. Every repo inherits it.</p>
+      <h2>One canon. Every tap.</h2>
+      <ul class="mech-points">
+        <li>Daily — one PR per repo.</li>
+        <li>Green CI — lands itself. Or waits for review, one setting.</li>
+        <li>Migrations ride along. No hand-edits across forty repos.</li>
+        <li>Upkeep on schedule — every change a PR, through your CI.</li>
+      </ul>
+      <p class="mech-fine">No pin, no rollback yet — each repo’s CI gates each cycle.</p>
+    </div>
+    <div class="fleet-board" role="img" aria-label="Eight repositories flip from an old canon ref to the latest as the daily update wave passes.">
       <div class="canon-bar">
         <svg class="clock" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="19" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".35"/><line x1="22" y1="22" x2="22" y2="8" stroke="currentColor" stroke-width="1.8" class="clock-hand"/><circle cx="22" cy="22" r="1.8" fill="currentColor"/></svg>
         <span class="mono">canon @ <b id="canon-ref">005edd2</b></span>
         <span class="canon-pulse" id="canon-pulse" aria-hidden="true"></span>
       </div>
       <div class="repo-grid" id="repo-grid"></div>
-      <p class="viz-caption">nightly baselining · PR → CI → merge</p>
+      <p class="viz-caption">daily update · PR → CI → merge</p>
     </div>
   </div>
 </section>
 
-<!-- ========================= THE PACK ========================= -->
-<section class="mech" id="pack-anatomy">
-  <div class="wrap mech-grid mech-grid-flip">
+<!-- ============================== LOOP ============================== -->
+<section class="mech" id="loop">
+  <div class="wrap mech-grid">
     <div class="mech-copy">
-      <p class="eyebrow">The unit that travels</p>
-      <h2>The pack<br>carries it</h2>
-      <p>Knowledge compounds only if it travels whole. A pack ships a practice with everything it needs to survive — and to be found.</p>
+      <p class="eyebrow">What one repo learns, all repos keep</p>
+      <h2>Fought once. Remembered everywhere.</h2>
       <ul class="mech-points">
-        <li><strong>Prose</strong> — every session, automatically.</li>
-        <li><strong>Checks</strong> — the generated lint that enforces it.</li>
-        <li><strong>Skills and tasks</strong> — procedure on demand, upkeep on schedule.</li>
-        <li><strong>A manifest</strong> — discoverable in the catalog, adopted by interview, visible per repo.</li>
+        <li>Transcript → a branch in your repo, scrubbed, pruned.</li>
+        <li>Lesson → local pack, in a PR you review.</li>
+        <li>Portable → canon, gated PR → every repo by morning.</li>
+        <li>Weekly — prose that can be a check, becomes one.</li>
       </ul>
     </div>
-    <div class="pack-stack" role="img" aria-label="Exploded view of a pack: RULES.md prose, checks, skills, scheduled tasks, and the manifest that makes it discoverable.">
+
+    <!-- The growth ring. The pulse is a CSS dash travelling the ring; with
+         motion reduced the arrows alone carry the direction. -->
+    <figure class="fig ring-fig">
+      <svg viewBox="0 0 520 520" role="img" aria-labelledby="gr-title gr-desc">
+        <title id="gr-title">The growth ring</title>
+        <desc id="gr-desc">Five nodes round a ring, with arrows running clockwise: session, transcript, local
+        pack, canon, every repo, and back to session. The canon node is highlighted.</desc>
+        <defs>
+          <marker id="gr-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z"/>
+          </marker>
+        </defs>
+        <g class="gr-arcs" aria-hidden="true">
+          <path d="M293.0 72.9 A190 190 0 0 1 426.2 167.9"/>
+          <path d="M448.2 233.6 A190 190 0 0 1 399.0 389.6"/>
+          <path d="M343.3 430.8 A190 190 0 0 1 179.7 432.2"/>
+          <path d="M123.3 392.0 A190 190 0 0 1 71.4 236.8"/>
+          <path d="M92.2 170.8 A190 190 0 0 1 223.7 73.5"/>
+        </g>
+        <circle class="gr-pulse" cx="260" cy="260" r="190" aria-hidden="true"/>
+        <g class="gr-node" transform="translate(260 70)"><circle r="11"/><text y="-24" text-anchor="middle">session</text></g>
+        <g class="gr-node" transform="translate(440.7 201.3)"><circle r="11"/><text y="-24" text-anchor="middle">transcript</text></g>
+        <g class="gr-node" transform="translate(371.7 413.7)"><circle r="11"/><text y="38" text-anchor="middle">local pack</text></g>
+        <g class="gr-node gr-canon" transform="translate(148.3 413.7)"><circle r="15"/><text y="42" text-anchor="middle">canon</text></g>
+        <g class="gr-node" transform="translate(79.3 201.3)"><circle r="11"/><text y="-24" text-anchor="middle">every repo</text></g>
+        <text class="gr-center" x="260" y="266" text-anchor="middle">a lesson, once</text>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================== TRUST ============================== -->
+<section class="mech mech-band" id="trust">
+  <div class="wrap mech-grid mech-grid-flip">
+    <div class="mech-copy">
+      <p class="eyebrow">Nothing leaves your repo</p>
+      <h2>A paper map, not a subscription.</h2>
+      <ul class="mech-points">
+        <li><strong>In</strong> — the canon, as a PR.</li>
+        <li><strong>Out to Anthropic</strong> — the session, as before.</li>
+        <li><strong>Out to the canon</strong> — promoted lessons, reviewed, opt-out.</li>
+        <li><strong>Bots hold</strong> — your Actions token, 1 routine token.</li>
+        <li><strong>To leave</strong> — delete tracked files: the tree, the settings, 6 hooks, 1 import, 2 workflows, 1 CI step.</li>
+      </ul>
+    </div>
+
+    <!-- Data flow: every arrow there is, and the server there isn't. Static. -->
+    <figure class="fig flow-fig">
+      <svg viewBox="0 0 600 380" role="img" aria-labelledby="df-title df-desc">
+        <title id="df-title">What flows in and out of your repository</title>
+        <desc id="df-desc">Your repo, holding the vendored tree, the settings file and the workflows, sits in
+        the centre. From the public canon a daily pull request flows in; promoted lessons flow back to
+        the canon as a dashed, opt-out arrow. The session goes out to Anthropic exactly as before. There
+        is no other arrow, and no Claudinite server.</desc>
+        <defs>
+          <marker id="df-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+            <path d="M0 0 L10 5 L0 10 z"/>
+          </marker>
+        </defs>
+
+        <g class="df-box df-repo">
+          <rect x="210" y="120" width="200" height="180" rx="10"/>
+          <text class="df-name" x="310" y="152" text-anchor="middle">your repo</text>
+          <path class="df-rule" d="M230 166 H390"/>
+          <text class="df-file" x="232" y="196">.claudinite/</text>
+          <text class="df-file" x="232" y="226">.claude/settings.json</text>
+          <text class="df-file" x="232" y="256">.github/workflows/</text>
+        </g>
+
+        <g class="df-box df-canon">
+          <rect x="10" y="170" width="112" height="70" rx="10"/>
+          <text class="df-name" x="66" y="200" text-anchor="middle">canon</text>
+          <text class="df-sub" x="66" y="221" text-anchor="middle">public</text>
+        </g>
+
+        <g class="df-box df-anthropic">
+          <rect x="484" y="20" width="106" height="56" rx="10"/>
+          <text class="df-name" x="537" y="53" text-anchor="middle">Anthropic</text>
+        </g>
+
+        <g class="df-arrows" aria-hidden="true">
+          <path class="df-arrow" d="M122 205 H206"/>
+          <text class="df-label" x="164" y="188" text-anchor="middle">daily PR</text>
+
+          <path class="df-arrow" d="M290 120 V48 H480"/>
+          <text class="df-label" x="386" y="39" text-anchor="middle">the session, as before</text>
+
+          <path class="df-arrow df-dashed" d="M260 300 V334 H66 V244"/>
+          <text class="df-label" x="163" y="356" text-anchor="middle">promoted lessons · opt-out</text>
+        </g>
+
+        <g class="df-ghost" aria-hidden="true">
+          <rect x="446" y="226" width="144" height="74" rx="10"/>
+          <text x="518" y="258" text-anchor="middle">no Claudinite</text>
+          <text x="518" y="279" text-anchor="middle">server</text>
+        </g>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================== PACK ============================== -->
+<section class="mech" id="pack">
+  <div class="wrap mech-grid">
+    <div class="mech-copy">
+      <p class="eyebrow">The unit that travels</p>
+      <h2>The pack carries it.</h2>
+      <ul class="mech-points">
+        <li><strong>Rules</strong> — every session.</li>
+        <li><strong>Checks</strong> — blocking or advisory, fix named.</li>
+        <li><strong>Skills, tasks</strong> — on demand, on schedule.</li>
+        <li><strong>Manifest</strong> — catalog, interview, seeded files.</li>
+      </ul>
+    </div>
+    <div class="pack-stack" role="img" aria-label="Exploded view of a pack: rules loaded every session, blocking and advisory checks, skills on demand, scheduled tasks, and the manifest with its adoption interview.">
       <div class="pack-layer reveal" data-delay="0">
         <div class="pack-layer-head"><span class="file">RULES.md</span><span class="pill">every session</span></div>
-        <p>Always loaded.</p>
       </div>
       <div class="pack-layer reveal" data-delay="1">
-        <div class="pack-layer-head"><span class="file">checks/*.mjs</span><span class="pill pill-red">blocking</span><span class="pill pill-amber">advisory</span></div>
-        <p>The finding names the fix.</p>
+        <div class="pack-layer-head"><span class="file">checks/</span><span class="pill pill-red">blocking</span><span class="pill pill-amber">advisory</span></div>
       </div>
       <div class="pack-layer reveal" data-delay="2">
         <div class="pack-layer-head"><span class="file">skills/</span><span class="pill">on demand</span></div>
-        <p>Procedure, on demand.</p>
       </div>
       <div class="pack-layer reveal" data-delay="3">
         <div class="pack-layer-head"><span class="file">tasks/</span><span class="pill">scheduled</span></div>
-        <p>Upkeep the repo runs on itself.</p>
       </div>
       <div class="pack-layer reveal" data-delay="4">
-        <div class="pack-layer-head"><span class="file">pack.mjs</span><span class="pill">visibility</span></div>
-        <p>Declares itself: catalog entry, adoption interview, a badge per repo.</p>
+        <div class="pack-layer-head"><span class="file">pack.mjs</span><span class="pill">interview</span></div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- ============================ SCALE ============================ -->
-<section class="why" id="scale">
-  <div class="wrap">
-    <p class="eyebrow">Who it’s for</p>
-    <h2>One repo. A fleet. An organization.</h2>
-
-    <div class="why-grid">
-      <article class="why-card reveal">
-        <h3><span class="why-num">01</span> One developer, one repo</h3>
-        <p>The session loop alone: your repo gets stricter and smarter every time you work it.</p>
-      </article>
-      <article class="why-card reveal">
-        <h3><span class="why-num">02</span> One developer, a fleet</h3>
-        <p>A private canon: a lesson paid for in one repo reaches all of them by morning.</p>
-      </article>
-      <article class="why-card reveal">
-        <h3><span class="why-num">03</span> An organization</h3>
-        <p>Teams in symphony: shared packs carry how the org works, and every repo visibly keeps up.</p>
-      </article>
-    </div>
-    <p class="why-kicker reveal">Different flows, different mechanisms — <strong>one compounding loop</strong>.</p>
-  </div>
-</section>
-
-<!-- ================== BEYOND THE CORE · EXECUTABLE REQUIREMENTS ================== -->
-<section class="mech" id="exec-req">
-  <div class="wrap mech-grid">
-    <div class="mech-copy">
-      <p class="eyebrow">Beyond the core</p>
-      <h2>Requirements<br>you can execute</h2>
-      <p>The workflow this buys: state a UI change as a requirement, and the agent closes the build-run-verify loop against it — repeatably, without you driving it.</p>
-      <ul class="mech-points">
-        <li><strong>The requirement becomes an executable spec</strong> — a test that fails first.</li>
-        <li><strong>Claude runs the loop</strong>: change, build, verify — again, until it passes.</li>
-        <li><strong>You review a change that already proved itself.</strong></li>
-      </ul>
-    </div>
-    <div class="terminal terminal-light" aria-label="Terminal: a stated requirement becomes an executable spec; the agent iterates until the spec passes.">
-      <div class="term-bar"><span></span><span></span><span></span><em>claude — your-app</em></div>
-      <div class="term-body">
-        <p class="t-line">&gt; the signup button stays disabled until the form validates</p>
-        <p class="t-line t-hook">◆ requirement recorded → executable spec</p>
-        <p class="t-line t-bad">✗ spec fails: button enabled on empty form</p>
-        <p class="t-line t-dim">… edit · rebuild · re-run the spec …</p>
-        <p class="t-line t-good">✓ spec passes — change ready for review</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ THE CANON ============================ -->
-<section class="canon" id="canon">
-  <div class="wrap">
+  <div class="wrap canon-now">
     <p class="eyebrow">In the canon now</p>
-    <h2>What ships today</h2>
-
     <div class="stats" id="stats-slot"></div>
-
-    <figure class="pack-field" aria-label="A field of pack glyphs with a handful lit: the canon is many packs, and a repo declares the ones it wants.">
-      <svg viewBox="0 0 720 288" role="img">
-        <title>Many packs; a repo declares the ones it wants</title>
-        <path class="pf-cell" style="--i:0" d="M52 24 72 39 65 66 39 66 32 39Z"/>
-        <path class="pf-cell" style="--i:1" d="M140 24 160 39 153 66 127 66 120 39Z"/>
-        <path class="pf-cell" style="--i:2" d="M228 24 248 39 241 66 215 66 208 39Z"/>
-        <path class="pf-cell pf-on" style="--i:3" d="M316 24 336 39 329 66 303 66 296 39Z"/>
-        <path class="pf-cell" style="--i:4" d="M404 24 424 39 417 66 391 66 384 39Z"/>
-        <path class="pf-cell" style="--i:5" d="M492 24 512 39 505 66 479 66 472 39Z"/>
-        <path class="pf-cell" style="--i:6" d="M580 24 600 39 593 66 567 66 560 39Z"/>
-        <path class="pf-cell pf-on" style="--i:7" d="M668 24 688 39 681 66 655 66 648 39Z"/>
-        <path class="pf-cell" style="--i:8" d="M52 90 72 105 65 132 39 132 32 105Z"/>
-        <path class="pf-cell pf-on" style="--i:9" d="M140 90 160 105 153 132 127 132 120 105Z"/>
-        <path class="pf-cell" style="--i:10" d="M228 90 248 105 241 132 215 132 208 105Z"/>
-        <path class="pf-cell" style="--i:11" d="M316 90 336 105 329 132 303 132 296 105Z"/>
-        <path class="pf-cell" style="--i:12" d="M404 90 424 105 417 132 391 132 384 105Z"/>
-        <path class="pf-cell" style="--i:13" d="M492 90 512 105 505 132 479 132 472 105Z"/>
-        <path class="pf-cell pf-on" style="--i:14" d="M580 90 600 105 593 132 567 132 560 105Z"/>
-        <path class="pf-cell" style="--i:15" d="M668 90 688 105 681 132 655 132 648 105Z"/>
-        <path class="pf-cell" style="--i:16" d="M52 156 72 171 65 198 39 198 32 171Z"/>
-        <path class="pf-cell" style="--i:17" d="M140 156 160 171 153 198 127 198 120 171Z"/>
-        <path class="pf-cell pf-on" style="--i:18" d="M228 156 248 171 241 198 215 198 208 171Z"/>
-        <path class="pf-cell" style="--i:19" d="M316 156 336 171 329 198 303 198 296 171Z"/>
-        <path class="pf-cell" style="--i:20" d="M404 156 424 171 417 198 391 198 384 171Z"/>
-        <path class="pf-cell pf-on" style="--i:21" d="M492 156 512 171 505 198 479 198 472 171Z"/>
-        <path class="pf-cell" style="--i:22" d="M580 156 600 171 593 198 567 198 560 171Z"/>
-        <path class="pf-cell" style="--i:23" d="M668 156 688 171 681 198 655 198 648 171Z"/>
-        <path class="pf-cell" style="--i:24" d="M52 222 72 237 65 264 39 264 32 237Z"/>
-        <path class="pf-cell pf-on" style="--i:25" d="M140 222 160 237 153 264 127 264 120 237Z"/>
-        <path class="pf-cell" style="--i:26" d="M228 222 248 237 241 264 215 264 208 237Z"/>
-        <path class="pf-cell" style="--i:27" d="M316 222 336 237 329 264 303 264 296 237Z"/>
-        <path class="pf-cell pf-on" style="--i:28" d="M404 222 424 237 417 264 391 264 384 237Z"/>
-        <path class="pf-cell" style="--i:29" d="M492 222 512 237 505 264 479 264 472 237Z"/>
-        <path class="pf-cell pf-on" style="--i:30" d="M580 222 600 237 593 264 567 264 560 237Z"/>
-        <path class="pf-cell" style="--i:31" d="M668 222 688 237 681 264 655 264 648 237Z"/>
-      </svg>
-      <figcaption class="viz-caption">declare the ones you want</figcaption>
-    </figure>
-
     <div class="spotlight" id="spotlight-slot"></div>
-
     <noscript>
       <p>Browse the canon in <a href="https://github.com/missingbulb/Claudinite" rel="noopener">its repository</a>.</p>
     </noscript>
+  </div>
+</section>
+
+<!-- =============================== WHO =============================== -->
+<section class="band" id="who">
+  <div class="wrap">
+    <p class="eyebrow">Who it’s for</p>
+    <h2>One repo. A fleet. An organisation.</h2>
+    <ul class="cards">
+      <li class="card reveal">
+        <h3>One developer, one repo</h3>
+        <p>Stricter every session.</p>
+      </li>
+      <li class="card reveal" data-delay="1">
+        <h3>A shop or agency</h3>
+        <p>One canon, many client repos, a local pack each.</p>
+      </li>
+      <li class="card reveal" data-delay="2">
+        <h3>An organisation</h3>
+        <p>Shared packs; every repo visibly current.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================== LIMITS ============================== -->
+<section class="band band-2" id="limits">
+  <div class="wrap">
+    <p class="eyebrow">Not yet</p>
+    <h2>What it doesn’t do.</h2>
+    <ul class="cards cards-tight">
+      <li class="card reveal">
+        <h3>Claude Code only</h3>
+        <p>Others read the rules; CI still checks their PRs.</p>
+      </li>
+      <li class="card reveal">
+        <h3>GitHub only</h3>
+        <p>Issues, Actions, PRs.</p>
+      </li>
+      <li class="card reveal">
+        <h3>One canon</h3>
+        <p>Public, shared. Private canons: not yet.</p>
+      </li>
+      <li class="card reveal">
+        <h3>No pin, no rollback</h3>
+        <p>Next cycle reaches every repo; your CI gates it.</p>
+      </li>
+      <li class="card reveal">
+        <h3>No fleet roll-up</h3>
+        <p>Per repo: PRs, issues, CI runs.</p>
+      </li>
+      <li class="card reveal">
+        <h3>One hand-wired step</h3>
+        <p>One routine, one token, by hand.</p>
+      </li>
+      <li class="card reveal">
+        <h3>No published price</h3>
+        <p>A public repo, no price yet.</p>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -622,14 +564,14 @@
   <div class="wrap adopt-grid">
     <div class="mech-copy">
       <p class="eyebrow">Adopt</p>
-      <h2>One conversation,<br>then one wire-up</h2>
+      <h2>One conversation, then one wire-up.</h2>
       <ol class="steps">
         <li><b>Point Claude Code at the canon.</b> <em>“Adopt Claudinite — follow missingbulb/Claudinite’s bootstrap.md.”</em></li>
-        <li><b>Answer the interview.</b> It vendors the canon, wires the hooks, scheduler and CI — one green PR.</li>
-        <li><b>Merge, then wire the runner once</b> — an endpoint and a token. After that it runs itself.</li>
+        <li><b>Answer the interview.</b> One green PR: canon, hooks, scheduler, CI.</li>
+        <li><b>Merge, wire the runner once.</b> Then it runs itself.</li>
       </ol>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://github.com/missingbulb/Claudinite" rel="noopener">Get Claudinite</a>
+        <a class="btn btn-primary" href="https://github.com/missingbulb/Claudinite" rel="noopener">Get Claudinite →</a>
         <a class="btn btn-ghost" href="https://github.com/missingbulb/GoogleCalendarEventCreator" rel="noopener">See a repo running it</a>
       </div>
       <ul class="assure">
@@ -645,9 +587,9 @@
         <p class="t-line">&gt; <span id="type-target"></span><span class="caret" aria-hidden="true"></span></p>
         <div id="adopt-result" class="adopt-result">
           <p class="t-line t-dim">◆ fetching canon · running the adoption interview…</p>
-          <p class="t-line">✓ canon vendored at <span class="mono">.claudinite/shared/</span> (ref <span class="mono">005edd2</span>)</p>
+          <p class="t-line">✓ canon vendored at <span class="mono">.claudinite/shared/</span></p>
           <p class="t-line">✓ packs declared · interview answered</p>
-          <p class="t-line">✓ hooks registered · scheduler wired (minute :26) · CI sweep added</p>
+          <p class="t-line">✓ hooks registered · scheduler wired · CI sweep added</p>
           <p class="t-line t-good">✓ conformance sweep green — bootstrap PR opened</p>
         </div>
       </div>
@@ -662,32 +604,44 @@
     <h2>Fair questions</h2>
 
     <details>
-      <summary>Is the chart real data?</summary>
-      <p>No — it is schematic, and asserts no magnitudes. The shapes are the claim: a prose-only corpus saturates against the context budget, and promoting prose into checks keeps freeing it.</p>
+      <summary>What if Anthropic ships this natively?</summary>
+      <p>Distribution ships fast; nothing yet checks conduct, converges a fleet or shares lessons.</p>
     </details>
     <details>
-      <summary>What gets added to my repo?</summary>
-      <p>A vendored canon, a declaration, hooks, a scheduler workflow and a CI step — one PR.</p>
+      <summary>What if you disappear?</summary>
+      <p>Files keep working; updates stop.</p>
     </details>
     <details>
-      <summary>Do I have to write the rules myself?</summary>
-      <p>No. Most arrive as lessons mined from your own sessions; you review the PRs that land them.</p>
+      <summary>How is this different from a scorecard?</summary>
+      <p>It observes from outside; this fixes inside the repo.</p>
+    </details>
+    <details>
+      <summary>Is there a SOC 2?</summary>
+      <p>No — nothing hosted to certify.</p>
+    </details>
+    <details>
+      <summary>What is the licence?</summary>
+      <p>None published yet.</p>
+    </details>
+    <details>
+      <summary>Does it help with an AI policy or the EU AI Act?</summary>
+      <p>A codified, distributed stance; no formal mapping.</p>
+    </details>
+    <details>
+      <summary>Can a developer disable it locally?</summary>
+      <p>A local edit can. CI still runs.</p>
+    </details>
+    <details>
+      <summary>Windows? Monorepos?</summary>
+      <p>Node and bash — WSL on Windows. A monorepo is one repo.</p>
+    </details>
+    <details>
+      <summary>Does it work in Claude Code on the web and in CI containers?</summary>
+      <p>Yes — the corpus is in the checkout.</p>
     </details>
     <details>
       <summary>Will it fight my CLAUDE.md?</summary>
-      <p>No. It adds the layer that file can’t carry, and keeps it lean.</p>
-    </details>
-    <details>
-      <summary>What happens when a check fails?</summary>
-      <p>It holds the session open and states the fix. Repo-facing checks run again on every PR.</p>
-    </details>
-    <details>
-      <summary>Which agents does it support?</summary>
-      <p>Claude Code today. Other agents keep reading your <code>CLAUDE.md</code>.</p>
-    </details>
-    <details>
-      <summary>How do I leave?</summary>
-      <p>Delete <code>.claudinite/</code>, its hook entries, the scheduler workflow and the CI step.</p>
+      <p>No — it imports through it, keeps it lean.</p>
     </details>
   </div>
 </section>
@@ -701,11 +655,11 @@
         <svg class="brand-glyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 28 11l-4.5 17h-15L4 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 2v26M4 11l12 6 12-6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
         <span>claudinite</span>
       </a>
-      <p class="footer-tag">Your work, compounding.</p>
+      <p class="footer-tag">Rules your agent can’t skip.</p>
     </div>
     <nav class="footer-links" aria-label="Footer">
       <a href="https://github.com/missingbulb/Claudinite" rel="noopener">Canon repository</a>
-      <a href="#multipliers">What compounds</a>
+      <a href="#runs">What runs</a>
       <a href="#adopt">Adopt</a>
       <a href="privacy.html">Privacy</a>
     </nav>
