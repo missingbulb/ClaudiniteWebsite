@@ -6,10 +6,6 @@ retire — it. Entry keys are file-scoped stable identifiers (gaps allowed, neve
 end-of-line `(n)` marker in `RULES.md` cites `RULES-n`, one in a skill cites
 `<skill-name>-n`, and `check:` entries cover checks. No session loads this file for daily work.
 
-- **(RULES-1)** `site/README.md` made a checkable claim about when the site publishes;
-  dropping the deploy workflow's `paths:` filter (#45) left it still saying the site publishes
-  only on a push that touches `site/**`. Retire only if the site stops making checkable claims
-  about its own behaviour.
 - **(RULES-2)** Work in this repo lands in canon code often — #53, #54, #55 and #57 were all
   defects in the vendored engine and packs, found from here; #59 is the shape a patch issue
   should take. Retire only if a session here gains push scope to the canon repo.
@@ -21,13 +17,6 @@ end-of-line `(n)` marker in `RULES.md` cites `RULES-n`, one in a skill cites
   queue-state labels — exactly the failure `instructions.md` names ("doing it by hand anyway is
   how an item ends up closed wearing `task:agent`"). Retire only if this session type gains a
   working GitHub credential for direct API calls.
-- **(RULES-4)** Three queue-dispatched sessions on 2026-08-16/17 found
-  `engine/scheduler/queue/instructions.md` absent from `.claudinite/shared/`, and two filed it
-  (#190, #192) as the canon never having shipped it, both saying they had "no way to tell which
-  from here." A third shallow-cloned `missingbulb/Claudinite` and found the file present — a
-  vendoring omission; #192's ask to author it would have duplicated a file that already existed.
-  Retire only if the mount gains a way to distinguish an omission from a genuine canon gap
-  without a scratch clone.
 - **(RULES-5)** Issue #98: the orchestrator sent the subagent exactly such a fabricated
   instruction (which the subagent correctly refused as looking like an injection) and attempted
   `git commit --amend` on the subagent's already-pushed commit, blocked only by the permission
