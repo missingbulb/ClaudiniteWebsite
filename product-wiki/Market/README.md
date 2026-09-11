@@ -397,6 +397,13 @@ lives in [`Customers/`](../Customers/README.md).
   standard, emitting it is cheaper than emitting a second rules corpus.
 - Current plugin counts in `claude-plugins-official`/`community` and their
   growth rate — the pace of native absorption is the platform-risk metric.
+  Tried 2026-09-11: those repos live on `github.com`, and this session's
+  GitHub access proxy denies every `github.com`/`api.github.com` fetch
+  outside this session's own repository scope (confirmed via WebFetch and
+  curl both returning "GitHub access to this repository is not enabled for
+  this session"; `raw.githubusercontent.com` still works). Needs a human or
+  a differently-scoped session, not another pass from this session type —
+  detail in the [Customers wiki](../Customers/README.md)'s growth log.
 - Does any AAIF working group plan to add structure (schemas, checks,
   versioning) to AGENTS.md? `agents.md` is egress-blocked to this pass's
   fetcher (checked 2026-08-23); needs an unblocked environment or a human,
@@ -418,12 +425,31 @@ lives in [`Customers/`](../Customers/README.md).
   this pass. Its trajectory decides whether the orchestration layer becomes a
   buyer of governance or grows its own.
 - Has any tool announced a Renovate-style auto-PR convergence bot for agent
-  conventions? Re-checked 2026-08-02 (web search plus a GitHub repository
-  search restricted to tools pushed since June 2026): none found — every
-  live entrant is a CLI, a generator, or a symlinker. Absence of evidence
-  from two search surfaces, not proof; re-check next pass.
+  conventions? Re-checked 2026-09-11 (web search only this pass — the
+  2026-08-02 check's second surface, a GitHub repository search, is the
+  same `github.com` this session's access proxy now blocks): none found —
+  results were generic AGENTS.md/CLAUDE.md guides, no dedicated convergence
+  bot. Absence of evidence from a narrower surface than before, not proof;
+  a session with GitHub search access should re-run the repository-search
+  half.
 
 ## Growth log
+
+- **2026-09-11** — wiki-growth pass: tried to close the standing plugin-count
+  open question and hit a session-scope wall instead — this session's GitHub
+  access proxy blocks every `github.com`/`api.github.com` fetch for a
+  repository outside this session's own scope, so the plugin-marketplace
+  repos can't be browsed from here (`raw.githubusercontent.com` still
+  works, but a repo's file/star listing isn't served from that host).
+  Recorded on the open question rather than left to "re-check next pass,"
+  per the fetching-from-the-web convention for a domain-wide access wall;
+  full detail in the [Customers wiki](../Customers/README.md)'s growth log,
+  where the same wall blocked reading the #6235 comment thread. The same
+  wall narrowed this pass's re-check of the Renovate-style-bot question to
+  web search only (its GitHub-repository-search half needs the access this
+  session doesn't have) — still none found, now dated and scoped
+  accordingly. No `## Key insights` change — nothing here altered a
+  finding, only how the next one gets researched.
 
 - **2026-09-10** — owner-directed pass out of a session comparison
   (ClaudiniteWebsite #480). Added **the orchestration layer** as a sixth
